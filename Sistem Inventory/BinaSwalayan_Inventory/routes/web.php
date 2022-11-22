@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route Admin
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,4 +22,36 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.homeadmin');
 });
+
+
+
+
+
+
+
+
+// Route Super Admin
+
+
+
+
+
+
+
+
+
+
+// Route Staff
+
+
+
+
+
+
+
+
+
+
+
+
 
