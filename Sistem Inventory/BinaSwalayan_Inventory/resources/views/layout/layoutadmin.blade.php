@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @yield('title')
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon/favicon.ico') }}">
     @yield('style')
 
     <!-- Fonts -->
@@ -14,21 +14,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
 
     <!-- Icons -->
-    <link rel="stylesheet" href="{{ asset('vendor/fonts/boxicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/fonts/boxicons.css') }}" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('vendor/css/core.css') }}" class="template-customizer-core-css">
-    <link rel="stylesheet" href="{{ asset('vendor/css/theme/theme-default.css') }}" class="template-customizer-theme-css">
-    <link rel="stylesheet" href="{{ asset('css/demo.css') }}">
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{{ asset('vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('css/demo.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/libs/apex-charts/apex-charts.css') }}">
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{{ asset('vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset('vendor/libs/apex-charts/apex-charts.css') }}" />
 
-    <!-- Each Page CSS -->
+    <!-- Page CSS -->
 
-
-    <!-- Helpers JS -->
+    <!-- Helpers -->
     <script src="{{ asset('vendor/js/helpers.js') }}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -54,16 +54,12 @@
                 @yield('content')
 
             </div>
-
         </div>
 
         <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
 
     </div>
-
-
-
 
 
     <!-- JS -->
@@ -77,11 +73,9 @@
     <!-- Main JS -->
     <script src="{{ asset('js/main.js') }}"></script>
 
-
     <!-- Each Page JS -->
     <script src="{{ asset('js/dashboards-analytics.js') }}"></script>
     @yield('script')
-
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
