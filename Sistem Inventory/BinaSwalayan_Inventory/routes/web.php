@@ -19,8 +19,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
+Route::get('/adminhome', function () {
     return view('admin.homeadmin');
+});
+
+Route::get('/item', function () {
+    return view('admin.itemadmin');
+});
+
+Route::get('/accshifting', function () {
+    return view('admin.accshiftingadmin');
+});
+
+Route::get('/accdamaged', function () {
+    return view('admin.accdamagedadmin');
+});
+
+Route::get('/accincoming', function () {
+    return view('admin.accincomingadmin');
+});
+
+Route::get('/additem', function () {
+    return view('admin.additemadmin');
+});
+
+Route::get('/addshifting', function () {
+    return view('admin.addshiftingadmin');
 });
 
 

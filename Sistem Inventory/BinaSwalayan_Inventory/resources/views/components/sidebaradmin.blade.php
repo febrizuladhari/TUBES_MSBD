@@ -17,10 +17,10 @@
 
     <div class="menu-inner-shadow"></div>
 
-    <ul class="menu-inner py-1">
+    <ul class="menu-inner py-1 mt-3">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="#" class="menu-link">
+            <a href="/adminhome" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -31,9 +31,9 @@
         </li>
         <!-- Update Item -->
         <li class="menu-item">
-            <a href="tes.php" class="menu-link">
+            <a href="/item" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-edit bxs-like bx-tada"></i>
-                <div data-i18n="Analytics">Update Item</div>
+                <div data-i18n="Analytics">Items</div>
             </a>
         </li>
 
@@ -46,17 +46,17 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
+                    <a href="/accshifting" class="menu-link">
                         <div data-i18n="Without menu">Shifting Items</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
+                    <a href="/accdamaged" class="menu-link">
                         <div data-i18n="Without navbar">Damaged Items</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
+                    <a href="/accincoming" class="menu-link">
                         <div data-i18n="Container">Incoming Items</div>
                     </a>
                 </li>
@@ -64,30 +64,19 @@
         </li>
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Users</span>
+            <span class="menu-header-text">Authority Admin</span>
         </li>
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top bxs-like bx-tada"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+            <a href="/additem" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-message-alt-add bxs-like bx-tada"></i>
+                <div data-i18n="Analytics">Add Items</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Account">Account</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Notifications">Notifications</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li>
-            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="/addshifting" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
+                <div data-i18n="Analytics">Add Shifting Items</div>
+            </a>
         </li>
     </ul>
 </aside>
