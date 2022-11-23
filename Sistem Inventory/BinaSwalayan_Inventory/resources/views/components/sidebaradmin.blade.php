@@ -32,7 +32,7 @@
         <!-- Update Item -->
         <li class="menu-item">
             <a href="/item" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-edit bxs-like bx-tada"></i>
+                <i class="menu-icon tf-icons bx bxs-component bx-tada"></i>
                 <div data-i18n="Analytics">Items</div>
             </a>
         </li>

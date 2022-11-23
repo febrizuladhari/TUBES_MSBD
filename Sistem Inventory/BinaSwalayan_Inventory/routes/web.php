@@ -47,6 +47,10 @@ Route::get('/addshifting', function () {
     return view('admin.addshiftingadmin');
 });
 
+Route::get('/profileadmin', function () {
+    return view('admin.profileadmin');
+});
+
 
 
 
