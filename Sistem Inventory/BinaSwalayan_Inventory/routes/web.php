@@ -70,7 +70,9 @@ Route::get('/profileadmin', function () {
 
 
 // Route Staff
-
+Route::get('/itemstaff',function(){
+    return view('staff.itemstaff');
+});
 
 
 
