@@ -19,7 +19,7 @@
 
     <ul class="menu-inner py-1 mt-3">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="/adminhome" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Dashboard</div>
