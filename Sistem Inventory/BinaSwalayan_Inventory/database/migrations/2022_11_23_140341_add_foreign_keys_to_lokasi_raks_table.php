@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToLokasiBarangsTable extends Migration
+class AddForeignKeysToLokasiRaksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddForeignKeysToLokasiBarangsTable extends Migration
      */
     public function up()
     {
-        Schema::table('lokasi_barangs', function (Blueprint $table) {
-            $table->foreign(['id_Outlet'], 'lokasi_barangs_ibfk_1')->references(['id'])->on('outlets')->onUpdate('CASCADE');
+        Schema::table('lokasi_raks', function (Blueprint $table) {
+            $table->foreign(['id_Gudang'], 'lokasi_raks_ibfk_1')->references(['id'])->on('lokasi_gudangs')->onDelete('CASCADE');
         });
     }
 
@@ -25,8 +25,8 @@ class AddForeignKeysToLokasiBarangsTable extends Migration
      */
     public function down()
     {
-        Schema::table('lokasi_barangs', function (Blueprint $table) {
-            $table->dropForeign('lokasi_barangs_ibfk_1');
+        Schema::table('lokasi_raks', function (Blueprint $table) {
+            $table->dropForeign('lokasi_raks_ibfk_1');
         });
     }
 }

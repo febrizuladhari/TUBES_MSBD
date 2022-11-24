@@ -17,10 +17,10 @@ class CreateBarangsTable extends Migration
             $table->char('id', 5)->primary();
             $table->text('Nama');
             $table->char('id_Kategori', 2);
-            $table->char('id_Lokasi', 10);
+            $table->char('id_Rak', 10)->index('id_Rak');
             $table->char('id_Supplier', 2)->index('id_Supplier');
 
-            $table->unique(['id_Kategori', 'id_Lokasi', 'id_Supplier'], 'id_Kategori');
+            $table->unique(['id_Kategori', 'id_Rak', 'id_Supplier'], 'id_Kategori');
         });
     }
 

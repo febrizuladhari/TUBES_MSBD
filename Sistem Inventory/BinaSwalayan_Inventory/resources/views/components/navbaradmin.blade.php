@@ -9,13 +9,18 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
-        <div class="navbar-nav align-items-center">
+        {{-- <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search-alt bxs-like bx-flashing-hover fs-4 lh-0"></i>
                 <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
             </div>
-        </div>
+        </div> --}}
         <!-- /Search -->
+        <div class="navbar-nav align-items-center">
+            <div class="nav-item d-flex align-items-center">
+                <h3 class="my-auto">Bina Swalayan Inventory</h3>
+            </div>
+        </div>
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
@@ -46,22 +51,16 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="/profileadmin">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
                         </a>
                     </li>
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="#">
                             <i class="bx bx-power-off bxs-like bx-flashing me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>

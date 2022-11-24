@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToOutletsTable extends Migration
+class CreateKategorisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddForeignKeysToOutletsTable extends Migration
      */
     public function up()
     {
-        Schema::table('outlets', function (Blueprint $table) {
-            $table->foreign(['id'], 'outlets_ibfk_1')->references(['id_Outlet'])->on('lokasi_barangs')->onUpdate('CASCADE');
+        Schema::create('kategoris', function (Blueprint $table) {
+            $table->char('id', 2)->primary();
+            $table->text('Nama_Kategori');
         });
     }
 
@@ -25,8 +26,6 @@ class AddForeignKeysToOutletsTable extends Migration
      */
     public function down()
     {
-        Schema::table('outlets', function (Blueprint $table) {
-            $table->dropForeign('outlets_ibfk_1');
-        });
+        Schema::dropIfExists('kategoris');
     }
 }
