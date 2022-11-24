@@ -21,10 +21,6 @@ Route::get('/', function () {
 
 Route::get('/adminhome', function () {
     return view('admin.homeadmin');
-})->middleware('admin');
-
-Route::get('/login', function () {
-    return view('admin.login');
 });
 
 Route::get('/item', function () {
@@ -63,7 +59,6 @@ Route::get('/profileadmin', function () {
 
 
 // Route Super Admin
-
 Route::get('/dashboard', function () {
     return view('superadmin.homesuperadmin');
 });
@@ -79,11 +74,15 @@ Route::get('/viewBarang', function(){
 
 
 
+
 // Route Staff
 Route::get('/itemstaff',function(){
     return view('staff.itemstaff');
 });
 
+Route::get('/profilestaff', function(){
+    return view('staff.profilestaff');
+});
 
 
 
