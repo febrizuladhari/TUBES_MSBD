@@ -32,7 +32,13 @@ Route::get('/admin', function () {
 
 // Route Super Admin
 
+Route::get('/dashboard', function () {
+    return view('superadmin.homesuperadmin');
+});
 
+Route::get('/viewBarang', function(){
+    return view('superadmin.viewBarang');
+});
 
 
 

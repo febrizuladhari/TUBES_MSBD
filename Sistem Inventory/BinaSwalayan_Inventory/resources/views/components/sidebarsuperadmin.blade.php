@@ -20,7 +20,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="#" class="menu-link">
+            <a href="/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -31,7 +31,7 @@
         </li>
         <!-- Update Item -->
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="/viewBarang" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-edit bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Update Item</div>
             </a>
