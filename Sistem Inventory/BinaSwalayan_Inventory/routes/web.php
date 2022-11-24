@@ -21,6 +21,10 @@ Route::get('/', function () {
 
 Route::get('/adminhome', function () {
     return view('admin.homeadmin');
+})->middleware('admin');
+
+Route::get('/login', function () {
+    return view('admin.login');
 });
 
 Route::get('/item', function () {
