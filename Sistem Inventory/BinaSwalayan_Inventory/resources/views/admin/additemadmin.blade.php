@@ -62,7 +62,7 @@
                             <input type="text" id="suppliers" class="form-control" placeholder="Suppliers"/>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select class="form-select" id="status">
                             <option selected>Open to change status</option>
@@ -70,7 +70,7 @@
                             <option value="borrow">Borrow</option>
                             <option value="damaged">Damaged</option>
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
