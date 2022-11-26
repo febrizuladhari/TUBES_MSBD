@@ -23,7 +23,7 @@ Route::get('/adminhome', function () {
     return view('admin.homeadmin');
 });
 
-Route::get('/item', function () {
+Route::get('/itemadmin', function () {
     return view('admin.itemadmin');
 });
 

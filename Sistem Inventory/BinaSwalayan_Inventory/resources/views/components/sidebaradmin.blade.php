@@ -19,7 +19,7 @@
 
     <ul class="menu-inner py-1 mt-3">
         <!-- Dashboard -->
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('adminhome') ? 'active' : '' }}">
             <a href="/adminhome" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -30,8 +30,8 @@
             <span class="menu-header-text">Items</span>
         </li>
         <!-- Update Item -->
-        <li class="menu-item">
-            <a href="/item" class="menu-link">
+        <li class="menu-item {{ Request::is('itemadmin') ? 'active' : '' }}">
+            <a href="/itemadmin" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-component bx-tada"></i>
                 <div data-i18n="Analytics">Items</div>
             </a>
@@ -45,17 +45,17 @@
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('accshifting') ? 'active' : '' }}">
                     <a href="/accshifting" class="menu-link">
                         <div data-i18n="Without menu">Shifting Items</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('accdamaged') ? 'active' : '' }}">
                     <a href="/accdamaged" class="menu-link">
                         <div data-i18n="Without navbar">Damaged Items</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::is('accincoming') ? 'active' : '' }}">
                     <a href="/accincoming" class="menu-link">
                         <div data-i18n="Container">Incoming Items</div>
                     </a>
@@ -66,13 +66,13 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Authority Admin</span>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('additem') ? 'active' : '' }}">
             <a href="/additem" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-message-alt-add bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Add Items</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('addshifting') ? 'active' : '' }}">
             <a href="/addshifting" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Add Shifting Items</div>
