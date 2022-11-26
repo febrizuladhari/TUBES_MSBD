@@ -7,6 +7,7 @@
 @section('content')
 
     <!-- Konten -->
+
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -19,7 +20,7 @@
             <div class="card">
                 <h5 class="card-header">List of damaged items pending approval</h5>
                 <div class="table-responsive text-nowrap">
-                    <table class="table table-striped">
+                    <table class="table table-hover table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -29,7 +30,6 @@
                                 <th>Warehouse</th>
                                 <th>Outlet</th>
                                 <th>Suppilers</th>
-                                <th>Status</th>
                                 <th class="d-flex justify-content-center">Action</th>
                             </tr>
                         </thead>
@@ -42,7 +42,6 @@
                                 <td>Warehouse 1</td>
                                 <td>Bina Marindal Swalayan</td>
                                 <td>Lenovo</td>
-                                <td><span class="badge bg-label-primary me-1">Good</span></td>
                                 <td>
                                     <!-- Modal Confirm Button -->
                                     <button type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#basicModal1">
@@ -109,7 +108,6 @@
                                 <td>Warehouse 2</td>
                                 <td>Toko Deli Baru</td>
                                 <td>Lenovo</td>
-                                <td><span class="badge bg-label-info me-1">Borrow</span></td>
                                 <td>
                                     <!-- Modal Confirm Button -->
                                     <button type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#basicModal1">
@@ -176,7 +174,6 @@
                                 <td>Warehouse 1</td>
                                 <td>Bina Marindal Swalayan</td>
                                 <td>Lenovo</td>
-                                <td><span class="badge bg-label-danger me-1">Damaged</span></td>
                                 <td>
                                     <!-- Modal Confirm Button -->
                                     <button type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#basicModal1">

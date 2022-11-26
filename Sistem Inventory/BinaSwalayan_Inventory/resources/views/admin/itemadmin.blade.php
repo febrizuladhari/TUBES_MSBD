@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive text-nowrap">
-                                <table class="table table-striped">
+                                <table class="table table-responsive table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -436,7 +436,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive text-nowrap">
-                                <table class="table table-striped">
+                                <table class="table table-responsive table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
