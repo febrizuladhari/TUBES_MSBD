@@ -14,9 +14,9 @@ class AddForeignKeysToTabelPerpindahansTable extends Migration
     public function up()
     {
         Schema::table('tabel_perpindahans', function (Blueprint $table) {
-            $table->foreign(['id_Outlet_Peminjam'], 'tabel_perpindahans_ibfk_2')->references(['id'])->on('outlets')->onUpdate('CASCADE');
-            $table->foreign(['id_User'], 'tabel_perpindahans_ibfk_1')->references(['id'])->on('users')->onUpdate('CASCADE');
-            $table->foreign(['id_Barang'], 'tabel_perpindahans_ibfk_3')->references(['id'])->on('barangs')->onUpdate('CASCADE');
+            $table->foreign(['id_outlet_peminjam'], 'tabel_perpindahans_ibfk_2')->references(['id'])->on('outlets')->onUpdate('CASCADE');
+            $table->foreign(['id_user'], 'tabel_perpindahans_ibfk_1')->references(['id'])->on('users')->onUpdate('CASCADE');
+            $table->foreign(['id_barang'], 'tabel_perpindahans_ibfk_3')->references(['id'])->on('barangs')->onUpdate('CASCADE');
         });
     }
 

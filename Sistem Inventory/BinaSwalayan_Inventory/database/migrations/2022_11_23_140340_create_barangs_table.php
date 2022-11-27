@@ -15,12 +15,12 @@ class CreateBarangsTable extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->char('id', 5)->primary();
-            $table->text('Nama');
-            $table->char('id_Kategori', 2);
-            $table->char('id_Rak', 10)->index('id_Rak');
-            $table->char('id_Supplier', 2)->index('id_Supplier');
+            $table->text('nama');
+            $table->char('id_kategori', 2);
+            $table->char('id_rak', 10)->index('id_rak');
+            $table->char('id_supplier', 2)->index('id_supplier');
 
-            $table->unique(['id_Kategori', 'id_Rak', 'id_Supplier'], 'id_Kategori');
+            $table->unique(['id_kategori', 'id_rak', 'id_supplier'], 'id_kategori');
         });
     }
 

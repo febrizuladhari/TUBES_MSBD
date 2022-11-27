@@ -14,9 +14,9 @@ class AddForeignKeysToBarangsTable extends Migration
     public function up()
     {
         Schema::table('barangs', function (Blueprint $table) {
-            $table->foreign(['id_Supplier'], 'barangs_ibfk_2')->references(['id'])->on('suppliers')->onUpdate('CASCADE');
-            $table->foreign(['id_Kategori'], 'barangs_ibfk_1')->references(['id'])->on('kategoris')->onUpdate('CASCADE');
-            $table->foreign(['id_Rak'], 'barangs_ibfk_3')->references(['id'])->on('lokasi_raks')->onUpdate('CASCADE');
+            $table->foreign(['id_supplier'], 'barangs_ibfk_2')->references(['id'])->on('suppliers')->onUpdate('CASCADE');
+            $table->foreign(['id_kategori'], 'barangs_ibfk_1')->references(['id'])->on('kategoris')->onUpdate('CASCADE');
+            $table->foreign(['id_rak'], 'barangs_ibfk_3')->references(['id'])->on('lokasi_raks')->onUpdate('CASCADE');
         });
     }
 

@@ -15,7 +15,7 @@ class CreateOutletsTable extends Migration
     {
         Schema::create('outlets', function (Blueprint $table) {
             $table->char('id', 3)->primary();
-            $table->text('Nama');
+            $table->text('nama');
         });
     }
 

@@ -15,12 +15,12 @@ class CreateTabelPerpindahansTable extends Migration
     {
         Schema::create('tabel_perpindahans', function (Blueprint $table) {
             $table->char('id', 3)->primary();
-            $table->date('Tanggal_Keluar');
-            $table->char('id_Barang', 5);
-            $table->char('id_Outlet_Peminjam', 3)->index('id_Outlet_Peminjam');
-            $table->char('id_User', 5)->index('id_User');
+            $table->date('tanggal_keluar');
+            $table->char('id_barang', 5);
+            $table->char('id_outlet_peminjam', 3)->index('id_outlet_peminjam');
+            $table->char('id_user', 5)->index('id_user');
 
-            $table->unique(['id_Barang', 'id_Outlet_Peminjam', 'id_User'], 'id_Barang');
+            $table->unique(['id_barang', 'id_outlet_peminjam', 'id_user'], 'id_barang');
         });
     }
 

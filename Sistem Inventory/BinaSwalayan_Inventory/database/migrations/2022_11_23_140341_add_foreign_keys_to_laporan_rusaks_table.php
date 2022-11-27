@@ -14,7 +14,7 @@ class AddForeignKeysToLaporanRusaksTable extends Migration
     public function up()
     {
         Schema::table('laporan_rusaks', function (Blueprint $table) {
-            $table->foreign(['id_User'], 'laporan_rusaks_ibfk_1')->references(['id'])->on('users')->onUpdate('CASCADE');
+            $table->foreign(['id_user'], 'laporan_rusaks_ibfk_1')->references(['id'])->on('users')->onUpdate('CASCADE');
         });
     }
 

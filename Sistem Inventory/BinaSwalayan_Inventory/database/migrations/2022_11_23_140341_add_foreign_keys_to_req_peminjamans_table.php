@@ -14,8 +14,8 @@ class AddForeignKeysToReqPeminjamansTable extends Migration
     public function up()
     {
         Schema::table('req_peminjamans', function (Blueprint $table) {
-            $table->foreign(['id_User'], 'req_peminjamans_ibfk_2')->references(['id'])->on('users')->onUpdate('CASCADE');
-            $table->foreign(['id_Barang'], 'req_peminjamans_ibfk_1')->references(['id'])->on('barangs')->onUpdate('CASCADE');
+            $table->foreign(['id_user'], 'req_peminjamans_ibfk_2')->references(['id'])->on('users')->onUpdate('CASCADE');
+            $table->foreign(['id_barang'], 'req_peminjamans_ibfk_1')->references(['id'])->on('barangs')->onUpdate('CASCADE');
         });
     }
 

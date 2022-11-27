@@ -14,7 +14,7 @@ class AddForeignKeysToLokasiRaksTable extends Migration
     public function up()
     {
         Schema::table('lokasi_raks', function (Blueprint $table) {
-            $table->foreign(['id_Gudang'], 'lokasi_raks_ibfk_1')->references(['id'])->on('lokasi_gudangs')->onDelete('CASCADE');
+            $table->foreign(['id_gudang'], 'lokasi_raks_ibfk_1')->references(['id'])->on('lokasi_gudangs')->onDelete('CASCADE');
         });
     }
 

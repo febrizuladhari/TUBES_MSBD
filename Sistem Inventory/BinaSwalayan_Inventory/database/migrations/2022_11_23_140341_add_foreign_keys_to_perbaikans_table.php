@@ -14,7 +14,7 @@ class AddForeignKeysToPerbaikansTable extends Migration
     public function up()
     {
         Schema::table('perbaikans', function (Blueprint $table) {
-            $table->foreign(['id_Barang'], 'perbaikans_ibfk_1')->references(['id'])->on('barangs')->onUpdate('CASCADE');
+            $table->foreign(['id_barang'], 'perbaikans_ibfk_1')->references(['id'])->on('barangs')->onUpdate('CASCADE');
         });
     }
 

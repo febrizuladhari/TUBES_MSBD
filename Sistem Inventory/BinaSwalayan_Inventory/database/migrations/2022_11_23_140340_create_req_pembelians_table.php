@@ -15,11 +15,11 @@ class CreateReqPembeliansTable extends Migration
     {
         Schema::create('req_pembelians', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->char('id_Kategori', 2);
-            $table->char('id_User', 5);
-            $table->text('Nama Barang');
+            $table->char('id_kategori', 2);
+            $table->char('id_user', 5);
+            $table->text('nama_barang');
 
-            $table->unique(['id_Kategori', 'id_User'], 'id_Kategori');
+            $table->unique(['id_kategori', 'id_user'], 'id_kategori');
         });
     }
 

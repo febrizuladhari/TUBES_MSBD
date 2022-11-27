@@ -15,8 +15,8 @@ class CreateLokasiRaksTable extends Migration
     {
         Schema::create('lokasi_raks', function (Blueprint $table) {
             $table->char('id', 10)->primary();
-            $table->char('id_Gudang', 10)->unique('id_Gudangs');
-            $table->char('Rak', 3);
+            $table->char('id_gudang', 10)->unique('id_gudangs');
+            $table->char('rak', 3);
         });
     }
 

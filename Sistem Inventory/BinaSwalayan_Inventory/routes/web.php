@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 // Controller Admin
 use App\Http\Controllers\AdminController;
@@ -79,7 +80,7 @@ Route::get('/profileadmin', function () {
 // Route Super Admin
 Route::get('/dashboard', function () {
     return view('superadmin.homesuperadmin');
-});
+})->middleware('superadmin');
 
 Route::get('/viewBarang', function(){
     return view('superadmin.viewBarang');
@@ -111,4 +112,21 @@ Route::get('/profilestaff', function(){
 
 
 
+//Routes Login
+
+Route::get('login', 'App\Http\Controllers\LoginController@index')->name('login');
+Route::post('proses_login', 'App\Http\Controllers\LoginController@proses_login')->name('proses_login');
+Route::get('logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['checklogin:superadmin']], function () {
+        Route::resource('superadmin', LoginController::class);
+    });
+    Route::group(['middleware' => ['checklogin:admin']], function () {
+        Route::resource('admin', LoginController::class);
+    });
+    Route::group(['middleware' => ['checklogin:staff']], function () {
+        Route::resource('staff', LoginController::class);
+    });
+});
 

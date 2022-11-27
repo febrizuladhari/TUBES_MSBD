@@ -15,11 +15,11 @@ class CreateLaporanRusaksTable extends Migration
     {
         Schema::create('laporan_rusaks', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->char('id_Barang', 5);
-            $table->char('id_User', 5)->index('id_User');
-            $table->date('Tanggal');
+            $table->char('id_barang', 5);
+            $table->char('id_user', 5)->index('id_user');
+            $table->date('tanggal');
 
-            $table->unique(['id_Barang', 'id_User'], 'id_Barang');
+            $table->unique(['id_barang', 'id_user'], 'id_barang');
         });
     }
 

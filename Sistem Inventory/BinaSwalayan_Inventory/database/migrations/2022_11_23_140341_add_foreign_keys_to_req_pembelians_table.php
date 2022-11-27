@@ -14,7 +14,7 @@ class AddForeignKeysToReqPembeliansTable extends Migration
     public function up()
     {
         Schema::table('req_pembelians', function (Blueprint $table) {
-            $table->foreign(['id_Kategori'], 'req_pembelians_ibfk_1')->references(['id'])->on('kategoris')->onUpdate('CASCADE');
+            $table->foreign(['id_kategori'], 'req_pembelians_ibfk_1')->references(['id'])->on('kategoris')->onUpdate('CASCADE');
         });
     }
 
