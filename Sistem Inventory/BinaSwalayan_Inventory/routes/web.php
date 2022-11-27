@@ -2,6 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Controller Admin
+use App\Http\Controllers\AdminController;
+
+
+
+
+
+// Controller Super Admin
+
+
+
+
+// Controller Staff
+
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +38,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/adminhome', function () {
-    return view('admin.homeadmin');
-});
+Route::get('/homeadmin', [AdminController::class, 'index'])->name('homeadmin');
+
 
 Route::get('/itemadmin', function () {
     return view('admin.itemadmin');

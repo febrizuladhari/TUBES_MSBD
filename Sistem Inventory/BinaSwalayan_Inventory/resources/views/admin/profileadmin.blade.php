@@ -42,15 +42,15 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="name" class="form-label">Name</label>
-                                    <input class="form-control" type="text" name="name" id="name" placeholder="Franky Budiman"/>
+                                    <input class="form-control" type="text" name="name" id="name" placeholder="Franky Budiman" required/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="password" class="form-label">Password</label>
-                                    <input class="form-control" type="password" id="password" name="password" placeholder="*******"/>
+                                    <input class="form-control" type="password" id="password" name="password" placeholder="*******" required/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="alamat" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat" />
+                                    <input type="text" class="form-control" id="alamat" name="alamat" required/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="level" class="form-label">Level</label>
@@ -65,7 +65,7 @@
                                 <label class="form-label" for="phone">Phone Number</label>
                                 <div class="input-group input-group-merge">
                                     <span class="input-group-text">ID (+62)</span>
-                                    <input type="text" id="phone" name="phone" class="form-control" placeholder="0812 3344 5588"/>
+                                    <input type="text" id="phone" name="phone" class="form-control" placeholder="0812 3344 5588" required/>
                                 </div>
                                 </div>
                                 <div class="mb-3 col-md-6">

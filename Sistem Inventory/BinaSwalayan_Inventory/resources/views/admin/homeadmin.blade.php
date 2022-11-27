@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                             <h3 class="card-title mb-2">Search Item</h3>
-                            <span class="d-block mb-1">Total Items : 135</span>
+                            <span class="d-block mb-1">Total Items : <strong>135</strong></span>
                         </div>
                         <!-- Modal Search Item Popup -->
                         <div class="modal fade" id="modalSearch" tabindex="-1" aria-hidden="true">
@@ -135,7 +135,7 @@
                                                 <label class="form-label" for="id">ID Item</label>
                                                 <div class="input-group input-group-merge">
                                                     <span id="id" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                    <input type="text" class="form-control" id="id" placeholder="ID Item"/>
+                                                    <input type="text" class="form-control" id="id" placeholder="ID Item" required/>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -154,12 +154,12 @@
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-primary btn-lg">
-                                        <i class="tf-icons bx bx-transfer-alt bxs-like bx-tada-hover bx-md"></i>
+                                    <button type="button" class="btn btn-icon btn-outline-info btn-lg">
+                                        <i class="tf-icons bx bx-transfer bxs-like bx-tada-hover bx-md"></i>
                                     </button>
                                     </div>
                                 </div>
-                                <span class="d-block mb-1">Approve Shifting</span>
+                                <h5 class="d-block mb-1">Approve Shifting</h5>
                                 <h4 class="card-title mb-2"><span class="text-success"><i class="bx bx-up-arrow-alt"></i></span>120</h4>
                             </div>
                         </div>
@@ -171,12 +171,12 @@
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-primary btn-lg">
+                                    <button type="button" class="btn btn-icon btn-outline-danger btn-lg">
                                         <i class="tf-icons bx bx-error-alt bxs-like bx-tada-hover bx-md"></i>
                                     </button>
                                     </div>
                                 </div>
-                                <span class="d-block mb-1">Approve Damaged</span>
+                                <h5 class="d-block mb-1">Approve Damaged</h5>
                                 <h4 class="card-title mb-2"><span class="text-success"><i class="bx bx-up-arrow-alt"></i></span>120</h4>
                             </div>
                         </div>
@@ -186,12 +186,12 @@
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-primary btn-lg">
+                                    <button type="button" class="btn btn-icon btn-outline-success btn-lg">
                                         <i class="tf-icons bx bx-down-arrow-alt bxs-like bx-tada-hover bx-md"></i>
                                     </button>
                                     </div>
                                 </div>
-                                <span class="d-block mb-1">Approve Incoming</span>
+                                <h5 class="d-block mb-1">Approve Incoming</h5>
                                 <h4 class="card-title mb-2"><span class="text-success"><i class="bx bx-up-arrow-alt"></i></span>120</h4>
                             </div>
                         </div>

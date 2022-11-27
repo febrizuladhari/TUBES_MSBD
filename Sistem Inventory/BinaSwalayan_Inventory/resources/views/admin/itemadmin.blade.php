@@ -97,42 +97,42 @@
                                                                         <label class="form-label" for="nama">Name</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe"/>
+                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="kategori">Category</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category"/>
+                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="rak">Rack</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="rak" class="input-group-text"><i class="bx bx-spreadsheet"></i></span>
-                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack"/>
+                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="gudang">Warehouse</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="gudang" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse"/>
+                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="outlet">Outlet</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="outlet" class="input-group-text"><i class="bx bx-store"></i></span>
-                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet"/>
+                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="suppliers">Suppliers</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="suppliers" class="input-group-text"><i class="bx bx-group"></i></span>
-                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers"/>
+                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
@@ -146,7 +146,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -208,42 +208,42 @@
                                                                         <label class="form-label" for="nama">Name</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe"/>
+                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="kategori">Category</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category"/>
+                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="rak">Rack</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="rak" class="input-group-text"><i class="bx bx-spreadsheet"></i></span>
-                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack"/>
+                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="gudang">Warehouse</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="gudang" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse"/>
+                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="outlet">Outlet</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="outlet" class="input-group-text"><i class="bx bx-store"></i></span>
-                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet"/>
+                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="suppliers">Suppliers</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="suppliers" class="input-group-text"><i class="bx bx-group"></i></span>
-                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers"/>
+                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
@@ -257,7 +257,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -319,42 +319,42 @@
                                                                         <label class="form-label" for="nama">Name</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe"/>
+                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="kategori">Category</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category"/>
+                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="rak">Rack</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="rak" class="input-group-text"><i class="bx bx-spreadsheet"></i></span>
-                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack"/>
+                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="gudang">Warehouse</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="gudang" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse"/>
+                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="outlet">Outlet</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="outlet" class="input-group-text"><i class="bx bx-store"></i></span>
-                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet"/>
+                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="suppliers">Suppliers</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="suppliers" class="input-group-text"><i class="bx bx-group"></i></span>
-                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers"/>
+                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
@@ -368,7 +368,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -476,42 +476,42 @@
                                                                         <label class="form-label" for="nama">Name</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe"/>
+                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="kategori">Category</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category"/>
+                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="rak">Rack</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="rak" class="input-group-text"><i class="bx bx-spreadsheet"></i></span>
-                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack"/>
+                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="gudang">Warehouse</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="gudang" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse"/>
+                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="outlet">Outlet</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="outlet" class="input-group-text"><i class="bx bx-store"></i></span>
-                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet"/>
+                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="suppliers">Suppliers</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="suppliers" class="input-group-text"><i class="bx bx-group"></i></span>
-                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers"/>
+                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
@@ -525,7 +525,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -587,42 +587,42 @@
                                                                         <label class="form-label" for="nama">Name</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe"/>
+                                                                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="kategori">Category</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category"/>
+                                                                            <input type="text" id="kategori" class="form-control" placeholder="Category" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="rak">Rack</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="rak" class="input-group-text"><i class="bx bx-spreadsheet"></i></span>
-                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack"/>
+                                                                            <input type="number" id="rak" class="form-control" placeholder="Rack" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="gudang">Warehouse</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="gudang" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse"/>
+                                                                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="outlet">Outlet</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="outlet" class="input-group-text"><i class="bx bx-store"></i></span>
-                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet"/>
+                                                                            <input type="text" id="outlet" class="form-control" placeholder="Outlet" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="form-label" for="suppliers">Suppliers</label>
                                                                         <div class="input-group input-group-merge">
                                                                             <span id="suppliers" class="input-group-text"><i class="bx bx-group"></i></span>
-                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers"/>
+                                                                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-3">
@@ -636,7 +636,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -747,7 +747,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
