@@ -13,7 +13,7 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h3 class="fw-bold py-3">Add Items</h3>
+            <h3 class="fw-bold py-3">Add Item</h3>
             <hr class="my-4">
 
             <!-- List Itemms -->

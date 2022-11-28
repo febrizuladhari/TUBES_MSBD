@@ -2,7 +2,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="#" class="app-brand-link">
+        <a href="{{ route('homeadmin') }}" class="app-brand-link">
         {{-- <span class="app-brand-logo demo"> --}}
             <img src="{{ asset('img/favicon/bina logo.png') }}" width="30%" alt="Logo Bina Swalayan">
             <h4 class="my-3 mx-1">Bina Swalayan</h4>
@@ -31,7 +31,7 @@
         </li>
         <!-- Update Item -->
         <li class="menu-item {{ Request::is('itemadmin') ? 'active' : '' }}">
-            <a href="/itemadmin" class="menu-link">
+            <a href="{{ route('itemadmin') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-component bx-tada"></i>
                 <div data-i18n="Analytics">Items</div>
             </a>
@@ -69,13 +69,13 @@
         <li class="menu-item {{ Request::is('additem') ? 'active' : '' }}">
             <a href="/additem" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-message-alt-add bxs-like bx-tada"></i>
-                <div data-i18n="Analytics">Add Items</div>
+                <div data-i18n="Analytics">Add Item</div>
             </a>
         </li>
         <li class="menu-item {{ Request::is('addshifting') ? 'active' : '' }}">
             <a href="/addshifting" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
-                <div data-i18n="Analytics">Add Shifting Items</div>
+                <div data-i18n="Analytics">Add Shifting Item</div>
             </a>
         </li>
     </ul>

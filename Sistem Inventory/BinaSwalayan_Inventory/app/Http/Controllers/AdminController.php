@@ -17,6 +17,11 @@ class AdminController extends Controller
         return view('admin.homeadmin');
     }
 
+    public function showitem()
+    {
+        return view('admin.itemadmin');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

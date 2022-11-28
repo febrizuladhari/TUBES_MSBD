@@ -29,9 +29,9 @@
                                 <i class='bx bx-check-shield me-1'></i> Check It
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/accshifting">Shifting</a></li>
-                                <li><a class="dropdown-item" href="/accdamaged">Damaged</a></li>
-                                <li><a class="dropdown-item" href="/accincoming">Incoming</a></li>
+                                <li><a class="dropdown-item" href="/accshifting"><i class="bx bx-transfer me-2"></i>Shifting</a></li>
+                                <li><a class="dropdown-item" href="/accdamaged"><i class="bx bx-error-alt me-2"></i>Damaged</a></li>
+                                <li><a class="dropdown-item" href="/accincoming"><i class="bx bx-down-arrow-alt me-2"></i>Incoming</a></li>
                             </ul>
                         </div>
                     </div>
@@ -121,8 +121,8 @@
                                 </button>
                                 </div>
                             </div>
-                            <h3 class="card-title mb-2">Search Item</h3>
-                            <span class="d-block mb-1">Total Items : <strong>135</strong></span>
+                            <h4 class="card-title text-center mb-2">Search Item</h3>
+                            <span class="d-block text-center mb-1">Total Items : <strong>135</strong></span>
                         </div>
                         <!-- Modal Search Item Popup -->
                         <div class="modal fade" id="modalSearch" tabindex="-1" aria-hidden="true">
@@ -131,7 +131,7 @@
                                     <div class="modal-header">
                                         <form class="container-fluid my-5">
                                             <div class="mb-3">
-                                                <h4 class="modal-title mb-4">Search Item by ID Item</h4>
+                                                <h4 class="modal-title text-center mb-4">Search Item by ID Item</h4>
                                                 <label class="form-label" for="id">ID Item</label>
                                                 <div class="input-group input-group-merge">
                                                     <span id="id" class="input-group-text"><i class="bx bx-package"></i></span>
@@ -150,11 +150,11 @@
                     </div>
                     </div>
                     <div class="col-6 mb-4">
-                        <div class="card">
+                        <div class="card text-center">
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-info btn-lg">
+                                    <button type="button" class="btn btn-icon btn-outline-info btn-lg" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="left" data-bs-html="true" title="<i class='bx bx-bell bx-xs bxs-like bx-tada'></i><span>&nbsp; You have items to approve</span>">
                                         <i class="tf-icons bx bx-transfer bxs-like bx-tada-hover bx-md"></i>
                                     </button>
                                     </div>
@@ -167,11 +167,11 @@
                     <!-- </div>
                     <div class="row"> -->
                     <div class="col-6 mb-4">
-                        <div class="card">
+                        <div class="card text-center">
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-danger btn-lg">
+                                    <button type="button" class="btn btn-icon btn-outline-danger btn-lg" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-bell bx-xs bxs-like bx-tada'></i><span>&nbsp; You have items to approve</span>">
                                         <i class="tf-icons bx bx-error-alt bxs-like bx-tada-hover bx-md"></i>
                                     </button>
                                     </div>
@@ -182,11 +182,11 @@
                         </div>
                     </div>
                     <div class="col-6 mb-4">
-                        <div class="card">
+                        <div class="card text-center">
                             <div class="card-body">
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-success btn-lg">
+                                    <button type="button" class="btn btn-icon btn-outline-success btn-lg" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="left" data-bs-html="true" title="<i class='bx bx-bell bx-xs bxs-like bx-tada'></i><span>&nbsp; You have items to approve</span>">
                                         <i class="tf-icons bx bx-down-arrow-alt bxs-like bx-tada-hover bx-md"></i>
                                     </button>
                                     </div>
