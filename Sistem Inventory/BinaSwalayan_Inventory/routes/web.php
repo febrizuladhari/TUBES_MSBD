@@ -89,6 +89,14 @@ Route::get('/profilestaff', function(){
     return view('staff.profilestaff');
 })->name('profilestaff');
 
+Route::get('/adddamagedstaff', function(){
+    return view('staff.adddamagedstaff');
+})->name('adddamagedstaff');
+
+Route::get('reqitemstaff', function(){
+    return view('staff.reqitemstaff');
+})->name('reqitemstaff');
+
 
 //Routes Login
 
