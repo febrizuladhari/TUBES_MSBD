@@ -17,10 +17,10 @@ class admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->Level == 'admin'){
+        if(Auth::user()->level == 'admin'){
             return $next($request);
         }
 
-        abort(403, 'Gak bisa bro');
+        abort(403, 'Access Restricted');
     }
 }

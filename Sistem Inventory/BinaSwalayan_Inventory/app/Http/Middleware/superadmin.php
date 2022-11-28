@@ -17,10 +17,10 @@ class superadmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->Level == 'superadmin'){
+        if(Auth::user()->level == 'superadmin'){
             return $next($request);
         }
 
-        abort(403, 'Gak bisa bro');
+        abort(403, 'Access Restricted');
     }
 }

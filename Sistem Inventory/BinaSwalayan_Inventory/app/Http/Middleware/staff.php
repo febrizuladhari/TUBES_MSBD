@@ -17,11 +17,11 @@ class staff
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->Level == 'staff'){
+        if(Auth::user()->level == 'staff'){
             return $next($request);
         }
 
-        abort(403, 'Gak bisa bro');
+        abort(403, 'Access Restricted');
 
     }
 }
