@@ -40,6 +40,7 @@ Route::get('/', function () {
 });
 
 Route::get('/homeadmin', [AdminController::class, 'index'])->name('homeadmin');
+Route::get('/itemadmin', [AdminController::class, 'showitem'])->name('itemadmin');
 
 Route::get('/itemadmin', function () {
     return view('admin.itemadmin');

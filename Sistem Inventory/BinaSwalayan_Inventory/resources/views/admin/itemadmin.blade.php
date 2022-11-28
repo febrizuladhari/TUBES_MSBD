@@ -40,7 +40,7 @@
                                 <div class="demo-inline-spacing">
                                     <div class="btn-group" id="dropdown-icon-demo">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bx bx-menu"></i> Category
+                                        <i class="bx bx-menu bxs-like bx-burst-hover"></i> Category
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
@@ -419,7 +419,7 @@
                                 <div class="demo-inline-spacing">
                                     <div class="btn-group" id="dropdown-icon-demo">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bx bx-menu"></i> Category
+                                        <i class="bx bx-menu bxs-like bx-burst-hover"></i> Category
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>
