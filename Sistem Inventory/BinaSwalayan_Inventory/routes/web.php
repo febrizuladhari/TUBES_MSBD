@@ -41,75 +41,53 @@ Route::get('/', function () {
 
 Route::get('/homeadmin', [AdminController::class, 'index'])->name('homeadmin');
 
-
 Route::get('/itemadmin', function () {
     return view('admin.itemadmin');
-});
+})->name('itemadmin');
 
 Route::get('/accshifting', function () {
     return view('admin.accshiftingadmin');
-});
+})->name('accshifting');
 
 Route::get('/accdamaged', function () {
     return view('admin.accdamagedadmin');
-});
+})->name('accdamageadmin');
 
 Route::get('/accincoming', function () {
     return view('admin.accincomingadmin');
-});
+})->name('accincoming');
 
 Route::get('/additem', function () {
     return view('admin.additemadmin');
-});
+})->name('additem');
 
 Route::get('/addshifting', function () {
     return view('admin.addshiftingadmin');
-});
+})->name('addshifting');
 
 Route::get('/profileadmin', function () {
     return view('admin.profileadmin');
-});
-
-
-
-
-
-
+})->name('profileadmin');
 
 
 // Route Super Admin
 Route::get('/dashboard', function () {
     return view('superadmin.homesuperadmin');
-})->middleware('superadmin');
+})->middleware('superadmin')->name('dashboard');
 
 Route::get('/viewBarang', function(){
     return view('superadmin.viewBarang');
-});
-
-
-
-
-
-
-
+})->name('viewbarang');
 
 
 // Route Staff
 Route::get('/itemstaff',function(){
     return view('staff.itemstaff');
-});
+})->name('itemstaff');
 
 Route::get('/profilestaff', function(){
     return view('staff.profilestaff');
-});
-
-
-
-
-
-
-
-
+})->name('profilestaff');
 
 
 //Routes Login
@@ -129,4 +107,3 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('staff', LoginController::class);
     });
 });
-

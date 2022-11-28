@@ -1,6 +1,6 @@
 <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon/bina logo.png') }}">
 <title>Bina Swalayan | Login</title>
-<div class="section">
+<div class="section" style="background-color: blue">
      <div class="container"> 
          <div class="form">
             {{-- Error Alert --}}
@@ -20,22 +20,18 @@
                     <div> 
                         <span class="brand"><img src="{{ asset('img/favicon/bina logo.png') }}"><small>Bina Swalayan</small></span> 
                         <h2 class="mytitle" >L O G I N</h2>
-                        <div class="form-inputs"> <input name="username" type="text" placeholder="Username" id="username"> 
-                        <div class="password"> <input name="password" id="password" type="password" placeholder="Password"> <span class="showpass" onclick="toggle()"><p class="random_password"></p> </div> 
-                        <input id="submit_button" type="submit">
                         @error('login_gagal')
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <span class="alert-inner--text"><strong>Login Error</strong> {{ $message }}</span>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                        <br>
+                        <h4 class="mytitle" style="color: red">{{ $message }}</h4>
                         @enderror
+                        <div class="form-inputs"> <input name="username" type="text" placeholder="Username" id="username"> 
+                        <div class="password"> <input name="password" id="password" type="password" placeholder="Password" required> <span class="showpass" onclick="toggle()"><p class="random_password"></p> </div> 
+                        <input id="submit_button" type="submit">
                         </div>
                     </div>
                 </form>
              </div> 
-            <div class="right-side">
+            <div class="right-side" style="background-color: white">
                 <img src="{{ asset('img/favicon/bina logo.png') }}" width="350px" height="350px" > 
             </div> 
         </div> 

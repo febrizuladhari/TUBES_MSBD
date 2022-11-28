@@ -29,23 +29,23 @@ class LoginController extends Controller
                 'password' => 'required',
             ]);
 
-        $kredensil = $request->only('username','password');
+        $credentials = $request->only('username','password');
 
-            if (Auth::attempt($kredensil)) {
+            if (Auth::attempt($credentials)) {
                 $user = Auth::user();
                 if ($user->level == 'superadmin') {
-                    return redirect()->intended('/dashboard');
+                    return redirect()->intended('dashboard');
                 } elseif ($user->level == 'admin') {
                     return redirect()->intended('homeadmin');
                 } elseif ($user->level == 'staff') {
-                    return redirect()->intended('/itemstaff');
+                    return redirect()->intended('itemstaff');
                 }
-                return redirect()->intended('/');
+                return redirect()->intended('login');
             }
 
         return redirect('login')
-                                ->withInput()
-                                ->withErrors(['login_gagal' => 'These credentials do not match our records.']);
+            ->withInput()
+            ->withErrors(['login_gagal' => 'Account not Found']);
     }
 
     public function logout(Request $request)
