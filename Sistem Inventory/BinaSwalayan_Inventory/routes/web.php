@@ -21,6 +21,12 @@ use App\Http\Controllers\AdminController;
 
 
 
+// Controller Login & Register
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,10 +47,6 @@ Route::get('/', function () {
 
 Route::get('/homeadmin', [AdminController::class, 'index'])->name('homeadmin');
 Route::get('/itemadmin', [AdminController::class, 'showitem'])->name('itemadmin');
-
-Route::get('/itemadmin', function () {
-    return view('admin.itemadmin');
-})->name('itemadmin');
 
 Route::get('/accshifting', function () {
     return view('admin.accshiftingadmin');
