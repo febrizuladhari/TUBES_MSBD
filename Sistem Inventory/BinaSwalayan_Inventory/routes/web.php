@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+// Controller Login & Register
 use App\Http\Controllers\LoginController;
+
 
 // Controller Admin
 use App\Http\Controllers\AdminController;
@@ -103,9 +106,9 @@ Route::get('reqitemstaff', function(){
 
 //Routes Login
 
-Route::get('login', 'App\Http\Controllers\LoginController@index')->name('login');
-Route::post('proses_login', 'App\Http\Controllers\LoginController@proses_login')->name('proses_login');
-Route::get('logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('proses_login', [LoginController::class, 'proses_login'])->name('proses_login');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['checklogin:superadmin']], function () {
