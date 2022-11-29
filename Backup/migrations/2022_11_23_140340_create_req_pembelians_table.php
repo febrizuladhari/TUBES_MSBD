@@ -14,10 +14,12 @@ class CreateReqPembeliansTable extends Migration
     public function up()
     {
         Schema::create('req_pembelians', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedbigInteger('id_kategori')->index('id_kategori');
-            $table->unsignedbigInteger('id_user')->index('id_user');
+            $table->integer('id', true);
+            $table->char('id_kategori', 2);
+            $table->char('id_user', 5);
             $table->text('nama_barang');
+
+            $table->index(['id_kategori', 'id_user'], 'id_kategori');
         });
     }
 

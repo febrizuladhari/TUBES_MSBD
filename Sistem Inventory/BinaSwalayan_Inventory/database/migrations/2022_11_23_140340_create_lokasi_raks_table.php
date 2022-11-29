@@ -14,8 +14,8 @@ class CreateLokasiRaksTable extends Migration
     public function up()
     {
         Schema::create('lokasi_raks', function (Blueprint $table) {
-            $table->char('id', 10)->primary();
-            $table->char('id_gudang', 10)->index('id_gudangs');
+            $table->id();
+            $table->unsignedbigInteger('id_gudang')->index('id_gudang');
             $table->char('rak', 3);
         });
     }

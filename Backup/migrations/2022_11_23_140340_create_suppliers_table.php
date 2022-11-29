@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaporanRusaksTable extends Migration
+class CreateSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateLaporanRusaksTable extends Migration
      */
     public function up()
     {
-        Schema::create('laporan_rusaks', function (Blueprint $table) {
-            $table->id();
-            $table->char('id_barang')->unique('id_barang');
-            $table->unsignedbigInteger('id_user')->index('id_user');
-            $table->date('tanggal');
+        Schema::create('suppliers', function (Blueprint $table) {
+            $table->char('id', 2)->primary();
+            $table->text('nama');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateLaporanRusaksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laporan_rusaks');
+        Schema::dropIfExists('suppliers');
     }
 }

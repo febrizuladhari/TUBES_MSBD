@@ -14,8 +14,8 @@ class CreateLokasiGudangsTable extends Migration
     public function up()
     {
         Schema::create('lokasi_gudangs', function (Blueprint $table) {
-            $table->char('id', 10)->primary();
-            $table->char('id_outlet', 3)->index('id_outlet');
+            $table->id();
+            $table->unsignedbigInteger('id_outlet')->index('id_outlet');
             $table->text('gudang');
         });
     }

@@ -14,10 +14,12 @@ class CreateReqPeminjamansTable extends Migration
     public function up()
     {
         Schema::create('req_peminjamans', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedbigInteger('id_user')->index('id_user');
-            $table->char('id_barang')->index('id_barang');
+            $table->char('id_user', 5);
+            $table->char('id_barang', 5)->index('id_barang');
             $table->date('tanggal_diperlukan');
+            $table->integer('id', true);
+
+            $table->index(['id_user', 'id_barang'], 'id_user');
         });
     }
 

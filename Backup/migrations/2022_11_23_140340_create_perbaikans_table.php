@@ -14,8 +14,8 @@ class CreatePerbaikansTable extends Migration
     public function up()
     {
         Schema::create('perbaikans', function (Blueprint $table) {
-            $table->id();
-            $table->char('id_barang')->index('id_barang');
+            $table->integer('id', true);
+            $table->char('id_barang', 5)->index('id_barang');
             $table->date('tanggal_Keluar');
             $table->date('tanggal_Kembali');
             $table->text('lokasi');

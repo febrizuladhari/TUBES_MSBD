@@ -14,11 +14,13 @@ class CreatePerpindahansTable extends Migration
     public function up()
     {
         Schema::create('perpindahans', function (Blueprint $table) {
-            $table->id();
+            $table->char('id', 3)->primary();
             $table->date('tanggal_keluar');
-            $table->char('id_barang', 5)->unique();
-            $table->unsignedbigInteger('id_outlet_peminjam')->index('id_outlet_peminjam');
-            $table->unsignedbigInteger('id_user')->index('id_user');
+            $table->char('id_barang', 5);
+            $table->char('id_outlet_peminjam', 3)->index('id_outlet_peminjam');
+            $table->char('id_user', 5)->index('id_user');
+
+            $table->unique(['id_barang', 'id_outlet_peminjam', 'id_user'], 'id_barang');
         });
     }
 

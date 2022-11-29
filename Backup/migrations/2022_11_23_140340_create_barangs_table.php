@@ -16,9 +16,11 @@ class CreateBarangsTable extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->char('id', 5)->primary();
             $table->text('nama');
-            $table->unsignedbigInteger('id_kategori')->index('id_kategori');
-            $table->unsignedbigInteger('id_rak')->index('id_rak');
-            $table->unsignedbigInteger('id_supplier')->index('id_supplier');
+            $table->char('id_kategori', 2);
+            $table->char('id_rak', 10)->index('id_rak');
+            $table->char('id_supplier', 2)->index('id_supplier');
+
+            $table->unique(['id_kategori', 'id_rak', 'id_supplier'], 'id_kategori');
         });
     }
 

@@ -14,10 +14,12 @@ class CreateLaporanRusaksTable extends Migration
     public function up()
     {
         Schema::create('laporan_rusaks', function (Blueprint $table) {
-            $table->id();
-            $table->char('id_barang')->unique('id_barang');
-            $table->unsignedbigInteger('id_user')->index('id_user');
+            $table->integer('id', true);
+            $table->char('id_barang', 5);
+            $table->char('id_user', 5)->index('id_user');
             $table->date('tanggal');
+
+            $table->unique(['id_barang', 'id_user'], 'id_barang');
         });
     }
 
