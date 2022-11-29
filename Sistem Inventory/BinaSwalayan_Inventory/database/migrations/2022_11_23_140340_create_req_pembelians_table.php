@@ -19,7 +19,7 @@ class CreateReqPembeliansTable extends Migration
             $table->char('id_user', 5);
             $table->text('nama_barang');
 
-            $table->unique(['id_kategori', 'id_user'], 'id_kategori');
+            $table->index(['id_kategori', 'id_user'], 'id_kategori');
         });
     }
 

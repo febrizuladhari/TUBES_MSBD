@@ -19,7 +19,7 @@ class CreateReqPeminjamansTable extends Migration
             $table->date('tanggal_diperlukan');
             $table->integer('id', true);
 
-            $table->unique(['id_user', 'id_barang'], 'id_user');
+            $table->index(['id_user', 'id_barang'], 'id_user');
         });
     }
 
