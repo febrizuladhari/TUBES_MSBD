@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTabelPerpindahansTable extends Migration
+class CreatePerpindahansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTabelPerpindahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tabel_perpindahans', function (Blueprint $table) {
+        Schema::create('perpindahans', function (Blueprint $table) {
             $table->char('id', 3)->primary();
             $table->date('tanggal_keluar');
             $table->char('id_barang', 5);
@@ -31,6 +31,6 @@ class CreateTabelPerpindahansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tabel_perpindahans');
+        Schema::dropIfExists('perpindahans');
     }
 }
