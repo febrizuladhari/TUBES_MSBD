@@ -61,7 +61,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{ url('logout') }}">
-                            <i class="bx bx-power-off bxs-like bx-flashing me-2"></i>
+                            <i class="bx bx-power-off bxs-like bx-flashing text-danger me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
                     </li>
