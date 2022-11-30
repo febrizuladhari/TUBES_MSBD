@@ -21,6 +21,6 @@ class admin
             return $next($request);
         }
 
-        abort(403, 'Access Restricted');
+        Abort(403, 'Access Restricted');
     }
 }

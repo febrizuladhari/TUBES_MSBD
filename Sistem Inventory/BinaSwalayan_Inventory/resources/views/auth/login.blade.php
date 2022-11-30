@@ -24,6 +24,10 @@
                         <br>
                         <h4 class="mytitle" style="color: red">{{ $message }}</h4>
                         @enderror
+                        @error('login_error')
+                        <br>
+                        <h4 class="mytitle" style="color: red">{{ $message }}</h4>
+                        @enderror
                         <div class="form-inputs"> <input name="username" type="text" placeholder="Username" id="username"> 
                         <div class="password"> <input name="password" id="password" type="password" placeholder="Password" required> <span class="showpass" onclick="toggle()"><p class="random_password"></p> </div> 
                         <input id="submit_button" type="submit">

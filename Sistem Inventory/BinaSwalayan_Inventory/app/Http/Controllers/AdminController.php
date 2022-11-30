@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Barang;
+use App\Models\Kategori;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $limit = 10;
+
     public function index()
     {
         return view('admin.homeadmin');
@@ -20,6 +19,10 @@ class AdminController extends Controller
     public function showitem()
     {
         return view('admin.itemadmin');
+        $kategoris = Kategori::all();
+        $barangs = Barang::paginate($this->limit);
+        return view('admin.itemadmin', compact('barangs'), compact('kategoris'));
+        // Model nya Belom Ada, Isi Databasenya pun Belom Ada :<
     }
 
     /**
