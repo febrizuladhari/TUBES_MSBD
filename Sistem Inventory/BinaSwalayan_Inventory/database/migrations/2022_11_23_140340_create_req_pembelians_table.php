@@ -17,7 +17,7 @@ class CreateReqPembeliansTable extends Migration
             $table->id();
             $table->unsignedbigInteger('id_kategori')->index('id_kategori');
             $table->unsignedbigInteger('id_user')->index('id_user');
-            $table->text('nama_barang');
+            $table->string('nama_barang');
         });
     }
 

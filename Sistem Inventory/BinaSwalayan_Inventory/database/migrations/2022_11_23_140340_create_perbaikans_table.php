@@ -18,7 +18,7 @@ class CreatePerbaikansTable extends Migration
             $table->char('id_barang')->index('id_barang');
             $table->date('tanggal_keluar');
             $table->date('tanggal_kembali');
-            $table->text('lokasi');
+            $table->string('lokasi');
             $table->integer('biaya');
         });
     }

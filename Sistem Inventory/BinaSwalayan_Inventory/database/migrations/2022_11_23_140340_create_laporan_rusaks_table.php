@@ -15,9 +15,9 @@ class CreateLaporanRusaksTable extends Migration
     {
         Schema::create('laporan_rusaks', function (Blueprint $table) {
             $table->id();
-            $table->char('id_barang')->unique('id_barang');
+            $table->char('id_barang', 5)->unique('id_barang');
             $table->unsignedbigInteger('id_user')->index('id_user');
-            $table->date('tanggal');
+            $table->timestamp('tanggal');
         });
     }
 

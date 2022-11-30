@@ -17,7 +17,7 @@ class CreateReqPeminjamansTable extends Migration
             $table->id();
             $table->unsignedbigInteger('id_user')->index('id_user');
             $table->char('id_barang')->index('id_barang');
-            $table->date('tanggal_diperlukan');
+            $table->timestamp('tanggal_diperlukan');
         });
     }
 
