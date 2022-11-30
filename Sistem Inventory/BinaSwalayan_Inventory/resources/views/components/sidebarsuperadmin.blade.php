@@ -73,8 +73,8 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Account">Account</div>
+                    <a href="/accounts" class="menu-link">
+                        <div data-i18n="Account">Accounts</div>
                     </a>
                 </li>
                 <li class="menu-item">

@@ -1,4 +1,4 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutsuperadmin')
 
 @section('title')
     <title>Registrasi - Super Admin</title>

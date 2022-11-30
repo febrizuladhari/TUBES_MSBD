@@ -58,6 +58,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/viewBarang', function(){
             return view('superadmin.viewBarang');
         })->name('viewbarang');
+
+        Route::get('/accounts', function(){
+            return view('superadmin.accounts');
+        })->name('Users and Admins');
     });
 
 
