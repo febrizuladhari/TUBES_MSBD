@@ -114,3 +114,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 });
+
+Route::get('/register', function(){
+    return view('superadmin.register');
+});
+
