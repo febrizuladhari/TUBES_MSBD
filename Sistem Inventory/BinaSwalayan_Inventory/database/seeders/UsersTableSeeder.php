@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
                 'jenis_kelamin' => 'P',
                 'alamat' => 'Binjai',
                 'no_telp' => '085278946547',
-                'id_outlet' => 'BMS',
+                'id_outlet' => '1',
             ],
         ]);
 
