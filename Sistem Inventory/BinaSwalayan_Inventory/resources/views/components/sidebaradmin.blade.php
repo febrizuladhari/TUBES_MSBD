@@ -46,17 +46,17 @@
 
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('accshifting') ? 'active' : '' }}">
-                    <a href="/accshifting" class="menu-link">
+                    <a href="{{ route('accshifting') }}" class="menu-link">
                         <div data-i18n="Without menu">Shifting Items</div>
                     </a>
                 </li>
                 <li class="menu-item {{ Request::is('accdamaged') ? 'active' : '' }}">
-                    <a href="/accdamaged" class="menu-link">
+                    <a href="{{ route('accdamaged') }}" class="menu-link">
                         <div data-i18n="Without navbar">Damaged Items</div>
                     </a>
                 </li>
                 <li class="menu-item {{ Request::is('accincoming') ? 'active' : '' }}">
-                    <a href="/accincoming" class="menu-link">
+                    <a href="{{ route('accincoming') }}" class="menu-link">
                         <div data-i18n="Container">Incoming Items</div>
                     </a>
                 </li>
@@ -67,13 +67,13 @@
             <span class="menu-header-text">Authority Admin</span>
         </li>
         <li class="menu-item {{ Request::is('additem') ? 'active' : '' }}">
-            <a href="/additem" class="menu-link">
+            <a href="{{ route('additem') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-message-alt-add bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Add Item</div>
             </a>
         </li>
         <li class="menu-item {{ Request::is('addshifting') ? 'active' : '' }}">
-            <a href="/addshifting" class="menu-link">
+            <a href="{{ route('addshifting') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Add Shifting Item</div>
             </a>

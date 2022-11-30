@@ -20,74 +20,53 @@
                     <!-- Account -->
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ asset('img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
-                            <div class="button-wrapper">
-                                <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                                    <span class="d-none d-sm-block">Upload new photo</span>
-                                    <i class="bx bx-upload d-block d-sm-none"></i>
-                                    <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg"/>
-                                </label>
-
-                                <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                            </div>
+                            <img src="{{ asset('img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="avatar"/>
                         </div>
                     </div>
                     <hr class="my-0" />
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+                        <form>
                             <div class="row">
                                 <div class="mb-3 col-md-6">
                                     <label for="id" class="form-label">ID</label>
                                     <input class="form-control" type="text" id="id" name="id" value="123" autofocus disabled/>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input class="form-control" type="text" name="name" id="name" placeholder="Franky Budiman" required/>
+                                    <label for="nama" class="form-label">Name</label>
+                                    <input class="form-control" type="text" name="nama" id="nama" value="" placeholder="Franky Budiman" required/>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input class="form-control" type="text" name="username" id="username" placeholder="Franky Budiman" disabled/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="password" class="form-label">Password</label>
                                     <input class="form-control" type="password" id="password" name="password" placeholder="*******" required/>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="alamat" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat" required/>
-                                </div>
-                                <div class="mb-3 col-md-6">
                                     <label for="level" class="form-label">Level</label>
-                                    <select id="level" class="select2 form-select">
-                                        <option value="">Change Level ?</option>
-                                        <option value="superadmin">Super Admin</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="staff">Staff</option>
+                                    <input type="text" class="form-control" id="level" name="level" placeholder="Admin" disabled/>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="alamat" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat" value="Medan" required/>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="no_Telp" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" id="no_Telp" name="no_Telp" value="08123468949" required/>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="jenis_Kelamin" class="form-label">Gender</label>
+                                    <select id="jenis_Kelamin" class="select2 form-select">
+                                        <option selected>Change Gender ?</option>
+                                        <option value="P">Male</option>
+                                        <option value="W">Female</option>
                                     </select>
-                                    </div>
-                                <div class="mb-3 col-md-6">
-                                <label class="form-label" for="phone">Phone Number</label>
-                                <div class="input-group input-group-merge">
-                                    <span class="input-group-text">ID (+62)</span>
-                                    <input type="text" id="phone" name="phone" class="form-control" placeholder="0812 3344 5588" required/>
-                                </div>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                <label for="gender" class="form-label">Gender</label>
-                                <select id="gender" class="select2 form-select">
-                                    <option value="">Change Gender ?</option>
-                                    <option value="p">Male</option>
-                                    <option value="w">Female</option>
-                                </select>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                <label for="outlet" class="form-label">Outlet</label>
-                                <select id="outlet" class="select2 form-select">
-                                    <option value="">Change Your Outlet ?</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
                                 </div>
                             </div>
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                            <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                            <button type="submit" class="btn btn-primary me-2">Save Profile</button>
+                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
                         </div>
                         </form>
                     </div>

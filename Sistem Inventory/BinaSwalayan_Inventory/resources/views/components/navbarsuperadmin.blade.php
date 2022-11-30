@@ -9,12 +9,12 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
-        <div class="navbar-nav align-items-center">
+        {{-- <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search-alt bxs-like bx-flashing-hover fs-4 lh-0"></i>
                 <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
             </div>
-        </div>
+        </div> --}}
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -52,17 +52,11 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
-                    <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{ url('logout') }}">
-                            <i class="bx bx-power-off bxs-like bx-flashing me-2"></i>
+                            <i class="bx bx-power-off bxs-like bx-flashing text-danger me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
                     </li>

@@ -15,7 +15,7 @@ class LoginController extends Controller
             } elseif ($user->level == 'admin') {
                 return redirect()->intended('homeadmin');
             } elseif ($user->level == 'staff') {
-                return redirect()->intended('itemstaff');
+                return redirect()->intended('homestaff');
             }
         }
         return view('auth.login');
@@ -38,7 +38,7 @@ class LoginController extends Controller
                 } elseif ($user->level == 'admin') {
                     return redirect()->intended('homeadmin');
                 } elseif ($user->level == 'staff') {
-                    return redirect()->intended('itemstaff');
+                    return redirect()->intended('homestaff');
                 }
                 return redirect()->intended('login');
             }
@@ -52,6 +52,6 @@ class LoginController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        return Redirect('login');
+        return Redirect('/');
     }
 }

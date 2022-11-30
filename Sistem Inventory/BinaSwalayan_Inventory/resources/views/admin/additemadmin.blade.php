@@ -35,51 +35,31 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="kategori">Category</label>
-                        <div class="input-group input-group-merge">
-                            <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                            <input type="text" id="kategori" class="form-control" placeholder="Category" required/>
-                        </div>
+                        <label for="id_kategori" class="form-label">Category</label>
+                            <select id="id_kategori" class="select2 form-select">
+                                <option selected>Choose Category</option>
+                                <option value="1">Elekronik</option>
+                                <option value="2">Perkakas</option>
+                            </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="rak">Rack</label>
-                        <div class="input-group input-group-merge">
-                            <span id="rak" class="input-group-text"><i class="bx bx-spreadsheet"></i></span>
-                            <input type="number" id="rak" class="form-control" placeholder="Rack" required/>
-                        </div>
+                        <label for="id_rak" class="form-label">Rack</label>
+                            <select id="id_rak" class="select2 form-select">
+                                <option selected>Choose Rack</option>
+                                <option value="1">Elekronik</option>
+                                <option value="2">Perkakas</option>
+                            </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="gudang">Warehouse</label>
-                        <div class="input-group input-group-merge">
-                            <span id="gudang" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                            <input type="text" id="gudang" class="form-control" placeholder="Warehouse" required/>
-                        </div>
+                        <label for="id_supplier" class="form-label">Category</label>
+                            <select id="id_supplier" class="select2 form-select">
+                                <option selected>Choose Suppliers</option>
+                                <option value="1">Lenovo</option>
+                                <option value="2">Bosch</option>
+                            </select>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="outlet">Outlet</label>
-                        <div class="input-group input-group-merge">
-                            <span id="outlet" class="input-group-text"><i class="bx bx-store"></i></span>
-                            <input type="text" id="outlet" class="form-control" placeholder="Outlet" required/>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="suppliers">Suppliers</label>
-                        <div class="input-group input-group-merge">
-                            <span id="suppliers" class="input-group-text"><i class="bx bx-group"></i></span>
-                            <input type="text" id="suppliers" class="form-control" placeholder="Suppliers" required/>
-                        </div>
-                    </div>
-                    {{-- <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="form-select" id="status" required>
-                            <option selected>Open to change status</option>
-                            <option value="good">Good</option>
-                            <option value="borrow">Borrow</option>
-                            <option value="damaged">Damaged</option>
-                        </select>
-                    </div> --}}
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">Reset</button>
                         <button type="submit" class="btn btn-primary">Add Item</button>
                     </div>
                 </form>

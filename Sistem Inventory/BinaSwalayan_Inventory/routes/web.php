@@ -42,12 +42,13 @@ use App\Http\Controllers\AdminController;
 
 //Routes Login
 
-Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('proses_login', [LoginController::class, 'proses_login'])->name('proses_login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
 
+    // Middleware Superadmin
     Route::group(['middleware' => ['checklogin:superadmin']], function () {
         Route::resource('superadmin', LoginController::class);
 
@@ -61,6 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
+    // Middleware Admin
     Route::group(['middleware' => ['checklogin:admin']], function () {
         Route::resource('admin', LoginController::class);
 
@@ -73,7 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/accdamaged', function () {
             return view('admin.accdamagedadmin');
-        })->name('accdamageadmin');
+        })->name('accdamaged');
 
         Route::get('/accincoming', function () {
             return view('admin.accincomingadmin');
@@ -92,9 +94,13 @@ Route::group(['middleware' => ['auth']], function () {
         })->name('profileadmin');
     });
 
-
+    // Middleware Staff
     Route::group(['middleware' => ['checklogin:staff']], function () {
         Route::resource('staff', LoginController::class);
+
+        Route::get('/homestaff',function(){
+            return view('staff.homestaff');
+        })->name('homestaff');
 
         Route::get('/itemstaff',function(){
             return view('staff.itemstaff');
@@ -111,6 +117,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('reqitemstaff', function(){
             return view('staff.reqitemstaff');
         })->name('reqitemstaff');
+
+        Route::get('reqbelistaff', function(){
+            return view('staff.reqbelistaff');
+        })->name('reqbelistaff');
     });
 
 });

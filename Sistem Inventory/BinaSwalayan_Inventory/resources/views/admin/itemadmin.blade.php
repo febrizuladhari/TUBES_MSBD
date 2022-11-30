@@ -1,7 +1,7 @@
 @extends('layout.layoutadmin')
 
 @section('title')
-    <title>Items - Admin</title>
+    <title>Items - Staff</title>
 @endsection
 
 @section('content')

@@ -41,8 +41,8 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <span class="fw-semibold d-block">Franky Budiman</span>
-                                <small class="text-muted">Admin</small>
+                                <span class="fw-semibold d-block">Jack Salamander</span>
+                                <small class="text-muted">Staff</small>
                             </div>
                             </div>
                         </a>
@@ -51,7 +51,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('profileadmin') }}">
+                        <a class="dropdown-item" href="{{ route('profilestaff') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

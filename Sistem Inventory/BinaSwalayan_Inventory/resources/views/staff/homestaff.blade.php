@@ -1,7 +1,7 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutstaff')
 
 @section('title')
-    <title>Home - Admin</title>
+    <title>Home - Staff</title>
 @endsection
 
 @section('content')
@@ -19,9 +19,9 @@
                 <div class="d-flex align-items-end row">
                 <div class="col-sm-7">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome Franky Budiman ! 🎉</h5>
+                        <h5 class="card-title text-primary">Welcome Jack Salamander ! 🎉</h5>
                         <p class="mb-4">
-                            You have a lot of items to approve
+                            You're admin at Bina Karya Swalayan. You can make request about item in your outlet.
                         </p>
 
                         <div class="btn-group">
@@ -29,11 +29,12 @@
                                 <i class='bx bx-check-shield me-1'></i> Check It
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('accshifting') }}"><i class="bx bx-transfer me-2"></i>Shifting</a></li>
-                                <li><a class="dropdown-item" href="{{ route('accdamaged') }}"><i class="bx bx-error-alt me-2"></i>Damaged</a></li>
-                                <li><a class="dropdown-item" href="{{ route('accincoming') }}"><i class="bx bx-down-arrow-alt me-2"></i>Incoming</a></li>
+                                <li><a class="dropdown-item" href="{{ route('adddamagedstaff') }}"><i class="bx bx-error me-2"></i>Add Damaged</a></li>
+                                <li><a class="dropdown-item" href="{{ route('reqitemstaff') }}"><i class="bx bx-transfer-alt me-2"></i>Request Item</a></li>
+                                <li><a class="dropdown-item" href="{{ route('reqbelistaff') }}"><i class="bx bx-cart me-2"></i>Request Buy Item</a></li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-sm-5 text-center text-sm-left">
@@ -51,7 +52,7 @@
             </div>
 
             <!-- Total Revenue -->
-            <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+            <div class="col-lg-12 mb-4 order-0">
                 <div class="card">
                     <div class="row row-bordered g-0">
                     <div class="col-md-8">
@@ -109,95 +110,6 @@
             </div>
             <!--/ Total Revenue -->
 
-            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-                <div class="row">
-                    <div class="col-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">
-                                <div class="col d-flex justify-content-center">
-                                <button type="button" class="btn btn-icon btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalSearch">
-                                    <i class="tf-icons bx bx-search-alt bxs-like bx-tada-hover bx-md"></i>
-                                </button>
-                                </div>
-                            </div>
-                            <h4 class="card-title text-center mb-2">Search Item</h3>
-                            <span class="d-block text-center mb-1">Total Items : <strong>135</strong></span>
-                        </div>
-                        <!-- Modal Search Item Popup -->
-                        <div class="modal fade" id="modalSearch" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <form class="container-fluid my-5">
-                                            <div class="mb-3">
-                                                <h4 class="modal-title text-center mb-4">Search Item by ID Item</h4>
-                                                <label class="form-label" for="id">ID Item</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span id="id" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                    <input type="text" class="form-control" id="id" placeholder="ID Item" required/>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Search</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-6 mb-4">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-info btn-lg" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="left" data-bs-html="true" title="<i class='bx bx-bell bx-xs bxs-like bx-tada'></i><span>&nbsp; You have items to approve</span>">
-                                        <i class="tf-icons bx bx-transfer bxs-like bx-tada-hover bx-md"></i>
-                                    </button>
-                                    </div>
-                                </div>
-                                <h5 class="d-block mb-1">Approve Shifting</h5>
-                                <h4 class="card-title mb-2"><span class="text-success"><i class="bx bx-up-arrow-alt"></i></span>120</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- </div>
-                    <div class="row"> -->
-                    <div class="col-6 mb-4">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-danger btn-lg" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<i class='bx bx-bell bx-xs bxs-like bx-tada'></i><span>&nbsp; You have items to approve</span>">
-                                        <i class="tf-icons bx bx-error-alt bxs-like bx-tada-hover bx-md"></i>
-                                    </button>
-                                    </div>
-                                </div>
-                                <h5 class="d-block mb-1">Approve Damaged</h5>
-                                <h4 class="card-title mb-2"><span class="text-success"><i class="bx bx-up-arrow-alt"></i></span>120</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 mb-4">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <div class="card-title d-flex align-items-start justify-content-between">
-                                    <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn btn-icon btn-outline-success btn-lg" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="left" data-bs-html="true" title="<i class='bx bx-bell bx-xs bxs-like bx-tada'></i><span>&nbsp; You have items to approve</span>">
-                                        <i class="tf-icons bx bx-down-arrow-alt bxs-like bx-tada-hover bx-md"></i>
-                                    </button>
-                                    </div>
-                                </div>
-                                <h5 class="d-block mb-1">Approve Incoming</h5>
-                                <h4 class="card-title mb-2"><span class="text-success"><i class="bx bx-up-arrow-alt"></i></span>120</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <!-- Order Statistics -->
@@ -503,6 +415,7 @@
         <div class="content-backdrop fade"></div>
     </div>
     <!-- Content wrapper -->
+
 
 
 @endsection

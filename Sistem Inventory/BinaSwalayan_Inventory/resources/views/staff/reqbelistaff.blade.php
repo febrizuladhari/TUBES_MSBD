@@ -1,30 +1,30 @@
 @extends('layout.layoutstaff')
 
 @section('title')
-    <title>Add Damaged - Staff</title>
+    <title>Request Buy Item - Staff</title>
 @endsection
 
 @section('content')
 
-    <!-- Konten -->
+<!-- Konten -->
 
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h3 class="fw-bold py-3">Add Damaged Items</h3>
+            <h3 class="fw-bold py-3">Request Buy Item</h3>
             <hr class="my-4">
 
-            <!-- List Itemms -->
+
             <div class="card">
-                <h5 class="card-header">Add Damaged Items With Staff Authority</h5>
+                <h5 class="card-header">Request Buy Item With Staff Authority</h5>
                 <form class="container-fluid">
                     <div class="mb-3">
-                        <label class="form-label" for="id">Name</label>
+                        <label class="form-label" for="nama">Name</label>
                         <div class="input-group input-group-merge">
                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                            <input type="text" class="form-control" id="nama" placeholder="Name"/>
+                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe"/>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -36,10 +36,9 @@
                             <option value="kebersihan">Kebersihan</option>
                         </select>
                     </div>
-
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">Reset</button>
-                        <button type="submit" class="btn btn-primary">Send Report</button>
+                        <button type="submit" class="btn btn-primary">Send Request</button>
                     </div>
                 </form>
             </div>
@@ -49,6 +48,7 @@
     </div>
 
     <!-- Content wrapper -->
+
 
 
 @endsection

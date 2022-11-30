@@ -21,13 +21,6 @@
                 <h5 class="card-header">Add Shifting With Admin Authority</h5>
                 <form class="container-fluid">
                     <div class="mb-3">
-                        <label class="form-label" for="id">ID</label>
-                        <div class="input-group input-group-merge">
-                            <span id="id" class="input-group-text"><i class="bx bx-code"></i></span>
-                            <input type="text" class="form-control" id="id" placeholder="ID" required/>
-                        </div>
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label" for="nama">Name</label>
                         <div class="input-group input-group-merge">
                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
@@ -35,33 +28,28 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="kategori">Category</label>
-                        <div class="input-group input-group-merge">
-                            <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                            <input type="text" id="kategori" class="form-control" placeholder="Category" required/>
-                        </div>
-                    </div>
-                    <div class="mb-3">
                         <div class="row">
                             <div class="col-6">
-                                <label class="form-label" for="originoutlet">Origin Outlet</label>
-                                <div class="input-group input-group-merge">
-                                    <span id="originoutlet" class="input-group-text"><i class="bx bx-store"></i></span>
-                                    <input type="text" id="originoutlet" class="form-control" placeholder="Origin Outlet" required/>
-                                </div>
+                                <label for="id" class="form-label">Origin Outlet</label>
+                                    <select id="id" class="select2 form-select">
+                                        <option selected>Choose Origin Outlet</option>
+                                        <option value="1">Bina Karya Swalayan</option>
+                                        <option value="2">Bina Marindal Swalayan</option>
+                                    </select>
                             </div>
                             <div class="col-6">
-                                <label class="form-label" for="outletdestination">Outlet Destination</label>
-                                <div class="input-group input-group-merge">
-                                    <span id="outletdestination" class="input-group-text"><i class="bx bx-store"></i></span>
-                                    <input type="text" id="outletdestination" class="form-control" placeholder="Outlet Destination" required/>
-                                </div>
+                                <label for="id" class="form-label">Outlet Destination</label>
+                                    <select id="id" class="select2 form-select">
+                                        <option selected>Choose Outlet Destination</option>
+                                        <option value="1">Bina Karya Swalayan</option>
+                                        <option value="2">Bina Marindal Swalayan</option>
+                                    </select>
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">Reset</button>
                         <button type="submit" class="btn btn-primary">Shift Item</button>
                     </div>
                 </form>
