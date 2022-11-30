@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Faker\Factory;
-class SuppliersTableSeeder extends Seeder
+class Lokasi_GudangsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,15 +13,16 @@ class SuppliersTableSeeder extends Seeder
      */
     public function run()
     {
-        $supplier = [];
+        $LokB = [];
         $faker = Factory::create();
 
-        for($i = 1; $i <= 10; $i++)
+        for($i = 1; $i <= 6; $i++)
         {
-        $supplier[] = [
-            'nama' => $faker->name(),
+        $LokB[] = [
+            'id_outlet' => rand(1,2),
+            'gudang' => $faker->word(),
         ];
         }
-        \DB::table('suppliers')->insert($supplier);
+        \DB::table('lokasi_gudangs')->insert($LokB);
     }
 }

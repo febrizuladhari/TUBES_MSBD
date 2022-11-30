@@ -64,6 +64,14 @@
                             <input type="text" id="alamat" class="form-control" placeholder="Alamat" required/>
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="idoutlet">ID Outlet</label>
+                          <select id="idoutlet" class="select2 form-select">
+                            <option>apa ya?</option>
+                              <option value="pria">001</option>
+                              <option value="wanita">002</option>
+                          </select>
+                          </div>
                     <div class="mb-3 col">
                       <label class="form-label" for="phone">Phone Number</label>
                       <div class="input-group input-group-merge">
