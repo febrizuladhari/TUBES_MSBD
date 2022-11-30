@@ -68,8 +68,8 @@
                         <label class="form-label" for="idoutlet">ID Outlet</label>
                           <select id="idoutlet" class="select2 form-select">
                             <option>apa ya?</option>
-                              <option value="pria">001</option>
-                              <option value="wanita">002</option>
+                              <option value="1">BS01 - Bina Swalayan 1</option>
+                              <option value="2">BS02 - Bina Swalayan 2</option>
                           </select>
                           </div>
                     <div class="mb-3 col">
