@@ -13,6 +13,13 @@ class OutletsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \DB::table('outlets')->insert([
+            [
+                'nama' => 'Bina Karya Swalayan'
+            ],
+            [
+                'nama' => 'Bina Marindal Swalayan'
+            ]
+        ]);
     }
 }
