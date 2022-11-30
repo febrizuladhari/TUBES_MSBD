@@ -24,8 +24,6 @@ use App\Http\Controllers\AdminController;
 
 
 
-// Controller Login & Register
-
 
 
 
@@ -41,68 +39,6 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route Admin
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/homeadmin', [AdminController::class, 'index'])->name('homeadmin');
-// Route::get('/itemadmin', [AdminController::class, 'showitem'])->name('itemadmin');
-
-// Route::get('/accshifting', function () {
-//     return view('admin.accshiftingadmin');
-// })->name('accshifting');
-
-// Route::get('/accdamaged', function () {
-//     return view('admin.accdamagedadmin');
-// })->name('accdamageadmin');
-
-// Route::get('/accincoming', function () {
-//     return view('admin.accincomingadmin');
-// })->name('accincoming');
-
-// Route::get('/additem', function () {
-//     return view('admin.additemadmin');
-// })->name('additem');
-
-// Route::get('/addshifting', function () {
-//     return view('admin.addshiftingadmin');
-// })->name('addshifting');
-
-// Route::get('/profileadmin', function () {
-//     return view('admin.profileadmin');
-// })->name('profileadmin');
-
-
-// // Route Super Admin
-// Route::get('/dashboard', function () {
-//     return view('superadmin.homesuperadmin');
-// })->middleware('superadmin')->name('dashboard');
-
-// Route::get('/viewBarang', function(){
-//     return view('superadmin.viewBarang');
-// })->name('viewbarang');
-
-
-// // Route Staff
-// Route::get('/itemstaff',function(){
-//     return view('staff.itemstaff');
-// })->name('itemstaff');
-
-// Route::get('/profilestaff', function(){
-//     return view('staff.profilestaff');
-// })->name('profilestaff');
-
-// Route::get('/adddamagedstaff', function(){
-//     return view('staff.adddamagedstaff');
-// })->name('adddamagedstaff');
-
-// Route::get('reqitemstaff', function(){
-//     return view('staff.reqitemstaff');
-// })->name('reqitemstaff');
-
 
 //Routes Login
 

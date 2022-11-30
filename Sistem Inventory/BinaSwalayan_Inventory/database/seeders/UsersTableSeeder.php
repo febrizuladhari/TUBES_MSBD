@@ -17,16 +17,37 @@ class UsersTableSeeder extends Seeder
             [
                 'id' => '1',
                 'nama' => 'Jonathan',
-                'username' => 'Jo',
-                'password' => bcrypt('Jo23'),
+                'username' => 'jonathan',
+                'password' => bcrypt('123'),
+                'level' => 'superadmin',
+                'jenis_Kelamin' => 'P',
+                'alamat' => 'Medan',
+                'no_Telp' => '0812123123123',
+                'id_Outlet' => 'BMS',
+            ],
+            [
+                'id' => '2',
+                'nama' => 'Febri',
+                'username' => 'febri',
+                'password' => bcrypt('123'),
                 'level' => 'admin',
                 'jenis_Kelamin' => 'P',
-                'alamat' => 'Asal',
-                'no_Telp' => '0812123123123',
-                'id' => '1',
+                'alamat' => 'Sunggal',
+                'no_Telp' => '089812341234',
+                'id_Outlet' => 'BKS',
+            ],
+            [
+                'id' => '3',
+                'nama' => 'Fairuz',
+                'username' => 'fairuz',
+                'password' => bcrypt('123'),
+                'level' => 'staff',
+                'jenis_Kelamin' => 'P',
+                'alamat' => 'Binjai',
+                'no_Telp' => '085278946547',
                 'id_Outlet' => 'BMS',
-            ]
-          ]);
-          
+            ],
+        ]);
+
     }
 }

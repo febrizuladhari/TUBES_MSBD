@@ -26,6 +26,5 @@ class DatabaseSeeder extends Seeder
         $this->call(Req_PeminjamansTableSeeder::class);
         $this->call(Req_PerpindahansTableSeeder::class);
 
-
     }
 }

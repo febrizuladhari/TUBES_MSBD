@@ -13,17 +13,6 @@ class OutletsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('outlets')->insert([
-          [
-            'id' => "BMS",
-            'nama' => "Bina Marindal Swalayan"
-          ] , 
-          [
-            
-            'id' => "BKS",
-            'nama' => "Bina Karya Swalayan"
-          
-          ]
-        ]);
+        //
     }
 }
