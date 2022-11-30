@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->char('username', 20)->unique();
             $table->string('password');
             $table->enum('level', ['superadmin', 'admin', 'staff']);
-            $table->enum('jenis_Kelamin', ['P', 'W']);
+            $table->enum('jenis_kelamin', ['P', 'W']);
             $table->text('alamat');
-            $table->char('no_Telp', 13)->unique();
-            $table->unsignedbigInteger('id_Outlet')->index('id_Outlet');
+            $table->char('no_telp', 13)->unique();
+            $table->unsignedbigInteger('id_outlet')->index('id_outlet');
             $table->rememberToken();
             $table->timestamps();
         });
