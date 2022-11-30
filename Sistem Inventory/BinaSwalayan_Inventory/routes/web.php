@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controller Login & Register
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\RegisterController;
 
 // Controller Admin
 use App\Http\Controllers\AdminController;
@@ -45,11 +45,13 @@ use App\Http\Controllers\AdminController;
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('proses_login', [LoginController::class, 'proses_login'])->name('proses_login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('store', [RegisterController::class, 'store'])->name('store');
 
 Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['checklogin:superadmin']], function () {
         Route::resource('superadmin', LoginController::class);
+        Route::resource('superadmin', RegisterController::class);
 
         Route::get('/dashboard', function () {
             return view('superadmin.homesuperadmin');
@@ -62,6 +64,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/accounts', function(){
             return view('superadmin.accounts');
         })->name('Users and Admins');
+
+        Route::get('/register', function(){
+            return view('superadmin.register');
+        });
     });
 
 
@@ -118,8 +124,3 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 });
-
-Route::get('/register', function(){
-    return view('superadmin.register');
-});
-
