@@ -18,6 +18,7 @@ class CreateLaporanRusaksTable extends Migration
             $table->char('id_barang', 5)->unique('id_barang');
             $table->unsignedbigInteger('id_user')->index('id_user');
             $table->timestamp('tanggal');
+            $table->text('catatan');
         });
     }
 

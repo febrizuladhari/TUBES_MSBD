@@ -19,7 +19,7 @@ class BarangsTableSeeder extends Seeder
         for($i = 1; $i <= 100; $i++)
         {
         $b[] = [
-            'id' => $faker -> numberBetween($min = 10000, $max = 99999),
+            'id' => rand(10000,99999),
             'nama' => $faker->word(),
             'id_kategori' => rand(1,6),
             'id_rak' => rand(1,10),

@@ -24,7 +24,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PerpindahansTableSeeder::class);
         $this->call(PeminjamansTableSeeder::class);
         $this->call(Req_PeminjamansTableSeeder::class);
-        $this->call(Req_PerpindahansTableSeeder::class);
+        $this->call(Req_PembeliansTableSeeder::class);
+        $this->call(Laporan_RusaksTableSeeder::class);
+        $this->call(Laporan_RusaksTableSeeder::class);
+
 
     }
 }
