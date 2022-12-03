@@ -12,7 +12,7 @@ class CreateViewRusakView extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW `view_rusak` AS select `msbd`.`laporan_rusaks`.`id_barang` AS `id`,`msbd`.`barangs`.`nama` AS `nama_barang`,`msbd`.`kategoris`.`nama_kategori` AS `kategori`,`msbd`.`lokasi_raks`.`rak` AS `rak`,`msbd`.`lokasi_gudangs`.`gudang` AS `gudang`,`msbd`.`outlets`.`nama` AS `nama` from (((((`msbd`.`laporan_rusaks` join `msbd`.`barangs` on(`msbd`.`laporan_rusaks`.`id_barang` = `msbd`.`barangs`.`id`)) join `msbd`.`kategoris` on(`msbd`.`barangs`.`id_kategori` = `msbd`.`kategoris`.`id`)) join `msbd`.`lokasi_raks` on(`msbd`.`barangs`.`id_rak` = `msbd`.`lokasi_raks`.`id`)) join `msbd`.`lokasi_gudangs` on(`msbd`.`lokasi_raks`.`id_gudang` = `msbd`.`lokasi_gudangs`.`id`)) join `msbd`.`outlets` on(`msbd`.`lokasi_gudangs`.`id_outlet` = `msbd`.`outlets`.`id`))");
+        DB::statement("CREATE VIEW `view_rusak` AS select `laporan_rusaks`.`id_barang` AS `id`,`barangs`.`nama` AS `nama_barang`,`kategoris`.`nama_kategori` AS `kategori`,`lokasi_raks`.`rak` AS `rak`,`lokasi_gudangs`.`gudang` AS `gudang`,`outlets`.`nama` AS `nama` from (((((`laporan_rusaks` join `barangs` on(`laporan_rusaks`.`id_barang` = `barangs`.`id`)) join `kategoris` on(`barangs`.`id_kategori` = `kategoris`.`id`)) join `lokasi_raks` on(`barangs`.`id_rak` = `lokasi_raks`.`id`)) join `lokasi_gudangs` on(`lokasi_raks`.`id_gudang` = `lokasi_gudangs`.`id`)) join `outlets` on(`lokasi_gudangs`.`id_outlet` = `outlets`.`id`))");
     }
 
     /**
