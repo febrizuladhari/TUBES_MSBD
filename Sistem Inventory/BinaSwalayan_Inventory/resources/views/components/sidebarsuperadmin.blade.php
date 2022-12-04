@@ -2,7 +2,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{ route('homesuperadmin') }}" class="app-brand-link">
         {{-- <span class="app-brand-logo demo"> --}}
             <img src="{{ asset('img/favicon/bina logo.png') }}" width="30%" alt="Logo Bina Swalayan">
             <h4 class="my-3 mx-1">Bina Swalayan</h4>
@@ -19,75 +19,22 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
-            <a href="/dashboard" class="menu-link">
+        <li class="menu-item {{ Request::is('homesuperadmin') ? 'active' : '' }}">
+            <a href="{{ route('homesuperadmin') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
 
+        <!-- Account -->
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Items</span>
+            <span class="menu-header-text">Authority Super Admin</span>
         </li>
-        <!-- Update Item -->
-        <li class="menu-item">
-            <a href="/viewBarang" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-edit bxs-like bx-tada"></i>
-                <div data-i18n="Analytics">Update Item</div>
+        <li class="menu-item {{ Request::is('accounts') ? 'active' : '' }}">
+            <a href="{{ route('accounts') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user-detail bxs-like bx-tada"></i>
+                <div data-i18n="Analytics">Accounts</div>
             </a>
-        </li>
-
-        <!-- Approvement -->
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-list-check bxs-like bx-tada"></i>
-                <div data-i18n="Layouts">Approvement</div>
-            </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Without menu">Shifting Items</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Without navbar">Damaged Items</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Container">Incoming Items</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Users</span>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top bxs-like bx-tada"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="/accounts" class="menu-link">
-                        <div data-i18n="Account">Accounts</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Notifications">Notifications</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="tes.php" class="menu-link">
-                        <div data-i18n="Connections">Connections</div>
-                    </a>
-                </li>
-            </ul>
         </li>
     </ul>
 </aside>

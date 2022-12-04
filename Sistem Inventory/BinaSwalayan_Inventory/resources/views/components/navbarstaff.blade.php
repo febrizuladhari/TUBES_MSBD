@@ -1,3 +1,8 @@
+<?php
+    use App\Models\User;
+    $id = auth()->user()->id;
+?>
+
 <!-- Navbar -->
 
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
@@ -6,6 +11,19 @@
         <i class="bx bx-menu bxs-like bx-tada-hover bx-sm"></i>
     </a>
     </div>
+    @if (auth()->user()->role === 'superadmin')
+        <?php
+            $nama = User::select('nama')->where('id', $id)->get()[0]['nama'];
+        ?>
+    @elseif (auth()->user()->role === 'admin')
+        <?php
+            $nama = User::select('nama')->where('id', $id)->get()[0]['nama'];
+        ?>
+    @else
+        <?php
+            $nama = User::select('nama')->where('id', $id)->get()[0]['nama'];
+        ?>
+    @endif
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
@@ -41,8 +59,8 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <span class="fw-semibold d-block">Jack Salamander</span>
-                                <small class="text-muted">Staff</small>
+                                <span class="fw-semibold d-block">{{ $nama }}</span>
+                                <small class="text-muted">{{ auth()->user()->level }}</small>
                             </div>
                             </div>
                         </a>
@@ -51,7 +69,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('profilestaff') }}">
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

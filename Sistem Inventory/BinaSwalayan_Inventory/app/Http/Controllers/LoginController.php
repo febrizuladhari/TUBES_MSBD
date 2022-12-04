@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -11,7 +12,7 @@ class LoginController extends Controller
     {
         if ($user = Auth::user()) {
             if ($user->level == 'superadmin') {
-                return redirect()->intended('dashboard');
+                return redirect()->intended('homesuperadmin');
             } elseif ($user->level == 'admin') {
                 return redirect()->intended('homeadmin');
             } elseif ($user->level == 'staff') {
@@ -34,24 +35,28 @@ class LoginController extends Controller
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
                 if ($user->level == 'superadmin') {
-                    return redirect()->intended('dashboard');
+                    Alert::success('Super Admin', 'Good! You have successfully Logged In');
+                    return redirect()->intended('homesuperadmin');
                 } elseif ($user->level == 'admin') {
+                    Alert::success('Admin', 'Good! You have successfully Logged In');
                     return redirect()->intended('homeadmin');
                 } elseif ($user->level == 'staff') {
+                    Alert::success('Staff', 'Good! You have successfully Logged In');
                     return redirect()->intended('homestaff');
                 }
-                return redirect()->intended('login');
+                return redirect()->intended('/');
             }
 
-        return redirect('login')
-            ->withInput()
-            ->withErrors(['login_gagal' => 'Account not Found']);
+        Alert::error('Error !', 'Your Account not Found');
+        return redirect('/')
+            ->withInput();
     }
 
     public function logout(Request $request)
     {
         $request->session()->flush();
         Auth::logout();
+        Alert::success('Bye!', 'You have Logged Out');
         return Redirect('/');
     }
 }

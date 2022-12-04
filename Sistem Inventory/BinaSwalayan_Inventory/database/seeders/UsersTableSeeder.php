@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'febri',
                 'password' => bcrypt('123'),
                 'level' => 'admin',
-                'jenis_kelamin' => 'W',
+                'jenis_kelamin' => 'P',
                 'alamat' => 'Sunggal',
                 'no_telp' => '089812341234',
                 'id_outlet' => '2',

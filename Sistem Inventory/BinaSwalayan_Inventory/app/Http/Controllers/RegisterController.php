@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -27,8 +28,9 @@ class RegisterController extends Controller
         User::create($validatedData);
 
         $request->session()->flash('Success', 'Registrasi Anda Berhasil');
+        Alert::success('Great !', 'You have added a new user');
 
-        return redirect ('/register')
-            ->withErrors(['Success' => 'Registration Success']);;
-    } 
+
+        return redirect ('/accounts');
+    }
 }

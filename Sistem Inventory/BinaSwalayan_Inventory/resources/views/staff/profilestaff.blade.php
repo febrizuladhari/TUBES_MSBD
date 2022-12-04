@@ -25,50 +25,70 @@
                     </div>
                     <hr class="my-0" />
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{ route('profile.update') }}">
+                            @csrf
+                            @method('PATCH')
                             <div class="row">
                                 <div class="mb-3 col-md-6">
-                                    <label for="id" class="form-label">ID</label>
-                                    <input class="form-control" type="text" id="id" name="id" value="123" autofocus disabled/>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="nama" class="form-label">Name</label>
-                                    <input class="form-control" type="text" name="nama" id="nama" value="Franky Budiman" placeholder="Franky Budiman" required/>
+                                    <label for="nama" class="form-label">{{ __('Name') }}</label>
+                                    <input class="form-control @error('nama') is-invalid @enderror" type="text" name="nama" id="nama" value="{{ $user->nama }}" autocomplete="nama" required/>
+                                    @error('nama')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="username" class="form-label">Username</label>
-                                    <input class="form-control" type="text" name="username" id="username" placeholder="Franky Budiman" disabled/>
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input class="form-control" type="password" id="password" name="password" placeholder="*******" disabled/>
+                                    <input class="form-control" type="text" name="username" id="username" value="{{ $user->username }}" disabled/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="level" class="form-label">Level</label>
-                                    <input type="text" class="form-control" id="level" name="level" placeholder="Staff" disabled/>
+                                    <input type="text" class="form-control" id="level" name="level" value="{{ $user->level }}" disabled/>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="alamat" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat" value="Medan" required/>
+                                    <label for="alamat" class="form-label">{{ __('Address') }}</label>
+                                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="alamat" name="alamat" value="{{ $user->alamat }}" required/>
+                                    @error('alamat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="no_Telp" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" id="no_Telp" name="no_Telp" value="08123468949" required/>
+                                    <label for="no_telp" class="form-label">{{ __('Phone Number') }}</label>
+                                    <input type="text" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp" name="no_telp" value="{{ $user->no_telp }}" required/>
+                                    @error('no_telp')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="jenis_Kelamin" class="form-label">Gender</label>
-                                    <select id="jenis_Kelamin" class="select2 form-select">
-                                        <option selected>Change Gender ?</option>
-                                        <option value="P">Male</option>
-                                        <option value="W">Female</option>
+                                    <label for="jenis_kelamin" class="form-label">Gender</label>
+                                    <select name="jenis_kelamin" id="jenis_kelamin" class="select2 form-select" required>
+                                        <option value="P" {{ $user->jenis_kelamin == 'P' ? 'selected' : '' }}>Male</option>
+                                        <option value="W" {{ $user->jenis_kelamin == 'W' ? 'selected' : '' }}>Female</option>
                                     </select>
                                 </div>
                             </div>
-                        <div class="mt-2">
-                            <button type="submit" class="btn btn-primary me-2">Save Profile</button>
-                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                        </div>
+                            <div class="mt-2">
+                                <button type="submit" class="btn btn-primary me-2">Save Profile</button>
+                                <a href="{{ route('homestaff') }}"><button type="button" class="btn btn-outline-secondary">Back</button></a>
+                            </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 mb-4 order-0">
+                <div class="card mb-4">
+                    <h5 class="card-header">Update Password</h5>
+
+                    <div class="card-body">
+                        <a href="{{ route('changepassword.edit') }}"><button class="btn btn-primary d-grid w-100 btn-lg" type="button">Update My Password</button></a>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Profile - Admin</title>
+    <title>Profile - Super Admin</title>
 @endsection
 
 @section('content')
@@ -74,7 +74,7 @@
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary me-2">Save Profile</button>
-                                <a href="{{ route('homeadmin') }}"><button type="button" class="btn btn-outline-secondary">Back</button></a>
+                                <a href="{{ route('homesuperadmin') }}"><button type="button" class="btn btn-outline-secondary">Back</button></a>
                             </div>
                         </form>
                     </div>

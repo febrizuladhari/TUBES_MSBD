@@ -1,3 +1,7 @@
+<?php
+    use App\Models\User;
+    $id = auth()->user()->id;
+?>
 <!-- Navbar -->
 
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
@@ -6,6 +10,20 @@
         <i class="bx bx-menu bxs-like bx-tada-hover bx-sm"></i>
     </a>
     </div>
+
+    @if (auth()->user()->role === 'superadmin')
+        <?php
+            $nama = User::select('nama')->where('id', $id)->get()[0]['nama'];
+        ?>
+    @elseif (auth()->user()->role === 'admin')
+        <?php
+            $nama = User::select('nama')->where('id', $id)->get()[0]['nama'];
+        ?>
+    @else
+        <?php
+            $nama = User::select('nama')->where('id', $id)->get()[0]['nama'];
+        ?>
+    @endif
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
@@ -16,6 +34,11 @@
             </div>
         </div> --}}
         <!-- /Search -->
+        <div class="navbar-nav align-items-center">
+            <div class="nav-item d-flex align-items-center">
+                <h3 class="my-auto">Bina Swalayan Inventory</h3>
+            </div>
+        </div>
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
@@ -23,7 +46,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{ asset('img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="{{ asset('img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle bxs-like bx-tada-hover" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -36,8 +59,8 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <span class="fw-semibold d-block">Franky Budiman</span>
-                                <small class="text-muted">Admin</small>
+                                <span class="fw-semibold d-block">{{ $nama }}</span>
+                                <small class="text-muted">{{ auth()->user()->level }}</small>
                             </div>
                             </div>
                         </a>
@@ -46,7 +69,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

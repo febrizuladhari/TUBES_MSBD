@@ -19,7 +19,7 @@
                 <div class="d-flex align-items-end row">
                 <div class="col-sm-7">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome Franky Budiman ! 🎉</h5>
+                        <h5 class="card-title text-primary">Welcome {{ auth()->user()->nama }} ! 🎉</h5>
                         <p class="mb-4">
                             You have a lot of items to approve
                         </p>

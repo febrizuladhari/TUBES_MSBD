@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
+// Controller Update Profile & Pasword All User
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
+
 // Controller Admin
 use App\Http\Controllers\AdminController;
 
@@ -47,6 +51,12 @@ Route::post('proses_login', [LoginController::class, 'proses_login'])->name('pro
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('store', [RegisterController::class, 'store'])->name('store');
 
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/changepassword', [PasswordController::class, 'edit'])->name('changepassword.edit');
+Route::patch('/changepassword', [PasswordController::class, 'update'])->name('changepassword.update');
+
 Route::group(['middleware' => ['auth']], function () {
 
     // Middleware Superadmin
@@ -54,21 +64,23 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('superadmin', LoginController::class);
         Route::resource('superadmin', RegisterController::class);
 
-        Route::get('/dashboard', function () {
+        Route::get('/homesuperadmin', function () {
             return view('superadmin.homesuperadmin');
-        })->middleware('superadmin')->name('dashboard');
-
-        Route::get('/viewBarang', function(){
-            return view('superadmin.viewBarang');
-        })->name('viewbarang');
+        })->name('homesuperadmin');
 
         Route::get('/accounts', function(){
             return view('superadmin.accounts');
-        })->name('Users and Admins');
+        })->name('accounts');
 
         Route::get('/register', function(){
             return view('superadmin.register');
-        });
+        })->name('register');
+
+        // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        // Route::get('/changepassword', [PasswordController::class, 'edit'])->name('changepassword.edit');
+        // Route::patch('/changepassword', [PasswordController::class, 'update'])->name('changepassword.update');
     });
 
 
@@ -99,9 +111,11 @@ Route::group(['middleware' => ['auth']], function () {
             return view('admin.addshiftingadmin');
         })->name('addshifting');
 
-        Route::get('/profileadmin', function () {
-            return view('admin.profileadmin');
-        })->name('profileadmin');
+        // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        // Route::get('/changepassword', [PasswordController::class, 'edit'])->name('changepassword.edit');
+        // Route::patch('/changepassword', [PasswordController::class, 'update'])->name('changepassword.update');
     });
 
     // Middleware Staff
@@ -116,10 +130,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('staff.itemstaff');
         })->name('itemstaff');
 
-        Route::get('/profilestaff', function(){
-            return view('staff.profilestaff');
-        })->name('profilestaff');
-
         Route::get('/adddamagedstaff', function(){
             return view('staff.adddamagedstaff');
         })->name('adddamagedstaff');
@@ -131,6 +141,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('reqbelistaff', function(){
             return view('staff.reqbelistaff');
         })->name('reqbelistaff');
+
+        // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        // Route::get('/changepassword', [PasswordController::class, 'edit'])->name('changepassword.edit');
+        // Route::patch('/changepassword', [PasswordController::class, 'update'])->name('changepassword.update');
     });
 
 });
