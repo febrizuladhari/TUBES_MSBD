@@ -19,21 +19,26 @@
 
             <div class="card">
                 <h5 class="card-header">Request Buy Item With Staff Authority</h5>
-                <form class="container-fluid">
+                <form method="POST" action="{{url('storeReqBuy')}}" class="container-fluid">
+                    @csrf
                     <div class="mb-3">
                         <label class="form-label" for="nama">Name</label>
                         <div class="input-group input-group-merge">
                             <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                            <input type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe"/>
+                            <input type="text" class="form-control" id="nama" name="nama_barang" placeholder="Name" aria-label="John Doe"/>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="kategori" class="form-label">Category</label>
-                        <select class="form-select" id="kategori">
+                        <select class="form-select" id="kategori" name="id_kategori">
                             <option selected>Open this to select category</option>
-                            <option value="elektronik">Elektronik</option>
-                            <option value="perkakas">Perkakas</option>
-                            <option value="kebersihan">Kebersihan</option>
+                            <?php
+                                use App\models\Kategori;
+                                $kategoris = Kategori::all();
+                            ?>
+                            @foreach ($kategoris as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama_kategori }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="modal-footer">
