@@ -16,7 +16,25 @@
             <h3 class="fw-bold py-3">Add Item</h3>
             <hr class="my-4">
 
-            <!-- List Itemms -->
+            <div class="card my-4">
+                <div class="row">
+                    <div class="col-6">
+                        <h5 class="card-header">Add Category with Admin Authority</h5>
+                        <div class="card-body">
+                            <a href="{{ route('addkategori.edit') }}"><button class="btn btn-warning d-grid w-100" type="button">Add Category</button></a>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <h5 class="card-header">Add Supplier with Admin Authority</h5>
+                        <div class="card-body">
+                            <a href="{{ route('addsupplier.edit') }}"><button class="btn btn-warning d-grid w-100" type="button">Add Supplier</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Add Item -->
             <div class="card">
                 <h5 class="card-header">Add Items With Admin Authority</h5>
                 <form class="container-fluid">
@@ -64,6 +82,8 @@
                     </div>
                 </form>
             </div>
+
+
 
         </div>
 

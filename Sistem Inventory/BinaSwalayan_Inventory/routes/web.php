@@ -76,11 +76,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('superadmin.register');
         })->name('register');
 
-        // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-
-        // Route::get('/changepassword', [PasswordController::class, 'edit'])->name('changepassword.edit');
-        // Route::patch('/changepassword', [PasswordController::class, 'update'])->name('changepassword.update');
     });
 
 
@@ -90,6 +85,24 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/homeadmin', [AdminController::class, 'index'])->name('homeadmin');
         Route::get('/itemadmin', [AdminController::class, 'showitem'])->name('itemadmin');
+
+        Route::get('/additem', [AdminController::class, 'formInsertItem'])->name('additem.edit');
+        // Route::post('/additem', [AdminController::class, 'insertItem'])->name('additem.insert');
+
+        Route::get('/addkategori/edit', [AdminController::class, 'formInsertKategori'])->name('addkategori.edit');
+        Route::post('/addkategori/insert', [AdminController::class, 'insertKategori'])->name('addkategori.insert');
+
+        Route::get('/addsupplier/edit', [AdminController::class, 'formInsertSupplier'])->name('addsupplier.edit');
+        Route::post('/addsupplier/insert', [AdminController::class, 'insertSupplier'])->name('addsupplier.insert');
+
+
+        // Route::get('/addkategoriadmin', function () {
+        //     return view('admin.addkategoriadmin');
+        // })->name('addkategori');
+
+        // Route::get('/addsuppliersadmin', function () {
+        //     return view('admin.addsuppliersadmin');
+        // })->name('addsupplier');
 
         Route::get('/accshifting', function () {
             return view('admin.accshiftingadmin');
@@ -103,19 +116,14 @@ Route::group(['middleware' => ['auth']], function () {
             return view('admin.accincomingadmin');
         })->name('accincoming');
 
-        Route::get('/additem', function () {
-            return view('admin.additemadmin');
-        })->name('additem');
+        // Route::get('/additem', function () {
+        //     return view('admin.additemadmin');
+        // })->name('additem');
 
         Route::get('/addshifting', function () {
             return view('admin.addshiftingadmin');
         })->name('addshifting');
 
-        // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-
-        // Route::get('/changepassword', [PasswordController::class, 'edit'])->name('changepassword.edit');
-        // Route::patch('/changepassword', [PasswordController::class, 'update'])->name('changepassword.update');
     });
 
     // Middleware Staff
@@ -142,11 +150,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('staff.reqbelistaff');
         })->name('reqbelistaff');
 
-        // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-
-        // Route::get('/changepassword', [PasswordController::class, 'edit'])->name('changepassword.edit');
-        // Route::patch('/changepassword', [PasswordController::class, 'update'])->name('changepassword.update');
     });
 
 });
