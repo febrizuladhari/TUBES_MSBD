@@ -12,6 +12,7 @@ class Laporan_Rusak extends Model
     protected $fillable = [
         'id_barang',
         'id_user',
-        'tanggal'
+        'tanggal',
+        'catatan'
     ];
 }

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+@livewireStyles
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -21,8 +21,9 @@
                         <!-- List Itemms -->
                         <div class="card">
                             <h5 class="card-header">List Items With Conditions</h5>
+                            <livewire:item-staff></livewire:item-staff>
                             <!-- Dropdown with icon -->
-                            <div class="col-lg-3 col-sm-6 col-12 ms-4 mb-4">
+                            {{-- <div class="col-lg-3 col-sm-6 col-12 ms-4 mb-4">
                                 <div class="demo-inline-spacing">
                                     <div class="btn-group" id="dropdown-icon-demo">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -89,7 +90,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -106,5 +107,5 @@
 @endsection
 
 @section('script')
-
+@livewireScripts
 @endsection
