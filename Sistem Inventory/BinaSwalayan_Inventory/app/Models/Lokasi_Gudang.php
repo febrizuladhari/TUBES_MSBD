@@ -9,6 +9,8 @@ class Lokasi_Gudang extends Model
 {
     use HasFactory;
 
+    public $table = "lokasi_gudangs";
+    public $timestamps = false;
     protected $fillable = [
         'id_outlet',
         'gudang'

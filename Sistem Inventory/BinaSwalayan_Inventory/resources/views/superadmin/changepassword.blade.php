@@ -54,7 +54,7 @@
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary me-2">Update Password</button>
-                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                <a href="{{ route('profile.edit') }}"><button type="button" class="btn btn-outline-secondary">Back</button></a>
                             </div>
                         </form>
                     </div>

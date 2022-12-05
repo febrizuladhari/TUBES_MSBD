@@ -12,22 +12,16 @@ use App\Models\Lokasi_Rak;
 use App\Models\Lokasi_Gudang;
 use App\Models\Outlet;
 
-class AdminController extends Controller
+class SuperAdminController extends Controller
 {
-    protected $limit = 10;
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('admin.homeadmin');
-    }
-
-    public function showitem()
-    {
-        return view('admin.itemadmin');
-        $kategoris = Kategori::all();
-        $barangs = Barang::paginate($this->limit);
-        return view('admin.itemadmin', compact('barangs'), compact('kategoris'));
-        // Model nya Belom Ada, Isi Databasenya pun Belom Ada :<
+        return view('superadmin.homesuperadmin');
     }
 
     /**
@@ -99,7 +93,7 @@ class AdminController extends Controller
     // View Insert Item
     public function formInsertItem()
     {
-        return view('admin.additemadmin');
+        return view('superadmin.additemsuperadmin');
     }
 
     // Proses Insert Item
@@ -111,7 +105,7 @@ class AdminController extends Controller
     // View Insert Kategori
     public function formInsertKategori()
     {
-        return view('admin.addkategoriadmin');
+        return view('superadmin.addkategorisuperadmin');
     }
 
     // Proses Insert Kategori
@@ -127,17 +121,17 @@ class AdminController extends Controller
 
         if($kategori) {
             Alert::success('OK', 'Category successfully added');
-            return redirect()->route('additem.edit')->with(['success' => 'Category successfully added']);
+            return redirect()->route('additem_sa.edit')->with(['success' => 'Category successfully added']);
         } else {
             Alert::error('Opps', 'Failed to add category');
-            return redirect()->route('additem.edit')->with(['error' => 'Failed to add category']);
+            return redirect()->route('additem_sa.edit')->with(['error' => 'Failed to add category']);
         }
     }
 
     // View Insert Supplier
     public function formInsertSupplier()
     {
-        return view('admin.addsuppliersadmin');
+        return view('superadmin.addsupplierssuperadmin');
     }
 
     // Proses Insert Supplier
@@ -154,10 +148,10 @@ class AdminController extends Controller
 
         if($supplier) {
             Alert::success('OK', 'Supplier successfully added');
-            return redirect()->route('additem.edit')->with(['success' => 'Supplier successfully added']);
+            return redirect()->route('additem_sa.edit')->with(['success' => 'Supplier successfully added']);
         } else {
             Alert::error('Opps', 'Failed to add supplier');
-            return redirect()->route('additem.edit')->with(['error' => 'Failed to add supplier']);
+            return redirect()->route('additem_sa.edit')->with(['error' => 'Failed to add supplier']);
         }
     }
 
@@ -165,7 +159,7 @@ class AdminController extends Controller
     public function formInsertRack()
     {
         $gudangs = Lokasi_Gudang::all();
-        return view('admin.addrackadmin', compact('gudangs'));
+        return view('superadmin.addracksuperadmin', compact('gudangs'));
     }
 
     // Proses Insert Rack
@@ -184,17 +178,17 @@ class AdminController extends Controller
 
         if($rak) {
             Alert::success('OK', 'Rack successfully added');
-            return redirect()->route('additem.edit')->with(['success' => 'Rack successfully added']);
+            return redirect()->route('additem_sa.edit')->with(['success' => 'Rack successfully added']);
         } else {
             Alert::error('Opps', 'Failed to add rack');
-            return redirect()->route('additem.edit')->with(['error' => 'Failed to add rack']);
+            return redirect()->route('additem_sa.edit')->with(['error' => 'Failed to add rack']);
         }
     }
 
     // View Insert Outlet
     public function formInsertOutlet()
     {
-        return view('admin.addoutletadmin');
+        return view('superadmin.addoutletsuperadmin');
     }
 
     // Proses Insert Outlet
@@ -211,10 +205,10 @@ class AdminController extends Controller
 
         if($outlet) {
             Alert::success('OK', 'Outlet successfully added');
-            return redirect()->route('additem.edit')->with(['success' => 'Outlet successfully added']);
+            return redirect()->route('additem_sa.edit')->with(['success' => 'Outlet successfully added']);
         } else {
             Alert::error('Opps', 'Failed to add outlet');
-            return redirect()->route('additem.edit')->with(['error' => 'Failed to add outlet']);
+            return redirect()->route('additem_sa.edit')->with(['error' => 'Failed to add outlet']);
         }
     }
 
@@ -222,7 +216,7 @@ class AdminController extends Controller
     public function formInsertWarehouse()
     {
         $outlets = Outlet::all();
-        return view('admin.addwarehouseadmin', compact('outlets'));
+        return view('superadmin.addwarehousesuperadmin', compact('outlets'));
     }
 
     // Proses Insert Warehouse
@@ -241,10 +235,10 @@ class AdminController extends Controller
 
         if($warehouse) {
             Alert::success('OK', 'Warehouse successfully added');
-            return redirect()->route('additem.edit')->with(['success' => 'Warehouse successfully added']);
+            return redirect()->route('additem_sa.edit')->with(['success' => 'Warehouse successfully added']);
         } else {
             Alert::error('Opps', 'Failed to add warehouse');
-            return redirect()->route('additem.edit')->with(['error' => 'Failed to add warehouse']);
+            return redirect()->route('additem_sa.edit')->with(['error' => 'Failed to add warehouse']);
         }
     }
 

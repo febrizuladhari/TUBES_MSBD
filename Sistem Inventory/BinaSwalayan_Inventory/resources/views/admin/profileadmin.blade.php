@@ -20,7 +20,7 @@
                     <!-- Account -->
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ asset('img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="avatar"/>
+                            <img src="{{ asset('img/avatars/2.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="avatar"/>
                         </div>
                     </div>
                     <hr class="my-0" />

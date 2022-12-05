@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Outlet extends Model
 {
     use HasFactory;
-    
+
+    public $timestamps = false;
     protected $fillable = [
         'nama'
     ];

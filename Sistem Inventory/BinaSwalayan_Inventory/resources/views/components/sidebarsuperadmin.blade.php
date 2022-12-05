@@ -17,7 +17,7 @@
 
     <div class="menu-inner-shadow"></div>
 
-    <ul class="menu-inner py-1">
+    <ul class="menu-inner py-1 mt-3">
         <!-- Dashboard -->
         <li class="menu-item {{ Request::is('homesuperadmin') ? 'active' : '' }}">
             <a href="{{ route('homesuperadmin') }}" class="menu-link">
@@ -34,6 +34,18 @@
             <a href="{{ route('accounts') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-detail bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Accounts</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::is('additem_sa') ? 'active' : '' }}">
+            <a href="{{ route('additem_sa.edit') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-message-alt-add bxs-like bx-tada"></i>
+                <div data-i18n="Analytics">Add Item</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::is('addshifting_sa') ? 'active' : '' }}">
+            <a href="{{ route('addshifting_sa') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
+                <div data-i18n="Analytics">Add Shifting Item</div>
             </a>
         </li>
     </ul>

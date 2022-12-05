@@ -66,7 +66,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Authority Admin</span>
         </li>
-        <li class="menu-item {{ Request::is('additem.edit') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::is('additem') ? 'active' : '' }}">
             <a href="{{ route('additem.edit') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-message-alt-add bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Add Item</div>

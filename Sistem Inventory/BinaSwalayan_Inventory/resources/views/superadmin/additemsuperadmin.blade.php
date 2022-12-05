@@ -1,7 +1,7 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Add Item - Admin</title>
+    <title>Add Item - Super Admin</title>
 @endsection
 
 @section('content')
@@ -19,39 +19,39 @@
             <div class="card my-4">
                 <div class="row">
                     <div class="col-6">
-                        <h5 class="card-header">Add Category with Admin Authority</h5>
+                        <h5 class="card-header">Add Category with Super Admin Authority</h5>
                         <div class="card-body">
-                            <a href="{{ route('addkategori.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Category</button></a>
+                            <a href="{{ route('addkategori_sa.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Category</button></a>
                         </div>
                     </div>
 
                     <div class="col-6">
-                        <h5 class="card-header">Add Supplier with Admin Authority</h5>
+                        <h5 class="card-header">Add Supplier with Super Admin Authority</h5>
                         <div class="card-body">
-                            <a href="{{ route('addsupplier.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Supplier</button></a>
+                            <a href="{{ route('addsupplier_sa.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Supplier</button></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <h5 class="card-header">Add Rack with Admin Authority</h5>
+                        <h5 class="card-header">Add Rack with Super Admin Authority</h5>
                         <div class="card-body">
-                            <a href="{{ route('addrack.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Rack</button></a>
+                            <a href="{{ route('addrack_sa.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Rack</button></a>
                         </div>
                     </div>
 
                     <div class="col-6">
-                        <h5 class="card-header">Add Outlet with Admin Authority</h5>
+                        <h5 class="card-header">Add Outlet with Super Admin Authority</h5>
                         <div class="card-body">
-                            <a href="{{ route('addoutlet.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Outlet</button></a>
+                            <a href="{{ route('addoutlet_sa.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Outlet</button></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h5 class="card-header text-center ">Add Warehouse with Admin Authority</h5>
+                        <h5 class="card-header text-center ">Add Warehouse with Super Admin Authority</h5>
                         <div class="card-body">
-                            <a href="{{ route('addwarehouse.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Warehouse</button></a>
+                            <a href="{{ route('addwarehouse_sa.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Warehouse</button></a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
 
             <!-- Form Add Item -->
             <div class="card">
-                <h5 class="card-header">Add Items With Admin Authority</h5>
+                <h5 class="card-header">Add Items With Super Admin Authority</h5>
                 <form class="container-fluid">
                     <div class="mb-3">
                         <label class="form-label" for="id">ID</label>

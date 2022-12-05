@@ -18,6 +18,7 @@ use App\Http\Controllers\AdminController;
 
 
 // Controller Super Admin
+use App\Http\Controllers\SuperAdminController;
 
 
 
@@ -64,9 +65,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('superadmin', LoginController::class);
         Route::resource('superadmin', RegisterController::class);
 
-        Route::get('/homesuperadmin', function () {
-            return view('superadmin.homesuperadmin');
-        })->name('homesuperadmin');
+
+        Route::get('/homesuperadmin', [SuperAdminController::class, 'index'])->name('homesuperadmin');
 
         Route::get('/accounts', function(){
             return view('superadmin.accounts');
@@ -75,6 +75,28 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/register', function(){
             return view('superadmin.register');
         })->name('register');
+
+        Route::get('/addshifting_sa', function () {
+            return view('superadmin.addshiftingsuperadmin');
+        })->name('addshifting_sa');
+
+        Route::get('/additem_sa', [SuperAdminController::class, 'formInsertItem'])->name('additem_sa.edit');
+        // Route::post('/additem_sa', [SuperAdminController::class, 'insertItem'])->name('additem_sa.insert');
+
+        Route::get('/addkategori_sa/edit', [SuperAdminController::class, 'formInsertKategori'])->name('addkategori_sa.edit');
+        Route::post('/addkategori_sa/insert', [SuperAdminController::class, 'insertKategori'])->name('addkategori_sa.insert');
+
+        Route::get('/addsupplier_sa/edit', [SuperAdminController::class, 'formInsertSupplier'])->name('addsupplier_sa.edit');
+        Route::post('/addsupplier_sa/insert', [SuperAdminController::class, 'insertSupplier'])->name('addsupplier_sa.insert');
+
+        Route::get('/addrack_sa/edit', [SuperAdminController::class, 'formInsertRack'])->name('addrack_sa.edit');
+        Route::post('/addrack_sa/insert', [SuperAdminController::class, 'insertRack'])->name('addrack_sa.insert');
+
+        Route::get('/addoutlet_sa/edit', [SuperAdminController::class, 'formInsertOutlet'])->name('addoutlet_sa.edit');
+        Route::post('/addoutlet_sa/insert', [SuperAdminController::class, 'insertOutlet'])->name('addoutlet_sa.insert');
+
+        Route::get('/addwarehouse_sa/edit', [SuperAdminController::class, 'formInsertWarehouse'])->name('addwarehouse_sa.edit');
+        Route::post('/addwarehouse_sa/insert', [SuperAdminController::class, 'insertWarehouse'])->name('addwarehouse_sa.insert');
 
     });
 
@@ -95,14 +117,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/addsupplier/edit', [AdminController::class, 'formInsertSupplier'])->name('addsupplier.edit');
         Route::post('/addsupplier/insert', [AdminController::class, 'insertSupplier'])->name('addsupplier.insert');
 
+        Route::get('/addrack/edit', [AdminController::class, 'formInsertRack'])->name('addrack.edit');
+        Route::post('/addrack/insert', [AdminController::class, 'insertRack'])->name('addrack.insert');
 
-        // Route::get('/addkategoriadmin', function () {
-        //     return view('admin.addkategoriadmin');
-        // })->name('addkategori');
+        Route::get('/addoutlet/edit', [AdminController::class, 'formInsertOutlet'])->name('addoutlet.edit');
+        Route::post('/addoutlet/insert', [AdminController::class, 'insertOutlet'])->name('addoutlet.insert');
 
-        // Route::get('/addsuppliersadmin', function () {
-        //     return view('admin.addsuppliersadmin');
-        // })->name('addsupplier');
+        Route::get('/addwarehouse/edit', [AdminController::class, 'formInsertWarehouse'])->name('addwarehouse.edit');
+        Route::post('/addwarehouse/insert', [AdminController::class, 'insertWarehouse'])->name('addwarehouse.insert');
+
 
         Route::get('/accshifting', function () {
             return view('admin.accshiftingadmin');
@@ -115,10 +138,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/accincoming', function () {
             return view('admin.accincomingadmin');
         })->name('accincoming');
-
-        // Route::get('/additem', function () {
-        //     return view('admin.additemadmin');
-        // })->name('additem');
 
         Route::get('/addshifting', function () {
             return view('admin.addshiftingadmin');
