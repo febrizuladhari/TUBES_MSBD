@@ -9,6 +9,10 @@ class Req_Pembelian extends Model
 {
     use HasFactory;
 
+    protected $table = 'req_pembelians';
+
+    public $timestamps = false;
+
     protected $fillable = [
         'id_kategori',
         'id_user',

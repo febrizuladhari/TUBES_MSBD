@@ -12,10 +12,7 @@ use App\Http\Controllers\PasswordController;
 
 // Controller Admin
 use App\Http\Controllers\AdminController;
-
-
-
-
+use App\Http\Controllers\StaffController;
 
 // Controller Super Admin
 use App\Http\Controllers\SuperAdminController;
@@ -169,6 +166,7 @@ Route::group(['middleware' => ['auth']], function () {
             return view('staff.reqbelistaff');
         })->name('reqbelistaff');
 
+        Route::post('storeReqBuy', [StaffController::class, 'storeReqBuy'])->name('storeReqBuy');
     });
 
 });
