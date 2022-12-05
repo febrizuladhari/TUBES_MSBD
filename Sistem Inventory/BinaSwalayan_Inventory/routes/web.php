@@ -158,6 +158,8 @@ Route::group(['middleware' => ['auth']], function () {
             return view('staff.adddamagedstaff');
         })->name('adddamagedstaff');
 
+        Route::post('storeAddDamage', [StaffController::class, 'storeAddDamage'])->name('storeAddDamage');
+
         Route::get('reqitemstaff', function(){
             return view('staff.reqitemstaff');
         })->name('reqitemstaff');

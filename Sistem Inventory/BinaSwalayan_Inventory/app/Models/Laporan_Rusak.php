@@ -9,6 +9,8 @@ class Laporan_Rusak extends Model
 {
     use HasFactory;
 
+    public $table = "laporan_rusaks";
+    public $timestamps = false;
     protected $fillable = [
         'id_barang',
         'id_user',
