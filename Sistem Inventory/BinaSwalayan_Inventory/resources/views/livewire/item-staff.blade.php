@@ -4,7 +4,7 @@
             <div class="demo-inline-spacing ms-5 mb-4">
                 <div class="btn-group" id="dropdown-icon-demo">
                     <select class="form-control from-control-sm" wire:model="selectedCategory">
-                        <option selected> All Category <i class='bx bx-chevrons-down'></i></option>
+                        <option selected value=""> All Category <i class='bx bx-chevrons-down'></i></option>
                         @foreach($kategoris as $item)
                         <option value="{{$item->nama_kategori}}">{{$item->nama_kategori}}</option>
                         @endforeach
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col">
-            <input type="search" wire:model="search" class="form-control mb-4" wire:model placeholder="Search Item ...">
+            <input type="search" wire:model="search" class="form-control mb-4" placeholder="Search Item ...">
         </div>
     </div>
     <div class="table-responsive text-nowrap">
