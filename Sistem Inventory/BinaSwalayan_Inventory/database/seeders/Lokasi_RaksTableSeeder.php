@@ -20,7 +20,7 @@ class Lokasi_RaksTableSeeder extends Seeder
         {
         $LokR[] = [
             'id_gudang' => rand(1,6),
-            'rak' => rand(1,10),
+            'rak' => $i,
         ];
         }
         \DB::table('lokasi_raks')->insert($LokR);

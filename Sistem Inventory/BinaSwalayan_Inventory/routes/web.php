@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/itemadmin', [AdminController::class, 'showitem'])->name('itemadmin');
 
         Route::get('/additem', [AdminController::class, 'formInsertItem'])->name('additem.edit');
-        // Route::post('/additem', [AdminController::class, 'insertItem'])->name('additem.insert');
+        Route::post('/additem', [AdminController::class, 'insertItem'])->name('additem.insert');
 
         Route::get('/addkategori/edit', [AdminController::class, 'formInsertKategori'])->name('addkategori.edit');
         Route::post('/addkategori/insert', [AdminController::class, 'insertKategori'])->name('addkategori.insert');

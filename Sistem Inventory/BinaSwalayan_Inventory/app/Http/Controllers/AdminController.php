@@ -177,18 +177,6 @@ class AdminController extends Controller
             'rak' => 'required'
         ]);
 
-        $rak = Lokasi_Rak::create([
-            'id_gudang' => $request->id_gudang,
-            'rak' => $request->rak
-        ]);
-
-        if($rak) {
-            Alert::success('OK', 'Rack successfully added');
-            return redirect()->route('additem.edit')->with(['success' => 'Rack successfully added']);
-        } else {
-            Alert::error('Opps', 'Failed to add rack');
-            return redirect()->route('additem.edit')->with(['error' => 'Failed to add rack']);
-        }
     }
 
     // View Insert Outlet
