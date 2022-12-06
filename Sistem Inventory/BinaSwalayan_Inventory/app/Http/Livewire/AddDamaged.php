@@ -13,8 +13,6 @@ class AddDamaged extends Component
     public $search = '';
     public $note = '';
 
-    public $user_id ='1';
-
 
     public function render()
     {   
@@ -28,7 +26,7 @@ class AddDamaged extends Component
             'id_barang' => $this->search,
             'tanggal' => now(),
             'catatan' => $this->note,
-            'id_user' => $this->user_id,
+            'id_user' => Auth::user()->id,
         ]);
     }
 
