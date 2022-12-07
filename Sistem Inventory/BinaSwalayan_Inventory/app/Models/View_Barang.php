@@ -24,4 +24,21 @@ class View_Barang extends Model
                 ;
         });
     }
+
+    public function scopeSearchadmin($query,$term){
+
+        $term = "%$term%";
+        $query->where(function($query) use ($term){
+            $query->where('id','like',$term)
+                 ->orwhere('Nama','like',$term)
+                 ->orwhere('Kategori','like',$term)
+                 ->orwhere('Gudang','like',$term)
+                 ->orwhere('Status','like',$term)
+                 ->orwhere('Rak','like',$term)
+                 ->orwhere('Outlet','like',$term)
+                 //->orwhere('Supplier','like',$term)
+
+                ;
+        });
+    }
 }
