@@ -28,21 +28,36 @@
                         <label class="form-label" for="nama">Name</label>
                         <div class="input-group input-group-merge">
                             <span id="nama" class="input-group-text"><i class="bx bx-user"></i></span>
-                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Name" required/>
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Name" required/>
+                            @error('nama')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="username">Username</label>
                         <div class="input-group input-group-merge">
                             <span id="username" class="input-group-text"><i class="bx bxs-user-detail"></i></span>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required/>
+                            <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Username" required/>
+                            @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="password">Password</label>
                         <div class="input-group input-group-merge">
                             <span id="password" class="input-group-text"><i class="bx bx-spreadsheet"></i></span>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required><span class="showpass" onclick="toggle()"><p class="random_password"></p>
+                            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required><span class="showpass" onclick="toggle()"><p class="random_password"></p>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                         </div>
                     </div>
                     <div class="mb-3">
@@ -65,7 +80,12 @@
                         <label class="form-label" for="outlet">Address</label>
                         <div class="input-group input-group-merge">
                             <span id="alamat" class="input-group-text"><i class="bx bx-store"></i></span>
-                            <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Address" required/>
+                            <input type="text" id="alamat" name="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="Address" required/>
+                            @error('alamat')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-3">
@@ -81,7 +101,12 @@
                         <label class="form-label" for="phone">Phone Number</label>
                         <div class="input-group input-group-merge">
                             <span class="input-group-text">ID (+62)</span>
-                            <input type="number" id="no_telp" name="no_telp" class="form-control" placeholder="0812 3344 5588" required/>
+                            <input type="number" id="no_telp" name="no_telp" class="form-control @error('no_telp') is-invalid @enderror" placeholder="0812 3344 5588" required/>
+                            @error('no_telp')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer">

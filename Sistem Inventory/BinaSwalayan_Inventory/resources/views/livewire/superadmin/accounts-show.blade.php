@@ -1,4 +1,9 @@
 <div>
+    <div class="row">
+        <div class="col-4 mx-4 mb-2">
+            <input type="search" wire:model="search" class="form-control mb-4" placeholder="Search Account ...">
+        </div>
+    </div>
     <div class="table-responsive text-nowrap">
         <table class="table table-responsive table-hover table-striped">
             <thead>
@@ -19,31 +24,48 @@
                     <td><strong>{{ $user->nama }}</strong></td>
                     <td>{{ $user->username }}</td>
                     <td>{{ $user->level }}</td>
-                    <td>{{ $user->jenis_kelamin }}</td>
+                    <td>
+                        @if($user->jenis_kelamin == 'P')
+                            {{ "Pria" }}
+                        @else
+                            {{ "Wanita" }}
+                        @endif
+                    </td>
                     <td>{{ $user->alamat }}</td>
                     <td>{{ $user->no_telp }}</td>
-                    <td>{{ $user->id_outlet }}</td>
+                    <td>
+                        {{ $user->id_outlet }}
+                    </td>
                     <td>
                         {{-- Edit --}}
-                        <a href="{{ route('accounts_edit', $user->id) }}">
-                            <button type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
+                        <button wire:click="{{ route('accounts_edit', $user->id) }}" type="button" class="btn btn-info">
+                            <i class="menu-icon tf-icons bx bxs-edit"></i>Edit
+                        </button>
+                        {{-- <a href="{{ route('accounts_edit', $user->id) }}">
+                            <button type="button" class="btn btn-info me-3">
                                 <i class="menu-icon tf-icons bx bxs-edit"></i>Edit
                             </button>
-                        </a>
+                        </a> --}}
 
                         {{-- Delete --}}
-                        <button wire:click="destroy({{ $user->id }})" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
+                        <button wire:click="destroy({{ $user->id }})" type="button" class="btn btn-danger">
                             <i class="menu-icon tf-icons bx bxs-trash"></i>Delete
                         </button>
                     </td>
                 </tr>
                 @endforeach
+                {{-- Search if not match --}}
+                @if ($users->count() == 0)
+                    <div class="alert alert-danger mx-4" role="alert">
+                        Data not found!
+                    </div>
+                @endif
             </tbody>
         </table>
     </div>
     <div class="row my-4">
         <div class="d-flex justify-content-center">
-            {{$users->Links()}}
+            {{ $users->Links() }}
         </div>
     </div>
 

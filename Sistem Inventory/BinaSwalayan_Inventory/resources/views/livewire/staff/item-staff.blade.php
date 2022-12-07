@@ -40,13 +40,13 @@
                     <td>{{$barang->Outlet}}</td>
                     <td>
                         @if ($barang->Status == 'Perbaikan')
-                            <span class="badge bg-warning">{{$barang->Status}}</span>
+                            <span class="badge bg-warning d-flex justify-content-center">{{"Repaired"}}</span>
                         @elseif ($barang->Status == 'Rusak')
-                            <span class="badge bg-danger">{{$barang->Status}}</span>
+                            <span class="badge bg-danger d-flex justify-content-center">{{"Damaged"}}</span>
                         @elseif ($barang->Status == 'Dipinjam')
-                            <span class="badge bg-info">{{$barang->Status}}</span>
+                            <span class="badge bg-info d-flex justify-content-center">{{"Borrowed"}}</span>
                         @else
-                            <span class="badge bg-primary">{{$barang->Status}}</span>
+                            <span class="badge bg-primary d-flex justify-content-center">{{"Good"}}</span>
                         @endif
                     </td>
                 </tr>

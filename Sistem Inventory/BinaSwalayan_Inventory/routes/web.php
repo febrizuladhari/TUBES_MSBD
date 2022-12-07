@@ -73,13 +73,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/register', [RegisterController::class, 'index'])->name('register_account');
         Route::get('/register/create', [RegisterController::class, 'store'])->name('accounts_create');
 
-        // Route::get('/register', function(){
-        //     return view('superadmin.register');
-        // })->name('accounts_create');
-
         Route::get('/accounts/edit/{id}', function(){
             return view('superadmin.editaccounts');
         })->name('accounts_edit');
+
+        // Route::get('/register', function(){
+        //     return view('superadmin.register');
+        // })->name('accounts_create');
 
 
         // Route::livewire('/accounts', 'superadmin.edit')->name('accounts_edit');
@@ -131,12 +131,6 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/addrack/edit', [AdminController::class, 'formInsertRack'])->name('addrack.edit');
         Route::post('/addrack/insert', [AdminController::class, 'insertRack'])->name('addrack.insert');
-
-        Route::get('/addoutlet/edit', [AdminController::class, 'formInsertOutlet'])->name('addoutlet.edit');
-        Route::post('/addoutlet/insert', [AdminController::class, 'insertOutlet'])->name('addoutlet.insert');
-
-        Route::get('/addwarehouse/edit', [AdminController::class, 'formInsertWarehouse'])->name('addwarehouse.edit');
-        Route::post('/addwarehouse/insert', [AdminController::class, 'insertWarehouse'])->name('addwarehouse.insert');
 
 
         Route::get('/accshifting', function () {

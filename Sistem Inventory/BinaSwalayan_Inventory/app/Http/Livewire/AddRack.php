@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Outlet;
 use App\Models\Lokasi_Gudang;
 use App\Models\Lokasi_Rak;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AddRack extends Component
@@ -37,11 +38,21 @@ class AddRack extends Component
 
     ]);
 
+    if($user = Auth::user()) {
 
-    Alert::success('OK', 'You have successfully added rack !');
-    session()->flash('message', 'You have successfully added rack');
+        if($user->level == 'admin') {
+            Alert::success('OK', 'You have successfully added rack !');
+            session()->flash('message', 'You have successfully added rack');
 
-    return redirect()->route('additem_sa.edit');
+            return redirect()->route('additem.edit');
+        } else {
+            Alert::success('OK', 'You have successfully added rack !');
+            session()->flash('message', 'You have successfully added rack');
+
+            return redirect()->route('additem_sa.edit');
+        }
+    }
+    Alert::error('Opps!', 'You cannot access this page');
 
     }
 }

@@ -13,15 +13,13 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h3 class="fw-bold py-3">Add Damaged Items</h3>
+            <h3 class="fw-bold py-3">Add Damaged Item</h3>
             <hr class="my-4">
 
-            <!-- List Itemms -->
             <div class="card">
                 <h5 class="card-header">Add Damaged Items With Staff Authority</h5>
                 <livewire:staff.add-damaged></livewire:staff.add-damaged>
 
-                
             </div>
 
         </div>

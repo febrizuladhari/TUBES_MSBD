@@ -32,14 +32,12 @@ class AccountsEdit extends Component
             $this->alamat = $user->alamat;
             $this->no_telp = $user->no_telp;
             $this->id_outlet = $user->id_outlet;
-
         }
     }
 
 
     public function update()
     {
-
         $this->validate([
             'nama'=>'required',
             'level'=>'required',
@@ -47,7 +45,7 @@ class AccountsEdit extends Component
             'alamat'=>'required',
             'no_telp'=>'required|max:15',
             'id_outlet'=>'required',
-            'outlets' => Outlet::all()
+            // 'outlets' => Outlet::all()
         ]);
 
         if($this->id_user) {

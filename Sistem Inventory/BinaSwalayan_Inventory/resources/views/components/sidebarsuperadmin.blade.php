@@ -26,6 +26,43 @@
             </a>
         </li>
 
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Items</span>
+        </li>
+        <!-- Update Item -->
+        <li class="menu-item {{ Request::is('itemadmin') ? 'active' : '' }}">
+            <a href="{{ route('itemadmin') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-component bx-tada"></i>
+                <div data-i18n="Analytics">Items</div>
+            </a>
+        </li>
+
+        <!-- Approvement -->
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-list-check bxs-like bx-tada"></i>
+                <div data-i18n="Layouts">Approvement</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('accshifting') ? 'active' : '' }}">
+                    <a href="{{ route('accshifting') }}" class="menu-link">
+                        <div data-i18n="Without menu">Shifting Items</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('accdamaged') ? 'active' : '' }}">
+                    <a href="{{ route('accdamaged') }}" class="menu-link">
+                        <div data-i18n="Without navbar">Damaged Items</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('accincoming') ? 'active' : '' }}">
+                    <a href="{{ route('accincoming') }}" class="menu-link">
+                        <div data-i18n="Container">Incoming Items</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <!-- Account -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Authority Super Admin</span>

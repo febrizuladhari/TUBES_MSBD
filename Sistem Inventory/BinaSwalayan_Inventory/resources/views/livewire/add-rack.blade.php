@@ -15,7 +15,7 @@
         <div class="mb-3">
             <label for="id_rak" class="form-label">Warehouse</label>
                 <select wire:model="selectedWarehouse" id="id_rak" class="select2 form-select">
-                    <option selected>--&nbsp;Choose Warehouse&nbsp;--</option>
+                    <option selected>Choose Warehouse</option>
                     @foreach($gudangs as $gudang)
                     <option value="{{$gudang->id}}">{{$gudang->gudang}}</option>
                     @endforeach

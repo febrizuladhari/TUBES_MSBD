@@ -33,25 +33,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <h5 class="card-header">Add Rack with Admin Authority</h5>
+                    <div class="col-12">
+                        <h5 class="card-header text-center">Add Rack with Admin Authority</h5>
                         <div class="card-body">
                             <a href="{{ route('addrack.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Rack</button></a>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <h5 class="card-header">Add Outlet with Admin Authority</h5>
-                        <div class="card-body">
-                            <a href="{{ route('addoutlet.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Outlet</button></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h5 class="card-header text-center ">Add Warehouse with Admin Authority</h5>
-                        <div class="card-body">
-                            <a href="{{ route('addwarehouse.edit') }}"><button class="btn btn-warning d-grid w-100 fw-bold" type="button">Add Warehouse</button></a>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,12 @@
             <label class="form-label" for="id">ID</label>
             <div class="input-group input-group-merge">
                 <span id="id" class="input-group-text"><i class="bx bx-code"></i></span>
-                <input wire:model.lazy="idb" type="text" class="form-control" id="id" placeholder="ID" required/>
+                <input wire:model.lazy="idb" type="text" class="form-control @error('idb') is-invalid @enderror" id="id" placeholder="ID" required/>
+                @error('idb')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
         <div class="mb-3">
@@ -44,7 +49,12 @@
             <label class="form-label" for="nama">Name</label>
             <div class="input-group input-group-merge">
                 <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                <input wire:model.lazy="namab" type="text" class="form-control" id="nama" placeholder="Name" required/>
+                <input wire:model.lazy="namab" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Name" required/>
+                @error('nama')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
         <div class="mb-3">
