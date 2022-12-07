@@ -19,7 +19,7 @@
             <!-- List Itemms -->
             <div class="card">
                 <h5 class="card-header">Add Damaged Items With Staff Authority</h5>
-                <livewire:add-damaged></livewire:add-damaged>
+                <livewire:staff.add-damaged></livewire:staff.add-damaged>
 
                 
             </div>

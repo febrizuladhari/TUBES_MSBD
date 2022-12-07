@@ -60,7 +60,7 @@
             <!-- Form Add Item -->
             <div class="card">
                 <h5 class="card-header">Add Items With Admin Authority</h5>
-                <livewire:add-rack></livewire:add-rack>
+                <livewire:add-items></livewire:add-items>
             </div>
 
 

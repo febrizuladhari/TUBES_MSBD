@@ -21,7 +21,7 @@
                         <!-- List Itemms -->
                         <div class="card">
                             <h5 class="card-header">List Items With Conditions</h5>
-                            <livewire:item-staff></livewire:item-staff>
+                            <livewire:staff.item-staff></livewire:staff.item-staff>
                         </div>
                     </div>
                 </div>
