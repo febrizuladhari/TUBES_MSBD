@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\User;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Supplier;

@@ -18,7 +18,7 @@
 
             <!-- List Itemms -->
             <div class="card">
-                <h5 class="card-header">Registrasi yuk</h5>
+                <h4 class="card-header">Create a new account</h4>
                 <form method="POST" action="{{url('store')}}" class="container-fluid">
                     @csrf
                     @error('Success')
@@ -84,12 +84,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="{{ route('accounts_show') }}"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Back</button></a>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
-    </div>
 
         </div>
 

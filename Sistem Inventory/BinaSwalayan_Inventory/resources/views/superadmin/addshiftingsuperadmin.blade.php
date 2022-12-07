@@ -1,7 +1,7 @@
 @extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Add Shifting Items - Super Admin</title>
+    <title>Add Shifting Item - Super Admin</title>
 @endsection
 
 @section('content')

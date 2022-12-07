@@ -31,7 +31,7 @@
             <span class="menu-header-text">Authority Super Admin</span>
         </li>
         <li class="menu-item {{ Request::is('accounts') ? 'active' : '' }}">
-            <a href="{{ route('accounts') }}" class="menu-link">
+            <a href="{{ route('accounts_show') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-detail bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Accounts</div>
             </a>

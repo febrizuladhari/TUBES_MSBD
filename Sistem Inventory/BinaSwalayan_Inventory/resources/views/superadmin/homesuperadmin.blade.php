@@ -29,7 +29,7 @@
                                 <i class='bx bx-check-shield me-1'></i> Check It
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('accounts') }}"><i class="bx bxs-user me-2"></i>Accounts</a></li>
+                                <li><a class="dropdown-item" href="{{ route('accounts_show') }}"><i class="bx bxs-user me-2"></i>Accounts</a></li>
                             </ul>
                         </div>
 

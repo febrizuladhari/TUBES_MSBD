@@ -15,6 +15,8 @@ use App\Http\Controllers\AdminController;
 
 // Controller Super Admin
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Livewire\SuperAdmin\AccountsShow;
+use App\Http\Livewire\SuperAdmin\AccountsEdit;
 
 
 
@@ -67,11 +69,22 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/accounts', function(){
             return view('superadmin.accounts');
-        })->name('accounts');
+        })->name('accounts_show');
 
         Route::get('/register', function(){
             return view('superadmin.register');
-        })->name('register');
+        })->name('accounts_create');
+
+        Route::get('/accounts/edit/{id}', function($id){
+            return view('superadmin.editaccounts', compact('id'));
+        })->name('accounts_edit');
+
+
+        // Route::livewire('/accounts', 'superadmin.edit')->name('accounts_edit');
+
+        // Route::get('/register', function(){
+        //     return view('superadmin.register');
+        // })->name('register');
 
         Route::get('/addshifting_sa', function () {
             return view('superadmin.addshiftingsuperadmin');

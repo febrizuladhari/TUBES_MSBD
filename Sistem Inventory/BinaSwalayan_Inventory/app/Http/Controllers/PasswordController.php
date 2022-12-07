@@ -82,7 +82,7 @@ class PasswordController extends Controller
 
         User::find(Auth::user()->id)->update(['password'=> Hash::make($request->new_password)]);
 
-        Alert::success('Great !', 'Password updated successfully');
+        Alert::info('Great !', 'Password updated successfully, please remember your new password');
         return redirect()->route('profile.edit');
     }
 
