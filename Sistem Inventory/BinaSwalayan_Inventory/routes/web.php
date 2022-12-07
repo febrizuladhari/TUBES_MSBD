@@ -64,19 +64,21 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('superadmin', LoginController::class);
         Route::resource('superadmin', RegisterController::class);
 
-
         Route::get('/homesuperadmin', [SuperAdminController::class, 'index'])->name('homesuperadmin');
 
         Route::get('/accounts', function(){
             return view('superadmin.accounts');
         })->name('accounts_show');
 
-        Route::get('/register', function(){
-            return view('superadmin.register');
-        })->name('accounts_create');
+        Route::get('/register', [RegisterController::class, 'index'])->name('register_account');
+        Route::get('/register/create', [RegisterController::class, 'store'])->name('accounts_create');
 
-        Route::get('/accounts/edit/{id}', function($id){
-            return view('superadmin.editaccounts', compact('id'));
+        // Route::get('/register', function(){
+        //     return view('superadmin.register');
+        // })->name('accounts_create');
+
+        Route::get('/accounts/edit/{id}', function(){
+            return view('superadmin.editaccounts');
         })->name('accounts_edit');
 
 

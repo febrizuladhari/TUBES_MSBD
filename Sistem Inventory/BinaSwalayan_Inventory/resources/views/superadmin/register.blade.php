@@ -48,7 +48,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="level">Level</label>
                             <select id="level" name="level" class="select2 form-select">
-                                <option>Select Level</option>
+                                <option selected>Select Level</option>
                                 <option value="admin">Admin</option>
                                 <option value="staff">Staff</option>
                             </select>
@@ -56,7 +56,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="jenis_kelamin">Gender</label>
                         <select id="jenis_kelamin" name="jenis_kelamin" class="select2 form-select">
-                            <option>Select Gender</option>
+                            <option selected>Select Gender</option>
                             <option value="P">Male</option>
                             <option value="W">Female</option>
                         </select>
@@ -71,16 +71,17 @@
                     <div class="mb-3">
                         <label class="form-label" for="idoutlet">Outlet</label>
                             <select id="id_outlet" name="id_outlet" class="select2 form-select">
-                            <option>Select Outlet</option>
-                                <option value="1">Bina Karya Swalayan</option>
-                                <option value="2">Bina Marindal Swalayan</option>
+                            <option selected>Select Outlet</option>
+                            @foreach($outlets as $outlet)
+                                <option value="{{ $outlet->id }}">{{ $outlet->nama }}</option>
+                            @endforeach
                             </select>
                     </div>
                     <div class="mb-3 col">
                         <label class="form-label" for="phone">Phone Number</label>
                         <div class="input-group input-group-merge">
                             <span class="input-group-text">ID (+62)</span>
-                            <input type="text" id="no_telp" name="no_telp" class="form-control" placeholder="0812 3344 5588" required/>
+                            <input type="number" id="no_telp" name="no_telp" class="form-control" placeholder="0812 3344 5588" required/>
                         </div>
                     </div>
                     <div class="modal-footer">

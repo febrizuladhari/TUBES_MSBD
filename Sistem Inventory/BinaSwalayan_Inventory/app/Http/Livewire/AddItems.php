@@ -45,7 +45,7 @@ class AddItems extends Component
         $this->raks = Lokasi_Rak::where('id_gudang',$selectedWarehouse)->get();
     }
 
-    
+
 
     public function store()
     {
@@ -55,9 +55,16 @@ class AddItems extends Component
             'id_kategori' => $this->selectedCategory,
             'id_rak' => $this->selectedRack,
             'id_supplier' => $this->selectedSupplier,
-        
+
     ]);
 
+
+    Alert::success('OK', 'You have successfully added item !');
+    session()->flash('message', 'You have successfully added item');
+
+    return redirect()->route('additem_sa.edit');
+
+
     }
-    
+
 }

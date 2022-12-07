@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Outlet;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
+
+    public function index() {
+
+        $outlets = Outlet::all();
+        return view('superadmin.register', compact('outlets'));
+    }
 
     public function store(request $request){
 
@@ -27,7 +34,7 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        $request->session()->flash('Success', 'Registrasi Anda Berhasil');
+        $request->session()->flash('Success', 'Register successfully');
         Alert::success('Great !', 'You have added a new user');
 
 

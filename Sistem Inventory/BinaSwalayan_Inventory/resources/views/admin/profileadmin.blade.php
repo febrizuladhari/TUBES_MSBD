@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="no_telp" class="form-label">{{ __('Phone Number') }}</label>
-                                    <input type="text" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp" name="no_telp" value="{{ $user->no_telp }}" required/>
+                                    <input type="number" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp" name="no_telp" value="{{ $user->no_telp }}" required/>
                                     @error('no_telp')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

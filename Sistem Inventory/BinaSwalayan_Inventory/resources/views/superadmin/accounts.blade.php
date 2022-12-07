@@ -18,7 +18,7 @@
 
             <div class="row my-4">
                 <div class="d-grid gap-2 mx-auto">
-                    <a href="{{ route('accounts_create') }}"><button class="btn btn-primary btn-lg" type="button"><i class='bx bx-user-plus bxs-like bx-tada-hover me-3'></i>Add New Account</button></a>
+                    <a href="{{ route('register_account') }}"><button class="btn btn-primary btn-lg" type="button"><i class='bx bx-user-plus bxs-like bx-tada-hover me-3'></i>Add New Account</button></a>
                 </div>
             </div>
 

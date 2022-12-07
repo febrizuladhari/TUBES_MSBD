@@ -8,9 +8,9 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="id_rak" class="form-label">Outlets</label>
+            <label for="id_rak" class="form-label">Outlet</label>
                 <select wire:model="selectedOutlet" id="id_rak" class="select2 form-select">
-                    <option selected>Choose Outlets</option>
+                    <option selected>Choose Outlet</option>
                     @foreach($outlets as $outlet)
                     <option value="{{$outlet->id}}">{{$outlet->nama}}</option>
                     @endforeach
@@ -19,9 +19,9 @@
 
         @if(!is_null($gudangs))
         <div class="mb-3">
-            <label for="id_rak" class="form-label">gudang</label>
+            <label for="id_rak" class="form-label">Warehouse</label>
                 <select wire:model="selectedWarehouse" id="id_rak" class="select2 form-select">
-                    <option selected>Choose gudang</option>
+                    <option selected>Choose Warehouse</option>
                     @foreach($gudangs as $gudang)
                     <option value="{{$gudang->id}}">{{$gudang->gudang}}</option>
                     @endforeach

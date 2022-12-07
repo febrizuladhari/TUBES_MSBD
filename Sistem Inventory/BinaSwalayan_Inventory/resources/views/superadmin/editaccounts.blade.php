@@ -22,7 +22,7 @@
                         <!-- Edit Account -->
                         <div class="card">
                             <h5 class="card-header">List Accounts With Actions</h5>
-                            <livewire:superadmin.accounts-edit :id='$id' />
+                            <livewire:superadmin.accounts-edit/>
                         </div>
                     </div>
                 </div>

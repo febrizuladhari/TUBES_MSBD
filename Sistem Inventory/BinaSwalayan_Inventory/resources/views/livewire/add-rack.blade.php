@@ -41,7 +41,7 @@
             <button wire:Loading.atr='disabled' type="submit" class="btn btn-primary">Add Rack</button>
         </div>
         <div wire:Loading>
-            Tunggu Masseh
+            Waiting ...
         </div>
     </form>
 
