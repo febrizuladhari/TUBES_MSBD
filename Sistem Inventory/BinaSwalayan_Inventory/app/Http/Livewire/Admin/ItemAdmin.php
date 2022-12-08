@@ -72,11 +72,13 @@ class ItemAdmin extends Component
 
         $barang->save();
 
-        Alert::success('OK','You have updated the item');
-        session()->flash('message', 'Items has been updated successfully');
+        Alert::success('OK','Item has been updated successfully');
+        session()->flash('message', 'Item has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
+
+        return redirect()->route('itemadmin');
     }
 
     public function render()
