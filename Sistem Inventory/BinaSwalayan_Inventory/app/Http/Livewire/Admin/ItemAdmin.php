@@ -9,7 +9,7 @@ use App\Models\Barang;
 use App\Models\Lokasi_Gudang;
 use App\Models\Lokasi_Rak;
 use App\Models\Supplier;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +22,7 @@ class ItemAdmin extends Component
     public $selectedCategory = '';
     public $searchadmin = "";
     public $idb ='';
-
+    public $checked = [];
     public $gudangs = '';
     public $taks = '';
 
@@ -62,6 +62,10 @@ class ItemAdmin extends Component
 
     }
 
+    public function onDelete($id){
+        $this->idb = $id;
+        $this->dispatchBrowserEvent('show-delete-confirmation-modal');
+    }
     public function submitEdit(){
         $barang = Barang::where('id', $this->idb)->first();
         $barang->nama = $this->updatedNama;
@@ -75,6 +79,23 @@ class ItemAdmin extends Component
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
+    }
+
+    public function deleteItem($idb)
+    {
+        $student = Barang::findOrFail($idb);
+        $student->delete();
+        $this->checked = array_diff($this->checked, [$idb]);
+        
+        session()->flash('info', 'Record deleted Successfully');
+    }
+
+    public function deleteItems(){
+
+        Barang::whereKey($this->checked)->delete();
+        $this->checked = [];
+
+        session()->flash('message', 'Items have been deleted');
     }
 
     public function render()
