@@ -91,6 +91,11 @@ class SuperAdminController extends Controller
         //
     }
 
+    // Show Accounts
+    public function showAllAccounts() {
+        return view ('superadmin.accounts');
+    }
+
     // View Insert Item
     public function formInsertItem()
     {

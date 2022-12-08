@@ -27,7 +27,6 @@ class AdminController extends Controller
         $kategoris = Kategori::all();
         $barangs = Barang::paginate($this->limit);
         return view('admin.itemadmin', compact('barangs'), compact('kategoris'));
-        // Model nya Belom Ada, Isi Databasenya pun Belom Ada :<
     }
 
     /**

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ItemAdmin extends Component
 {
@@ -35,7 +36,7 @@ class ItemAdmin extends Component
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
 
     public function updatedUpdatedOutlet($updatedOutlet)
     {
@@ -71,6 +72,7 @@ class ItemAdmin extends Component
 
         $barang->save();
 
+        Alert::success('OK','You have updated the item');
         session()->flash('message', 'Items has been updated successfully');
 
         //For hide modal after add student success
@@ -89,12 +91,12 @@ class ItemAdmin extends Component
                 $query->where('Kategori', $this->selectedCategory);
             })
             ->paginate(10),
-            
+
             'kategoris' => Kategori::all(),
             'suppliers' => Supplier::all(),
             'outlets' => Outlet::all(),
         ]);
     }
 
-    
+
 }

@@ -7,8 +7,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Warehouse</th>
                             <th>Category</th>
+                            <th>Warehouse</th>
                             <th>Rack</th>
                             <th>Outlet</th>
                             <th>Status</th>
@@ -17,12 +17,13 @@
                     <tbody class="table-border-bottom-0">
                     @foreach($barangs as $barang)
 
-                        <h4>id = {{$barang->id}}</h4>
-                        <h4>name = {{$barang->Nama}}</h4>
-                        <h4>category = {{$barang->Kategori}}</h4>
-                        <h4>warehouse = {{$barang->Gudang}}</h4>
-                        <h4>rack = {{$barang->Rak}}</h4>
-                        <h4>status = {{$barang->Status}}</h4>
+                        <td>{{$barang->id}}</td>
+                        <td>{{$barang->Nama}}</td>
+                        <td>{{$barang->Kategori}}</td>
+                        <td>{{$barang->Gudang}}</td>
+                        <td>{{$barang->Rak}}</td>
+                        <td>{{ $barang->Outlet }}</td>
+                        <td>{{$barang->Status}}</td>
 
                     @endforeach
                     </tbody>

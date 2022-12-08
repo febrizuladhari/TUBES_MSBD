@@ -66,16 +66,23 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/homesuperadmin', [SuperAdminController::class, 'index'])->name('homesuperadmin');
 
-        Route::get('/accounts', function(){
-            return view('superadmin.accounts');
-        })->name('accounts_show');
+        // Route::get('/accounts', function(){
+        //     return view('superadmin.accounts');
+        // })->name('accounts_show');
+
+        Route::get('/accounts', [SuperAdminController::class, 'showAllAccounts'])->name('accounts_show');
 
         Route::get('/register', [RegisterController::class, 'index'])->name('register_account');
         Route::get('/register/create', [RegisterController::class, 'store'])->name('accounts_create');
 
-        Route::get('/accounts/edit/{id}', function(){
-            return view('superadmin.editaccounts');
-        })->name('accounts_edit');
+
+        // Route::get('/accounts/edit/{id}', function($id){
+        //     return view('superadmin.editaccounts', compact('id'));
+        // })->name('accounts_edit');
+
+        // Route::get('/accounts/edit/{id}', function($id){
+        //     return view('superadmin.editaccounts', compact('id'));
+        // })->name('accounts_edit');
 
         // Route::get('/register', function(){
         //     return view('superadmin.register');

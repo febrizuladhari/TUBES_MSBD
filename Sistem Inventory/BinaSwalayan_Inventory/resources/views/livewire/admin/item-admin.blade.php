@@ -3,28 +3,35 @@
         <!-- List Itemms -->
         <div class="card">
             <h5 class="card-header">List Items With Conditions</h5>
-            <!-- Dropdown with icon -->
-            <div class="col-lg-3 col-sm-6 col-12 ms-4 mb-4">
-                <div class="demo-inline-spacing">
-                    <div class="btn-group" id="dropdown-icon-demo">
-                        <select class="form-control from-control-sm" wire:model="selectedOutlet">
-                            <option selected value=""> All Outlet <i class='bx bx-chevrons-down'></i></option>
-                            @foreach($outlets as $outlet)
-                            <option value="{{$outlet->id}}">{{$outlet->nama}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="btn-group" id="dropdown-icon-demo">
-                        <select class="form-control from-control-sm" wire:model="selectedCategory">
-                            <option selected value=""> All Category <i class='bx bx-chevrons-down'></i></option>
-                            @foreach($kategoris as $item)
-                            <option value="{{$item->nama_kategori}}">{{$item->nama_kategori}}</option>
-                            @endforeach
-                        </select>
+            <div class="row mb-4">
+                <div class="col-3 ms-5 mt-4">
+                    <div class="demo-inline-spacing">
+                        <div class="btn-group" id="dropdown-icon-demo">
+                            <select class="form-control from-control-sm" wire:model="selectedOutlet">
+                                <option selected value=""> All Outlet <i class='bx bx-chevrons-down'></i></option>
+                                @foreach($outlets as $outlet)
+                                <option value="{{$outlet->id}}">{{$outlet->nama}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <input type="search" wire:model="searchadmin" class="form-control mb-4" placeholder="Search Item ...">
+                <div class="col-2 mt-4">
+                    <div class="demo-inline-spacing">
+                        <div class="btn-group" id="dropdown-icon-demo">
+                            <select class="form-control from-control-sm" wire:model="selectedCategory">
+                                <option selected value=""> All Category <i class='bx bx-chevrons-down'></i></option>
+                                @foreach($kategoris as $item)
+                                <option value="{{$item->nama_kategori}}">{{$item->nama_kategori}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mt-4">
+                    <div class="demo-inline-spacing">
+                        <input type="search" wire:model="searchadmin" class="form-control mb-4" placeholder="Search Item ...">
+                    </div>
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
@@ -43,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                
+
                 @foreach($barangs as $barang)
                 <tr>
                     <td>{{ $barang->id }}</td>
@@ -55,13 +62,13 @@
                     <td>{{$barang->Supplier}}</td>
                     <td>
                         @if ($barang->Status == 'Perbaikan')
-                            <span class="badge bg-warning">{{$barang->Status}}</span>
+                            <span class="badge bg-warning d-flex justify-content-center">{{"Repaired"}}</span>
                         @elseif ($barang->Status == 'Rusak')
-                            <span class="badge bg-danger">{{$barang->Status}}</span>
+                            <span class="badge bg-danger d-flex justify-content-center">{{"Damaged"}}</span>
                         @elseif ($barang->Status == 'Dipinjam')
-                            <span class="badge bg-info">{{$barang->Status}}</span>
+                            <span class="badge bg-info d-flex justify-content-center">{{"Borrowed"}}</span>
                         @else
-                            <span class="badge bg-primary">{{$barang->Status}}</span>
+                            <span class="badge bg-primary d-flex justify-content-center">{{"Good"}}</span>
                         @endif
                     </td>
                     <td>
@@ -69,7 +76,7 @@
                         <button wire:click="onEdit({{$barang->id}})" type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
                             <i class="menu-icon tf-icons bx bxs-edit"></i>Edit
                         </button>
-                        <!-- Modal Delete Button -->                       
+                        <!-- Modal Delete Button -->
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                             <i class="menu-icon tf-icons bx bxs-trash"></i>Delete
                         </button>
@@ -110,8 +117,8 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                    
-                                            @if(!is_null($updatedGudang))
+
+                                            {{-- @if(!is_null($updatedGudang))
                                             <div class="mb-3">
                                                 <label for="id_rak" class="form-label">Warehouse</label>
                                                     <select wire:model="updatedWarehouse" id="id_rak" class="select2 form-select">
@@ -122,7 +129,7 @@
                                                     </select>
                                             </div>
                                             @endif
-                                    
+
                                             @if(!is_null($raks))
                                             <div class="mb-3">
                                                 <label for="id_rak" class="form-label">Rack</label>
@@ -133,7 +140,7 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                            @endif
+                                            @endif --}}
                                             <div class="mb-3">
                                                 <label for="id_supplier" class="form-label">Supplier</label>
                                                     <select wire:model.lazy="updatedSupplier" id="id_supplier" class="select2 form-select">
@@ -179,8 +186,8 @@
                         </div>
                     </td>
                 </tr>
-                
-                            
+
+
                     </tbody>
                 </table>
             </div>

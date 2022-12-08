@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="username" class="form-label">Username</label>
-                                    <input class="form-control" type="text"" value="{{ $user->username }}" disabled/>
+                                    <input class="form-control" type="text" value="{{ $user->username }}" disabled/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="level" class="form-label">Level</label>

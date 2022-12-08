@@ -10,6 +10,7 @@ use App\Models\Lokasi_Rak;
 use App\Models\Supplier;
 use App\Models\Barang;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -58,11 +59,16 @@ class AddItems extends Component
 
     ]);
 
-
-    Alert::success('OK', 'You have successfully added item !');
-    session()->flash('message', 'You have successfully added item');
-
-    return redirect()->route('additem_sa.edit');
+    if ($user = Auth::user()) {
+        if ($user->level == 'superadmin') {
+            Alert::success('OK', 'You have successfully added item !');
+            return redirect()->route('additem_sa.edit');
+        } elseif ($user->level == 'admin') {
+            Alert::success('OK', 'You have successfully added item !');
+            return redirect()->route('additem.edit');
+        }
+    }
+    Alert::error('Opps !', 'You cannot access this page');
 
 
     }
