@@ -73,32 +73,36 @@
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                             <i class="menu-icon tf-icons bx bxs-trash"></i>Delete
                         </button>
-                    
                 @endforeach
                         <!-- Modal Edit Popup -->
                         <div wire:ignore.self class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-
-
-                                        <form class="container-fluid">
+                                        <form wire:submit.prevent="submitEdit" action="" method="post" class="container-fluid">
                                             <div class="mb-3">
                                                 <label class="form-label" for="nama">Name</label>
                                                 <div class="input-group input-group-merge">
                                                     <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                    <input wire:model="updatedNama" type="text" class="form-control" id="nama" placeholder="Name" aria-label="John Doe" required/>
+                                                    <input wire:model.lazy="updatedNama" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Name" required/>
+                                                    @error('nama')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="kategori">Category</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span id="kategori" class="input-group-text"><i class="bx bx-category"></i></span>
-                                                    <input wire:model="updatedKategori" type="text" id="kategori" class="form-control" placeholder="Category" required/>
-                                                </div>
+                                                <label for="id_kategori" class="form-label">Category</label>
+                                                    <select wire:model.lazy="updatedKategori" id="id_kategori" class="form-control">
+                                                        <option selected>Choose Category</option>
+                                                        @foreach($kategoris as $kategori)
+                                                        <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="id_rak" class="form-label">Outlet</label>
+                                                <label for="id_outlet" class="form-label">Outlet</label>
                                                     <select wire:model="updatedOutlet" id="id_rak" class="select2 form-select">
                                                         <option selected>Choose Outlet</option>
                                                         @foreach($outlets as $outlet)
@@ -107,7 +111,7 @@
                                                     </select>
                                             </div>
                                     
-                                            @if(!is_null($gudangs))
+                                            @if(!is_null($updatedGudang))
                                             <div class="mb-3">
                                                 <label for="id_rak" class="form-label">Warehouse</label>
                                                     <select wire:model="updatedWarehouse" id="id_rak" class="select2 form-select">
@@ -131,11 +135,13 @@
                                             </div>
                                             @endif
                                             <div class="mb-3">
-                                                <label class="form-label" for="suppliers">Suppliers</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span id="suppliers" class="input-group-text"><i class="bx bx-group"></i></span>
-                                                    <input wire:model="updatedSupplier" type="text" id="suppliers" class="form-control" placeholder="Suppliers" required/>
-                                                </div>
+                                                <label for="id_supplier" class="form-label">Supplier</label>
+                                                    <select wire:model.lazy="updatedSupplier" id="id_supplier" class="select2 form-select">
+                                                        <option selected>Choose Supplier</option>
+                                                        @foreach($suppliers as $supplier)
+                                                        <option value="{{$supplier->id}}">{{$supplier->nama}}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>

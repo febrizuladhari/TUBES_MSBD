@@ -23,6 +23,9 @@ class ItemAdmin extends Component
     public $searchadmin = "";
     public $idb ='';
 
+    public $gudangs = '';
+    public $taks = '';
+
     public $updatedNama ='';
     public $updatedKategori = '';
     public $updatedRak = '';
@@ -34,32 +37,33 @@ class ItemAdmin extends Component
     protected $paginationTheme = 'bootstrap';
     
 
-    public function updatedSelectedOutlet($selectedOutlet)
+    public function updatedUpdatedOutlet($updatedOutlet)
     {
-        $this->gudangs = Lokasi_Gudang::where('id_outlet',$selectedOutlet)->get();
+        $this->gudangs = Lokasi_Gudang::where('id_outlet',$updatedOutlet)->get();
     }
 
-    public function updatedSelectedWarehouse($selectedWarehouse)
+    public function updatedUpdatedWarehouse($updatedWarehouse)
     {
-        $this->raks = Lokasi_Rak::where('id_gudang',$selectedWarehouse)->get();
+        $this->raks = Lokasi_Rak::where('id_gudang',$updatedWarehouse)->get();
     }
 
     public function onEdit($id){
 
         $barang = View_Barang::where('id', $id)->first();
+        $this->idb = $id;
         $this->updatedNama = $barang->Nama;
-        $this->updatedKategori = $barang->Kategori;
-        $this->updatedRak = $barang->Rak;
-        $this->updatedGudang = $barang->Gudang;
-        $this->updatedOutlet = $barang->Outlet;
-        $this->updatedSupplier = $barang->Supplier;
+        $this->updatedKategori = $barang->id_Kategori;
+        $this->updatedRak = $barang->id_Rak;
+        $this->updatedGudang = $barang->id_Gudang;
+        $this->updatedOutlet = $barang->id_Outlet;
+        $this->updatedSupplier = $barang->id_Supplier;
 
         $this->dispatchBrowserEvent('show-edit-item-modal');
 
     }
 
     public function submitEdit(){
-        $barang = Barang::where('id', $this->id)->first();
+        $barang = Barang::where('id', $this->idb)->first();
         $barang->nama = $this->updatedNama;
         $barang->id_kategori = $this->updatedKategori;
         $barang->id_rak = $this->updatedRak;
