@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use App\Models\Barang;
+use App\Models\View_Rusak;
 use App\Models\Kategori;
+use App\Models\Laporan_Rusak;
 use App\Models\Supplier;
-use App\Models\Lokasi_Rak;
 use App\Models\Lokasi_Gudang;
 use App\Models\Outlet;
+use App\Models\View_Barang;
 
 class AdminController extends Controller
 {
@@ -25,75 +26,24 @@ class AdminController extends Controller
     {
         return view('admin.itemadmin');
         $kategoris = Kategori::all();
-        $barangs = Barang::paginate($this->limit);
+        $barangs = View_Barang::paginate($this->limit);
         return view('admin.itemadmin', compact('barangs'), compact('kategoris'));
         // Model nya Belom Ada, Isi Databasenya pun Belom Ada :<
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $delete = Laporan_Rusak::where('id_barang', $id);
+        $delete->delete();
+        Alert::success('OK','You have reject this request');
+        session()->flash('message', 'You have reject this request');
+        return redirect()->route('accdamaged');
+    }
+
+    public function confirm($id)
+    {
+        $damage = View_Rusak::where('id', $id)->first();
+        return view('livewire.admin.confirm-damaged-item', ['damage' => $damage]);
     }
 
     // View Insert Item

@@ -111,7 +111,7 @@
                                                     </select>
                                             </div>
                                     
-                                            @if(!is_null($updatedGudang))
+                                            {{-- @if(!is_null($updatedGudang))
                                             <div class="mb-3">
                                                 <label for="id_rak" class="form-label">Warehouse</label>
                                                     <select wire:model="updatedWarehouse" id="id_rak" class="select2 form-select">
@@ -133,7 +133,7 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                            @endif
+                                            @endif --}}
                                             <div class="mb-3">
                                                 <label for="id_supplier" class="form-label">Supplier</label>
                                                     <select wire:model.lazy="updatedSupplier" id="id_supplier" class="select2 form-select">

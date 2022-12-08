@@ -12,6 +12,7 @@ class Laporan_Rusak extends Model
     public $table = "laporan_rusaks";
     public $timestamps = false;
     protected $fillable = [
+        'id',
         'id_barang',
         'id_user',
         'tanggal',
