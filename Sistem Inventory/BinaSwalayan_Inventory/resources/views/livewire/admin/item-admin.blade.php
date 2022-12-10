@@ -41,10 +41,10 @@
                                     <a href="#" type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" 
                                     wire:click="deleteItems()" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>Delete</a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="#" type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" 
                                     wire:click="deleteItems()" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>Export</a>
-                                </li>
+                                </li> --}}
                                 
                             </ul>
                             </div>
@@ -103,7 +103,7 @@
                             <i class="menu-icon tf-icons bx bxs-edit"></i>Edit
                         </button>
                         <!-- Modal Delete Button -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
+                        <button wire:click="onDelete({{$barang->id}})" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                             <i class="menu-icon tf-icons bx bxs-trash"></i>Delete
                         </button>
                 @endforeach

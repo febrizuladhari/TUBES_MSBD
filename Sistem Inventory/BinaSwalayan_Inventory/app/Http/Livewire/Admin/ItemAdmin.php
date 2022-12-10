@@ -74,7 +74,7 @@ class ItemAdmin extends Component
         $barang->id_supplier = $this->updatedSupplier;
 
         $barang->save();
-
+        Alert::success('OK','Item has been updated successfully');
         session()->flash('message', 'Items has been updated successfully');
 
         //For hide modal after add student success
@@ -86,8 +86,9 @@ class ItemAdmin extends Component
         $student = Barang::findOrFail($idb);
         $student->delete();
         $this->checked = array_diff($this->checked, [$idb]);
-        
-        session()->flash('info', 'Record deleted Successfully');
+
+        Alert::success('info', 'Item deleted Successfully');
+        session()->flash('info', 'Item deleted Successfully');
     }
 
     public function deleteItems(){
@@ -95,6 +96,7 @@ class ItemAdmin extends Component
         Barang::whereKey($this->checked)->delete();
         $this->checked = [];
 
+        Alert::success('message', 'Items have been deleted');
         session()->flash('message', 'Items have been deleted');
     }
 
