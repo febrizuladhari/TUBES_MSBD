@@ -13,7 +13,15 @@ class AddDamaged extends Component
     public $search = '';
     public $note = '';
 
+    protected $listeners = [
+        'getBid'
+   ];
 
+    public function getBid($value)
+    {
+    if(!is_null($value))
+        $this->search = $value;
+    }
     public function render()
     {   
         return view('livewire.staff.add-damaged',[

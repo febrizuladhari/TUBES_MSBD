@@ -68,22 +68,20 @@
 
             <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
             <script>
-                function onScanSuccess(decodedText, decodedResult) {
+                function onScanSuccess(decodedText) {
                     // handle the scanned code as you like, for example:
-                    $('#qr').val(decodedText)
-                }
-                function onScanFailure(error) {
-                    // handle scan failure, usually better to ignore and keep scanning.
-                    // for example:
-                    console.warn(`Code scan error = ${error}`);
+                    Livewire.emit('getBid', decodedText);
+                    html5QrcodeScanner.clear();
+                    // Html5Qrcode#stop()
                 }
 
                 let html5QrcodeScanner = new Html5QrcodeScanner(
                     "reader",
                     { fps: 10, qrbox: {width: 300, height: 300} },
+                    // rememberLastUsedCamera: true,
                     /* verbose= */ false
                 );
-                html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+                html5QrcodeScanner.render(onScanSuccess);
             </script>
         </div>
     </div>
