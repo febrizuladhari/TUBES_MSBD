@@ -9,13 +9,12 @@ use App\Models\Barang;
 use App\Models\Lokasi_Gudang;
 use App\Models\Lokasi_Rak;
 use App\Models\Supplier;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class ItemAdmin extends Component
 {
@@ -23,7 +22,7 @@ class ItemAdmin extends Component
     public $selectedCategory = '';
     public $searchadmin = "";
     public $idb ='';
-
+    public $checked = [];
     public $gudangs = '';
     public $taks = '';
 
@@ -36,7 +35,7 @@ class ItemAdmin extends Component
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-
+    
 
     public function updatedUpdatedOutlet($updatedOutlet)
     {
@@ -63,6 +62,10 @@ class ItemAdmin extends Component
 
     }
 
+    public function onDelete($id){
+        $this->idb = $id;
+        $this->dispatchBrowserEvent('show-delete-confirmation-modal');
+    }
     public function submitEdit(){
         $barang = Barang::where('id', $this->idb)->first();
         $barang->nama = $this->updatedNama;
@@ -72,13 +75,27 @@ class ItemAdmin extends Component
 
         $barang->save();
 
-        Alert::success('OK','Item has been updated successfully');
-        session()->flash('message', 'Item has been updated successfully');
+        session()->flash('message', 'Items has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
+    }
 
-        return redirect()->route('itemadmin');
+    public function deleteItem($idb)
+    {
+        $student = Barang::findOrFail($idb);
+        $student->delete();
+        $this->checked = array_diff($this->checked, [$idb]);
+        
+        session()->flash('info', 'Record deleted Successfully');
+    }
+
+    public function deleteItems(){
+
+        Barang::whereKey($this->checked)->delete();
+        $this->checked = [];
+
+        session()->flash('message', 'Items have been deleted');
     }
 
     public function render()
@@ -93,12 +110,12 @@ class ItemAdmin extends Component
                 $query->where('Kategori', $this->selectedCategory);
             })
             ->paginate(10),
-
+            
             'kategoris' => Kategori::all(),
             'suppliers' => Supplier::all(),
             'outlets' => Outlet::all(),
         ]);
     }
 
-
+    
 }

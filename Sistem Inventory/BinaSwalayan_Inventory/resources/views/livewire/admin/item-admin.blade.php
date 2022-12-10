@@ -28,6 +28,30 @@
                         </div>
                     </div>
                 </div>
+
+                @if($checked)
+                    <div class="col-lg-3 col-sm-6 col-12 ms-4 mb-4">
+                        <div class="demo-inline-spacing">
+                            <div class="btn-group" id="dropdown-icon-demo">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bx bx-menu bxs-like bx-burst-hover"></i> Actions Checked ({{count($checked)}})
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" 
+                                    wire:click="deleteItems()" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>Delete</a>
+                                </li>
+                                <li>
+                                    <a href="#" type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" 
+                                    wire:click="deleteItems()" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>Export</a>
+                                </li>
+                                
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                    
                 <div class="col-6 mt-4">
                     <div class="demo-inline-spacing">
                         <input type="search" wire:model="searchadmin" class="form-control mb-4" placeholder="Search Item ...">
@@ -38,6 +62,7 @@
                 <table class="table table-responsive table-hover table-striped">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Category</th>
@@ -53,6 +78,7 @@
 
                 @foreach($barangs as $barang)
                 <tr>
+                    <td><input type="checkbox" value="{{$barang->id}}" wire:model="checked"></td>
                     <td>{{ $barang->id }}</td>
                     <td><strong>{{$barang->Nama}}</strong></td>
                     <td>{{$barang->Kategori}}</td>
@@ -163,7 +189,7 @@
                         </div>
 
                         <!-- Modal Delete Popup -->
-                        <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                        <div wire:ignore.self class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -179,7 +205,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close </button>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button wire:click="deleteItem({{$idb}})" type="submit" class="btn btn-danger">Delete</button>
                                     </div>
                                 </div>
                             </div>
