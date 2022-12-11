@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-class CreateViewReqpembelianView extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateViewReqpembelianView extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW `view_reqpembelian` AS select `msbd`.`req_pembelians`.`nama_barang` AS `nama_barang`,`users_alias1`.`id` AS `user_id`,`users_alias1`.`nama` AS `USER`,`msbd`.`kategoris`.`id` AS `id_kategori`,`msbd`.`kategoris`.`nama_kategori` AS `kategori`,`msbd`.`outlets`.`id` AS `id_outlet`,`msbd`.`outlets`.`nama` AS `outlet` from (((`msbd`.`req_pembelians` join `msbd`.`users` `users_alias1` on(`msbd`.`req_pembelians`.`id_user` = `users_alias1`.`id`)) join `msbd`.`kategoris` on(`msbd`.`req_pembelians`.`id_kategori` = `msbd`.`kategoris`.`id`)) join `msbd`.`outlets` on(`users_alias1`.`id_outlet` = `msbd`.`outlets`.`id`))");
+        DB::statement("CREATE VIEW `view_reqpembelian` AS select `req_pembelians`.`id` AS `id`,`req_pembelians`.`nama_barang` AS `nama_barang`,`kategoris`.`id` AS `id_kategori`,`kategoris`.`nama_kategori` AS `nama_kategori`,`users`.`id` AS `id_user`,`users`.`nama` AS `nama_user`,`outlets`.`id` AS `id_outlet`,`outlets`.`nama` AS `nama_outlet` from (((`req_pembelians` left join `kategoris` on(`req_pembelians`.`id_kategori` = `kategoris`.`id`)) left join `users` on(`req_pembelians`.`id_user` = `users`.`id`)) left join `outlets` on(`users`.`id_outlet` = `outlets`.`id`))");
     }
 
     /**
@@ -24,4 +24,4 @@ class CreateViewReqpembelianView extends Migration
     {
         DB::statement("DROP VIEW IF EXISTS `view_reqpembelian`");
     }
-}
+};
