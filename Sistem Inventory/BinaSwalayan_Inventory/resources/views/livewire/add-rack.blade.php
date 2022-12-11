@@ -2,8 +2,8 @@
     <form wire:submit.prevent="store" action="" method="POST" class="container-fluid">
 
         <div class="mb-3">
-            <label for="id_rak" class="form-label">Outlets</label>
-                <select wire:model="selectedOutlet" id="id_rak" class="select2 form-select">
+            <label for="id_outlet" class="form-label">Outlets</label>
+                <select wire:model="selectedOutlet" id="id_outlet" class="select2 form-select">
                     <option selected>Choose Outlets</option>
                     @foreach($outlets as $outlet)
                     <option value="{{$outlet->id}}">{{$outlet->nama}}</option>
@@ -13,8 +13,8 @@
 
         @if(!is_null($gudangs))
         <div class="mb-3">
-            <label for="id_rak" class="form-label">Warehouse</label>
-                <select wire:model="selectedWarehouse" id="id_rak" class="select2 form-select">
+            <label for="id_gudang" class="form-label">Warehouse</label>
+                <select wire:model="selectedWarehouse" id="id_gudang" class="select2 form-select">
                     <option selected>Choose Warehouse</option>
                     @foreach($gudangs as $gudang)
                     <option value="{{$gudang->id}}">{{$gudang->gudang}}</option>

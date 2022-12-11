@@ -136,18 +136,18 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="id_outlet" class="form-label">Outlet</label>
-                                                    <select wire:model="updatedOutlet" id="id_rak" class="select2 form-select">
+                                                    <select wire:model="updatedOutlet" id="id_iutlet" class="select2 form-select">
                                                         <option selected>Choose Outlet</option>
                                                         @foreach($outlets as $outlet)
                                                         <option value="{{$outlet->id}}">{{$outlet->nama}}</option>
                                                         @endforeach
                                                     </select>
                                             </div>
-
-                                            {{-- @if(!is_null($updatedGudang))
+                                            
+                                            @if(!is_null($gudangs))
                                             <div class="mb-3">
-                                                <label for="id_rak" class="form-label">Warehouse</label>
-                                                    <select wire:model="updatedWarehouse" id="id_rak" class="select2 form-select">
+                                                <label for="id_gudang" class="form-label">Warehouse</label>
+                                                    <select wire:model="updatedWarehouse" id="id_gudang" class="select2 form-select">
                                                         <option selected>Choose Warehouse</option>
                                                         @foreach($gudangs as $gudang)
                                                         <option value="{{$gudang->id}}">{{$gudang->gudang}}</option>
@@ -166,7 +166,7 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                            @endif --}}
+                                            @endif
                                             <div class="mb-3">
                                                 <label for="id_supplier" class="form-label">Supplier</label>
                                                     <select wire:model.lazy="updatedSupplier" id="id_supplier" class="select2 form-select">

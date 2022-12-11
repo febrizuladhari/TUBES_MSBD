@@ -20,17 +20,18 @@ class ItemAdmin extends Component
 {
     public $selectedOutlet = '';
     public $selectedCategory = '';
-    public $searchadmin = "";
+    public $searchadmin = '';
+
     public $idb ='';
     public $checked = [];
-    public $gudangs = '';
-    public $taks = '';
+    public $gudangs = NULL;
+    public $raks = NULL;
 
+    public $updaterdOutlet = '';
+    public $updaterdWarehouse = '';
+    public $updaterdRack = '';
     public $updatedNama ='';
     public $updatedKategori = '';
-    public $updatedRak = '';
-    public $updatedGudang = '';
-    public $updatedOutlet = '';
     public $updatedSupplier = '';
 
     use WithPagination;
@@ -39,12 +40,16 @@ class ItemAdmin extends Component
 
     public function updatedUpdatedOutlet($updatedOutlet)
     {
+        if(!is_null($updatedOutlet)){
         $this->gudangs = Lokasi_Gudang::where('id_outlet',$updatedOutlet)->get();
+        }
     }
 
     public function updatedUpdatedWarehouse($updatedWarehouse)
     {
+        if(!is_null($updatedWarehouse)){
         $this->raks = Lokasi_Rak::where('id_gudang',$updatedWarehouse)->get();
+        }
     }
 
     public function onEdit($id){
@@ -53,11 +58,13 @@ class ItemAdmin extends Component
         $this->idb = $id;
         $this->updatedNama = $barang->Nama;
         $this->updatedKategori = $barang->id_Kategori;
-        $this->updatedRak = $barang->id_Rak;
-        $this->updatedGudang = $barang->id_Gudang;
         $this->updatedOutlet = $barang->id_Outlet;
+        $this->updatedWarehouse = $barang->id_Gudang;
+        $this->updatedRack = $barang->id_Rak;
         $this->updatedSupplier = $barang->id_Supplier;
 
+        $this->gudangs = Lokasi_Gudang::where('id_outlet',$barang->id_Outlet)->get();       
+        $this->raks = Lokasi_Rak::where('id_gudang',$barang->id_Gudang)->get();
         $this->dispatchBrowserEvent('show-edit-item-modal');
 
     }
@@ -70,7 +77,7 @@ class ItemAdmin extends Component
         $barang = Barang::where('id', $this->idb)->first();
         $barang->nama = $this->updatedNama;
         $barang->id_kategori = $this->updatedKategori;
-        $barang->id_rak = $this->updatedRak;
+        $barang->id_rak = $this->selectedRak;
         $barang->id_supplier = $this->updatedSupplier;
 
         $barang->save();
@@ -81,22 +88,24 @@ class ItemAdmin extends Component
         $this->dispatchBrowserEvent('close-modal');
     }
 
+    //Single Delete
+
     public function deleteItem($idb)
     {
         $student = Barang::findOrFail($idb);
         $student->delete();
         $this->checked = array_diff($this->checked, [$idb]);
 
-        Alert::success('info', 'Item deleted Successfully');
         session()->flash('info', 'Item deleted Successfully');
     }
+
+    //Bulk Delete
 
     public function deleteItems(){
 
         Barang::whereKey($this->checked)->delete();
         $this->checked = [];
 
-        Alert::success('message', 'Items have been deleted');
         session()->flash('message', 'Items have been deleted');
     }
 
@@ -116,6 +125,7 @@ class ItemAdmin extends Component
             'kategoris' => Kategori::all(),
             'suppliers' => Supplier::all(),
             'outlets' => Outlet::all(),
+
         ]);
     }
 
