@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 
 // Controller Login & Register
 use App\Http\Controllers\LoginController;
@@ -137,6 +138,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/addshifting', function () {
             return view('admin.addshiftingadmin');
         })->name('addshifting');
+
+        Route::get('cetaklistbarang', [PdfController::class, 'cetakListBarang']);
+        Route::get('cetaklaporanrusak', [PdfController::class, 'cetakLaporanRusak']);
+        Route::get('cetakrequestbeli', [PdfController::class, 'cetakRequestBeli']);
 
     });
 

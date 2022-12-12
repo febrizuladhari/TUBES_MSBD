@@ -1,5 +1,9 @@
 <div>
     <div class="table-responsive text-nowrap">
+        <br>
+        <a href="{{ url('cetakrequestbeli') }}">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Ie, chigaimasu </button>
+        </a>
         <table class="table table-hover table-striped">
             <thead>
                 <tr>

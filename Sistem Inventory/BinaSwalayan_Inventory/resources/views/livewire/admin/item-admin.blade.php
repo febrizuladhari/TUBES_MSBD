@@ -59,6 +59,10 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
+                <br>
+                <a href="{{ url('cetaklistbarang') }}">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Ie, chigaimasu </button>
+                </a>
                 <table class="table table-responsive table-hover table-striped">
                     <thead>
                         <tr>

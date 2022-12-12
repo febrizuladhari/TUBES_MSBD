@@ -1,6 +1,9 @@
 <div>
     <div class="table-responsive text-nowrap">
         <br>
+        <a href="{{ url('cetaklaporanrusak') }}">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Ie, chigaimasu </button>
+        </a>
         <table class="table table-responsive table-hover table-striped">
             <thead>
                 <tr>
@@ -45,11 +48,11 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Honto desu ka ?</p>
+                                        <p>Are You Sure ?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Ie, chigaimasu </button>
-                                        <button type="button" wire:click.prevent="destroyer()" class="btn btn-danger close-modal" data-dismiss="modal">Hai, sou desu</button>
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> No </button>                                        
+                                        <button type="button" wire:click.prevent="destroyer()" class="btn btn-danger close-modal" data-dismiss="modal">Yes</button>
                                     </div>
                                 </div>
                             </div>
