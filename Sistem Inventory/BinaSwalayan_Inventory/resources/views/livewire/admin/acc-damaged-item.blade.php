@@ -36,7 +36,7 @@
                         </a>
                         @endforeach
 
-                        <!-- Modal Delete User Popup -->
+                        <!-- Modal Delete Popup -->
                         <div wire:ignore.self class="modal fade" id="basicModal2" tabindex="-1" role="dialog" aria-labelledby="modalCenterLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
