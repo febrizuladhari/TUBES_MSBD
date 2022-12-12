@@ -65,6 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('superadmin', RegisterController::class);
 
         Route::get('/homesuperadmin', [SuperAdminController::class, 'index'])->name('homesuperadmin');
+        Route::get('/homesuperadmin', [SuperAdminController::class, 'chartSuperAdmin']);
 
         // Route::get('/accounts', function(){
         //     return view('superadmin.accounts');
@@ -74,26 +75,6 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/register', [RegisterController::class, 'index'])->name('register_account');
         Route::get('/register/create', [RegisterController::class, 'store'])->name('accounts_create');
-
-
-        // Route::get('/accounts/edit/{id}', function($id){
-        //     return view('superadmin.editaccounts', compact('id'));
-        // })->name('accounts_edit');
-
-        // Route::get('/accounts/edit/{id}', function($id){
-        //     return view('superadmin.editaccounts', compact('id'));
-        // })->name('accounts_edit');
-
-        // Route::get('/register', function(){
-        //     return view('superadmin.register');
-        // })->name('accounts_create');
-
-
-        // Route::livewire('/accounts', 'superadmin.edit')->name('accounts_edit');
-
-        // Route::get('/register', function(){
-        //     return view('superadmin.register');
-        // })->name('register');
 
         Route::get('/addshifting_sa', function () {
             return view('superadmin.addshiftingsuperadmin');
@@ -125,6 +106,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('admin', LoginController::class);
 
         Route::get('/homeadmin', [AdminController::class, 'index'])->name('homeadmin');
+        Route::get('/homeadmin', [AdminController::class, 'chartAdmin']);
         Route::get('/itemadmin', [AdminController::class, 'showitem'])->name('itemadmin');
 
         Route::get('/additem', [AdminController::class, 'formInsertItem'])->name('additem.edit');
@@ -183,6 +165,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('reqbelistaff', function(){
             return view('staff.reqbelistaff');
         })->name('reqbelistaff');
+
+        Route::get('listpinjamstaff', function(){
+            return view('staff.listpinjamstaff');
+        })->name('listpinjamstaff');
+
 
         Route::post('storeReqBuy', [StaffController::class, 'storeReqBuy'])->name('storeReqBuy');
     });

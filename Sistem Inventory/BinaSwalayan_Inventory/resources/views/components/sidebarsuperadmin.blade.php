@@ -2,7 +2,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="{{ route('homesuperadmin') }}" class="app-brand-link">
+        <a href="/homesuperadmin" class="app-brand-link">
         {{-- <span class="app-brand-logo demo"> --}}
             <img src="{{ asset('img/favicon/bina logo.png') }}" width="30%" alt="Logo Bina Swalayan">
             <h4 class="my-3 mx-1">Bina Swalayan</h4>
@@ -20,7 +20,7 @@
     <ul class="menu-inner py-1 mt-3">
         <!-- Dashboard -->
         <li class="menu-item {{ Request::is('homesuperadmin') ? 'active' : '' }}">
-            <a href="{{ route('homesuperadmin') }}" class="menu-link">
+            <a href="/homesuperadmin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>

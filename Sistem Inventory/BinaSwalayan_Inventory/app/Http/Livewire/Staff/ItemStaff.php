@@ -18,7 +18,7 @@ class ItemStaff extends Component
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
     public function render()
     {
 
@@ -28,9 +28,9 @@ class ItemStaff extends Component
                 $query->where('Kategori', $this->selectedCategory);
             })
             ->paginate(10),
-            
+
             'kategoris' => Kategori::all(),
         ]);
     }
-    
+
 }

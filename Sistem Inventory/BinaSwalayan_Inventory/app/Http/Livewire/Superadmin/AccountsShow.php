@@ -49,13 +49,10 @@ class AccountsShow extends Component
         //         ->select('users.*', 'users.nama as nama_user', 'outlets.nama as nama_outlet')
         //         ->get();
 
-        // if($users->count == 0) {
-        //     Alert::question('Opps !', 'Make sure the data you want to find exists');
-        // }
         return view('livewire.superadmin.accounts-show', [
             'users' => $users,
             'outlets' => Outlet::all()
-        ]);
+            ]);
 
 
 

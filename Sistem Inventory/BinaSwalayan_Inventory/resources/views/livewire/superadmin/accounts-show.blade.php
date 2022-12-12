@@ -34,7 +34,6 @@
                     <td>{{ $user->alamat }}</td>
                     <td>{{ $user->no_telp }}</td>
                     <td>
-                        {{-- {{ $user->nama }} --}}
                         {{ $user->id_outlet }}
                     </td>
                     <td>

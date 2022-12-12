@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
+
+use DB;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Supplier;
 use App\Models\Lokasi_Rak;
 use App\Models\Lokasi_Gudang;
 use App\Models\Outlet;
+use App\Models\Req_Peminjaman;
+use App\Models\Laporan_Rusak;
+use App\Models\Req_Pembelian;
 
 class AdminController extends Controller
 {
@@ -20,6 +26,67 @@ class AdminController extends Controller
     {
         return view('admin.homeadmin');
     }
+
+    public function chartAdmin()
+    {
+        /* Chart Kategori */
+        $kategoris = Barang::select(DB::raw("COUNT(*) as count"))
+                    ->groupBy(DB::raw("id_kategori"))
+                    ->orderBy('id','ASC')
+                    ->pluck('count');
+
+        $labels1 = Kategori::select(DB::raw("nama_kategori as kategori"))
+                    ->orderBy('id', 'ASC')
+                    ->pluck('kategori');;
+
+        for ($i = 0; $i <= count($kategoris); $i++) {
+            $colors1[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+        }
+
+        $labels1 = $labels1;
+        $data1 = $kategoris->values();
+        $colors1 = $colors1;
+
+
+        /* Chart Supplier */
+        $suplliers = Barang::select(DB::raw("COUNT(*) as count"))
+                    ->groupBy(DB::raw("id_supplier"))
+                    ->orderBy('id','ASC')
+                    ->pluck('count');
+
+        $labels2 = Supplier::select(DB::raw("nama as supplier"))
+                    ->orderBy('id', 'ASC')
+                    ->pluck('supplier');;
+
+        for ($i = 0; $i <= count($suplliers); $i++) {
+            $colors2[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+        }
+
+        $labels2 = $labels2;
+        $data2 = $suplliers->values();
+        $colors2 = $colors2;
+
+        // Total Items
+        $totalItems = Barang::count();
+
+        // Total Approve Shifting
+        $totalAccShifting = Req_Peminjaman::count();
+
+        // Total Approve Damaged
+        $totalAccDamaged = Laporan_Rusak::count();
+
+        // Total Approve Incoming
+        $totalAccIncoming = Req_Pembelian::count();
+
+
+        return view('admin.homeadmin',
+
+            compact('labels1', 'data1', 'colors1',
+                    'labels2', 'data2', 'colors2',
+                    'totalItems', 'totalAccShifting', 'totalAccDamaged', 'totalAccIncoming'
+        ));
+    }
+
 
     public function showitem()
     {

@@ -9,6 +9,8 @@ class Req_Peminjaman extends Model
 {
     use HasFactory;
 
+    public $table = "req_peminjamans";
+
     protected $fillable = [
         'id_user',
         'id_barang',
