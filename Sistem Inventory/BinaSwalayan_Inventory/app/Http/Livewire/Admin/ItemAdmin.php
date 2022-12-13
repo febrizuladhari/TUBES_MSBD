@@ -85,6 +85,17 @@ class ItemAdmin extends Component
         Alert::success('OK','Item has been updated successfully');
         session()->flash('message', 'Items has been updated successfully');
 
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('OK', 'You have successfully added item !');
+                return redirect()->route('additem_sa.edit');
+            } elseif ($user->level == 'admin') {
+                Alert::success('OK', 'You have successfully added item !');
+                return redirect()->route('additem.edit');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
+        
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
     }

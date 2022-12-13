@@ -35,9 +35,9 @@
                     <div class="mb-3">
                         <label for="id_outlet" class="form-label">Outlet</label>
                             <select id="id_outlet" name="id_outlet" class="select2 form-select @error('id_outlet') is-invalid @enderror">
-                                <option selected>--&nbsp;Choose Outlet&nbsp;--</option>
+                                <option selected>Choose Outlet</option>
                                 @foreach($outlets as $outlet)
-                                    <option value="{{ $outlet->id }}">{{ $outlet->id }}&nbsp;&nbsp;--&nbsp;&nbsp;{{ $outlet->nama }}</option>
+                                    <option value="{{ $outlet->id }}">{{ $outlet->nama }}</option>
                                 @endforeach
                             </select>
                             @error('id_outlet')

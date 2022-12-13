@@ -112,6 +112,14 @@ class SuperAdminController extends Controller
         ));
     }
 
+    public function showitem()
+    {
+        return view('superadmin.itemsuperadmin');
+        $kategoris = Kategori::all();
+        $barangs = Barang::paginate($this->limit);
+        return view('superadmin.itemsuperadmin', compact('barangs'), compact('kategoris'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

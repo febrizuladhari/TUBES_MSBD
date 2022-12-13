@@ -59,7 +59,7 @@
 
             <!-- Form Add Item -->
             <div class="card">
-                <h5 class="card-header">Add Items With Super Admin Authority</h5>
+                <h5 class="card-header">Add Item With Super Admin Authority</h5>
                 <livewire:add-items></livewire:add-items>
             </div>
 

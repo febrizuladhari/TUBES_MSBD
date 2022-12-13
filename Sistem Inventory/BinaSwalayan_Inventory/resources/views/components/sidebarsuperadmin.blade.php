@@ -30,8 +30,8 @@
             <span class="menu-header-text">Items</span>
         </li>
         <!-- Update Item -->
-        <li class="menu-item {{ Request::is('itemadmin') ? 'active' : '' }}">
-            <a href="{{ route('itemadmin') }}" class="menu-link">
+        <li class="menu-item {{ Request::is('itemsuperadmin') ? 'active' : '' }}">
+            <a href="{{ route('itemsuperadmin') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-component bx-tada"></i>
                 <div data-i18n="Analytics">Items</div>
             </a>
@@ -45,18 +45,18 @@
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('accshifting') ? 'active' : '' }}">
-                    <a href="{{ route('accshifting') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('accshifting_sa') ? 'active' : '' }}">
+                    <a href="{{ route('accshifting_sa') }}" class="menu-link">
                         <div data-i18n="Without menu">Shifting Items</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('accdamaged') ? 'active' : '' }}">
-                    <a href="{{ route('accdamaged') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('accdamaged_sa') ? 'active' : '' }}">
+                    <a href="{{ route('accdamaged_sa') }}" class="menu-link">
                         <div data-i18n="Without navbar">Damaged Items</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('accincoming') ? 'active' : '' }}">
-                    <a href="{{ route('accincoming') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('accincoming_sa') ? 'active' : '' }}">
+                    <a href="{{ route('accincoming_sa') }}" class="menu-link">
                         <div data-i18n="Container">Incoming Items</div>
                     </a>
                 </li>

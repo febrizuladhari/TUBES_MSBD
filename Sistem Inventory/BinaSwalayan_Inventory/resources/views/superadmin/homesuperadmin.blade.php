@@ -179,8 +179,8 @@
                                 datasets: [{
                                     label: 'Number of accounts',
                                     data: users,
-                                    backgroundColor: colors1,
-                                    borderColor: colors1,
+                                    backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                                    borderColor: ['rgb(255, 99, 132)'],
                                     borderWidth: 2,
                                     hoverOffset: 4
                                 }]
