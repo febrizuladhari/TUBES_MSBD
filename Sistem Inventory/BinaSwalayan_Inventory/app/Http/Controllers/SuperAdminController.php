@@ -196,10 +196,23 @@ class SuperAdminController extends Controller
 
     }
 
+    // View Halaman Edit Environment
+    public function editEnvironment()
+    {
+        return view('superadmin.editenvironmentsuperadmin');
+    }
+
+
     // View Insert Kategori
     public function formInsertKategori()
     {
         return view('superadmin.addkategorisuperadmin');
+    }
+
+    // View Edit Kategori
+    public function formEditKategori()
+    {
+        return view('superadmin.editkategorisuperadmin');
     }
 
     // Proses Insert Kategori
@@ -222,10 +235,22 @@ class SuperAdminController extends Controller
         }
     }
 
+    // Proses Edit Kategori
+    public function editKategori()
+    {
+
+    }
+
     // View Insert Supplier
     public function formInsertSupplier()
     {
         return view('superadmin.addsupplierssuperadmin');
+    }
+
+    // View Edit Supplier
+    public function formEditSupplier()
+    {
+        return view('superadmin.editsuppliersuperadmin');
     }
 
     // Proses Insert Supplier
@@ -249,11 +274,23 @@ class SuperAdminController extends Controller
         }
     }
 
+    // Proses Edit Supplier
+    public function editSupplier()
+    {
+
+    }
+
     // View Insert Rack
     public function formInsertRack()
     {
         $gudangs = Lokasi_Gudang::all();
         return view('superadmin.addracksuperadmin', compact('gudangs'));
+    }
+
+    // Edit Edit Rack
+    public function formEditRack()
+    {
+        return view('superadmin.editracksuperadmin');
     }
 
     // Proses Insert Rack
@@ -279,10 +316,22 @@ class SuperAdminController extends Controller
         }
     }
 
+    // Proses Edit Rack
+    public function editRack()
+    {
+
+    }
+
     // View Insert Outlet
     public function formInsertOutlet()
     {
         return view('superadmin.addoutletsuperadmin');
+    }
+
+    // View Edit Outlet
+    public function formEditOutlet()
+    {
+        return view('superadmin.editoutletsuperadmin');
     }
 
     // Proses Insert Outlet
@@ -306,11 +355,23 @@ class SuperAdminController extends Controller
         }
     }
 
+    // Proses Edit Outlet
+    public function editOutlet()
+    {
+
+    }
+
     // View Insert Warehouse
     public function formInsertWarehouse()
     {
         $outlets = Outlet::all();
         return view('superadmin.addwarehousesuperadmin', compact('outlets'));
+    }
+
+    // View Edit Warehouse
+    public function formEditWarehouse()
+    {
+        return view('superadmin.editwarehousesuperadmin');
     }
 
     // Proses Insert Warehouse
@@ -334,6 +395,12 @@ class SuperAdminController extends Controller
             Alert::error('Opps', 'Failed to add warehouse');
             return redirect()->route('additem_sa.edit')->with(['error' => 'Failed to add warehouse']);
         }
+    }
+
+    // Proses Edit warehouse
+    public function editWarehouse()
+    {
+
     }
 
 }

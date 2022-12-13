@@ -1,7 +1,7 @@
 @extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Add Rack - Super Admin</title>
+    <title>Add Warehouse - Super Admin</title>
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h3 class="fw-bold py-3">Add Rack</h3>
+            <h3 class="fw-bold py-3">Add Warehouse</h3>
             <hr class="my-4">
 
             <div class="card">
-                <h5 class="card-header">Add Rack With Super Admin Authority</h5>
+                <h5 class="card-header">Add Warehouse With Super Admin Authority</h5>
                 <form method="POST" action="{{ route('addwarehouse_sa.insert') }}" class="container-fluid">
                     @csrf
                     <div class="mb-3">

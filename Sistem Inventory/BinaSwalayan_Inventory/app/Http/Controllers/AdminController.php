@@ -18,6 +18,8 @@ use App\Models\Req_Peminjaman;
 use App\Models\Laporan_Rusak;
 use App\Models\Req_Pembelian;
 
+
+
 class AdminController extends Controller
 {
     protected $limit = 10;

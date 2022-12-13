@@ -19,7 +19,6 @@
             <div class="card">
                 <h5 class="card-header">Add Rack With Super Admin Authority</h5>
                 <livewire:add-rack></livewire:add-rack>
-
             </div>
 
         </div>

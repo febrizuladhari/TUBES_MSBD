@@ -28,8 +28,6 @@ class AddRack extends Component
         $this->gudangs = Lokasi_Gudang::where('id_outlet',$selectedOutlet)->get();
     }
 
-
-
     public function store()
     {
         Lokasi_Rak::create([

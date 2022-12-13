@@ -10,6 +10,7 @@ use App\Models\Lokasi_Gudang;
 use App\Models\Lokasi_Rak;
 use App\Models\Supplier;
 use RealRashid\SweetAlert\Facades\Alert;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -36,7 +37,7 @@ class ItemAdmin extends Component
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
 
     public function updatedUpdatedOutlet($updatedOutlet)
     {
@@ -63,7 +64,7 @@ class ItemAdmin extends Component
         $this->updatedRack = $barang->id_Rak;
         $this->updatedSupplier = $barang->id_Supplier;
 
-        $this->gudangs = Lokasi_Gudang::where('id_outlet',$barang->id_Outlet)->get();       
+        $this->gudangs = Lokasi_Gudang::where('id_outlet',$barang->id_Outlet)->get();
         $this->raks = Lokasi_Rak::where('id_gudang',$barang->id_Gudang)->get();
         $this->dispatchBrowserEvent('show-edit-item-modal');
 
@@ -121,7 +122,7 @@ class ItemAdmin extends Component
                 $query->where('Kategori', $this->selectedCategory);
             })
             ->paginate(10),
-            
+
             'kategoris' => Kategori::all(),
             'suppliers' => Supplier::all(),
             'outlets' => Outlet::all(),
@@ -129,5 +130,5 @@ class ItemAdmin extends Component
         ]);
     }
 
-    
+
 }

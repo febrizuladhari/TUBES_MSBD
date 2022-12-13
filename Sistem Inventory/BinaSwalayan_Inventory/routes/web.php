@@ -84,20 +84,27 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/additem_sa', [SuperAdminController::class, 'formInsertItem'])->name('additem_sa.edit');
         // Route::post('/additem_sa', [SuperAdminController::class, 'insertItem'])->name('additem_sa.insert');
 
+        Route::get('/editenvironment', [SuperAdminController::class, 'editEnvironment'])->name('editenvironment');
+
         Route::get('/addkategori_sa/edit', [SuperAdminController::class, 'formInsertKategori'])->name('addkategori_sa.edit');
         Route::post('/addkategori_sa/insert', [SuperAdminController::class, 'insertKategori'])->name('addkategori_sa.insert');
+        Route::get('/editkategori_sa/edit', [SuperAdminController::class, 'formEditKategori'])->name('editkategori_sa.edit');
 
         Route::get('/addsupplier_sa/edit', [SuperAdminController::class, 'formInsertSupplier'])->name('addsupplier_sa.edit');
         Route::post('/addsupplier_sa/insert', [SuperAdminController::class, 'insertSupplier'])->name('addsupplier_sa.insert');
+        Route::get('/editsupplier_sat/edit', [SuperAdminController::class, 'formEditSupplier'])->name('editsupplier_sa.edit');
 
         Route::get('/addrack_sa/edit', [SuperAdminController::class, 'formInsertRack'])->name('addrack_sa.edit');
         Route::post('/addrack_sa/insert', [SuperAdminController::class, 'insertRack'])->name('addrack_sa.insert');
+        Route::get('/editrack_sa/edit', [SuperAdminController::class, 'formEditRack'])->name('editrack_sa.edit');
 
         Route::get('/addoutlet_sa/edit', [SuperAdminController::class, 'formInsertOutlet'])->name('addoutlet_sa.edit');
         Route::post('/addoutlet_sa/insert', [SuperAdminController::class, 'insertOutlet'])->name('addoutlet_sa.insert');
+        Route::get('/editoutlet_sa/edit', [SuperAdminController::class, 'formEditOutlet'])->name('editoutlet_sa.edit');
 
         Route::get('/addwarehouse_sa/edit', [SuperAdminController::class, 'formInsertWarehouse'])->name('addwarehouse_sa.edit');
         Route::post('/addwarehouse_sa/insert', [SuperAdminController::class, 'insertWarehouse'])->name('addwarehouse_sa.insert');
+        Route::get('/editwarehouse_sa/edit', [SuperAdminController::class, 'formEditWarehouse'])->name('editwarehouse_sa.edit');
 
     });
 
@@ -143,6 +150,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('cetaklaporanrusak', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli', [PdfController::class, 'cetakRequestBeli']);
 
+        Route::get('/qritem', function () {
+            return view('admin.qritemadmin');
+        })->name('qritem');
     });
 
     // Middleware Staff

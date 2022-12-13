@@ -2,9 +2,18 @@
     <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
         <!-- List Itemms -->
         <div class="card">
-            <h5 class="card-header">List Items With Conditions</h5>
+            <div class="row">
+                <div class="col">
+                    <h5 class="card-header">List Items With Conditions</h5>
+                </div>
+                <div class="col d-flex justify-content-end mt-3 me-4">
+                    <div class="demo-inline-spacing">
+                        <a href="{{ route('qritem') }}"><button wire:click="generateMultipleQr($idb)" type="button" class="btn btn-primary">Generate QR</button></a>
+                    </div>
+                </div>
+            </div>
             <div class="row mb-4">
-                <div class="col-3 ms-5 mt-4">
+                <div class="col-3 ms-2 mt-4">
                     <div class="demo-inline-spacing">
                         <div class="btn-group" id="dropdown-icon-demo">
                             <select class="form-control from-control-sm" wire:model="selectedOutlet">
@@ -29,35 +38,25 @@
                     </div>
                 </div>
 
-                @if($checked)
-                    <div class="col-lg-3 col-sm-6 col-12 ms-4 mb-4">
-                        <div class="demo-inline-spacing">
-                            <div class="btn-group" id="dropdown-icon-demo">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bx bx-menu bxs-like bx-burst-hover"></i> Actions Checked ({{count($checked)}})
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#" type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" 
-                                    wire:click="deleteItems()" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>Delete</a>
-                                </li>
-                                {{-- <li>
-                                    <a href="#" type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" 
-                                    wire:click="deleteItems()" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>Export</a>
-                                </li> --}}
-                                
-                            </ul>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                    
-                <div class="col-6 mt-4">
+                <div class="col-4 mt-4">
                     <div class="demo-inline-spacing">
                         <input type="search" wire:model="searchadmin" class="form-control mb-4" placeholder="Search Item ...">
                     </div>
                 </div>
+
+                @if($checked)
+                    <div class="col-2 mt-4 d-flex justify-content-end">
+                        <div class="demo-inline-spacing">
+                            <a href="#"><button type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()"
+                                wire:click="deleteItems()" class="btn btn-danger"><i class="menu-icon tf-icons bx bxs-trash"></i>Delete Selected</button>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+
+
             </div>
+
             <div class="table-responsive text-nowrap">
                 <br>
                 <a href="{{ url('cetaklistbarang') }}">
@@ -147,7 +146,7 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                            
+
                                             @if(!is_null($gudangs))
                                             <div class="mb-3">
                                                 <label for="id_gudang" class="form-label">Warehouse</label>

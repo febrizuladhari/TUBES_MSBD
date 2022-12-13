@@ -79,6 +79,12 @@
                 <div data-i18n="Analytics">Add Item</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::is('editenvironment') ? 'active' : '' }}">
+            <a href="{{ route('editenvironment') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-edit bxs-like bx-tada"></i>
+                <div data-i18n="Analytics">Edit Environment</div>
+            </a>
+        </li>
         <li class="menu-item {{ Request::is('addshifting_sa') ? 'active' : '' }}">
             <a href="{{ route('addshifting_sa') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
