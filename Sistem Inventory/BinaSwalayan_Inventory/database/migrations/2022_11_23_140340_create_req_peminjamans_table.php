@@ -15,9 +15,12 @@ class CreateReqPeminjamansTable extends Migration
     {
         Schema::create('req_peminjamans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedbigInteger('id_user')->index('id_user');
-            $table->char('id_barang')->index('id_barang');
-            $table->timestamp('tanggal_diperlukan');
+            $table->unsignedBigInteger('id_user')->index('id_user');
+            $table->unsignedBigInteger('id_kategori')->index('id_kategori');
+            $table->unsignedBigInteger('id_rak_peminjam')->index('id_gudang_peminjam');
+            $table->string('nama_barang');
+            $table->timestamp('tanggal_diperlukan')->useCurrentOnUpdate()->useCurrent();
+        
         });
     }
 
