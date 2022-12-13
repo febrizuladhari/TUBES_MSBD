@@ -78,7 +78,7 @@ class ItemAdmin extends Component
         $barang = Barang::where('id', $this->idb)->first();
         $barang->nama = $this->updatedNama;
         $barang->id_kategori = $this->updatedKategori;
-        $barang->id_rak = $this->selectedRak;
+        $barang->id_rak = $this->updatedRack;
         $barang->id_supplier = $this->updatedSupplier;
 
         $barang->save();
