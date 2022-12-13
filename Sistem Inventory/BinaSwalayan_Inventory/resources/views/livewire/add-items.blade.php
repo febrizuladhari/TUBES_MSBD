@@ -22,7 +22,7 @@
                 </select>
         </div>
 
-        {{-- @if(!is_null($gudangs))
+        @if(!is_null($gudangs))
         <div class="mb-3">
             <label for="id_gudang" class="form-label">Warehouse</label>
                 <select wire:model="selectedWarehouse" id="id_gudang" class="select2 form-select">
@@ -44,7 +44,7 @@
                     @endforeach
                 </select>
         </div>
-        @endif --}}
+        @endif
         <div class="mb-3">
             <label class="form-label" for="nama">Name</label>
             <div class="input-group input-group-merge">
