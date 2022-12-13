@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-class CreateViewReqpeminjamanView extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateViewReqpeminjamanView extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW `view_reqpeminjaman` AS select `req_peminjamans`.`id_barang` AS `id`,`barangs`.`nama` AS `nama_barang`,`kategoris`.`nama_kategori` AS `kategori`,`outlets_alias1`.`nama` AS `asal`,`outlets_alias2`.`nama` AS `tujuan`,`users`.`username` AS `user`,`req_peminjamans`.`tanggal_diperlukan` AS `tanggal` from (((((((`barangs` left join `kategoris` on(`barangs`.`id_kategori` = `kategoris`.`id`)) join `lokasi_raks` on(`barangs`.`id_rak` = `lokasi_raks`.`id`)) join `lokasi_gudangs` on(`lokasi_raks`.`id_gudang` = `lokasi_gudangs`.`id`)) join `outlets` `outlets_alias1` on(`lokasi_gudangs`.`id_outlet` = `outlets_alias1`.`id`)) join `req_peminjamans` on(`barangs`.`id` = `req_peminjamans`.`id_barang`)) join `users` on(`req_peminjamans`.`id_user` = `users`.`id`)) join `outlets` `outlets_alias2` on(`users`.`id_outlet` = `outlets_alias2`.`id`))");
+        DB::statement("CREATE VIEW `view_reqpeminjaman` AS select `msbd`.`req_peminjamans`.`id` AS `id`,`msbd`.`kategoris`.`id` AS `id_kategori`,`msbd`.`kategoris`.`nama_kategori` AS `kategori`,`msbd`.`users`.`id` AS `id_user`,`msbd`.`users`.`nama` AS `USER`,`msbd`.`lokasi_raks`.`id` AS `id_rak`,`msbd`.`lokasi_raks`.`rak` AS `rak`,`msbd`.`lokasi_gudangs`.`id` AS `id_gudang`,`msbd`.`lokasi_gudangs`.`gudang` AS `gudang`,`msbd`.`outlets`.`id` AS `id_outlet`,`msbd`.`outlets`.`nama` AS `outlet`,`msbd`.`req_peminjamans`.`nama_barang` AS `nama_barang`,`msbd`.`req_peminjamans`.`tanggal_diperlukan` AS `tanggal_diperlukan` from (((((`msbd`.`lokasi_raks` join `msbd`.`lokasi_gudangs` on(`msbd`.`lokasi_raks`.`id_gudang` = `msbd`.`lokasi_gudangs`.`id`)) join `msbd`.`outlets` on(`msbd`.`lokasi_gudangs`.`id_outlet` = `msbd`.`outlets`.`id`)) join `msbd`.`req_peminjamans` on(`msbd`.`lokasi_raks`.`id` = `msbd`.`req_peminjamans`.`id_rak_peminjam`)) join `msbd`.`kategoris` on(`msbd`.`req_peminjamans`.`id_kategori` = `msbd`.`kategoris`.`id`)) join `msbd`.`users` on(`msbd`.`req_peminjamans`.`id_user` = `msbd`.`users`.`id`))");
     }
 
     /**
@@ -24,4 +24,4 @@ class CreateViewReqpeminjamanView extends Migration
     {
         DB::statement("DROP VIEW IF EXISTS `view_reqpeminjaman`");
     }
-}
+};
