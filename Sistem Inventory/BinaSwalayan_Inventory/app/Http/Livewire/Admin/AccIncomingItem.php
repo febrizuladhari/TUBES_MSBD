@@ -11,6 +11,7 @@ use App\Models\View_Req_Pembelian;
 use Livewire\Component;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class AccIncomingItem extends Component
 {
@@ -43,9 +44,9 @@ class AccIncomingItem extends Component
 
     public function confirmBuyRequest($id)
     {
-        $incoming = View_Req_Pembelian::where('id', $id)->first(); 
-        $suppliers = Supplier::all()->first();   
-        $this->idb = $incoming->id;   
+        $incoming = View_Req_Pembelian::where('id', $id)->first();
+        $suppliers = Supplier::all()->first();
+        $this->idb = $incoming->id;
         $this->selectedID = $incoming->id;
         $this->selectedNamaBarang = $incoming->nama_barang;
         $this->selectedKategori = $incoming->id_kategori;
@@ -63,9 +64,18 @@ class AccIncomingItem extends Component
     public function reject()
     {
         Req_Pembelian::where('id', $this->deleteId)->delete();
-        Alert::success('OK','Reject Completed');
-        session()->flash('message', 'You have removed this request');
-        return redirect()->route('accincoming');
+
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('OK', 'Reject completed !');
+                return redirect()->route('accincoming_sa');
+            } elseif ($user->level == 'admin') {
+                Alert::success('OK', 'Reject completed !');
+                return redirect()->route('accincoming');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
+
     }
 
     public function submitConfirmIncoming()
@@ -80,8 +90,15 @@ class AccIncomingItem extends Component
         $delete = Req_Pembelian::where('id', $this->selectedID);
         $delete->delete();
 
-        Alert::success('OK','Item has been approved');
-
-        return redirect()->route('accincoming');
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('Great', 'Item has been approved !');
+                return redirect()->route('accincoming_sa');
+            } elseif ($user->level == 'admin') {
+                Alert::success('Great', 'Item has been approved !');
+                return redirect()->route('accincoming');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
     }
 }

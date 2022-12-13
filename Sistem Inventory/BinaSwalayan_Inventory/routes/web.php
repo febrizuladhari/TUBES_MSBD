@@ -68,6 +68,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/homesuperadmin', [SuperAdminController::class, 'index'])->name('homesuperadmin');
         Route::get('/homesuperadmin', [SuperAdminController::class, 'chartSuperAdmin']);
 
+        Route::get('/itemsuperadmin', [SuperAdminController::class, 'showitem'])->name('itemsuperadmin');
+
         // Route::get('/accounts', function(){
         //     return view('superadmin.accounts');
         // })->name('accounts_show');
@@ -76,6 +78,18 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/register', [RegisterController::class, 'index'])->name('register_account');
         Route::get('/register/create', [RegisterController::class, 'store'])->name('accounts_create');
+
+        Route::get('/accshifting_sa', function () {
+            return view('superadmin.accshiftingsuperadmin');
+        })->name('accshifting_sa');
+
+        Route::get('/accdamaged_sa', function () {
+            return view('superadmin.accdamagedsuperadmin');
+        })->name('accdamaged_sa');
+
+        Route::get('/accincoming_sa', function () {
+            return view('superadmin.accincomingsuperadmin');
+        })->name('accincoming_sa');
 
         Route::get('/addshifting_sa', function () {
             return view('superadmin.addshiftingsuperadmin');
@@ -128,7 +142,6 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/addrack/edit', [AdminController::class, 'formInsertRack'])->name('addrack.edit');
         Route::post('/addrack/insert', [AdminController::class, 'insertRack'])->name('addrack.insert');
-
 
         Route::get('/accshifting', function () {
             return view('admin.accshiftingadmin');

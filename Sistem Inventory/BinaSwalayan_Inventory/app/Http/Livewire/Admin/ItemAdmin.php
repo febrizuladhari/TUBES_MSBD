@@ -82,20 +82,19 @@ class ItemAdmin extends Component
         $barang->id_supplier = $this->updatedSupplier;
 
         $barang->save();
-        Alert::success('OK','Item has been updated successfully');
         session()->flash('message', 'Items has been updated successfully');
 
         if ($user = Auth::user()) {
             if ($user->level == 'superadmin') {
-                Alert::success('OK', 'You have successfully added item !');
-                return redirect()->route('additem_sa.edit');
+                Alert::success('OK', 'Item has been updated successfully !');
+                return redirect()->route('itemsuperadmin');
             } elseif ($user->level == 'admin') {
-                Alert::success('OK', 'You have successfully added item !');
-                return redirect()->route('additem.edit');
+                Alert::success('OK', 'Item has been updated successfully !');
+                return redirect()->route('itemadmin');
             }
         }
         Alert::error('Opps !', 'You cannot access this page');
-        
+
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
     }
@@ -108,7 +107,18 @@ class ItemAdmin extends Component
         $student->delete();
         $this->checked = array_diff($this->checked, [$idb]);
 
-        session()->flash('info', 'Item deleted Successfully');
+        session()->flash('info', 'Item deleted successfully');
+
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('OK', 'Item deleted successfully !');
+                return redirect()->route('itemsuperadmin');
+            } elseif ($user->level == 'admin') {
+                Alert::success('OK', 'Item deleted successfully !');
+                return redirect()->route('itemadmin');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
     }
 
     //Bulk Delete
@@ -119,6 +129,17 @@ class ItemAdmin extends Component
         $this->checked = [];
 
         session()->flash('message', 'Items have been deleted');
+
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('OK', 'Many items deleted successfully !');
+                return redirect()->route('itemsuperadmin');
+            } elseif ($user->level == 'admin') {
+                Alert::success('OK', 'Many items deleted successfully !');
+                return redirect()->route('itemadmin');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
     }
 
     public function render()

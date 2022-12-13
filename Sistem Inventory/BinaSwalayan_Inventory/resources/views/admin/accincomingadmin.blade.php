@@ -19,7 +19,6 @@
 
             <!-- List Itemms -->
             <div class="card">
-                <h5 class="card-header">List of incoming items pending approval</h5>
                 <livewire:admin.acc-incoming-item></livewire:admin.acc-incoming-item>
             </div>
 

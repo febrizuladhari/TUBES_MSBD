@@ -8,6 +8,7 @@ use App\Models\View_Rusak;
 use Livewire\Component;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class AccDamagedItem extends Component
 {
@@ -24,7 +25,7 @@ class AccDamagedItem extends Component
     public $updatedLokasi= '';
     public $updatedBiaya='';
     public $deleteId='';
-    
+
     public function render()
     {
         return view('livewire.admin.acc-damaged-item', [
@@ -55,9 +56,17 @@ class AccDamagedItem extends Component
     public function destroyer()
     {
         Laporan_Rusak::where('id_barang', $this->deleteId)->delete();
-        Alert::success('OK','Reject Completed');
-        session()->flash('message', 'You have removed this request');
-        return redirect()->route('accdamaged');
+
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('OK', 'Reject completed !');
+                return redirect()->route('accdamaged_sa');
+            } elseif ($user->level == 'admin') {
+                Alert::success('OK', 'Reject completed !');
+                return redirect()->route('accdamaged');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
     }
 
     public function submitConfirmDamage()
@@ -72,8 +81,16 @@ class AccDamagedItem extends Component
         $delete = Laporan_Rusak::where('id_barang', $this->updatedID);
         $delete->delete();
 
-        Alert::success('OK','Item has been approved');
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('Great', 'Item has been approved !');
+                return redirect()->route('accdamaged_sa');
+            } elseif ($user->level == 'admin') {
+                Alert::success('Great', 'Item has been approved !');
+                return redirect()->route('accdamaged');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
 
-        return redirect()->route('accdamaged');
     }
 }
