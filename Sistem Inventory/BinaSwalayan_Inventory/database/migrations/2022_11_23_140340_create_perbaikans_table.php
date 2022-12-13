@@ -19,7 +19,7 @@ class CreatePerbaikansTable extends Migration
             $table->date('tanggal_keluar');
             $table->date('tanggal_kembali');
             $table->string('lokasi');
-            $table->integer('biaya');
+            $table->text('catatan');
         });
     }
 

@@ -11,9 +11,13 @@ class Req_Peminjaman extends Model
 
     public $table = "req_peminjamans";
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_user',
-        'id_barang',
+        'id_kategori',
+        'id_rak_peminjam',
+        'nama_barang',
         'tanggal_diperlukan'
     ];
 }
