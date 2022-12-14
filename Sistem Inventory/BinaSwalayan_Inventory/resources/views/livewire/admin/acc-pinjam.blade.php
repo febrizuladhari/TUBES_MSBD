@@ -46,7 +46,7 @@
                                                     <label class="form-label" for="nama">Name</label>
                                                     <div class="input-group input-group-merge">
                                                         <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                        <input wire:model.lazy="updatedNama" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Name" required/>
+                                                        <input wire:model.lazy="selectedNama" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Name" required/>
                                                         @error('nama')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -54,26 +54,30 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="id_kategori" class="form-label">Category</label>
-                                                        <select wire:model.lazy="updatedKategori" id="id_kategori" class="form-control">
-                                                            <option selected>Choose Category</option>
-                                                            @foreach($kategoris as $kategori)
-                                                            <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                <div class="w-48">
+                                                    <label class="font-bold" for="user-name">Search for User</label>
+                                                    <div>
+                                                        <x-lwa::autocomplete
+                                                            name="item-name"
+                                                            wire:model-text="name"
+                                                            wire:model-id="itemId"
+                                                            wire:model-results="items"
+                                                            :options="[
+                                                                'text'=> 'Nama',
+                                                                'allow-new'=> 'false',
+                                                            ]" />
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="id_outlet" class="form-label">Outlet</label>
-                                                        <select wire:model="updatedOutlet" id="id_iutlet" class="select2 form-select">
-                                                            <option selected>Choose Outlet</option>
-                                                            @foreach($outlets as $outlet)
-                                                            <option value="{{$outlet->id}}">{{$outlet->nama}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                </div>
+                                                <p>Name: {{ $item->name ?? null }}</p>
+
+                                                {{-- {{$selectedUser}}
+                                                {{$selectedOutlet}}
+                                                {{$selectedWarehouse}}
+                                                {{$selectedRack}}
+                                                {{$selectedTanggal}} --}}
                                                 
-                                                @if(!is_null($gudangs))
+
+                                                {{-- @if(!is_null($gudangs))
                                                 <div class="mb-3">
                                                     <label for="id_gudang" class="form-label">Warehouse</label>
                                                         <select wire:model="updatedWarehouse" id="id_gudang" class="select2 form-select">
@@ -104,7 +108,7 @@
                                                             <option value="{{$supplier->id}}">{{$supplier->nama}}</option>
                                                             @endforeach
                                                         </select>
-                                                </div>
+                                                </div> --}}
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">Save Changes</button>

@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReqPinjam extends Component
 {
-    public $gudangs = NULL;
     public $raks = NULL;
     public $selectedName = '';
     public $selectedKategori = '';
@@ -25,17 +24,15 @@ class ReqPinjam extends Component
 
 
     public function render()
-    {
+    {   $uid = Auth::user()->id;
+        $outlet = Outlet::where('id',1)->get();
+        $gudangs = Lokasi_Gudang::where('id_outlet',2);
         return view('livewire.staff.req-pinjam',[
             'kategoris' => Kategori::all(),
             'outlets' => Outlet::where('id',1)->get(),
+            'gudangs' => Lokasi_Gudang::where('id_outlet',2)->get(),
         
         ]);
-    }
-
-    public function updatedSelectedOutlet($selectedOutlet)
-    {
-        $this->gudangs = Lokasi_Gudang::where('id_outlet',$selectedOutlet)->get();
     }
 
     public function updatedSelectedWarehouse($selectedWarehouse)

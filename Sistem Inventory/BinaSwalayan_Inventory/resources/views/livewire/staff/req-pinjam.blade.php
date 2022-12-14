@@ -21,13 +21,11 @@
         <div class="mb-3">
             <label for="id_outlet" class="form-label">Outlet</label>
                 <select wire:model="selectedOutlet" id="id_outlet" class="select2 form-select">
-                    <option selected>Choose Outlet</option>
                     @foreach($outlets as $outlet)
-                    <option value="{{$outlet->id}}">{{$outlet->nama}}</option>
+                    <option>{{$outlet->nama}}</option>
                     @endforeach
                 </select>
         </div>
-        @if(!is_null($gudangs))
         <div class="mb-3">
             <label for="id_gudang" class="form-label">Warehouse</label>
                 <select wire:model="selectedWarehouse" id="id_gudang" class="select2 form-select">
@@ -38,7 +36,6 @@
                     
                 </select>
         </div>
-        @endif
 
         @if(!is_null($raks))
         <div class="mb-3">
