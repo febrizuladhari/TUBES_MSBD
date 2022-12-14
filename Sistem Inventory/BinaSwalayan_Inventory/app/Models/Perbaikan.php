@@ -15,6 +15,6 @@ class Perbaikan extends Model
         'tanggal_keluar',
         'tanggal_kembali',
         'lokasi',
-        'biaya'
+        'catatan'
     ];
 }

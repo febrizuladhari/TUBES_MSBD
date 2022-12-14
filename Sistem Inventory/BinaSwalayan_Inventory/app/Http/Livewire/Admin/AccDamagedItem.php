@@ -23,7 +23,6 @@ class AccDamagedItem extends Component
     public $updatedKeluar= '';
     public $updatedKembali= '';
     public $updatedLokasi= '';
-    public $updatedBiaya='';
     public $deleteId='';
 
     public function render()
@@ -75,7 +74,8 @@ class AccDamagedItem extends Component
             'id_barang' => $this->updatedID,
             'tanggal_keluar' => $this->updatedKeluar,
             'tanggal_kembali' => $this->updatedKembali,
-            'lokasi' => $this->updatedLokasi
+            'lokasi' => $this->updatedLokasi,
+            'catatan'=> $this->updatedCatatan
         ]);
 
         $delete = Laporan_Rusak::where('id_barang', $this->updatedID);
