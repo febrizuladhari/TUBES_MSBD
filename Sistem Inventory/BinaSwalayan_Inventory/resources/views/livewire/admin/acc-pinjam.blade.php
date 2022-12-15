@@ -34,42 +34,90 @@
                                 <i class="menu-icon tf-icons bx bx-error-alt"></i>Reject
                             </button>
                     @endforeach
-
-
+                    <div>
+                        
+                            <!-- CSS -->
+    <style type="text/css">
+        .search-box .clear{
+            clear:both;
+            margin-top: 20px;
+        }
+    
+        .search-box ul{
+            list-style: none;
+            padding: 0px;
+            width: 250px;
+            position: absolute;
+            margin: 0;
+            background: white;
+        }
+    
+        .search-box ul li{
+            background: lavender;
+            padding: 4px;
+            margin-bottom: 1px;
+        }
+    
+        .search-box ul li:nth-child(even){
+            background: cadetblue;
+            color: white;
+        }
+    
+        .search-box ul li:hover{
+            cursor: pointer;
+        }
+    
+        .search-box input[type=text]{
+            padding: 5px;
+            width: 250px;
+            letter-spacing: 1px;
+        }
+        </style>               
                             <!-- Modal Confirm Popup -->
                             <div wire:ignore.self class="modal fade" id="basicModal1" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <form wire:submit.prevent="submitEdit" action="" method="post" class="container-fluid">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="nama">Name</label>
-                                                    <div class="input-group input-group-merge">
-                                                        <span id="nama" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                        <input wire:model.lazy="selectedNama" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Name" required/>
-                                                        @error('nama')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
+                                                <h5 class="card-title">Item Requested</h5>
+                                                <div class="card" style="width: 16rem;">
+                                                    <div class="card-body">
+                                                      
+                                                      @foreach ($needItems as $items)
+                                                        <p>{{$items->nama_barang}}</p>
+                                                      @endforeach
+                                                      <p class="card-text"></p>
                                                     </div>
                                                 </div>
+                                                  
                                                 <div class="w-48">
                                                     <label class="font-bold" for="user-name">Search for User</label>
-                                                    <div>
-                                                        <x-lwa::autocomplete
-                                                            name="item-name"
-                                                            wire:model-text="name"
-                                                            wire:model-id="itemId"
-                                                            wire:model-results="items"
-                                                            :options="[
-                                                                'text'=> 'Nama',
-                                                                'allow-new'=> 'false',
-                                                            ]" />
+                                                    <div class="search-box">
+                                                        <input type='text' wire:model="search" wire:keyup="searchResult">
+                                                
+                                                        <!-- Search result list -->
+                                                        @if(!empty($records))
+                                                            <ul >
+                                                                
+                                                                    @foreach($records as $record)
+                                                
+                                                                         <li wire:click="fetchItemDetail({{ $record->id }})">{{ $record->Nama}}-{{$record->Outlet}}</li>
+                                                
+                                                                    @endforeach
+                                                                
+                                                            </ul>
+                                                        @endif
+                                                
+                                                        <div class="clear"></div>
+                                                        <div >
+                                                            @if(!empty($empDetails))
+                                                                <div>
+                                                                     Name : {{ $empDetails->Nama }} <br>
+                                                                     Email : {{ $empDetails->id }}
+                                                                </div>
+                                                            @endif
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <p>Name: {{ $item->name ?? null }}</p>
-
                                                 {{-- {{$selectedUser}}
                                                 {{$selectedOutlet}}
                                                 {{$selectedWarehouse}}

@@ -24,13 +24,11 @@ class ReqPinjam extends Component
 
 
     public function render()
-    {   $uid = Auth::user()->id;
-        $outlet = Outlet::where('id',1)->get();
-        $gudangs = Lokasi_Gudang::where('id_outlet',2);
+    {   $uid = Auth::user()->id_outlet;
         return view('livewire.staff.req-pinjam',[
             'kategoris' => Kategori::all(),
-            'outlets' => Outlet::where('id',1)->get(),
-            'gudangs' => Lokasi_Gudang::where('id_outlet',2)->get(),
+            'outlets' => Outlet::where('id',$uid)->get(),
+            'gudangs' => Lokasi_Gudang::where('id_outlet',$uid)->get(),
         
         ]);
     }

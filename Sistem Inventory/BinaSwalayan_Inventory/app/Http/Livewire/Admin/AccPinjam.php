@@ -24,71 +24,56 @@ class AccPinjam extends Component
     public $selectediUser = '';
     public $selectedUser = '';
     public $selectedTanggal = '';
-    public $needItems;
+    public $needItems=[];
     public $query;
     public $items;
     public $name;
 
 
-    
-    public $userId;
-    public $users;
-
-    public $user;
-
     public function mount(){
-        $this->query = '';
-        $this->getItems();
+    }
+    public $showdiv = true;
+    public $showresult;
+    public $search = "";
+    public $records = NULL;
+    public $empDetails;
+
+    // Fetch records
+    public function searchResult(){
+
+        if(!empty($this->search)){
+
+            $this->records = View_Barang::where('Nama','like','%'.$this->search.'%')
+                      ->limit(5)
+                      ->get();
+
+            $this->showdiv = true;
+        }else{
+            $this->showdiv = false;
+        }
     }
 
-    protected $rules = [
-        'items.*.id' => '',
-        'items.*.name' => '',
+    // Fetch record by ID
+    public function fetchItemDetail($id){
 
-        'item.id' => '',
-        'item.name' => '',
-    ];
+        $record = View_Barang::select('*')
+                    ->where('id',$id)
+                    ->first();
+
+        $this->search = $record->Nama;
+        $this->empDetails = $record;
+        $this->search = NULL;
+        $this->records = NULL;
+
+    }
+
 
     public function onAcc($id){
         
-        $needItems = View_Req_Peminjaman::where('id',$id)->first();
-        $this->selectedNama = $needItems->nama_barang;
-        $this->selectediOutlet = $needItems->id_outlet;
-        $this->selectedOutlet = $needItems->outlet;
-        $this->selectediWarehouse = $needItems->id_gudang;
-        $this->selectedWarehouse = $needItems->gudang;
-        $this->selectediRack = $needItems->id_rak;
-        $this->selectedRack = $needItems->rak;
-        $this->selectediUser = $needItems->id_user;
-        $this->selectedUser = $needItems->USER;
-        $this->selectedTanggal = $needItems->tanggal_diperlukan;
-
+        $this->needItems = View_Req_Peminjaman::query()->where('id',$id)->get();
         $this->dispatchBrowserEvent('show-edit-item-modal');
 
     }
-
-    public function updatedItemId()
-    {
-        $this->item = View_Barang::find($this->itemid)->dd();
-    }
-
-    public function updatedName()
-    {
-        $this->getItems();
-    }
-
-    public function getitems()
-    {
-        $this->items = View_Barang::query()
-            ->when($this->name, function ($query, $name) {
-                return $query->where('Nama', 'LIKE', '%' . $name . '%');
-            })
-            ->orderBy('Nama')
-            ->get();
-    }
-
-
-
 
     
     public function render()
