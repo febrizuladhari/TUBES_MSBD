@@ -22,28 +22,28 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Category</th>
-                    <th>Rack</th>
-                    <th>Warehouse</th>
                     <th>Outlet</th>
-                    <th>Status</th>
+                    <th>Warehouse</th>
+                    <th>Rack</th>
                     <th class="d-flex justify-content-center">Action</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <!--  Pengembalian Button -->
-                    <button type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
-                        <i class="menu-icon tf-icons bx bxs-edit"></i>Return
-                    </button>
-                </td>
+                @foreach($pinjams as $pinjam)
+                <tr>
+                    <td>{{$pinjam->id_barang}}</td>
+                    <td>{{$pinjam->nama_barang}}</td>
+                    <td>{{$pinjam->outlet_asal}}</td>
+                    <td>{{$pinjam->gudang_asal}}</td>
+                    <td>{{$pinjam->rak_asal}}</td>
+                    <td>
+                        <!--  Pengembalian Button -->
+                        <button wire:click="return({{$pinjam}})" type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
+                            <i class="menu-icon tf-icons bx bxs-edit"></i>Return
+                        </button>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

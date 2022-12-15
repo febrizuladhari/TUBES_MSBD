@@ -15,7 +15,7 @@ class CreatePerpindahansTable extends Migration
     {
         Schema::create('perpindahans', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_keluar');
+            $table->timestamp('tanggal_keluar');
             $table->char('id_barang', 5)->unique('id_barang');
             $table->unsignedBigInteger('id_outlet_peminjam')->index('id_outlet_peminjam');
             $table->unsignedBigInteger('id_user')->index('id_user');

@@ -14,13 +14,12 @@ class CreateHistoryPerpindahansTable extends Migration
     public function up()
     {
         Schema::create('history_perpindahans', function (Blueprint $table) {
-            $table->bigInteger('id')->primary();
+            $table->id();
             $table->char('id_barang', 5);
             $table->unsignedBigInteger('id_outlet_peminjam')->index('id_outlet_peminjam');
             $table->timestamp('tanggal_keluar')->nullable();
             $table->timestamp('tanggal_kembali')->nullable();
             $table->unsignedBigInteger('id_user')->index('id_user');
-
             $table->index(['id_barang', 'id_outlet_peminjam', 'id_user'], 'id_barang');
         });
     }
