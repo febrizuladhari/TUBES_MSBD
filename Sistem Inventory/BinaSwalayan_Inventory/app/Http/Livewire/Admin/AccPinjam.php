@@ -4,26 +4,15 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\View_Req_Peminjaman;
+use App\Models\Req_Peminjaman;
 use App\Models\View_Barang;
+use App\Models\Perpindahan;
+
 
 
 
 class AccPinjam extends Component
 {
-    public $selectedItem = '';
-    public $NamaDiperlukan = '';
-    public $selectedNama = '';
-    public $selectediKategori = '';
-    public $selectedKategori = '';
-    public $selectediOutlet = '';
-    public $selectedOutlet = '';
-    public $selectediWarehouse = '';
-    public $selectedWarehouse = '';
-    public $selectediRack = '';
-    public $selectedRack = '';
-    public $selectediUser = '';
-    public $selectedUser = '';
-    public $selectedTanggal = '';
     public $needItems=[];
     public $query;
     public $items;
@@ -43,7 +32,7 @@ class AccPinjam extends Component
 
         if(!empty($this->search)){
 
-            $this->records = View_Barang::where('Nama','like','%'.$this->search.'%')
+            $this->records = View_Barang::where("status",'GOOD')->where('Nama','like','%'.$this->search.'%')
                       ->limit(5)
                       ->get();
 
@@ -56,7 +45,7 @@ class AccPinjam extends Component
     // Fetch record by ID
     public function fetchItemDetail($id){
 
-        $record = View_Barang::select('*')
+        $record = View_Barang::where("Status",'GOOD')
                     ->where('id',$id)
                     ->first();
 
@@ -71,10 +60,27 @@ class AccPinjam extends Component
     public function onAcc($id){
         
         $this->needItems = View_Req_Peminjaman::query()->where('id',$id)->get();
-        $this->dispatchBrowserEvent('show-edit-item-modal');
 
     }
 
+    public function submitAcc($empDetails,$Items){
+        // dd($empDetails,$Items);
+        Perpindahan::create([
+            'tanggal_keluar' => now(),
+            'id_barang' => $empDetails['id'],
+            'id_outlet_peminjam' => $Items['id_outlet'],
+            'id_user' => $Items['id_user'],
+
+        ]);
+        $this->destroy($Items['id']);
+        $this->empDetails = NULL;
+        $this->Items = NULL;
+
+    }
+
+    public function destroy($id){
+        Req_Peminjaman::where('id', $id)->delete();
+    }
     
     public function render()
     {

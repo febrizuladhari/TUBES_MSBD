@@ -78,20 +78,23 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <form wire:submit.prevent="submitEdit" action="" method="post" class="container-fluid">
+                                            <form action="" class="container-fluid">
                                                 <h5 class="card-title">Item Requested</h5>
-                                                <div class="card" style="width: 16rem;">
-                                                    <div class="card-body">
-                                                      
+
                                                       @foreach ($needItems as $items)
                                                         <p>{{$items->nama_barang}}</p>
+                                                        <p>Category :{{$items->kategori}}</p>
+                                                        <p>User     :{{$items->USER}}</p>
+                                                        <p>Outlet   :{{$items->outlet}} - {{$items->gudang}} - {{$items->rak}}</p>
+
+
+
+
+
                                                       @endforeach
-                                                      <p class="card-text"></p>
-                                                    </div>
-                                                </div>
-                                                  
+
                                                 <div class="w-48">
-                                                    <label class="font-bold" for="user-name">Search for User</label>
+                                                    <label class="font-bold" for="user-name">Search Items</label>
                                                     <div class="search-box">
                                                         <input type='text' wire:model="search" wire:keyup="searchResult">
                                                 
@@ -112,54 +115,20 @@
                                                         <div >
                                                             @if(!empty($empDetails))
                                                                 <div>
-                                                                     Name : {{ $empDetails->Nama }} <br>
-                                                                     Email : {{ $empDetails->id }}
+                                                                    <h4>Item Details</h4>
+                                                                    Item Id     : {{ $empDetails->id }}<br>
+                                                                    Items Name  : {{ $empDetails->Nama }} <br>
+                                                                    Outlet      : {{ $empDetails->Outlet}}<br>
+                                                                    Warehouse   : {{ $empDetails->Gudang}}<br>
+                                                                    Rack        : {{$empDetails->Rak}}<br>
                                                                 </div>
                                                             @endif
                                                         </div>
                                                     </div>
-                                                {{-- {{$selectedUser}}
-                                                {{$selectedOutlet}}
-                                                {{$selectedWarehouse}}
-                                                {{$selectedRack}}
-                                                {{$selectedTanggal}} --}}
                                                 
-
-                                                {{-- @if(!is_null($gudangs))
-                                                <div class="mb-3">
-                                                    <label for="id_gudang" class="form-label">Warehouse</label>
-                                                        <select wire:model="updatedWarehouse" id="id_gudang" class="select2 form-select">
-                                                            <option selected>Choose Warehouse</option>
-                                                            @foreach($gudangs as $gudang)
-                                                            <option value="{{$gudang->id}}">{{$gudang->gudang}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                </div>
-                                                @endif
-    
-                                                @if(!is_null($raks))
-                                                <div class="mb-3">
-                                                    <label for="id_rak" class="form-label">Rack</label>
-                                                        <select wire:model="updatedRack" id="id_rak" class="select2 form-select">
-                                                            <option selected>Choose Rack</option>
-                                                            @foreach($raks as $rak)
-                                                            <option value="{{$rak->id}}">{{$rak->rak}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                </div>
-                                                @endif
-                                                <div class="mb-3">
-                                                    <label for="id_supplier" class="form-label">Supplier</label>
-                                                        <select wire:model.lazy="updatedSupplier" id="id_supplier" class="select2 form-select">
-                                                            <option selected>Choose Supplier</option>
-                                                            @foreach($suppliers as $supplier)
-                                                            <option value="{{$supplier->id}}">{{$supplier->nama}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                </div> --}}
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    <button wire:click="submitAcc({{$empDetails}},{{$items}})" type="submit" class="btn btn-primary">Acc Request</button>
                                                 </div>
                                             </form>
     
