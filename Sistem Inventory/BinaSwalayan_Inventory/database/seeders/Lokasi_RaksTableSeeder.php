@@ -209,12 +209,16 @@ class Lokasi_RaksTableSeeder extends Seeder
             'rak' => '10',
         ]);
     
+
+
+
+
         // BINA MARINDAL
         // GUDANG 1
         Lokasi_Rak::create([
             'id' => '31',
             'id_gudang' => '4',
-            'rak' => '3',
+            'rak' => '1',
         ]);
 
         Lokasi_Rak::create([
