@@ -13,18 +13,18 @@ class Req_PeminjamansTableSeeder extends Seeder
      */
     public function run()
     {
-        $b = [];
-        $faker = Factory::create();
-        for($i = 1; $i <= 3; $i++)
-        {
-        $b[] = [
+    //     $b = [];
+    //     $faker = Factory::create();
+    //     for($i = 1; $i <= 3; $i++)
+    //     {
+    //     $b[] = [
 
-            'id_barang' => \App\Models\Barang::pluck('id')->random(),
-            'id_user' => rand(1,3),
-            'tanggal_diperlukan' => $faker->dateTime($max = 'now'),
+    //         'id_barang' => \App\Models\Barang::pluck('id')->random(),
+    //         'id_user' => rand(1,3),
+    //         'tanggal_diperlukan' => $faker->dateTime($max = 'now'),
             
-        ];
+    //     ];
+    // }
+    // \DB::table('req_peminjamans')->insert($b);
     }
-    \DB::table('req_peminjamans')->insert($b);
-}
 }

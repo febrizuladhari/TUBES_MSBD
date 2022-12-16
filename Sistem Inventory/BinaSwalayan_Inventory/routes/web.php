@@ -115,6 +115,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/addoutlet_sa/edit', [SuperAdminController::class, 'formInsertOutlet'])->name('addoutlet_sa.edit');
         Route::post('/addoutlet_sa/insert', [SuperAdminController::class, 'insertOutlet'])->name('addoutlet_sa.insert');
         Route::get('/editoutlet_sa/edit', [SuperAdminController::class, 'formEditOutlet'])->name('editoutlet_sa.edit');
+        Route::get('/outletsuperadmin', [SuperAdminController::class, 'formEditOutlet'])->name('outletsuperadmin');
+
 
         Route::get('/addwarehouse_sa/edit', [SuperAdminController::class, 'formInsertWarehouse'])->name('addwarehouse_sa.edit');
         Route::post('/addwarehouse_sa/insert', [SuperAdminController::class, 'insertWarehouse'])->name('addwarehouse_sa.insert');
