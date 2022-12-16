@@ -14,19 +14,19 @@ class Laporan_RusaksTableSeeder extends Seeder
      */
     public function run()
     {
-        $b = [];
-        $faker = Factory::create();
-        for($i = 1; $i <= 3; $i++)
-        {
-        $b[] = [
+        // $b = [];
+        // $faker = Factory::create();
+        // for($i = 1; $i <= 3; $i++)
+        // {
+        // $b[] = [
 
-            'id_barang' => \App\Models\Barang::pluck('id')->random(),
-            'id_user' => rand(1,3),
-            'tanggal' => $faker->dateTime($max = 'now'),
-            'catatan' => $faker->text(),
-        ];
-        }
+        //     'id_barang' => \App\Models\Barang::pluck('id')->random(),
+        //     'id_user' => rand(1,3),
+        //     'tanggal' => $faker->dateTime($max = 'now'),
+        //     'catatan' => $faker->text(),
+        // ];
+        // }
         
-        \DB::table('laporan_rusaks')->insert($b);
+        // \DB::table('laporan_rusaks')->insert($b);
     }
 }
