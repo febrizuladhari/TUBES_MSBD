@@ -20,7 +20,7 @@
                     <!-- Account -->
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img src="{{ asset('img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="avatar"/>
+                            <img src="{{ asset('img/avatars/superadmin.png') }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="avatar"/>
                         </div>
                     </div>
                     <hr class="my-0" />
@@ -74,7 +74,7 @@
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary me-2">Save Profile</button>
-                                <a href="{{ route('homesuperadmin') }}"><button type="button" class="btn btn-outline-secondary">Back</button></a>
+                                <a href="/homesuperadmin"><button type="button" class="btn btn-outline-secondary">Back</button></a>
                             </div>
                         </form>
                     </div>

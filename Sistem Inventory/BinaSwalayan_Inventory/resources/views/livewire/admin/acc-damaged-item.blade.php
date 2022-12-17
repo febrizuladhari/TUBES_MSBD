@@ -6,9 +6,17 @@
             </div>
             <div class="col-4">
                 <div class="demo-inline-spacing d-flex justify-content-end">
-                    <a href="{{ url('cetaklaporanrusak') }}">
-                        <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                    </a>
+
+                    @if(auth()->user()->level == 'admin')
+                        <a href="{{ url('cetaklaporanrusak') }}">
+                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                        </a>
+                    @elseif(auth()->user()->level == 'superadmin')
+                        <a href="{{ url('cetaklaporanrusak_sa') }}">
+                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                        </a>
+                    @endif
+                    
                 </div>
             </div>
         </div>
@@ -40,7 +48,7 @@
 
                             {{-- Confirm --}}
                             <button wire:click="confirmDamage({{$damage->id}})" type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
-                                <i class="menu-icon tf-icons bx bx-check-shield"></i>Confirm
+                                <i class="menu-icon tf-icons bx bxs-badge-check"></i>Confirm
                             </button>
 
                             {{-- Delete --}}
@@ -165,6 +173,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 </tbody>

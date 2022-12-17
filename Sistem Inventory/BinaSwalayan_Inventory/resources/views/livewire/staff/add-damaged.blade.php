@@ -36,7 +36,7 @@
         <div class="row mt-5">
             <form wire:submit.prevent="store" class="container-fluid">
                 <div class="mb-3">
-                    <label class="form-label" for="qr">Name</label>
+                    <label class="form-label" for="qr">ID Item</label>
                     <input id="qr" type="search" wire:model="search" class="form-control mb-4 @error('qr') is-invalid @enderror" placeholder="Search Item ...">
                     @error('qr')
                         <span class="invalid-feedback" role="alert">

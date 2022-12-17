@@ -8,6 +8,9 @@ use App\Models\Req_Peminjaman;
 use App\Models\View_Barang;
 use App\Models\Perpindahan;
 
+use Livewire\WithPagination;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -17,6 +20,7 @@ class AccPinjam extends Component
     public $query;
     public $items;
     public $name;
+    public $deleteId='';
 
 
     public function mount(){
@@ -28,14 +32,13 @@ class AccPinjam extends Component
     public $empDetails;
 
     // Fetch records
-    public function searchResult(){
-
+    public function searchResult()
+    {
         if(!empty($this->search)){
 
             $this->records = View_Barang::where("status",'GOOD')->where('Nama','like','%'.$this->search.'%')
-                      ->limit(5)
-                      ->get();
-
+                            ->limit(5)
+                            ->get();
             $this->showdiv = true;
         }else{
             $this->showdiv = false;
@@ -56,32 +59,58 @@ class AccPinjam extends Component
 
     }
 
-
-    public function onAcc($id){
-        
+    public function onAcc($id)
+    {
         $this->needItems = View_Req_Peminjaman::query()->where('id',$id)->get();
-
     }
 
-    public function submitAcc($empDetails,$Items){
+    public function submitAcc($empDetails,$Items)
+    {
         // dd($empDetails,$Items);
         Perpindahan::create([
             'tanggal_keluar' => now(),
             'id_barang' => $empDetails['id'],
             'id_outlet_peminjam' => $Items['id_outlet'],
             'id_user' => $Items['id_user'],
-
         ]);
-        $this->destroy($Items['id']);
+
+        $this->delete($Items['id']);
         $this->empDetails = NULL;
         $this->Items = NULL;
 
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('OK', 'Item has been approved !');
+                return redirect()->route('accshifting_sa');
+            } elseif ($user->level == 'admin') {
+                Alert::success('OK', 'Item has been approved !');
+                return redirect()->route('accshifting');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
+
     }
 
-    public function destroy($id){
-        Req_Peminjaman::where('id', $id)->delete();
+    public function confirmDelete($id)
+    {
+        $this->deleteId = $id;
     }
-    
+
+    public function delete(){
+        Req_Peminjaman::where('id', $this->deleteId)->delete();
+
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('OK', 'Reject completed !');
+                return redirect()->route('accshifting_sa');
+            } elseif ($user->level == 'admin') {
+                Alert::success('OK', 'Reject completed !');
+                return redirect()->route('accshifting');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
+    }
+
     public function render()
     {
         return view('livewire.admin.acc-pinjam',[
@@ -89,6 +118,6 @@ class AccPinjam extends Component
             // 'barangs' => $barang,
         ]);
 
-        
+
     }
 }

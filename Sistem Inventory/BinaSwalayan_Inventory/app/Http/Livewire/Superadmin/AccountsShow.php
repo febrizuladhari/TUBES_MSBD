@@ -53,9 +53,6 @@ class AccountsShow extends Component
             'users' => $users,
             'outlets' => Outlet::all()
             ]);
-
-
-
     }
 
     public function formUpdate($id)
@@ -70,7 +67,6 @@ class AccountsShow extends Component
             $this->id_outlet_update = $user->id_outlet;
 
             $this->dispatchBrowserEvent('show-edit-item-modal');
-
     }
 
 

@@ -8,8 +8,10 @@ use App\models\Req_Peminjaman;
 use App\Models\Outlet;
 use App\Models\Lokasi_Gudang;
 use App\Models\Lokasi_Rak;
-use Illuminate\Support\Facades\Auth;
 
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ReqPinjam extends Component
 {
@@ -20,7 +22,7 @@ class ReqPinjam extends Component
     public $selectedOutlet = '';
     public $selectedWarehouse = '';
     public $selectedRack = '';
-    
+
 
 
     public function render()
@@ -29,7 +31,7 @@ class ReqPinjam extends Component
             'kategoris' => Kategori::all(),
             'outlets' => Outlet::where('id',$uid)->get(),
             'gudangs' => Lokasi_Gudang::where('id_outlet',$uid)->get(),
-        
+
         ]);
     }
 
@@ -46,5 +48,8 @@ class ReqPinjam extends Component
             'nama_barang' => $this->selectedName,
             'tanggal_diperlukan' => $this->selectedDate,
         ]);
+
+        Alert::success('Nice !', 'Request has been added');
+        return redirect()->route('listpinjamstaff');
     }
 }

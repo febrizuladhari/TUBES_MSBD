@@ -95,6 +95,16 @@ Route::group(['middleware' => ['auth']], function () {
             return view('superadmin.addshiftingsuperadmin');
         })->name('addshifting_sa');
 
+        Route::get('cetaklistbarang_sa', [PdfController::class, 'cetakListBarang']);
+        Route::get('cetaklaporanrusak_sa', [PdfController::class, 'cetakLaporanRusak']);
+        Route::get('cetakrequestbeli_sa', [PdfController::class, 'cetakRequestBeli']);
+        Route::get('cetakrequestperpindahan_sa', [PdfController::class, 'cetakRequestPerpindahan']);
+        Route::get('cetakqrcodebarang_sa', [PdfController::class, 'cetakQrCodeBarang']);
+
+        Route::get('/qritem_sa', function () {
+            return view('superadmin.qritemsuperadmin');
+        })->name('qritem_sa');
+
         Route::get('/additem_sa', [SuperAdminController::class, 'formInsertItem'])->name('additem_sa.edit');
         // Route::post('/additem_sa', [SuperAdminController::class, 'insertItem'])->name('additem_sa.insert');
 
@@ -164,6 +174,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('cetaklistbarang', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli', [PdfController::class, 'cetakRequestBeli']);
+        Route::get('cetakrequestperpindahan', [PdfController::class, 'cetakRequestPerpindahan']);
+        Route::get('cetakqrcodebarang', [PdfController::class, 'cetakQrCodeBarang']);
 
         Route::get('/qritem', function () {
             return view('admin.qritemadmin');
@@ -174,9 +186,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['checklogin:staff']], function () {
         Route::resource('staff', LoginController::class);
 
-        Route::get('/homestaff',function(){
-            return view('staff.homestaff');
-        })->name('homestaff');
+        Route::get('/homestaff', [StaffController::class, 'index'])->name('homestaff');
+        Route::get('/homestaff', [StaffController::class, 'chartStaff']);
 
         Route::get('/itemstaff',function(){
             return view('staff.itemstaff');

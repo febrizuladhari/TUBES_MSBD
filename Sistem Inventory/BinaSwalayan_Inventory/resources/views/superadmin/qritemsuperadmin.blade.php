@@ -1,11 +1,11 @@
 @extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Approve Shifting Items - Super Admin</title>
+    <title>QR Items - Super Admin</title>
 @endsection
-@livewireStyles
-@section('content')
 
+@section('content')
+@livewireStyles
     <!-- Konten -->
 
     <!-- Content wrapper -->
@@ -13,11 +13,14 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h3 class="fw-bold py-3">Approve Shifting Items</h3>
+            <h3 class="fw-bold py-3">List Selected QR Items</h3>
             <hr class="my-4">
 
-            <!-- List Itemms -->
-            <livewire:admin.acc-pinjam></livewire:admin.acc-pinjam>
+            <div class="nav-align-top mb-4">
+
+                <livewire:admin.qritem-admin></livewire:admin.qritem-admin>
+
+            </div>
 
 
         </div>
@@ -25,7 +28,6 @@
     </div>
 
     <!-- Content wrapper -->
-
 
 
 @endsection

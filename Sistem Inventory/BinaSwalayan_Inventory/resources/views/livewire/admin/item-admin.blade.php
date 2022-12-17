@@ -10,13 +10,25 @@
                     </div>
                     <div class="col-4">
                         <div class="demo-inline-spacing d-flex justify-content-end">
-                            <a href="{{ route('qritem') }}">
-                                <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
-                            </a>
 
-                            <a href="{{ url('cetaklistbarang') }}">
-                                <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                            </a>
+                            @if(auth()->user()->level == 'admin')
+                                <a href="{{ route('qritem') }}">
+                                    <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
+                                </a>
+
+                                <a href="{{ url('cetaklistbarang') }}">
+                                    <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                                </a>
+                            @elseif(auth()->user()->level == 'superadmin')
+                                <a href="{{ route('qritem_sa') }}">
+                                    <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
+                                </a>
+
+                                <a href="{{ url('cetaklistbarang_sa') }}">
+                                    <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                                </a>
+                            @endif
+
                         </div>
                     </div>
                 </div>

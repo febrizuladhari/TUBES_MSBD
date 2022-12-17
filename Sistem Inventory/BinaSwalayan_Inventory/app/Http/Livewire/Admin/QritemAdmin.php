@@ -12,6 +12,8 @@ use App\Models\Supplier;
 use App\Models\View_Barang;
 use RealRashid\SweetAlert\Facades\Alert;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Storage;
+
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -19,40 +21,50 @@ use Livewire\WithPagination;
 
 class QritemAdmin extends Component
 {
+
+    public $searchadmin = '';
+    public $qrData = '';
+    public $image;
+
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     // Single QR Generator
-    public function generateSingleQr($idb)
-    {
-        $datas = Barang::findOrFail($idb);
-        $datas->get();
-        $qrItem = QrCode::size(400)->generate($datas->name);
-        $this->checked = array_diff($this->checked, [$idb]);
+    // public function generateSingleQr($idb)
+    // {
+    //     $datas = Barang::findOrFail($idb);
+    //     $datas->get();
+    //     $qrItem = QrCode::size(400)->generate($datas->name);
+    //     $this->checked = array_diff($this->checked, [$idb]);
 
 
-        return view('admin.qritemadmin', compact('qrItem'));
-    }
+    //     return view('admin.qritemadmin', compact('qrItem'));
+    // }
 
     // Multiple QR Generator
-    public function generateMultipleQr()
+    public function generateMultipleQr($id)
     {
-        Barang::whereKey($this->checked)->get();
+        // $data = View_Barang::findOrFail($id);
+        // $qrCode = QrCode::size(400)->generate($data->id);
 
-        $this->checked = [];
+        $data = View_Barang::get()->find($id);
+        $image = QrCode::format('png')
+                ->merge(public_path('logo.png'), 0.4, true)
+                ->size(200)->errorCorrection('H')
+                ->generate($id);
+        $output_file = '/img/qr-code/Bina_QR_Item-' . $id . '.PNG';
+        Storage::disk('local')->put($output_file, $image); //storage/app/public/img/qr-code/img-1557309130.png
 
-        return view('admin.qritemadmin');
+        return view('livewire.admin.qritem-admin',
+                compact('image')
+        );
     }
 
     public function render()
     {
+
         return view('livewire.admin.qritem-admin', [
-            'datas'  => View_Barang::all(),
-            // searchadmin(trim($this->searchadmin))
-            // ->when($this->selectedOutlet, function ($query) {
-            //     $query->where('id_Outlet',$this->selectedOutlet);
-            // })
-            // ->when($this->selectedCategory, function ($query) {
-            //     $query->where('Kategori', $this->selectedCategory);
-            // })
-            // ->paginate(10),
+            'datas'  => View_Barang::searchadmin(trim($this->searchadmin))->paginate(20),
 
             'kategoris' => Kategori::all(),
             'suppliers' => Supplier::all(),

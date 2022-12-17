@@ -6,9 +6,17 @@
             </div>
             <div class="col-4">
                 <div class="demo-inline-spacing d-flex justify-content-end">
-                    <a href="{{ url('cetakrequestbeli') }}">
-                        <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                    </a>
+
+                    @if(auth()->user()->level == 'admin')
+                        <a href="{{ url('cetakrequestbeli') }}">
+                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                        </a>
+                    @elseif(auth()->user()->level == 'superadmin')
+                        <a href="{{ url('cetakrequestbeli_sa') }}">
+                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                        </a>
+                    @endif
+                    
                 </div>
             </div>
         </div>
@@ -38,7 +46,7 @@
 
                             {{-- Confirm --}}
                             <button wire:click="confirmBuyRequest({{$incoming->id}})" type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
-                                <i class="menu-icon tf-icons bx bx-check-shield"></i>Confirm
+                                <i class="menu-icon tf-icons bx bxs-badge-check"></i>Confirm
                             </button>
 
                             {{-- Delete --}}
@@ -95,21 +103,21 @@
                                                     <label class="form-label" for="nama_barang">Item</label>
                                                     <div class="input-group input-group-merge">
                                                         <span id="nama_barang" class="input-group-text"><i class="bx bx-package"></i></span>
-                                                        <input wire:model.lazy="selectedNamaBarang" type="text" class="form-control" id="nama_barang" placeholder="{{$incoming->nama_barang}}" />
+                                                        <input wire:model.lazy="selectedNamaBarang" type="text" class="form-control" id="nama_barang" placeholder="{{$incoming->nama_barang}}" disabled="disabled"/>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="id_kategori">Category</label>
                                                     <div class="input-group input-group-merge">
-                                                        <span id="id_kategori" class="input-group-text"><i class="bx bx-user"></i></span>
+                                                        <span id="id_kategori" class="input-group-text"><i class="bx bx-category-alt"></i></span>
                                                         <input wire:model.lazy="selectedNamaKategori" type="text" class="form-control" id="id_kategori" placeholder="{{$incoming->nama_kategori}}" disabled="disabled"/>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="id_outlet">Outlet</label>
                                                     <div class="input-group input-group-merge">
-                                                        <span id="id_outlet" class="input-group-text"><i class="bx bx-user"></i></span>
-                                                        <input wire:model.lazy="selectedOutlet" type="text" class="form-control" id="id_outlet" placeholder="{{$incoming->nama_outlet}}" disabled/>
+                                                        <span id="id_outlet" class="input-group-text"><i class="bx bx-store"></i></span>
+                                                        <input wire:model.lazy="selectedOutlet" type="text" class="form-control" id="id_outlet" placeholder="{{$incoming->nama_outlet}}" disabled="disabled"/>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
