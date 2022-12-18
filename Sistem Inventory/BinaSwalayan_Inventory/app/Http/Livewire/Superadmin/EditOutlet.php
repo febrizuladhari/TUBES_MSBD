@@ -33,8 +33,9 @@ class EditOutlet extends Component
 
     public function render()
     {
+        $outlets = Outlet::paginate(5);
         return view('livewire.superadmin.edit-outlet',[
-            'outlets' => Outlet::all(),
+            'outlets' => $outlets,
         ]);
     }
 
@@ -54,8 +55,9 @@ class EditOutlet extends Component
 
 
         $outlet->save();
-        Alert::success('OK','Item has been updated successfully');
-        session()->flash('message', 'Items has been updated successfully');
+        Alert::success('OK','Outlet has been updated successfully');
+        return redirect()->route('editoutlet_sa.edit');
+        session()->flash('message', 'Outlet has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -73,18 +75,18 @@ class EditOutlet extends Component
             $student = Outlet::findOrFail($idb);
             $student->delete();
             $this->checked = array_diff($this->checked, [$idb]);
-    
-            session()->flash('info', 'Item deleted Successfully');
+
+            session()->flash('info', 'Outlet deleted Successfully');
         }
-    
+
         //Bulk Delete
-    
+
         public function deleteItems(){
-    
+
             Outlet::whereKey($this->checked)->delete();
             $this->checked = [];
-    
-            session()->flash('message', 'Items have been deleted');
+
+            session()->flash('message', 'Outlets have been deleted');
         }
 
 

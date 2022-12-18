@@ -32,6 +32,7 @@
                                 <li><a class="dropdown-item" href="{{ route('adddamagedstaff') }}"><i class="bx bx-error me-2"></i>Add Damaged</a></li>
                                 <li><a class="dropdown-item" href="{{ route('reqitemstaff') }}"><i class="bx bx-transfer-alt me-2"></i>Request Item</a></li>
                                 <li><a class="dropdown-item" href="{{ route('reqbelistaff') }}"><i class="bx bx-cart me-2"></i>Request Buy Item</a></li>
+                                <li><a class="dropdown-item" href="{{ route('itemstaff') }}"><i class="bx bxs-component me-2"></i>Items in this outlet</a></li>
                             </ul>
                         </div>
 

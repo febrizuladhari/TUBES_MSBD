@@ -1,22 +1,5 @@
 <div>
-    {{-- <div class="row">
-        <div class="col">
-            <div class="demo-inline-spacing ms-5 mb-4">
-                <div class="btn-group" id="dropdown-icon-demo">
-                    <select class="form-control from-control-sm" wire:model="selectedCategory">
-                        <option selected value=""> All Category <i class='bx bx-chevrons-down'></i></option>
-                        @foreach($kategoris as $item)
-                        <option value="{{$item->nama_kategori}}">{{$item->nama_kategori}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <input type="search" wire:model="search" class="form-control mb-4" placeholder="Search Item ...">
-        </div>
-    </div> --}}
-    <div class="table-responsive text-nowrap">
+    <div class="table-responsive text-nowrap my-4">
         <table class="table table-responsive table-hover table-striped">
             <thead>
                 <tr>
@@ -36,10 +19,10 @@
                     <td>{{$pinjam->outlet_asal}}</td>
                     <td>{{$pinjam->gudang_asal}}</td>
                     <td>{{$pinjam->rak_asal}}</td>
-                    <td>
-                        <!--  Pengembalian Button -->
+                    <td class="d-flex justify-content-center">
+                        <!-- Pengembalian Button -->
                         <button wire:click="return({{$pinjam}})" type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
-                            <i class="menu-icon tf-icons bx bxs-edit"></i>Return
+                            <i class="menu-icon tf-icons bx bx-left-arrow-circle"></i>Return
                         </button>
                     </td>
                 </tr>
@@ -49,7 +32,7 @@
     </div>
     <div class="row my-4">
         <div class="d-flex justify-content-center">
-
+            {{ $pinjams->Links() }}
         </div>
     </div>
 </div>

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PdfController;
 
 // Controller Login & Register
 use App\Http\Controllers\LoginController;
@@ -11,27 +10,15 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 
+use App\Http\Controllers\PdfController;
+// Controller Super Admin
+use App\Http\Controllers\SuperAdminController;
+
 // Controller Admin
 use App\Http\Controllers\AdminController;
 
-// Controller Super Admin
-use App\Http\Controllers\SuperAdminController;
-use App\Http\Livewire\SuperAdmin\AccountsShow;
-use App\Http\Livewire\SuperAdmin\AccountsEdit;
-
-
-
-
 // Controller Staff
 use App\Http\Controllers\StaffController;
-
-
-
-
-
-
-
-
 
 
 /*
@@ -70,10 +57,6 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/itemsuperadmin', [SuperAdminController::class, 'showitem'])->name('itemsuperadmin');
 
-        // Route::get('/accounts', function(){
-        //     return view('superadmin.accounts');
-        // })->name('accounts_show');
-
         Route::get('/accounts', [SuperAdminController::class, 'showAllAccounts'])->name('accounts_show');
 
         Route::get('/register', [RegisterController::class, 'index'])->name('register_account');
@@ -91,10 +74,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('superadmin.accincomingsuperadmin');
         })->name('accincoming_sa');
 
-        Route::get('/addshifting_sa', function () {
-            return view('superadmin.addshiftingsuperadmin');
-        })->name('addshifting_sa');
-
         Route::get('cetaklistbarang_sa', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak_sa', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli_sa', [PdfController::class, 'cetakRequestBeli']);
@@ -106,7 +85,6 @@ Route::group(['middleware' => ['auth']], function () {
         })->name('qritem_sa');
 
         Route::get('/additem_sa', [SuperAdminController::class, 'formInsertItem'])->name('additem_sa.edit');
-        // Route::post('/additem_sa', [SuperAdminController::class, 'insertItem'])->name('additem_sa.insert');
 
         Route::get('/editenvironment', [SuperAdminController::class, 'editEnvironment'])->name('editenvironment');
 
@@ -167,10 +145,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('admin.accincomingadmin');
         })->name('accincoming');
 
-        Route::get('/addshifting', function () {
-            return view('admin.addshiftingadmin');
-        })->name('addshifting');
-
         Route::get('cetaklistbarang', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli', [PdfController::class, 'cetakRequestBeli']);
@@ -210,7 +184,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('listpinjamstaff', function(){
             return view('staff.listpinjamstaff');
         })->name('listpinjamstaff');
-
 
         Route::post('storeReqBuy', [StaffController::class, 'storeReqBuy'])->name('storeReqBuy');
     });

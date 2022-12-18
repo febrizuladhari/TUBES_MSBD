@@ -64,7 +64,7 @@ class QritemAdmin extends Component
     {
 
         return view('livewire.admin.qritem-admin', [
-            'datas'  => View_Barang::searchadmin(trim($this->searchadmin))->paginate(20),
+            'datas'  => View_Barang::searchadmin(trim($this->searchadmin))->paginate(10),
 
             'kategoris' => Kategori::all(),
             'suppliers' => Supplier::all(),

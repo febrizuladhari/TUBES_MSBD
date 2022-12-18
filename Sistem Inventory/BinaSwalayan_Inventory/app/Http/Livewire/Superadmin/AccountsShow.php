@@ -37,20 +37,21 @@ class AccountsShow extends Component
 
         if($this->search !== null) {
             $users = User::where('nama', 'like', '%' . $this->search . '%')
-            ->orwhere('alamat', 'like', '%' . $this->search . '%')
-            ->orwhere('level', 'like', '%' . $this->search . '%')
-            ->orwhere('jenis_kelamin', 'like', '%' . $this->search . '%')
-            ->orwhere('username', 'like', '%' . $this->search . '%')
-            ->latest()->paginate(5);
-        }
+                    ->orwhere('alamat', 'like', '%' . $this->search . '%')
+                    ->orwhere('level', 'like', '%' . $this->search . '%')
+                    ->orwhere('jenis_kelamin', 'like', '%' . $this->search . '%')
+                    ->orwhere('username', 'like', '%' . $this->search . '%')
+                    ->latest()->paginate(5);
+                }
 
-        // $users = \DB::table('users')
-        //         ->join('outlets', 'users.id_outlet', '=', 'outlets.id')
-        //         ->select('users.*', 'users.nama as nama_user', 'outlets.nama as nama_outlet')
-        //         ->get();
+            $tampilUsers = \DB::table('users')
+                    ->join('outlets', 'users.id_outlet', '=', 'outlets.id')
+                    ->select('users.*', 'users.nama as nama_user', 'outlets.nama as nama_outlet')
+                    ->get();
 
         return view('livewire.superadmin.accounts-show', [
             'users' => $users,
+            'tampilUsers' => $tampilUsers,
             'outlets' => Outlet::all()
             ]);
     }

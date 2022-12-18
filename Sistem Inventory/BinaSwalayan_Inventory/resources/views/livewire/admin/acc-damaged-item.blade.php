@@ -16,7 +16,7 @@
                             <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
                         </a>
                     @endif
-                    
+
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                         <td>{{ $damage->rak }}</td>
                         <td>{{ $damage->gudang }}</td>
                         <td>{{ $damage->nama }}</td>
-                        <td>
+                        <td class="d-flex justify-content-center">
 
                             {{-- Confirm --}}
                             <button wire:click="confirmDamage({{$damage->id}})" type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
@@ -178,6 +178,11 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="row my-4">
+            <div class="d-flex justify-content-center">
+                {{$damages->Links()}}
+            </div>
         </div>
     </div>
 </div>

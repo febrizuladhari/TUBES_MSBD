@@ -17,6 +17,7 @@ class AccIncomingItem extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+
     public $selectedID ='';
     public $selectedNamaBarang ='';
     public $selectedNamaKategori = '';
@@ -32,7 +33,7 @@ class AccIncomingItem extends Component
     public function render()
     {
         return view('livewire.admin.acc-incoming-item', [
-            'incomings' => View_Req_Pembelian::all(),
+            'incomings' => View_Req_Pembelian::paginate(5),
             'suppliers' => Supplier::all()
         ]);
     }

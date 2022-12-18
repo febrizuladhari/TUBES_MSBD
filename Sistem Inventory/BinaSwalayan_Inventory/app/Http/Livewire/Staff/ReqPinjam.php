@@ -50,6 +50,6 @@ class ReqPinjam extends Component
         ]);
 
         Alert::success('Nice !', 'Request has been added');
-        return redirect()->route('listpinjamstaff');
+        return redirect()->route('reqitemstaff');
     }
 }

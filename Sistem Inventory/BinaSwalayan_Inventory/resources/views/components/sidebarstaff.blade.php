@@ -5,7 +5,7 @@
         <a href="/homestaff" class="app-brand-link">
         {{-- <span class="app-brand-logo demo"> --}}
             <img src="{{ asset('img/favicon/bina logo.png') }}" width="30%" alt="Logo Bina Swalayan">
-            <h4 class="my-3 mx-1">Bina Swalayan</h4>
+            <h4 class="my-3 mx-1 animate__animated animate__lightSpeedInRight"><strong> Bina Swalayan</strong></h4>
         {{-- </span> --}}
         {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Bina Swalayan</span> --}}
         </a>

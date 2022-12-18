@@ -68,8 +68,9 @@ class EditRack extends Component
 
 
         $raks ->save();
-        Alert::success('OK','Item has been updated successfully');
-        session()->flash('message', 'Items has been updated successfully');
+        Alert::success('OK','Rack has been updated successfully');
+        return redirect()->route('editrack_sa.edit');
+        session()->flash('message', 'Rack has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -88,7 +89,7 @@ class EditRack extends Component
         $student->delete();
         $this->checked = array_diff($this->checked, [$idb]);
 
-        session()->flash('info', 'Item deleted Successfully');
+        session()->flash('info', 'Rack deleted Successfully');
     }
 
     //Bulk Delete
@@ -98,6 +99,6 @@ class EditRack extends Component
         Lokasi_Rak::whereKey($this->checked)->delete();
         $this->checked = [];
 
-        session()->flash('message', 'Items have been deleted');
+        session()->flash('message', 'Racks have been deleted');
     }
 }

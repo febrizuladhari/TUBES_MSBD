@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Welcome {{ auth()->user()->nama }} ! 🎉</h5>
                         <p class="mb-4">
-                            You have a lot of items to approve
+                            You can add and approve requested items
                         </p>
 
                         <div class="btn-group">
@@ -33,6 +33,7 @@
                                 <li><a class="dropdown-item" href="{{ route('accdamaged') }}"><i class="bx bx-error-alt me-2"></i>Damaged</a></li>
                                 <li><a class="dropdown-item" href="{{ route('accincoming') }}"><i class="bx bx-down-arrow-alt me-2"></i>Incoming</a></li>
                                 <li><a class="dropdown-item" href="{{ route('itemadmin') }}"><i class="bx bxs-component me-2"></i>Items Detail</a></li>
+                                <li><a class="dropdown-item" href="{{ route('additem.edit') }}"><i class='bx bx-list-plus me-2'></i>Add Item</a></li>
                             </ul>
                         </div>
                     </div>

@@ -32,8 +32,9 @@ class EditSupplier extends Component
 
     public function render()
     {
+        $suppliers = Supplier::paginate(5);
         return view('livewire.superadmin.edit-supplier',[
-            'suppliers' => Supplier::all(),
+            'suppliers' => $suppliers,
         ]);
     }
 
@@ -53,8 +54,9 @@ class EditSupplier extends Component
 
 
         $supplier->save();
-        Alert::success('OK','Item has been updated successfully');
-        session()->flash('message', 'Items has been updated successfully');
+        Alert::success('OK','Supplier has been updated successfully');
+        return redirect()->route('editsupplier_sa.edit');
+        session()->flash('message', 'Supplier has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -72,17 +74,17 @@ class EditSupplier extends Component
             $student = Supplier::findOrFail($idb);
             $student->delete();
             $this->checked = array_diff($this->checked, [$idb]);
-    
-            session()->flash('info', 'Item deleted Successfully');
+
+            session()->flash('info', 'Supplier deleted Successfully');
         }
-    
+
         //Bulk Delete
-    
+
         public function deleteItems(){
-    
+
             Supplier::whereKey($this->checked)->delete();
             $this->checked = [];
-    
-            session()->flash('message', 'Items have been deleted');
+
+            session()->flash('message', 'Suppliers have been deleted');
         }
 }

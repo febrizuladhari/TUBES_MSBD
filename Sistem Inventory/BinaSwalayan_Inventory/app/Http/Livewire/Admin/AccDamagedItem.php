@@ -14,6 +14,7 @@ class AccDamagedItem extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+
     public $idb ='';
     public $updatedNamadamage ='';
     public $updatedKategori = '';
@@ -28,7 +29,7 @@ class AccDamagedItem extends Component
     public function render()
     {
         return view('livewire.admin.acc-damaged-item', [
-            'damages' => View_Rusak::all(),
+            'damages' => View_Rusak::paginate(5),
         ]);
     }
 

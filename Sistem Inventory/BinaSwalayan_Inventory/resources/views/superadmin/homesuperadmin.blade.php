@@ -36,6 +36,7 @@
                                 <li><a class="dropdown-item" href="{{ route('accincoming_sa') }}"><i class="bx bx-down-arrow-alt me-2"></i>Incoming</a></li>
                                 <li><a class="dropdown-item" href="{{ route('itemsuperadmin') }}"><i class="bx bxs-component me-2"></i>Items Detail</a></li>
                                 <li><a class="dropdown-item" href="{{ route('editenvironment') }}"><i class="bx bx-edit me-2"></i>Edit Environment</a></li>
+                                <li><a class="dropdown-item" href="{{ route('additem_sa.edit') }}"><i class='bx bx-list-plus me-2'></i>Add Item</a></li>
                             </ul>
                         </div>
 

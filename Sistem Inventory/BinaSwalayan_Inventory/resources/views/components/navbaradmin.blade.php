@@ -34,7 +34,7 @@
         <!-- /Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <h3 class="my-auto">Bina Swalayan Inventory</h3>
+                <h3 class="my-auto animate__animated animate__jackInTheBox"><strong> Bina Swalayan Inventory</strong></h3>
             </div>
         </div>
 

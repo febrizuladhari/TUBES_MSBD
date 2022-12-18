@@ -51,6 +51,14 @@
                     </td>
                 </tr>
                 @endforeach
+
+                {{-- Search if data not match --}}
+                @if ($barangs->count() === 0)
+                <div class="alert alert-danger mx-4" role="alert">
+                    Data not found! Try another keyword
+                </div>
+                @endif
+
             </tbody>
         </table>
     </div>

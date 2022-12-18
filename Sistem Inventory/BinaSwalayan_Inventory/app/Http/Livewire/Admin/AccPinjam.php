@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AccPinjam extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $needItems=[];
     public $query;
     public $items;
@@ -62,6 +65,7 @@ class AccPinjam extends Component
     public function onAcc($id)
     {
         $this->needItems = View_Req_Peminjaman::query()->where('id',$id)->get();
+        $this->deleteId = $id;
     }
 
     public function submitAcc($empDetails,$Items)
@@ -77,6 +81,8 @@ class AccPinjam extends Component
         $this->delete($Items['id']);
         $this->empDetails = NULL;
         $this->Items = NULL;
+
+        Req_Peminjaman::where('id', $this->deleteId)->delete();
 
         if ($user = Auth::user()) {
             if ($user->level == 'superadmin') {
@@ -114,7 +120,7 @@ class AccPinjam extends Component
     public function render()
     {
         return view('livewire.admin.acc-pinjam',[
-            'pinjams' => View_Req_Peminjaman::all(),
+            'pinjams' => View_Req_Peminjaman::paginate(5),
             // 'barangs' => $barang,
         ]);
 

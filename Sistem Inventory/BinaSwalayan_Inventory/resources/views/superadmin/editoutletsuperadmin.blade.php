@@ -1,7 +1,7 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Edit Outlet - Superadmin</title>
+    <title>Edit Outlet - Super Admin</title>
 @endsection
 
 @section('content')
@@ -25,6 +25,22 @@
 
 
         </div>
+
+        <!-- Footer -->
+        <footer class="content-footer footer bg-footer-theme">
+            <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mx-auto">
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    , <strong>Bina Swalayan Inventory</strong>
+                </div>
+            </div>
+        </footer>
+        <!-- / Footer -->
+
+        <div class="content-backdrop fade"></div>
 
     </div>
 

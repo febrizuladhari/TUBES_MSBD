@@ -35,14 +35,15 @@ class EditCategory extends Component
     public function render()
     {
         $outlets = Outlet::all();
-        $kategoris = Kategori::all();
+        $kategoris = Kategori::paginate(5);
         return view('livewire.superadmin.edit-category',[
             'outlets'=> $outlets,
-            'kategoris' => $kategoris,
+            'kategoris' => $kategoris
         ]);
     }
 
-    public function onEdit($id){
+    public function onEdit($id)
+    {
 
         $kategoris = Kategori::where('id', $id)->first();
         $this->idb = $id;
@@ -52,42 +53,46 @@ class EditCategory extends Component
 
     }
 
-    public function submitEdit(){
+    public function submitEdit()
+    {
         $kategoris = Kategori::where('id', $this->idb)->first();
         $kategoris->nama_kategori = $this->updatedNama;
 
-
         $kategoris->save();
-        Alert::success('OK','Item has been updated successfully');
-        session()->flash('message', 'Items has been updated successfully');
+
+        Alert::success('OK','Category has been updated successfully');
+        return redirect()->route('editkategori_sa.edit');
+        session()->flash('message', 'Category has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
     }
 
-    public function onDelete($id){
+    public function onDelete($id)
+    {
         $this->idb = $id;
         $this->dispatchBrowserEvent('show-delete-confirmation-modal');
     }
 
-        //Single Delete
+    //Single Delete
 
-        public function deleteItem($idb)
-        {
-            $student = Kategori::findOrFail($idb);
-            $student->delete();
-            $this->checked = array_diff($this->checked, [$idb]);
-    
-            session()->flash('info', 'Item deleted Successfully');
-        }
-    
-        //Bulk Delete
-    
-        public function deleteItems(){
-    
-            Kategori::whereKey($this->checked)->delete();
-            $this->checked = [];
-    
-            session()->flash('message', 'Items have been deleted');
-        }
+    public function deleteItem($idb)
+    {
+        $student = Kategori::findOrFail($idb);
+        $student->delete();
+        $this->checked = array_diff($this->checked, [$idb]);
+
+        session()->flash('info', 'Category deleted Successfully');
+    }
+
+    //Bulk Delete
+
+    public function deleteItems()
+    {
+
+        Kategori::whereKey($this->checked)->delete();
+        $this->checked = [];
+
+        session()->flash('message', 'Categories have been deleted');
+    }
 }

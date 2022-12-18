@@ -5,7 +5,7 @@
         <a href="/homeadmin" class="app-brand-link">
         {{-- <span class="app-brand-logo demo"> --}}
             <img src="{{ asset('img/favicon/bina logo.png') }}" width="30%" alt="Logo Bina Swalayan">
-            <h4 class="my-3 mx-1">Bina Swalayan</h4>
+            <h4 class="my-3 mx-1 animate__animated animate__lightSpeedInRight"><strong> Bina Swalayan</strong></h4>
         {{-- </span> --}}
         {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Bina Swalayan</span> --}}
         </a>
@@ -38,7 +38,7 @@
         </li>
 
         <!-- Approvement -->
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('accshifting') ? 'active' : '' }} {{ Request::is('accdamaged') ? 'active' : '' }} {{ Request::is('accincoming') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-list-check bxs-like bx-tada"></i>
                 <div data-i18n="Layouts">Approvement</div>
@@ -70,12 +70,6 @@
             <a href="{{ route('additem.edit') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-message-alt-add bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Add Item</div>
-            </a>
-        </li>
-        <li class="menu-item {{ Request::is('addshifting') ? 'active' : '' }}">
-            <a href="{{ route('addshifting') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
-                <div data-i18n="Analytics">Add Shifting Item</div>
             </a>
         </li>
     </ul>

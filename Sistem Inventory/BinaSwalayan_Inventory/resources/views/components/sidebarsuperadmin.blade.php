@@ -5,7 +5,7 @@
         <a href="/homesuperadmin" class="app-brand-link">
         {{-- <span class="app-brand-logo demo"> --}}
             <img src="{{ asset('img/favicon/bina logo.png') }}" width="30%" alt="Logo Bina Swalayan">
-            <h4 class="my-3 mx-1">Bina Swalayan</h4>
+            <h4 class="my-3 mx-1 animate__animated animate__lightSpeedInRight"><strong> Bina Swalayan</strong></h4>
         {{-- </span> --}}
         {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Bina Swalayan</span> --}}
         </a>
@@ -38,7 +38,7 @@
         </li>
 
         <!-- Approvement -->
-        <li class="menu-item">
+        <li class="menu-item {{ Request::is('accshifting_sa') ? 'active' : '' }} {{ Request::is('accdamaged_sa') ? 'active' : '' }} {{ Request::is('accincoming_sa') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-list-check bxs-like bx-tada"></i>
                 <div data-i18n="Layouts">Approvement</div>
@@ -83,12 +83,6 @@
             <a href="{{ route('editenvironment') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-edit bxs-like bx-tada"></i>
                 <div data-i18n="Analytics">Edit Environment</div>
-            </a>
-        </li>
-        <li class="menu-item {{ Request::is('addshifting_sa') ? 'active' : '' }}">
-            <a href="{{ route('addshifting_sa') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
-                <div data-i18n="Analytics">Add Shifting Item</div>
             </a>
         </li>
     </ul>

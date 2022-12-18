@@ -44,13 +44,29 @@
 
             <!-- Form Add Item -->
             <div class="card">
-                <h5 class="card-header">Add Items With Admin Authority</h5>
+                <h5 class="card-header">Add Item With Admin Authority</h5>
                 <livewire:add-items></livewire:add-items>
             </div>
 
 
 
         </div>
+
+        <!-- Footer -->
+        <footer class="content-footer footer bg-footer-theme">
+            <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mx-auto">
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    , <strong>Bina Swalayan Inventory</strong>
+                </div>
+            </div>
+        </footer>
+        <!-- / Footer -->
+
+        <div class="content-backdrop fade"></div>
 
     </div>
 

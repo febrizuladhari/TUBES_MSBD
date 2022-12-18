@@ -117,7 +117,7 @@
                                 <span class="badge bg-primary d-flex justify-content-center">{{"Good"}}</span>
                             @endif
                         </td>
-                        <td>
+                        <td class="d-flex justify-content-center">
                             <!-- Modal Edit Button -->
                             <button wire:click="onEdit({{$barang->id}})" type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
                                 <i class="menu-icon tf-icons bx bxs-edit"></i>Edit
@@ -233,6 +233,13 @@
                         </td>
                     </tr>
 
+
+                        {{-- Search if data not match --}}
+                        @if ($barangs->count() === 0)
+                        <div class="alert alert-danger mx-4" role="alert">
+                            Data not found! Try another keyword
+                        </div>
+                        @endif
 
                         </tbody>
                     </table>

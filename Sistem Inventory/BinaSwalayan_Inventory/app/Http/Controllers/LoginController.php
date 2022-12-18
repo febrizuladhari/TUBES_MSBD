@@ -35,28 +35,27 @@ class LoginController extends Controller
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
                 if ($user->level == 'superadmin') {
-                    Alert::success('Super Admin', 'Good! You have successfully Logged In');
+                    Alert::success('Super Admin', 'Hi! You have successfully logged in');
                     return redirect()->intended('homesuperadmin');
                 } elseif ($user->level == 'admin') {
-                    Alert::success('Admin', 'Good! You have successfully Logged In');
+                    Alert::success('Admin', 'Hi! You have successfully logged in');
                     return redirect()->intended('homeadmin');
                 } elseif ($user->level == 'staff') {
-                    Alert::success('Staff', 'Good! You have successfully Logged In');
+                    Alert::success('Staff', 'Hi! You have successfully logged in');
                     return redirect()->intended('homestaff');
                 }
                 return redirect()->intended('/');
             }
 
         Alert::error('Error !', 'Your Account not Found');
-        return redirect('/')
-            ->withInput();
+        return redirect('/')->withInput();
     }
 
     public function logout(Request $request)
     {
         $request->session()->flush();
         Auth::logout();
-        Alert::success('Bye!', 'You have Logged Out');
+        Alert::success('Bye!', 'You have logged out');
         return Redirect('/');
     }
 }

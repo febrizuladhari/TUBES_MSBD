@@ -26,9 +26,9 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                        @foreach ($users as $user)
+                        @foreach ($tampilUsers as $user)
                     <tr>
-                        <td><strong>{{ $user->nama }}</strong></td>
+                        <td><strong>{{ $user->nama_user }}</strong></td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->level }}</td>
                         <td>
@@ -41,18 +41,24 @@
                         <td>{{ $user->alamat }}</td>
                         <td>{{ $user->no_telp }}</td>
                         <td>
-                            {{ $user->id_outlet }}
+                            {{ $user->nama_outlet }}
                         </td>
-                        <td>
+                        <td class="d-flex justify-content-center">
+
                             {{-- Edit --}}
                             <button wire:click="formUpdate({{ $user->id }})" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalScrollable">
                                 <i class="menu-icon tf-icons bx bxs-edit"></i>Edit
                             </button>
 
-                            {{-- Delete --}}
-                            <button wire:click="id_delete({{ $user->id }})" type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#modalCenter">
-                                <i class="menu-icon tf-icons bx bxs-trash"></i>Delete
-                            </button>
+                            @if($user->level == 'superadmin')
+                                {{-- Nothing to do here --}}
+                            @else
+                                {{-- Delete --}}
+                                <button wire:click="id_delete({{ $user->id }})" type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#modalCenter">
+                                    <i class="menu-icon tf-icons bx bxs-trash"></i>Delete
+                                </button>
+                            @endif
+
 
                         @endforeach
 
@@ -86,7 +92,6 @@
                             <h4 class="modal-title container-fluid" id="modalScrollableTitle">Update this user</h4>
                                 <div class="modal-body">
                                     <form wire:submit.prevent="sendUpdate" class="container-fluid">
-
                                         <div class="mb-3">
                                             <label class="form-label" for="nama">Name</label>
                                             <div class="input-group input-group-merge">
@@ -141,7 +146,7 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="phone">Phone Number</label>
                                                     <div class="input-group input-group-merge">
@@ -174,7 +179,7 @@
                     {{-- Search if data not match --}}
                     @if ($users->count() === 0)
                     <div class="alert alert-danger mx-4" role="alert">
-                        Data not found!
+                        Data not found! Try another keyword
                     </div>
                     @endif
                 </tbody>

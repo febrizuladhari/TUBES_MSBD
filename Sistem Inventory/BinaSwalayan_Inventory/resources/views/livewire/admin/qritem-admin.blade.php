@@ -25,10 +25,9 @@
                                 <input type="search" wire:model="searchadmin" class="form-control mb-4" placeholder="Search Item ..." style="width:300px;">
                             </div>
                         </div>
-
                     </div>
 
-                    <div class="table-responsive text-nowrap">
+                    <div class="table-responsive text-nowrap mt-4">
                         <br>
                         <table class="table table-responsive table-hover table-striped">
                             <thead>
@@ -44,25 +43,32 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
 
-                        @foreach($datas as $barang)
-                        <tr>
-                            <td>{{ $barang->id }}</td>
-                            <td><strong>{{ $barang->Nama }}</strong></td>
-                            <td>{{ $barang->Kategori }}</td>
-                            <td>{{ $barang->Rak }}</td>
-                            <td>{{ $barang->Gudang }}</td>
-                            <td>{{ $barang->Outlet }}</td>
-                            <td>
-                                {{-- {!! QrCode::generate($barang->id); !!} --}}
-                                {{-- {!! QrCode::format('png')->merge(public_path('logo.png'), 0.3, true)->generate($barang->id); !!} --}}
-                                {{-- <img src="{!! QrCode::size(300)->generate($barang->id) !!}"> --}}
-                                {{-- <img src="{!! QrCode::format('png')->size(300)->generate($barang->id) !!}"> --}}
-                                <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->size(150)->errorCorrection('H')->generate($barang->id)) !!} ">
-                                {{-- <img src="data:image/png;base64, {!! base64_encode($image) !!} "> --}}
+                            @foreach($datas as $barang)
+                            <tr>
+                                <td>{{ $barang->id }}</td>
+                                <td><strong>{{ $barang->Nama }}</strong></td>
+                                <td>{{ $barang->Kategori }}</td>
+                                <td>{{ $barang->Rak }}</td>
+                                <td>{{ $barang->Gudang }}</td>
+                                <td>{{ $barang->Outlet }}</td>
+                                <td>
+                                    {{-- {!! QrCode::generate($barang->id); !!} --}}
+                                    {{-- {!! QrCode::format('png')->merge(public_path('logo.png'), 0.3, true)->generate($barang->id); !!} --}}
+                                    {{-- <img src="{!! QrCode::size(300)->generate($barang->id) !!}"> --}}
+                                    {{-- <img src="{!! QrCode::format('png')->size(300)->generate($barang->id) !!}"> --}}
+                                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->size(150)->errorCorrection('H')->generate($barang->id)) !!} ">
+                                    {{-- <img src="data:image/png;base64, {!! base64_encode($image) !!} "> --}}
 
-                            </td>
-                        </tr>
-                        @endforeach
+                                </td>
+                            </tr>
+                            @endforeach
+
+                                {{-- Search if data not match --}}
+                                @if ($datas->count() === 0)
+                                <div class="alert alert-danger mx-4" role="alert">
+                                    Data not found! Try another keyword
+                                </div>
+                                @endif
 
                             </tbody>
                         </table>

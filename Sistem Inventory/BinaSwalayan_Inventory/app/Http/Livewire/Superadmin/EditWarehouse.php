@@ -18,12 +18,14 @@ class EditWarehouse extends Component
     public $updatedNama ='';
     public $checked = [];
 
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
         $gudangs = Lokasi_Gudang::join('outlets', 'lokasi_gudangs.id_outlet','=','outlets.id')->select('lokasi_gudangs.id','lokasi_gudangs.gudang', 'outlets.nama')->when($this->selectedOutlet, function ($query) {
             $query->where('id_Outlet',$this->selectedOutlet);
-        })->get();
+        })->paginate(5);
 
         return view('livewire.superadmin.edit-warehouse', [
             'outlets' => Outlet::all(),
@@ -47,8 +49,9 @@ class EditWarehouse extends Component
 
 
         $gudangs->save();
-        Alert::success('OK','Item has been updated successfully');
-        session()->flash('message', 'Items has been updated successfully');
+        Alert::success('OK','Warehouse has been updated successfully');
+        return redirect()->route('editwarehouse_sa.edit');
+        session()->flash('message', 'Warehouse has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -66,7 +69,7 @@ class EditWarehouse extends Component
         $student->delete();
         $this->checked = array_diff($this->checked, [$idb]);
 
-        session()->flash('info', 'Item deleted Successfully');
+        session()->flash('info', 'Warehouse deleted Successfully');
     }
 
     //Bulk Delete
@@ -76,6 +79,6 @@ class EditWarehouse extends Component
         Lokasi_Gudang::whereKey($this->checked)->delete();
         $this->checked = [];
 
-        session()->flash('message', 'Items have been deleted');
+        session()->flash('message', 'Warehouses have been deleted');
     }
 }
