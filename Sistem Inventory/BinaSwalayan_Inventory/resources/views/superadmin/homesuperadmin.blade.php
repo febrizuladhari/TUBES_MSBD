@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Welcome {{ auth()->user()->nama }} ! 🎉</h5>
                         <p class="mb-4">
-                            You're super admin at Bina Swalayan. You can see and add accounts on Bina Swalayan.
+                            You're super admin at Bina Swalayan. You can pretty much manage anything on Bina Swalayan.
                         </p>
 
                         <div class="btn-group">
@@ -31,6 +31,11 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('accounts_show') }}"><i class="bx bxs-user me-2"></i>Accounts</a></li>
+                                <li><a class="dropdown-item" href="{{ route('accshifting_sa') }}"><i class="bx bx-transfer me-2"></i>Shifting</a></li>
+                                <li><a class="dropdown-item" href="{{ route('accdamaged_sa') }}"><i class="bx bx-error-alt me-2"></i>Damaged</a></li>
+                                <li><a class="dropdown-item" href="{{ route('accincoming_sa') }}"><i class="bx bx-down-arrow-alt me-2"></i>Incoming</a></li>
+                                <li><a class="dropdown-item" href="{{ route('itemsuperadmin') }}"><i class="bx bxs-component me-2"></i>Items Detail</a></li>
+                                <li><a class="dropdown-item" href="{{ route('editenvironment') }}"><i class="bx bx-edit me-2"></i>Edit Environment</a></li>
                             </ul>
                         </div>
 
@@ -39,11 +44,11 @@
                 <div class="col-sm-5 text-center text-sm-left">
                     <div class="card-body pb-0 px-0 px-md-4">
                     <img
-                        src="{{ asset('img/illustrations/man-with-laptop-light.png') }}"
+                        src="{{ asset('img/illustrations/superadmin.png') }}"
                         height="140"
                         alt="View Badge User"
-                        data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                        data-app-light-img="illustrations/man-with-laptop-light.png"/>
+                        data-app-dark-img="illustrations/superadmin.png"
+                        data-app-light-img="illustrations/superadmin.png"/>
                     </div>
                 </div>
                 </div>

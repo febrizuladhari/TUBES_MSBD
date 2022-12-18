@@ -70,11 +70,14 @@ class ItemAdmin extends Component
 
     }
 
-    public function onDelete($id){
+    public function onDelete($id)
+    {
         $this->idb = $id;
         $this->dispatchBrowserEvent('show-delete-confirmation-modal');
     }
-    public function submitEdit(){
+
+    public function submitEdit()
+    {
         $barang = Barang::where('id', $this->idb)->first();
         $barang->nama = $this->updatedNama;
         $barang->id_kategori = $this->updatedKategori;
@@ -123,7 +126,8 @@ class ItemAdmin extends Component
 
     //Bulk Delete
 
-    public function deleteItems(){
+    public function deleteItems()
+    {
 
         Barang::whereKey($this->checked)->delete();
         $this->checked = [];

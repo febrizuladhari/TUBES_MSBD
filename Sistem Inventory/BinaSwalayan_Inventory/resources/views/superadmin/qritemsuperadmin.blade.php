@@ -1,7 +1,7 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Edit Warehouse - Superadmin</title>
+    <title>QR Items - Super Admin</title>
 @endsection
 
 @section('content')
@@ -13,13 +13,12 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h3 class="fw-bold py-3">List Warehouse</h3>
+            <h3 class="fw-bold py-3">List Selected QR Items</h3>
             <hr class="my-4">
 
             <div class="nav-align-top mb-4">
 
-                <!-- Isi Tabel Item Berdasarkan Outlet -->
-                <livewire:superadmin.edit-warehouse></livewire:superadmin.edit-warehouse>
+                <livewire:admin.qritem-admin></livewire:admin.qritem-admin>
 
             </div>
 

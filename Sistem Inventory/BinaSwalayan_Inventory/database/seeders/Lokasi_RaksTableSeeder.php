@@ -388,7 +388,7 @@ class Lokasi_RaksTableSeeder extends Seeder
         Lokasi_Rak::create([
             'id' => '59',
             'id_gudang' => '6',
-            'rak' => '',
+            'rak' => '9',
         ]);
 
         Lokasi_Rak::create([

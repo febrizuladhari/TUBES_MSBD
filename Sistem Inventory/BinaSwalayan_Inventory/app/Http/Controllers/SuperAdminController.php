@@ -35,9 +35,9 @@ class SuperAdminController extends Controller
     {
         /* Chart User Per Outlet */
         $users = User::select(DB::raw("COUNT(*) as count"))
-                    ->groupBy(DB::raw("id_outlet"))
-                    ->orderBy('id','ASC')
-                    ->pluck('count');
+                ->groupBy(DB::raw("id_outlet"))
+                ->orderBy('id','ASC')
+                ->pluck('count');
 
         $labels1 = Outlet::select(DB::raw("nama as outlet"))
                     ->orderBy('id', 'ASC')
