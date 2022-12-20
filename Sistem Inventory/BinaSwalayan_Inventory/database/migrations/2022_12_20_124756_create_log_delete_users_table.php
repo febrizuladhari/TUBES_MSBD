@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('log_delete_users', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id', true);
             $table->unsignedBigInteger('id_user');
             $table->string('nama_deleted', 150);
             $table->char('username_deleted', 20);

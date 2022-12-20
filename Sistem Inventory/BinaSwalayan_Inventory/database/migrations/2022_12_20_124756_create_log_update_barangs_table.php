@@ -22,10 +22,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_kategori_old');
             $table->unsignedBigInteger('id_Rak_updated');
             $table->unsignedBigInteger('id_Rak_old');
-            $table->unsignedBigInteger('id_Gudang_updated');
-            $table->unsignedBigInteger('id_Gudang_old');
-            $table->unsignedBigInteger('id_Outlet_updated');
-            $table->unsignedBigInteger('id_Outlet_old');
             $table->unsignedBigInteger('id_Supplier_updated');
             $table->unsignedBigInteger('id_Supplier_old');
             $table->timestamp('updated_at')->useCurrent();
