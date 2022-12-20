@@ -14,7 +14,7 @@ class CreateBarangsTable extends Migration
     public function up()
     {
         Schema::create('barangs', function (Blueprint $table) {
-            $table->char('id', 5)->primary();
+            $table->char('id', 6)->primary();
             $table->string('nama');
             $table->unsignedbigInteger('id_kategori')->index('id_kategori');
             $table->unsignedbigInteger('id_rak')->index('id_rak');

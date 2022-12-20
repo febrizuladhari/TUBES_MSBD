@@ -44,7 +44,7 @@ class CreateTrigger extends Migration
                 END IF;
             END
         ');
-        
+
         DB::unprepared('CREATE TRIGGER validasi_username BEFORE UPDATE ON users
             FOR EACH ROW
             BEGIN
@@ -64,5 +64,8 @@ class CreateTrigger extends Migration
     public function down()
     {
         DB::unprepared('DROP TRIGGER IF EXISTS validasi_user_level');
+        DB::unprepared('DROP TRIGGER IF EXISTS validasi_user_level_2');
+        DB::unprepared('DROP TRIGGER IF EXISTS validasi_user_level_3');
+        DB::unprepared('DROP TRIGGER IF EXISTS validasi_username');
     }
 }

@@ -92,8 +92,9 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <form wire:submit.prevent="submitConfirmIncoming" action="" method="post" class="container-fluid">
-                                                <div class="mb-3" hidden>
+                                            <form wire:submit.prevent="submitConfirmIncoming" action="" method="post" class="container-fluid">    
+                                            @foreach ($incomings as $incoming)
+                                            <div class="mb-3" hidden>
                                                     <div class="input-group input-group-merge">
                                                         <span id="id" class="input-group-text"><i class="bx bx-package"></i></span>
                                                         <input wire:model.lazy="selectedID" type="text" class="form-control" id="id" name="id" value="{{$incoming->id}}" disabled="disabled"/>
@@ -150,8 +151,9 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">Confirm Incoming</button>
-                                                </div>
-                                            </form>
+                                                </div>                                           
+                                                @endforeach
+                                            </form>     
                                         </div>
                                     </div>
                                 </div>

@@ -618,7 +618,7 @@ class BarangsTableSeeder extends Seeder
         Barang::create([
             'id' => '16162',
             'nama' => 'Printer Cannon PIXMA G670',
-            'id_kategori',
+            'id_kategori' => '1',
             'id_kategori' => '1',
             'id_rak' => '32',
             'id_supplier' =>'2',
@@ -643,7 +643,6 @@ class BarangsTableSeeder extends Seeder
         Barang::create([
             'id' => '17519',
             'nama' => 'Cash Drawer Kassen K410 K-410',
-            'id_kategori',
             'id_kategori' => '1',
             'id_rak' => '31',
             'id_supplier' =>'3',
