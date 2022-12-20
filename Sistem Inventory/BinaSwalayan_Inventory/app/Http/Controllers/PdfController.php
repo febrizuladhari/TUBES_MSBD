@@ -83,8 +83,11 @@ class PdfController extends Controller
         exit;
     }
 
+
     public function cetakListBarang()
     {
+
+
         $this->fpdf->AddPage();
         $this->fpdf->SetFont('Times','B',16);
         $this->fpdf->Cell(0,7,'List of Items in Bina Swalayan',0,1,'C');
@@ -151,6 +154,10 @@ class PdfController extends Controller
         $this->fpdf->Output();
 
         exit;
+
+
+
+
     }
 
     public function cetakQrCodeBarang()
@@ -170,12 +177,12 @@ class PdfController extends Controller
 
         foreach ($hasils as $hasil){
 
-        $qrCode = base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->size(200)->errorCorrection('H')->generate($hasil->id));
+        $qrCode = base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->size(150)->errorCorrection('H')->generate($hasil->id));
 
         $this->fpdf->Cell(35,6,$hasil->id,1,0,'C');
-        $this->fpdf->Cell(120,6,$hasil->id,1,1,'C');
-        // $this->fpdf->Cell(120,6,Image($qrCode, 5, $pdf -> GetY(), 93.78),1,1,'C', false);
-
+        // $this->fpdf->Cell(120,6,$hasil->id,1,1,'C');
+        $this->fpdf->Image($qrCode);
+        // $this->fpdf->Image(public_path('logo.png'));
         }
 
         $this->fpdf->Output();

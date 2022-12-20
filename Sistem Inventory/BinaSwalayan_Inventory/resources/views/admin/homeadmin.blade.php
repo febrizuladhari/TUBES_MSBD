@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Search</button>
+                                                <a href="{{ route('itemadmin') }}"> <button type="button" class="btn btn-primary">Search</button></a>
                                             </div>
                                         </form>
                                     </div>
