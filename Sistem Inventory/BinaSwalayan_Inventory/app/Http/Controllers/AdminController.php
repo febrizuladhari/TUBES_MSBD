@@ -18,6 +18,9 @@ use App\Models\Req_Peminjaman;
 use App\Models\Laporan_Rusak;
 use App\Models\Req_Pembelian;
 
+use App\Exports\ListBarangExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class AdminController extends Controller
@@ -245,6 +248,11 @@ class AdminController extends Controller
             'rak' => 'required'
         ]);
 
+    }
+
+    public function exportListBarang()
+    {
+        return Excel::download(new ListBarangExport, 'List Barang.xlsx');
     }
 
 }

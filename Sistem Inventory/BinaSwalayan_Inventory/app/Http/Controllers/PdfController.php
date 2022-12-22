@@ -183,8 +183,8 @@ class PdfController extends Controller
         $qrCode = base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->size(150)->errorCorrection('H')->generate($hasil->id));
 
         $this->fpdf->Cell(35,6,$hasil->id,1,0,'C');
-        // $this->fpdf->Cell(120,6,$hasil->id,1,1,'C');
-        $this->fpdf->Image($qrCode);
+        $this->fpdf->Cell(120,6,$hasil->id,1,1,'C');
+        // $this->fpdf->Image($qrCode);
         // $this->fpdf->Image(public_path('logo.png'));
         }
 

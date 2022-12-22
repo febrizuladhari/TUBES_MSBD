@@ -19,6 +19,13 @@ use App\Models\Req_Peminjaman;
 use App\Models\Laporan_Rusak;
 use App\Models\Req_Pembelian;
 
+use App\Exports\ListBarangExport;
+use App\Exports\LogUpdateItemExport;
+use App\Exports\LogDeleteItemExport;
+use App\Exports\LogUpdateUserExport;
+use App\Exports\LogDeleteUserExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class SuperAdminController extends Controller
 {
     /**
@@ -409,6 +416,31 @@ class SuperAdminController extends Controller
     public function editWarehouse()
     {
 
+    }
+
+    public function exportListBarang()
+    {
+        return Excel::download(new ListBarangExport, 'List Barang.xlsx');
+    }
+
+    public function exportLogUpdateBarang()
+    {
+        return Excel::download(new LogUpdateItemExport, 'Log Update Barang.xlsx');
+    }
+
+    public function exportLogDeleteBarang()
+    {
+        return Excel::download(new LogDeleteItemExport, 'Log Delete Barang.xlsx');
+    }
+
+    public function exportLogUpdateUser()
+    {
+        return Excel::download(new LogUpdateUserExport, 'Log Update User.xlsx');
+    }
+
+    public function exportLogDeleteUser()
+    {
+        return Excel::download(new LogDeleteUserExport, 'Log Delete User.xlsx');
     }
 
 }

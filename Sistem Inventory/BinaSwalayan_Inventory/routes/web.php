@@ -13,6 +13,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PdfController;
 // Controller Super Admin
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\LogController;
 
 // Controller Admin
 use App\Http\Controllers\AdminController;
@@ -84,6 +85,20 @@ Route::group(['middleware' => ['auth']], function () {
             return view('superadmin.qritemsuperadmin');
         })->name('qritem_sa');
 
+        Route::get('/exportlistbarang_sa', [SuperAdminController::class, 'exportListBarang']);
+        Route::get('/exportlogupdatebarang_sa', [SuperAdminController::class, 'exportLogUpdateBarang']);
+        Route::get('/exportlogdeletebarang_sa', [SuperAdminController::class, 'exportLogDeleteBarang']);
+        Route::get('/exportlogupdateuser_sa', [SuperAdminController::class, 'exportLogUpdateUser']);
+        Route::get('/exportlogdeleteuser_sa', [SuperAdminController::class, 'exportLogDeleteUser']);
+
+        Route::get('/logupdateitems', [LogController::class, 'showLogUpdateBarang'])->name('logupdatebarang');
+
+        Route::get('/logdeleteitems', [LogController::class, 'showLogDeleteBarang'])->name('logdeletebarang');
+
+        Route::get('/logupdateusers', [LogController::class, 'showLogUpdateUser'])->name('logupdateuser');
+
+        Route::get('/logdeleteusers', [LogController::class, 'showLogDeleteUser'])->name('logdeleteuser');
+
         Route::get('/additem_sa', [SuperAdminController::class, 'formInsertItem'])->name('additem_sa.edit');
 
         Route::get('/editenvironment', [SuperAdminController::class, 'editEnvironment'])->name('editenvironment');
@@ -154,6 +169,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/qritem', function () {
             return view('admin.qritemadmin');
         })->name('qritem');
+
+        Route::get('exportlistbarang', [AdminController::class, 'exportListBarang']);
+
     });
 
     // Middleware Staff

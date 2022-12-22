@@ -5,10 +5,10 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-6">
                         <h5 class="card-header">List Items With Conditions</h5>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="demo-inline-spacing d-flex justify-content-end">
 
                             @if(auth()->user()->level == 'admin')
@@ -19,6 +19,10 @@
                                 <a href="{{ url('cetaklistbarang') }}">
                                     <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
                                 </a>
+
+                                <a href="{{ url('exportlistbarang') }}">
+                                    <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file me-1'></i>Export Excel</button>
+                                </a>
                             @elseif(auth()->user()->level == 'superadmin')
                                 <a href="{{ route('qritem_sa') }}">
                                     <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
@@ -26,6 +30,10 @@
 
                                 <a href="{{ url('cetaklistbarang_sa') }}">
                                     <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                                </a>
+
+                                <a href="{{ url('exportlistbarang_sa') }}">
+                                    <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file me-1'></i>Export Excel</button>
                                 </a>
                             @endif
 

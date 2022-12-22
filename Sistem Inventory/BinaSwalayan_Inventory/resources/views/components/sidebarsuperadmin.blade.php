@@ -85,6 +85,54 @@
                 <div data-i18n="Analytics">Edit Environment</div>
             </a>
         </li>
+
+        <!-- Log History -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">History Update & Delete</span>
+        </li>
+
+        <!-- Log Item -->
+        <li class="menu-item {{ Request::is('logupdateitems') ? 'active' : '' }} {{ Request::is('logdeleteitems') ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-history bxs-like bx-tada"></i>
+                <div data-i18n="Layouts">Log Items</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('logupdateitems') ? 'active' : '' }}">
+                    <a href="{{ route('logupdatebarang') }}" class="menu-link">
+                        <div data-i18n="Without menu">Log Update Items</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('logdeleteitems') ? 'active' : '' }}">
+                    <a href="{{ route('logdeletebarang') }}" class="menu-link">
+                        <div data-i18n="Without navbar">Log Delete Items</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Log User -->
+        <li class="menu-item {{ Request::is('logupdateusers') ? 'active' : '' }} {{ Request::is('logdeleteusers') ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-history bxs-like bx-tada"></i>
+                <div data-i18n="Layouts">Log Users</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('logupdateusers') ? 'active' : '' }}">
+                    <a href="{{ route('logupdateuser') }}" class="menu-link">
+                        <div data-i18n="Without menu">Log Update Users</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('logdeleteusers') ? 'active' : '' }}">
+                    <a href="{{ route('logdeleteuser') }}" class="menu-link">
+                        <div data-i18n="Without navbar">Log Delete Users</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
     </ul>
 </aside>
 <!-- / Sidebar -->
