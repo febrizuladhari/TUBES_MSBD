@@ -94,10 +94,17 @@
                                         <div class="modal-header">
                                             <form wire:submit.prevent="submitConfirmIncoming" action="" method="post" class="container-fluid">    
                                             @foreach ($incomings as $incoming)
-                                            <div class="mb-3" hidden>
+                                                <div class="mb-3" hidden>
                                                     <div class="input-group input-group-merge">
                                                         <span id="id" class="input-group-text"><i class="bx bx-package"></i></span>
                                                         <input wire:model.lazy="selectedID" type="text" class="form-control" id="id" name="id" value="{{$incoming->id}}" disabled="disabled"/>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="id_barang">ID</label>
+                                                    <div class="input-group input-group-merge">
+                                                        <span id="id_barang" class="input-group-text"><i class="bx bx-package"></i></span>
+                                                        <input wire:model.lazy="selectedIDBarang" type="text" class="form-control" id="id_barang"/>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">

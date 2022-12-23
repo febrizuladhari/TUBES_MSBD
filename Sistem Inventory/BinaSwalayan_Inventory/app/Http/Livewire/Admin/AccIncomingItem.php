@@ -19,6 +19,7 @@ class AccIncomingItem extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $selectedID ='';
+    public $selectedIDBarang='';
     public $selectedNamaBarang ='';
     public $selectedNamaKategori = '';
     public $selectedRack = '';
@@ -82,6 +83,7 @@ class AccIncomingItem extends Component
     public function submitConfirmIncoming()
     {
         $barang = Barang::create([
+            'id' => $this->selectedIDBarang,
             'nama' => $this->selectedNamaBarang,
             'id_kategori' => $this->selectedKategori,
             'id_rak' => $this->selectedRack,
