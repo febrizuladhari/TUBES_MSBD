@@ -9,6 +9,7 @@
         "asantibanez/livewire-charts": "^2.4",
         "barryvdh/laravel-dompdf": "^2.0",
         "codedge/laravel-fpdf": "^1.10",
+        "dompdf/dompdf": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",

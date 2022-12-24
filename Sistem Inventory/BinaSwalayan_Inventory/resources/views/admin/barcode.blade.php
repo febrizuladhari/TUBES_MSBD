@@ -16,10 +16,11 @@
     <table width="100%">
         <tr>
             @foreach ($dataproduk as $produk)
+
+            {{dd($produk)}}
                 <td class="text-center" style="border: 1px solid #333;">
-                    <img src="{{!!QrCode::merge(public_path('logo.png'), 0.4, true)
-                                ->size(200)->errorCorrection('H')
-                                ->generate("12345") !!}}">
+                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->
+                    size(150)->errorCorrection('H')->generate($produk)) !!} ">
                     <br>
                 </td>
             @endforeach
