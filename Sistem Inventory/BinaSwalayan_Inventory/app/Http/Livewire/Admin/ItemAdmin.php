@@ -150,11 +150,11 @@ class ItemAdmin extends Component
     public function cetakBarcode()
     {   
         
-        $dataproduk = array();
-        $dataproduk[] = $this->checked;
+        $dataproduk = [];
+        $dataproduk = $this->checked;
         
-
-        $pdf = PDF::loadView('admin.barcode', compact('dataproduk'));
+        $no  = 1;
+        $pdf = PDF::loadView('admin.barcode', compact('dataproduk','no'));
         $pdf->setPaper('a4', 'potrait')->output();
 
         return response()->streamDownload(function () use($pdf) {
