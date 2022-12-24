@@ -15,6 +15,16 @@ class UsersTableSeeder extends Seeder
     {
         \DB::table('users')->insert([
             [
+                'nama' => 'Operator',
+                'username' => 'operator',
+                'password' => bcrypt('123'),
+                'level' => 'superadmin',
+                'jenis_kelamin' => 'P',
+                'alamat' => 'Medan',
+                'no_telp' => '08129875219',
+                'id_outlet' => '1',
+            ],
+            [
                 'nama' => 'Jonathan',
                 'username' => 'jonathan',
                 'password' => bcrypt('123'),

@@ -12,7 +12,7 @@ class CreateTrigger extends Migration
      *
      * @return void
      */
-    
+
     public function up()
     {
         DB::unprepared('CREATE TRIGGER validasi_level_user BEFORE INSERT ON users
@@ -58,7 +58,7 @@ class CreateTrigger extends Migration
         DB::unprepared('CREATE TRIGGER log_delete_barang AFTER DELETE ON barangs
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_delete_barangs SET id_barang = old.id, nama_deleted = old.nama, 
+            INSERT INTO log_delete_barangs SET id_barang = old.id, nama_deleted = old.nama,
                         id_kategori_deleted = old.id_kategori, id_rak_deleted = old.id_rak,
                         id_supplier_deleted = old.id_supplier, deleted_at = now();
         END
@@ -67,7 +67,7 @@ class CreateTrigger extends Migration
         DB::unprepared('CREATE TRIGGER log_delete_user AFTER DELETE ON users
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_delete_users SET id_user = old.id, nama_deleted = old.nama, 
+            INSERT INTO log_delete_users SET id_user = old.id, nama_deleted = old.nama,
                         username_deleted = old.username, level_deleted = old.level,
                         jenis_kelamin_deleted = old.jenis_kelamin, alamat_deleted = old.alamat,
                         no_telp_deleted = old.no_telp, id_outlet_deleted = old.id_outlet, deleted_at = now();
@@ -77,18 +77,18 @@ class CreateTrigger extends Migration
         DB::unprepared('CREATE TRIGGER log_update_barang BEFORE UPDATE ON barangs
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_update_barangs SET id_barang = old.id, nama_updated = new.nama, nama_old = old.nama, 
-                        id_kategori_updated = new.id_kategori, id_kategori_old = old.id_kategori, 
+            INSERT INTO log_update_barangs SET id_barang = old.id, nama_updated = new.nama, nama_old = old.nama,
+                        id_kategori_updated = new.id_kategori, id_kategori_old = old.id_kategori,
                         id_Rak_updated = new.id_rak, id_Rak_old = old.id_rak,
                         id_Supplier_updated = new.id_supplier, id_Supplier_old = old.id_supplier, updated_at = now();
         END
         ');
 
-        DB::unprepared('CREATE TRIGGER log_update_user BEFORE UPDATE ON users 
+        DB::unprepared('CREATE TRIGGER log_update_user BEFORE UPDATE ON users
         FOR EACH ROW
         BEGIN
-            INSERT INTO log_update_users SET id_user = old.id, nama_updated = new.nama, nama_old = old.nama, 
-                        level_updated = new.level, level_old = old.level, 
+            INSERT INTO log_update_users SET id_user = old.id, nama_updated = new.nama, nama_old = old.nama,
+                        level_updated = new.level, level_old = old.level,
                         jenis_kelamin_updated = new.jenis_kelamin, jenis_kelamin_old = old.jenis_kelamin,
                         alamat_updated = new.alamat, alamat_old = old.alamat,
                         no_telp_updated = new.no_telp, no_telp_old = old.no_telp,

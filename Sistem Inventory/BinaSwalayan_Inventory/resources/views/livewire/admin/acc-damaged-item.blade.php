@@ -94,8 +94,8 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <form wire:submit.prevent="submitConfirmDamage" action="" method="post" class="container-fluid">    
-                                            @foreach ($damages as $damage)
+                                            <form wire:submit.prevent="submitConfirmDamage" action="" method="post" class="container-fluid">
+                                            {{-- @foreach ($damages as $damage) --}}
                                             <div class="mb-3" hidden>
                                                     <div class="input-group input-group-merge">
                                                         <span id="id_barang" class="input-group-text"><i class="bx bx-package"></i></span>
@@ -169,7 +169,7 @@
                                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">Confirm Damaged</button>
                                                 </div>
-                                                @endforeach
+                                                {{-- @endforeach --}}
                                             </form>
                                         </div>
                                     </div>

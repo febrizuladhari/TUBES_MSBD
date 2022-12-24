@@ -48,7 +48,7 @@
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-
+                                <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
                             @foreach($datas as $barang)
                             <tr>
                                 <td>{{ $barang->id }}</td>
