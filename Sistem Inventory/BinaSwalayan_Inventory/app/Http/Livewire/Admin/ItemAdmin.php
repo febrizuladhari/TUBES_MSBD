@@ -11,6 +11,7 @@ use App\Models\Lokasi_Rak;
 use App\Models\Supplier;
 use RealRashid\SweetAlert\Facades\Alert;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Barryvdh\DomPDF\Facade\PDF;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -144,6 +145,20 @@ class ItemAdmin extends Component
             }
         }
         Alert::error('Opps !', 'You cannot access this page');
+    }
+
+    public function cetakBarcode()
+    {   
+        $dataproduk = array();
+
+        $produk = Barang::find($this->checked);
+        $dataproduk[] = $produk;
+        
+
+        $no  = 1;
+        $pdf = PDF::loadView('Admin.barcode', compact('dataproduk'));
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->download('produk.pdf');
     }
 
     public function render()
