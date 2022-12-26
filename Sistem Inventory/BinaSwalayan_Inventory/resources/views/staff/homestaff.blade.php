@@ -119,7 +119,7 @@
                                         </button>
                                         </div>
                                     </div>
-                                    <h5 class="d-block mb-1">Pending Damaged</h5>
+                                    <h5 class="d-block mb-1">Pending Damaged to Repaired</h5>
                                     <h4 class="card-title mb-2"><span class="text-success"><i class="bx bx-up-arrow-alt"></i></span>{{ $totalAccDamaged }}</h4>
                                 </div>
                             </div>

@@ -13,13 +13,9 @@
                         <div class="col-4">
                             <div class="demo-inline-spacing d-flex justify-content-end">
                                 @if(auth()->user()->level == 'admin')
-                                    <a href="{{ url('cetakqrcodebarang') }}">
-                                        <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                                    </a>
+                                    <button wire:click="cetakQrCode" type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
                                 @elseif(auth()->user()->level == 'superadmin')
-                                    <a href="{{ url('cetakqrcodebarang_sa') }}">
-                                        <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                                    </a>
+                                    <button wire:click="cetakQrCode" type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
                                 @endif
                             </div>
                         </div>
@@ -51,6 +47,7 @@
 
                             @foreach($datas as $barang)
                             <tr>
+                                {{-- {{ dd($barang->id) }} --}}
                                 <td>{{ $barang->id }}</td>
                                 <td><strong>{{ $barang->Nama }}</strong></td>
                                 <td>{{ $barang->Kategori }}</td>

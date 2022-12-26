@@ -35,7 +35,15 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    {{-- If data empty --}}
+                    @if ($incomings->count() === 0)
+                    <div class="alert alert-danger mx-4" role="alert">
+                        Data is empty!
+                    </div>
+                    @else
+
                     @foreach($incomings as $incoming)
+
                     <tr>
                         <td>{{$incoming->id}}</td>
                         <td><strong>{{$incoming->nama_barang}}</strong></td>
@@ -92,8 +100,8 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <form wire:submit.prevent="submitConfirmIncoming" action="" method="post" class="container-fluid">    
-                                            @foreach ($incomings as $incoming)
+                                            <form wire:submit.prevent="submitConfirmIncoming" action="" method="post" class="container-fluid">
+                                            {{-- @foreach ($incomings as $incoming) --}}
                                                 <div class="mb-3" hidden>
                                                     <div class="input-group input-group-merge">
                                                         <span id="id" class="input-group-text"><i class="bx bx-package"></i></span>
@@ -158,13 +166,14 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">Confirm Incoming</button>
-                                                </div>                                           
-                                                @endforeach
-                                            </form>     
+                                                </div>
+                                                {{-- @endforeach --}}
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                    @endif
                         </td>
                     </tr>
                 </tbody>

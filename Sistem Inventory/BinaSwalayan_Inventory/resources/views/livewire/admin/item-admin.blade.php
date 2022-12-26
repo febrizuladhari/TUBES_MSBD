@@ -16,7 +16,7 @@
                                     <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
                                 </a>
 
-                                    <button wire:click="cetakBarcode" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR selected</button>
+                                    <button wire:click="cetakBarcode" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR Selected</button>
 
                                 <a href="{{ url('cetaklistbarang') }}">
                                     <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
@@ -29,6 +29,8 @@
                                 <a href="{{ route('qritem_sa') }}">
                                     <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
                                 </a>
+
+                                <button wire:click="cetakBarcode" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR Selected</button>
 
                                 <a href="{{ url('cetaklistbarang_sa') }}">
                                     <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>

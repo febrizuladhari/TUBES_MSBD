@@ -9,6 +9,11 @@ use App\Models\Req_Pembelian;
 use App\Models\Laporan_Rusak;
 use App\Models\Perpindahan;
 use App\Models\Req_Peminjaman;
+use App\Models\View_Barang;
+use App\Models\View_Dipinjam;
+use App\Models\View_Req_Pembelian;
+use App\Models\View_Req_Peminjaman;
+use App\Models\View_Rusak;
 use DB;
 
 use Illuminate\Support\Facades\Auth;
@@ -60,16 +65,16 @@ class StaffController extends Controller
     //                 ->pluck('countBeli');
 
         // Total Items
-        $totalItems = Barang::count();
+        $totalItems = View_Barang::where('id_Outlet',Auth::user()->id_outlet)->count();
 
         // Total Approve Shifting
-        $totalAccShifting = Req_Peminjaman::count();
+        $totalAccShifting = View_Req_Peminjaman::where('id_Outlet',Auth::user()->id_outlet)->count();
 
         // Total Approve Damaged
-        $totalAccDamaged = Laporan_Rusak::count();
+        $totalAccDamaged = Laporan_Rusak::where('id_user',Auth::user()->id)->count();
 
         // Total Approve Incoming
-        $totalAccIncoming = Req_Pembelian::count();
+        $totalAccIncoming = View_Req_Pembelian::where('id_Outlet',Auth::user()->id_outlet)->count();
 
         $dataShifting = $totalAccShifting;
         $dataDamaged = $totalAccDamaged;
