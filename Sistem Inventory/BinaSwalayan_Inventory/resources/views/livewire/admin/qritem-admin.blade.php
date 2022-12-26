@@ -44,7 +44,6 @@
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
                             @foreach($datas as $barang)
                             <tr>
                                 <td>{{ $barang->id }}</td>
@@ -58,7 +57,7 @@
                                     {{-- {!! QrCode::format('png')->merge(public_path('logo.png'), 0.3, true)->generate($barang->id); !!} --}}
                                     {{-- <img src="{!! QrCode::size(300)->generate($barang->id) !!}"> --}}
                                     {{-- <img src="{!! QrCode::format('png')->size(300)->generate($barang->id) !!}"> --}}
-                                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->size(150)->errorCorrection('H')->generate($barang->id)) !!} ">
+                                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->size(100)->errorCorrection('H')->generate($barang->id)) !!} ">
                                     {{-- <img src="data:image/png;base64, {!! base64_encode($image) !!} "> --}}
 
                                 </td>

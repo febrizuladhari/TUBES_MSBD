@@ -19,6 +19,7 @@
             @foreach ($dataproduk as $produk)
 
                 <td class="text-center" style="border: 1px solid #333;">
+                    <br>
                     <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge(public_path('logo.png'), 0.4, true)->
                     size(150)->errorCorrection('H')->generate($produk)) !!} ">
                     <br>

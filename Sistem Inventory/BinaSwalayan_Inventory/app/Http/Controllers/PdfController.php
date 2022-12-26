@@ -157,9 +157,6 @@ class PdfController extends Controller
 
         exit;
 
-
-
-
     }
 
     public function cetakQrCodeBarang()

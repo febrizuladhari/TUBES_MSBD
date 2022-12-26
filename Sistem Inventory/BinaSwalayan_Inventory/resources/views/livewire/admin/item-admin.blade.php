@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col d-flex justify-content-end">
                         @if($checked)
                             <a href="#"><button type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()"
