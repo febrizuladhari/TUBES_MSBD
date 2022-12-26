@@ -40,7 +40,7 @@ class ListpinjamStaff extends Component
     public function render()
     {
         return view('livewire.staff.listpinjam-staff',[
-        'pinjams' => View_Dipinjam::where('id_user',3)->paginate(5),
+        'pinjams' => View_Dipinjam::where('id_user',Auth::user()->id)->paginate(5),
 
         ]);
     }
