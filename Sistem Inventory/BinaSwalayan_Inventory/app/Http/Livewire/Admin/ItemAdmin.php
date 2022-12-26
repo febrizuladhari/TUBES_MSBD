@@ -107,22 +107,55 @@ class ItemAdmin extends Component
     public function deleteItem($idb)
     {
         $student = Barang::findOrFail($idb);
+        $barang = View_Barang::findOrFail($idb);
 
-        $student->delete();
-        $this->checked = array_diff($this->checked, [$idb]);
-
-        session()->flash('info', 'Item deleted successfully');
-
-        if ($user = Auth::user()) {
-            if ($user->level == 'superadmin') {
-                Alert::success('OK', 'Item deleted successfully !');
-                return redirect()->route('itemsuperadmin');
-            } elseif ($user->level == 'admin') {
-                Alert::success('OK', 'Item deleted successfully !');
-                return redirect()->route('itemadmin');
+        if($barang->Status == 'Perbaikan') {
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemadmin');
+                }
             }
+        } elseif($barang->Status == 'Rusak'){
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemadmin');
+                }
+            }
+        } elseif($barang->Status == 'Dipinjam') {
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemadmin');
+                }
+            }
+        } else {
+            $student->delete();
+            $this->checked = array_diff($this->checked, [$idb]);
+
+            session()->flash('info', 'Item deleted successfully');
+
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('OK', 'Item deleted successfully !');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('OK', 'Item deleted successfully !');
+                    return redirect()->route('itemadmin');
+                }
+            }
+            Alert::error('Opps !', 'You cannot access this page');
         }
-        Alert::error('Opps !', 'You cannot access this page');
     }
 
     //Bulk Delete
