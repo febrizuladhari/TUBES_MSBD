@@ -271,7 +271,6 @@
                         </td>
                     </tr>
 
-
                         {{-- Search if data not match --}}
                         @if ($barangs->count() === 0)
                         <div class="alert alert-danger mx-4" role="alert">

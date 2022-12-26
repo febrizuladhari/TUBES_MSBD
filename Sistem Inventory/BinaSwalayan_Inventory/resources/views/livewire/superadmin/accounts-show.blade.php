@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                        @foreach ($tampilUsers as $user)
+                        @foreach ($users as $user)
                     <tr>
                         <td><strong>{{ $user->nama_user }}</strong></td>
                         <td>{{ $user->username }}</td>
@@ -40,9 +40,7 @@
                         </td>
                         <td>{{ $user->alamat }}</td>
                         <td>{{ $user->no_telp }}</td>
-                        <td>
-                            {{ $user->nama_outlet }}
-                        </td>
+                        <td>{{ $user->nama_outlet }}</td>
                         <td class="d-flex justify-content-center">
 
                             {{-- Edit --}}
