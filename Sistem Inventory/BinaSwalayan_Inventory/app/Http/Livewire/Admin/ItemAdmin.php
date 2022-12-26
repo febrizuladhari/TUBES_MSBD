@@ -104,10 +104,10 @@ class ItemAdmin extends Component
     }
 
     //Single Delete
-
     public function deleteItem($idb)
     {
         $student = Barang::findOrFail($idb);
+
         $student->delete();
         $this->checked = array_diff($this->checked, [$idb]);
 
@@ -126,25 +126,57 @@ class ItemAdmin extends Component
     }
 
     //Bulk Delete
-
     public function deleteItems()
     {
-
-        Barang::whereKey($this->checked)->delete();
-        $this->checked = [];
-
-        session()->flash('message', 'Items have been deleted');
-
-        if ($user = Auth::user()) {
-            if ($user->level == 'superadmin') {
-                Alert::success('OK', 'Many items deleted successfully !');
-                return redirect()->route('itemsuperadmin');
-            } elseif ($user->level == 'admin') {
-                Alert::success('OK', 'Many items deleted successfully !');
-                return redirect()->route('itemadmin');
+        // $pilihBarang = View_Barang::all();
+        $barang = View_Barang::whereKey($this->checked)->first();
+        if($barang->Status == 'Perbaikan') {
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemadmin');
+                }
             }
+        } elseif($barang->Status == 'Rusak'){
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemadmin');
+                }
+            }
+        } elseif($barang->Status == 'Dipinjam') {
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemadmin');
+                }
+            }
+        } else {
+            Barang::whereKey($this->checked)->delete();
+            $this->checked = [];
+
+            session()->flash('message', 'Items have been deleted');
+
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('OK', 'Many items deleted successfully !');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('OK', 'Many items deleted successfully !');
+                    return redirect()->route('itemadmin');
+                }
+            }
+            Alert::error('Opps !', 'You cannot access this page');
         }
-        Alert::error('Opps !', 'You cannot access this page');
     }
 
     public function cetakBarcode()

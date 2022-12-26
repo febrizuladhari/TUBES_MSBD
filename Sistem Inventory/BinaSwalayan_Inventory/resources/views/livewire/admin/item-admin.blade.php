@@ -45,12 +45,38 @@
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                    <div class="col d-flex justify-content-end">
+                <div class="row mt-2">
+                    <div class="col d-flex justify-content-start">
                         @if($checked)
-                            <a href="#"><button type="button" onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()"
-                                wire:click="deleteItems()" class="btn btn-danger me-5"><i class="menu-icon tf-icons bx bxs-trash"></i>Delete Selected</button>
+
+                            <a href="#"><button type="button" data-bs-toggle="modal" data-bs-target="#modalDeleteItems"
+                                {{-- onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" wire:click="deleteItems()" --}}
+                                class="btn btn-danger me-5"><i class="menu-icon tf-icons bx bxs-trash"></i>Delete Selected</button>
                             </a>
+
+                            <!-- Modal Delete Popup -->
+                            <div wire:ignore.self class="modal fade" id="modalDeleteItems" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel1">Delete this items ?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    Are you sure you want to delete this items ?
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close </button>
+                                            <button wire:click="deleteItems()" type="button" class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         @endif
                     </div>
                 </div>
