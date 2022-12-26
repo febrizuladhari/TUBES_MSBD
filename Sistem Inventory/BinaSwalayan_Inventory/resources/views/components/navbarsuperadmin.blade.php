@@ -35,8 +35,8 @@
         </div> --}}
         <!-- /Search -->
         <div class="navbar-nav align-items-center">
-            <div class="nav-item d-flex align-items-center">
-                <h3 class="my-auto animate__animated animate__jackInTheBox"><strong> Bina Swalayan Inventory</strong></h3>
+            <div class="nav-item position-absolute top-50 start-50 translate-middle">
+                <h2 class="my-auto animate__animated animate__rubberBand text-center"><strong> Bina Swalayan Inventory</strong></h2>
             </div>
         </div>
 
