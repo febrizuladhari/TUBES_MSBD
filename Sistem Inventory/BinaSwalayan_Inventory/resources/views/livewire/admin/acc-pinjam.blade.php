@@ -37,6 +37,13 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                        {{-- If data empty --}}
+                        @if ($pinjams->count() === 0)
+                        <div class="alert alert-danger mx-4" role="alert">
+                            Data is empty!
+                        </div>
+                        @else
+
                         @foreach($pinjams as $pinjam)
                         <tr>
                             <td>{{$pinjam->id}}</td>
@@ -314,6 +321,7 @@
                                         </div>
                                     </div>
                                 </div>
+                        @endif
                             </td>
                         </tr>
                     </tbody>

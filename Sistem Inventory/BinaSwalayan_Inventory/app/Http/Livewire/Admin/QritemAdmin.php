@@ -13,6 +13,7 @@ use App\Models\View_Barang;
 use RealRashid\SweetAlert\Facades\Alert;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\PDF;
 
 
 use Livewire\Component;
@@ -58,6 +59,19 @@ class QritemAdmin extends Component
         return view('livewire.admin.qritem-admin',
                 compact('image')
         );
+    }
+
+    public function cetakQrCode()
+    {
+        $dataBarangs = View_Barang::all();
+        $no  = 1;
+
+        $pdf = PDF::loadView('admin.printqrcode', compact('dataBarangs', 'no'));
+        $pdf->setPaper('a4', 'potrait')->output();
+
+        return response()->streamDownload(function () use($pdf) {
+            echo  $pdf->stream();
+        }, 'QR Code Items.pdf');
     }
 
     public function render()

@@ -36,6 +36,13 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    {{-- If data empty --}}
+                    @if ($damages->count() === 0)
+                    <div class="alert alert-danger mx-4" role="alert">
+                        Data is empty!
+                    </div>
+                    @else
+
                     @foreach ($damages as $damage)
                     <tr>
                         <td><strong>{{ $damage->id }}</strong></td>
@@ -175,7 +182,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                    @endif
                         </td>
                     </tr>
                 </tbody>

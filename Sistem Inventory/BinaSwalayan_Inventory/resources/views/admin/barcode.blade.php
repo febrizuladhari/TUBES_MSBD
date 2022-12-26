@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+    <h2 class="text-center">List Selected ID Items With QR Code</h2>
     <table width="100%">
         <tr>
             @foreach ($dataproduk as $produk)

@@ -35,6 +35,13 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    {{-- If data empty --}}
+                    @if ($incomings->count() === 0)
+                    <div class="alert alert-danger mx-4" role="alert">
+                        Data is empty!
+                    </div>
+                    @else
+
                     @foreach($incomings as $incoming)
                     <tr>
                         <td>{{$incoming->id}}</td>
@@ -165,6 +172,7 @@
                                     </div>
                                 </div>
                             </div>
+                    @endif
                         </td>
                     </tr>
                 </tbody>

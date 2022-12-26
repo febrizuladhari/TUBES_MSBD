@@ -148,18 +148,18 @@ class ItemAdmin extends Component
     }
 
     public function cetakBarcode()
-    {   
-        
+    {
+
         $dataproduk = [];
         $dataproduk = $this->checked;
-        
+
         $no  = 1;
         $pdf = PDF::loadView('admin.barcode', compact('dataproduk','no'));
         $pdf->setPaper('a4', 'potrait')->output();
 
         return response()->streamDownload(function () use($pdf) {
             echo  $pdf->stream();
-        }, 'test.pdf');
+        }, 'Selected QR Code Items.pdf');
     }
 
     public function render()
