@@ -138,8 +138,7 @@
                     <tr>
                         <td><input type="checkbox" value="{{$barang->id}}" wire:model="checked"></td>
                         <td>{{ $barang->id }}</td>
-                        <td><strong>{{$barang->Nama}}</strong></td>
-                        <td>{{$barang->Kategori}}</td>
+                        <td><a href="{{ route('historyitem') }}"><strong>{{$barang->Nama}}</strong></a></td>                        <td>{{$barang->Kategori}}</td>
                         <td>{{$barang->Rak}}</td>
                         <td>{{$barang->Gudang}}</td>
                         <td>{{$barang->Outlet}}</td>

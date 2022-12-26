@@ -17,9 +17,11 @@ use App\Models\Log_Update_Barang;
 use App\Models\Log_Delete_Barang;
 use App\Models\Log_Update_User;
 use App\Models\Log_Delete_User;
+use App\Models\History_Rusak;
 
 
 use App\Exports\ListBarangExport;
+use App\Models\History_Pinjam;
 use Maatwebsite\Excel\Facades\Excel;
 
 class LogController extends Controller
@@ -50,5 +52,16 @@ class LogController extends Controller
         $logDeleteUsers = Log_Delete_User::all();
 
         return view('superadmin.logdeleteusersuperadmin', compact('logDeleteUsers'));
+    }
+
+    public function historyitem()
+    {
+        $pinjams = History_Pinjam::join('outlets','history_perpindahans.id_outlet_peminjam','=','outlets.id')->join('users','history_perpindahans.id_user','=','users.id')->select('history_perpindahans.id','history_perpindahans.id_outlet_peminjam','history_perpindahans.tanggal_keluar','history_perpindahans.tanggal_kembali','users.nama')->get();
+        $rusaks = History_Rusak::all();
+
+        return view('superadmin.historyitem', [
+            'pinjams'=>$pinjams,
+            'rusaks'=>$rusaks,
+        ]);
     }
 }

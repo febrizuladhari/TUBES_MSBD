@@ -99,6 +99,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/logdeleteusers', [LogController::class, 'showLogDeleteUser'])->name('logdeleteuser');
 
+        Route::get('/historyitem', [LogController::class, 'historyitem'])->name('historyitem');
+
         Route::get('/additem_sa', [SuperAdminController::class, 'formInsertItem'])->name('additem_sa.edit');
 
         Route::get('/editenvironment', [SuperAdminController::class, 'editEnvironment'])->name('editenvironment');
