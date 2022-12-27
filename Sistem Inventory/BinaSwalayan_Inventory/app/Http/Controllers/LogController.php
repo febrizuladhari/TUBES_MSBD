@@ -56,7 +56,7 @@ class LogController extends Controller
 
     public function historyitem()
     {
-        $pinjams = History_Pinjam::join('outlets','history_perpindahans.id_outlet_peminjam','=','outlets.id')->join('users','history_perpindahans.id_user','=','users.id')->select('history_perpindahans.id','history_perpindahans.id_outlet_peminjam','history_perpindahans.tanggal_keluar','history_perpindahans.tanggal_kembali','users.nama')->get();
+        $pinjams = History_Pinjam::join('outlets','history_perpindahans.id_outlet_peminjam','=','outlets.id')->join('users','history_perpindahans.id_user','=','users.id')->select('history_perpindahans.id','history_perpindahans.id_barang','history_perpindahans.id_outlet_peminjam','history_perpindahans.tanggal_keluar','history_perpindahans.tanggal_kembali','users.nama')->get();
         $rusaks = History_Rusak::all();
 
         return view('superadmin.historyitem', [
