@@ -162,6 +162,10 @@ Route::group(['middleware' => ['auth']], function () {
             return view('admin.accincomingadmin');
         })->name('accincoming');
 
+        Route::get('/listperbaikan', function () {
+            return view('admin.listrusakadmin');
+        })->name('listrusakadmin');
+
         Route::get('cetaklistbarang', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli', [PdfController::class, 'cetakRequestBeli']);

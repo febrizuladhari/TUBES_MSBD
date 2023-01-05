@@ -14,7 +14,7 @@ class CreateHistoryRusakTable extends Migration
     public function up()
     {
         Schema::create('history_rusak', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->bigIncrements('id');
             $table->char('id_barang', 5)->index('id_barang');
             $table->timestamp('tanggal_rusak')->nullable();
             $table->timestamp('tanggal_bagus')->nullable();

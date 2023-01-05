@@ -10,5 +10,13 @@ class History_Rusak extends Model
     use HasFactory;
 
     public $table = "history_rusak";
+    public $timestamps = false;
+    protected $fillable = [
+        'id_barang',
+        'tanggal_rusak',
+        'tanggal_bagus',
+        'lokasi',
+        'catatan'
+    ];
 
 }
