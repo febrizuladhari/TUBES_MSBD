@@ -166,6 +166,10 @@ Route::group(['middleware' => ['auth']], function () {
             return view('admin.listrusakadmin');
         })->name('listrusakadmin');
 
+        Route::get('/lostitem', function () {
+            return view('admin.lostitemadmin');
+        })->name('lostitemadmin');
+
         Route::get('cetaklistbarang', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli', [PdfController::class, 'cetakRequestBeli']);
@@ -194,6 +198,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/adddamagedstaff', function(){
             return view('staff.adddamagedstaff');
         })->name('adddamagedstaff');
+
+        Route::get('/addloststaff', function(){
+            return view('staff.addloststaff');
+        })->name('addloststaff');
 
         Route::post('storeAddDamage', [StaffController::class, 'storeAddDamage'])->name('storeAddDamage');
 

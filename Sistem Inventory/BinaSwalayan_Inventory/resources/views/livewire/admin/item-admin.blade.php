@@ -150,6 +150,8 @@
                                 <span class="badge bg-danger d-flex justify-content-center">{{"Damaged"}}</span>
                             @elseif ($barang->Status == 'Dipinjam')
                                 <span class="badge bg-info d-flex justify-content-center">{{"Borrowed"}}</span>
+                            @elseif ($barang->Status == 'Hilang')
+                            <span class="badge bg-dark d-flex justify-content-center">{{"Lost"}}</span>
                             @else
                                 <span class="badge bg-primary d-flex justify-content-center">{{"Good"}}</span>
                             @endif
