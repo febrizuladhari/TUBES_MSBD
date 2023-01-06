@@ -46,10 +46,16 @@
                 <div data-i18n="Analytics">Add Damaged Item</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::is('addloststaff') ? 'active' : '' }}">
+            <a href="{{ route('addloststaff') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-question-mark bx-tada"></i>
+                <div data-i18n="Analytics">Add Lost Item</div>
+            </a>
+        </li>
         <li class="menu-item {{ Request::is('reqitemstaff') ? 'active' : '' }}">
             <a href="{{ route('reqitemstaff') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-transfer-alt bxs-like bx-tada"></i>
-                <div data-i18n="Analytics">Request Item</div>
+                <div data-i18n="Analytics">Request Borrow Item</div>
             </a>
         </li>
         <li class="menu-item {{ Request::is('reqbelistaff') ? 'active' : '' }}">

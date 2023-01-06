@@ -46,6 +46,19 @@
                 </div>
 
                 <div class="mb-3">
+                    <label class="form-label" for="image">Image</label>
+                    <div class="input-group input-group-merge">
+                        <span id="image" class="input-group-text"><i class='bx bx-image-add' ></i></span>
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="" name="image" placeholder="Image"/>
+                        @error('image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
+                </div>
+
+                <div class="mb-3">
                     <label class="form-label" for="catatan">Notes</label>
                     <div class="input-group input-group-merge">
                         <span id="catatan" class="input-group-text"><i class="bx bx-package"></i></span>

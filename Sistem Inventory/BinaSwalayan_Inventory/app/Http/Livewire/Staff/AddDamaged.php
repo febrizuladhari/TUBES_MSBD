@@ -7,17 +7,22 @@ use App\Models\View_Barang;
 use App\Models\Laporan_Rusak;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
 class AddDamaged extends Component
 {
+    use WithFileUploads;
+
     public $search = '';
     public $note = '';
+    public $image;
 
     protected $listeners = [
         'getBid'
     ];
+
 
     public function getBid($value)
     {

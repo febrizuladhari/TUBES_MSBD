@@ -1,7 +1,7 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>List Repaired Item - Admin</title>
+    <title>List Repaired Item - Super Admin</title>
 @endsection
 
 @section('content')

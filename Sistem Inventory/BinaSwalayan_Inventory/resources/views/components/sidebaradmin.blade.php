@@ -72,6 +72,18 @@
                 <div data-i18n="Analytics">Add Item</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::is('listperbaikan') ? 'active' : '' }}">
+            <a href="{{ route('listrusakadmin') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog bx-tada"></i>
+                <div data-i18n="Analytics">Finish Repaired</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::is('lostitem') ? 'active' : '' }}">
+            <a href="{{ route('lostitemadmin') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-error bx-tada"></i>
+                <div data-i18n="Analytics">Lost Items</div>
+            </a>
+        </li>
     </ul>
 </aside>
 <!-- / Sidebar -->

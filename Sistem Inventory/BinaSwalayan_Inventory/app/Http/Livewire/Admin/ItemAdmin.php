@@ -139,6 +139,16 @@ class ItemAdmin extends Component
                     return redirect()->route('itemadmin');
                 }
             }
+        } elseif($barang->Status == 'Hilang') {
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this item');
+                    return redirect()->route('itemadmin');
+                }
+            }
         } else {
             $student->delete();
             $this->checked = array_diff($this->checked, [$idb]);
@@ -174,6 +184,16 @@ class ItemAdmin extends Component
                 }
             }
         } elseif($barang->Status == 'Rusak'){
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemsuperadmin');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Opps !', 'You cannot delete this items');
+                    return redirect()->route('itemadmin');
+                }
+            }
+        } elseif($barang->Status == 'Hilang') {
             if ($user = Auth::user()) {
                 if ($user->level == 'superadmin') {
                     Alert::error('Opps !', 'You cannot delete this items');

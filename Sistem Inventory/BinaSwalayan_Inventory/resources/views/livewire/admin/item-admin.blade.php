@@ -138,7 +138,14 @@
                     <tr>
                         <td><input type="checkbox" value="{{$barang->id}}" wire:model="checked"></td>
                         <td>{{ $barang->id }}</td>
-                        <td><a href="{{ route('historyitem') }}"><strong>{{$barang->Nama}}</strong></a></td>                        <td>{{$barang->Kategori}}</td>
+                        <td>
+                            @if (auth()->user()->level == 'admin')
+                                <a href="{{ route('historyitem') }}"><strong>{{$barang->Nama}}</strong></a>
+                            @else
+                                <a href="{{ route('historyitem_sa') }}"><strong>{{$barang->Nama}}</strong></a>
+                            @endif
+                        </td>
+                        <td>{{$barang->Kategori}}</td>
                         <td>{{$barang->Rak}}</td>
                         <td>{{$barang->Gudang}}</td>
                         <td>{{$barang->Outlet}}</td>
@@ -151,7 +158,7 @@
                             @elseif ($barang->Status == 'Dipinjam')
                                 <span class="badge bg-info d-flex justify-content-center">{{"Borrowed"}}</span>
                             @elseif ($barang->Status == 'Hilang')
-                            <span class="badge bg-dark d-flex justify-content-center">{{"Lost"}}</span>
+                                <span class="badge bg-dark d-flex justify-content-center">{{"Lost"}}</span>
                             @else
                                 <span class="badge bg-primary d-flex justify-content-center">{{"Good"}}</span>
                             @endif

@@ -1,7 +1,7 @@
-@extends('layout.layoutadmin')
+@extends('layout.layoutsuperadmin')
 
 @section('title')
-    <title>Lost Items Report - Admin</title>
+    <title>Lost Items Report - Super Admin</title>
 @endsection
 
 @section('content')

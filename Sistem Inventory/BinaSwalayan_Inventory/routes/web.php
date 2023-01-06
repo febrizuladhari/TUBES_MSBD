@@ -75,6 +75,14 @@ Route::group(['middleware' => ['auth']], function () {
             return view('superadmin.accincomingsuperadmin');
         })->name('accincoming_sa');
 
+        Route::get('/listperbaikan_sa', function () {
+            return view('superadmin.listrusaksuperadmin');
+        })->name('listrusaksuperadmin');
+
+        Route::get('/lostitem_sa', function () {
+            return view('superadmin.lostitemsuperadmin');
+        })->name('lostitemsuperadmin');
+
         Route::get('cetaklistbarang_sa', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak_sa', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli_sa', [PdfController::class, 'cetakRequestBeli']);
@@ -99,7 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/logdeleteusers', [LogController::class, 'showLogDeleteUser'])->name('logdeleteuser');
 
-        Route::get('/historyitem', [LogController::class, 'historyitem'])->name('historyitem');
+        Route::get('/historyitem_sa', [LogController::class, 'historyitem'])->name('historyitem_sa');
 
         Route::get('/additem_sa', [SuperAdminController::class, 'formInsertItem'])->name('additem_sa.edit');
 
@@ -149,6 +157,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/addrack/edit', [AdminController::class, 'formInsertRack'])->name('addrack.edit');
         Route::post('/addrack/insert', [AdminController::class, 'insertRack'])->name('addrack.insert');
+
+        Route::get('/historyitem', [LogController::class, 'historyitem'])->name('historyitem');
 
         Route::get('/accshifting', function () {
             return view('admin.accshiftingadmin');

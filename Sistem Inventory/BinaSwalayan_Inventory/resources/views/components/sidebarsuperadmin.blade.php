@@ -85,6 +85,18 @@
                 <div data-i18n="Analytics">Edit Environment</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::is('listperbaikan_sa') ? 'active' : '' }}">
+            <a href="{{ route('listrusaksuperadmin') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cog bx-tada"></i>
+                <div data-i18n="Analytics">Finish Repaired</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::is('lostitem_sa') ? 'active' : '' }}">
+            <a href="{{ route('lostitemsuperadmin') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-error bx-tada"></i>
+                <div data-i18n="Analytics">Lost Items</div>
+            </a>
+        </li>
 
         <!-- Log History -->
         <li class="menu-header small text-uppercase">

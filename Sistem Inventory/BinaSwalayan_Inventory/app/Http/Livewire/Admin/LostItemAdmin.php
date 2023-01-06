@@ -22,8 +22,17 @@ class LostItemAdmin extends Component
 
     public function return($lost){
         Laporan_Hilang::where('id_barang', $lost['id'])->delete();
-        Alert::success('Nice','Item has been Founded');
-        return redirect()->route('lostitemadmin');
+
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('Great', 'Item has been found !');
+                return redirect()->route('lostitemsuperadmin');
+            } elseif ($user->level == 'admin') {
+                Alert::success('Great', 'Item has been found !');
+                return redirect()->route('lostitemadmin');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
     }
 
     public function render()

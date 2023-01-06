@@ -32,8 +32,16 @@ class ListRusakAdmin extends Component
 
         Perbaikan::where('id_barang', $rusak['id'])->delete();
 
-        Alert::success('Nice','Item has been returned');
-        return redirect()->route('listrusakadmin');
+        if ($user = Auth::user()) {
+            if ($user->level == 'superadmin') {
+                Alert::success('Great', 'Item has been returned from repair !');
+                return redirect()->route('listrusaksuperadmin');
+            } elseif ($user->level == 'admin') {
+                Alert::success('Great', 'Item has been returned from repair !');
+                return redirect()->route('listrusakadmin');
+            }
+        }
+        Alert::error('Opps !', 'You cannot access this page');
     }
 
     public function render()
