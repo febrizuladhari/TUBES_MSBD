@@ -46,17 +46,21 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="image">Image</label>
+                    <label class="form-label" for="bukti">Image</label>
                     <div class="input-group input-group-merge">
-                        <span id="image" class="input-group-text"><i class='bx bx-image-add' ></i></span>
-                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="" name="image" placeholder="Image"/>
-                        @error('image')
+                        <span id="bukti" class="input-group-text"><i class='bx bx-image-add' ></i></span>
+                        <input wire:model="bukti" type="file" class="form-control @error('bukti') is-invalid @enderror" id="" name="bukti" placeholder="Image"/>
+                        @error('bukti')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                     </div>
                 </div>
+
+                @if ($bukti)
+                    <img src="{{ $bukti -> temporaryUrl() }}" class="img-fluid rounded mx-auto d-block" alt="Image">
+                @endif
 
                 <div class="mb-3">
                     <label class="form-label" for="catatan">Notes</label>

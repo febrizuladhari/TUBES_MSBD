@@ -16,8 +16,6 @@
                                     <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
                                 </a>
 
-                                    <button wire:click="cetakBarcode" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR Selected</button>
-
                                 <a href="{{ url('cetaklistbarang') }}">
                                     <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
                                 </a>
@@ -29,8 +27,6 @@
                                 <a href="{{ route('qritem_sa') }}">
                                     <button wire:click="generateMultipleQr($idb)" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR</button>
                                 </a>
-
-                                <button wire:click="cetakBarcode" type="button" class="btn  btn-outline-primary"><i class='bx bx-qr me-1'></i>Generate QR Selected</button>
 
                                 <a href="{{ url('cetaklistbarang_sa') }}">
                                     <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
@@ -48,6 +44,8 @@
                 <div class="row mt-2">
                     <div class="col d-flex justify-content-start">
                         @if($checked)
+
+                            <button wire:click="cetakBarcode" type="button" class="btn btn-primary me-4"><i class='bx bx-qr me-1'></i>Generate Selected QR </button>
 
                             <a href="#"><button type="button" data-bs-toggle="modal" data-bs-target="#modalDeleteItems"
                                 {{-- onclick="confirm('Are you sure you want delete these Items?') || event.stopImmediatePropagation()" wire:click="deleteItems()" --}}

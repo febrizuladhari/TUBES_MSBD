@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\View_Perbaikan;
 use App\Models\Perbaikan;
 use App\Models\History_Rusak;
+use App\Models\Laporan_Rusak;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,7 +22,9 @@ class ListRusakAdmin extends Component
         $this->userid = Auth::user()->id;
     }
 
-    public function return($rusak){
+
+    public function return($rusak)
+    {
         History_Rusak::create([
             'tanggal_rusak' => $rusak['tanggal_keluar'],
             'tanggal_bagus' => $rusak['tanggal_kembali'],

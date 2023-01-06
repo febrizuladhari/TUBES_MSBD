@@ -16,7 +16,8 @@ class History_Rusak extends Model
         'tanggal_rusak',
         'tanggal_bagus',
         'lokasi',
-        'catatan'
+        'catatan',
+        'bukti'
     ];
 
 }

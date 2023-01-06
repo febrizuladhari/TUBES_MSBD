@@ -17,7 +17,7 @@ class AddDamaged extends Component
 
     public $search = '';
     public $note = '';
-    public $image;
+    public $bukti;
 
     protected $listeners = [
         'getBid'
@@ -29,6 +29,7 @@ class AddDamaged extends Component
     if(!is_null($value))
         $this->search = $value;
     }
+
     public function render()
     {
         return view('livewire.staff.add-damaged',[
@@ -36,12 +37,23 @@ class AddDamaged extends Component
         ]);
     }
 
-    public function store(){
+    public function store()
+    {
+        $this->validate([
+            'bukti' => 'required|image|mimes:png,jpg,jpeg|max:10240',
+        ]);
+
+        if($this->bukti)
+            // $fileName = $this->bukti->getClientOriginalName();
+            // $filepath = $this->bukti->storeAs('bukti_rusak', $fileName,'public');
+            $filepath = $this->bukti->store('bukti_rusak', 'public');
+
         Laporan_Rusak::create([
             'id_barang' => $this->search,
             'tanggal' => now(),
             'catatan' => $this->note,
             'id_user' => Auth::user()->id,
+            'bukti' => $filepath,
         ]);
 
         // toast('Your Post as been submited!','success');

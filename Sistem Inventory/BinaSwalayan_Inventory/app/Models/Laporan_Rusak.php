@@ -15,6 +15,7 @@ class Laporan_Rusak extends Model
         'id_barang',
         'id_user',
         'tanggal',
-        'catatan'
+        'catatan',
+        'bukti'
     ];
 }

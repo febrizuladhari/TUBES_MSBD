@@ -7,17 +7,19 @@
                 </div>
                 <div class="col-4">
                     <div class="demo-inline-spacing d-flex justify-content-end">
-
-                        @if(auth()->user()->level == 'admin')
-                            <a href="{{ url('cetakrequestperpindahan') }}">
-                                <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                            </a>
-                        @elseif(auth()->user()->level == 'superadmin')
-                            <a href="{{ url('cetakrequestperpindahan_sa') }}">
-                                <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                            </a>
+                        @if ($pinjams->count() === 0)
+                            <div></div>
+                        @else
+                            @if(auth()->user()->level == 'admin')
+                                <a href="{{ url('cetakrequestperpindahan') }}">
+                                    <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                                </a>
+                            @elseif(auth()->user()->level == 'superadmin')
+                                <a href="{{ url('cetakrequestperpindahan_sa') }}">
+                                    <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                                </a>
+                            @endif
                         @endif
-
                     </div>
                 </div>
             </div>

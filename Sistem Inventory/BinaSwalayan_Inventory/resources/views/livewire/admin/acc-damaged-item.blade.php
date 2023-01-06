@@ -6,17 +6,20 @@
             </div>
             <div class="col-4">
                 <div class="demo-inline-spacing d-flex justify-content-end">
+                    @if ($damages->count() === 0)
+                        <div></div>
+                    @else
 
-                    @if(auth()->user()->level == 'admin')
-                        <a href="{{ url('cetaklaporanrusak') }}">
-                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                        </a>
-                    @elseif(auth()->user()->level == 'superadmin')
-                        <a href="{{ url('cetaklaporanrusak_sa') }}">
-                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                        </a>
+                        @if(auth()->user()->level == 'admin')
+                            <a href="{{ url('cetaklaporanrusak') }}">
+                                <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                            </a>
+                        @elseif(auth()->user()->level == 'superadmin')
+                            <a href="{{ url('cetaklaporanrusak_sa') }}">
+                                <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                            </a>
+                        @endif
                     @endif
-
                 </div>
             </div>
         </div>
@@ -27,11 +30,13 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        {{-- <th>Image</th> --}}
                         <th>Item</th>
                         <th>Category</th>
                         <th>Rack</th>
                         <th>Warehouse</th>
                         <th>Outlet</th>
+                        <th>Image</th>
                         <th class="d-flex justify-content-center">Action</th>
                     </tr>
                 </thead>
@@ -46,15 +51,25 @@
                     @foreach ($damages as $damage)
                     <tr>
                         <td><strong>{{ $damage->id }}</strong></td>
+                        {{-- <td class="d-flex justify-content-center">
+                            <button wire:click="confirmDamage({{ $damage->id }})" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalImage">
+                                <i class='bx bxs-file-image'></i>
+                            </button>
+                        </td> --}}
                         <td>{{ $damage->nama_barang }}</td>
                         <td>{{ $damage->kategori }}</td>
                         <td>{{ $damage->rak }}</td>
                         <td>{{ $damage->gudang }}</td>
                         <td>{{ $damage->nama }}</td>
+                        <td>
+                            <a href="{{ asset('storage/'. $damage->bukti) }}" target="_blank">
+                                <img src="{{ asset('storage/'. $damage->bukti) }}" class="img-fluid" alt="Image">
+                            </a>
+                        </td>
                         <td class="d-flex justify-content-center">
 
                             {{-- Confirm --}}
-                            <button wire:click="confirmDamage({{$damage->id}})" type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
+                            <button wire:click="confirmDamage({{ $damage->id }})" type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#modalCenter">
                                 <i class="menu-icon tf-icons bx bxs-badge-check"></i>Confirm
                             </button>
 
@@ -64,6 +79,22 @@
                                 </button>
                             </a>
                     @endforeach
+
+                            <!-- Modal Show Image -->
+                            {{-- <div wire:ignore.self class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="modalCenterLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalCenterLabel">Damaged Item Photo</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{ asset('storage/'.$damage->bukti) }}" class="img-fluid" alt="Image">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
 
                             <!-- Modal Delete Popup -->
                             <div wire:ignore.self class="modal fade" id="basicModal2" tabindex="-1" role="dialog" aria-labelledby="modalCenterLabel" aria-hidden="true">
@@ -151,6 +182,14 @@
                                                         <input type="text" wire:model.lazy="updatedCatatan" class="form-control" disabled="disabled"/>
                                                     </div>
                                                 </div>
+
+                                                {{-- <div class="mb-3">
+                                                    <label class="form-label" for="bukti">Image</label>
+                                                    <div class="input-group input-group-merge">
+                                                        <img src="{{ asset('storage/'.$damage->bukti) }}" class="img-fluid" alt="Image">
+                                                    </div>
+                                                </div> --}}
+
                                                 <div class="mb-3">
                                                     <label class="form-label" for="keluar">Out Date</label>
                                                     <div class="input-group input-group-merge">

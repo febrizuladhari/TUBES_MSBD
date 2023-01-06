@@ -24,7 +24,13 @@ class AccDamagedItem extends Component
     public $updatedKeluar= '';
     public $updatedKembali= '';
     public $updatedLokasi= '';
+    public $updatedID= '';
+    public $updatedNamaBarang= '';
+    public $updatedGudang= '';
+    public $updatedCatatan= '';
+    public $updatedBukti= '';
     public $deleteId='';
+    public $gambarId = '';
 
     public function render()
     {
@@ -45,6 +51,7 @@ class AccDamagedItem extends Component
         $this->updatedGudang = $damage->gudang;
         $this->updatedOutlet = $damage->outlet;
         $this->updatedCatatan = $catatan->catatan;
+        $this->updatedBukti = $catatan->bukti;
         $this->dispatchBrowserEvent('show-confirm-damage-item-modal');
     }
 
@@ -76,7 +83,8 @@ class AccDamagedItem extends Component
             'tanggal_keluar' => $this->updatedKeluar,
             'tanggal_kembali' => $this->updatedKembali,
             'lokasi' => $this->updatedLokasi,
-            'catatan'=> $this->updatedCatatan
+            'catatan'=> $this->updatedCatatan,
+            // 'bukti'=> $this->updatedBukti,
         ]);
 
         $delete = Laporan_Rusak::where('id_barang', $this->updatedID);
@@ -94,4 +102,15 @@ class AccDamagedItem extends Component
         Alert::error('Opps !', 'You cannot access this page');
 
     }
+
+    // public function showImage($id)
+    // {
+    //     $this->gambarId = $id;
+    //     // Laporan_Rusak::where('id_barang', $id)->first();
+    // }
+
+    // public function showModalImage()
+    // {
+    //     Laporan_Rusak::where('id_barang', $this->gambarId)->first();
+    // }
 }

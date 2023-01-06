@@ -6,17 +6,20 @@
             </div>
             <div class="col-4">
                 <div class="demo-inline-spacing d-flex justify-content-end">
+                    @if ($incomings->count() === 0)
+                        <div></div>
+                    @else
 
-                    @if(auth()->user()->level == 'admin')
-                        <a href="{{ url('cetakrequestbeli') }}">
-                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                        </a>
-                    @elseif(auth()->user()->level == 'superadmin')
-                        <a href="{{ url('cetakrequestbeli_sa') }}">
-                            <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
-                        </a>
+                        @if(auth()->user()->level == 'admin')
+                            <a href="{{ url('cetakrequestbeli') }}">
+                                <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                            </a>
+                        @elseif(auth()->user()->level == 'superadmin')
+                            <a href="{{ url('cetakrequestbeli_sa') }}">
+                                <button type="button" class="btn btn-outline-primary btn-lg"><i class='bx bxs-file-pdf me-1'></i>Print PDF</button>
+                            </a>
+                        @endif
                     @endif
-
                 </div>
             </div>
         </div>
