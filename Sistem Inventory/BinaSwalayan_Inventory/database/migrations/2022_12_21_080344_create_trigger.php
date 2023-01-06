@@ -95,6 +95,16 @@ class CreateTrigger extends Migration
                         id_Outlet_updated = new.id_outlet, id_Outlet_old = old.id_outlet, updated_at = now();
         END
         ');
+
+        DB::unprepared('CREATE TRIGGER validasi_barang_hilang BEFORE INSERT ON perpindahans
+        FOR EACH ROW
+        BEGIN
+            IF EXISTS (SELECT NEW.id_barang FROM barangs JOIN laporan_hilangs WHERE barangs.id = laporan_hilangs.id_barang)
+            THEN
+                SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "Lost Item Cannot Be Moved";
+            END IF;
+        END
+        ');
     }
 
     /**

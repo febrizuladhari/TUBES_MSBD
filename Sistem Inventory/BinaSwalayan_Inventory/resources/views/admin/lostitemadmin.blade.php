@@ -19,7 +19,7 @@
                 <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
                     <div class="card">
                         <!-- Lost -->
-                            <h5 class="card-header">List Repaired Items</h5>
+                            <h5 class="card-header">List Lost Items</h5>
                             <livewire:admin.lost-item-admin></livewire:admin.lost-item-admin>
                     </div>
                 </div>
