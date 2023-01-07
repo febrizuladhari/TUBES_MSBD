@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire\Superadmin;
 
-use Livewire\Component;
 use App\Models\Outlet;
-use App\Models\Lokasi_Gudang;
-use App\Models\Lokasi_Rak;
+use Livewire\Component;
 use App\Models\view_rak;
-use RealRashid\SweetAlert\Facades\Alert;
-
-use Illuminate\Support\Facades\Auth;
+use App\Models\Lokasi_Rak;
 use Livewire\WithPagination;
+use App\Models\Lokasi_Gudang;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EditRack extends Component
 {
@@ -23,9 +24,9 @@ class EditRack extends Component
     // public $gudangs = NULL;
     // public $raks = NULL;
 
-    public $updaterdOutlet = '';
-    public $updaterdWarehouse = '';
-    public $updaterdRack = '';
+    public $updatedOutlet = '';
+    public $updatedWarehouse = '';
+    public $updatedRack = '';
     public $updatedNama ='';
     public $updatedKategori = '';
     public $updatedSupplier = '';
@@ -62,43 +63,49 @@ class EditRack extends Component
     }
 
     public function submitEdit(){
-        $raks  = Lokasi_Rak::where('id', $this->idr)->first();
-        $raks ->rak = $this->updatedNama;
-        $raks ->id_gudang = $this->updatedWarehouse;
+        DB::beginTransaction();
+        try {
+            $raks  = Lokasi_Rak::where('id', $this->idr)->first();
+            $raks ->rak = $this->updatedNama;
+            $raks ->id_gudang = $this->updatedWarehouse;
+            $raks ->save();
 
-
-        $raks ->save();
-        Alert::success('OK','Rack has been updated successfully');
-        return redirect()->route('editrack_sa.edit');
-        session()->flash('message', 'Rack has been updated successfully');
-
-        //For hide modal after add student success
-        $this->dispatchBrowserEvent('close-modal');
+            DB::commit();
+            Alert::success('OK','Rack has been updated successfully');
+            return redirect()->route('editrack_sa.edit');
+            session()->flash('message', 'Rack has been updated successfully');
+    
+            //For hide modal after add student success
+            $this->dispatchBrowserEvent('close-modal');
+            
+        } catch (\Throwable $th) {
+            Alert::error('Error, Please try again!');
+            return redirect()->route('editrack_sa.edit');
+            DB::rollback();
+        }
     }
 
     public function onDelete($id){
-        $this->idb = $id;
+        $this->idr = $id;
         $this->dispatchBrowserEvent('show-delete-confirmation-modal');
     }
 
     //Single Delete
 
-    public function deleteItem($idb)
+    public function deleteItem($idr)
     {
-        $student = Lokasi_Rak::findOrFail($idb);
-        $student->delete();
-        $this->checked = array_diff($this->checked, [$idb]);
+        DB::beginTransaction();
+        try {
+            $student = Lokasi_Rak::findOrFail($idr);
+            $student->delete();
+            $this->checked = array_diff($this->checked, [$idr]);
+            DB::commit();
+            session()->flash('info', 'Rack deleted Successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            session()->flash('Error, Please try again');
 
-        session()->flash('info', 'Rack deleted Successfully');
-    }
+        }
 
-    //Bulk Delete
-
-    public function deleteItems(){
-
-        Lokasi_Rak::whereKey($this->checked)->delete();
-        $this->checked = [];
-
-        session()->flash('message', 'Racks have been deleted');
     }
 }

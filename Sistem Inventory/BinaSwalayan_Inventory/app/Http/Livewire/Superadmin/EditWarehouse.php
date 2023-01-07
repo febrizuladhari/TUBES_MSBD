@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire\Superadmin;
 
-use Livewire\Component;
 use App\Models\Outlet;
-use App\Models\Lokasi_Gudang;
-use RealRashid\SweetAlert\Facades\Alert;
-
-use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\Lokasi_Gudang;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EditWarehouse extends Component
 {
@@ -44,14 +45,23 @@ class EditWarehouse extends Component
     }
 
     public function submitEdit(){
-        $gudangs = Lokasi_Gudang::where('id', $this->idb)->first();
-        $gudangs->gudang = $this->updatedNama;
+        DB::startTransaction();
+        try {
+            $gudangs = Lokasi_Gudang::where('id', $this->idb)->first();
+            $gudangs->gudang = $this->updatedNama;
+            $gudangs->save();
+            DB::commit();
+
+            Alert::success('OK','Warehouse has been updated successfully');
+            return redirect()->route('editwarehouse_sa.edit');
+            session()->flash('message', 'Warehouse has been updated successfully');
 
 
-        $gudangs->save();
-        Alert::success('OK','Warehouse has been updated successfully');
-        return redirect()->route('editwarehouse_sa.edit');
-        session()->flash('message', 'Warehouse has been updated successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::error('Error, Please try again!');
+            return redirect()->route('editwarehouse_sa.edit');
+        }
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -65,9 +75,15 @@ class EditWarehouse extends Component
 
     public function deleteItem($idb)
     {
-        $student = Lokasi_Gudang::findOrFail($idb);
-        $student->delete();
-        $this->checked = array_diff($this->checked, [$idb]);
+        DB::beginTransaction();
+        try {
+            $student = Lokasi_Gudang::findOrFail($idb);
+            $student->delete();
+            $this->checked = array_diff($this->checked, [$idb]);
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
 
         session()->flash('info', 'Warehouse deleted Successfully');
     }

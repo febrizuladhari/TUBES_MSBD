@@ -9,6 +9,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AccDamagedItem extends Component
 {
@@ -78,27 +79,45 @@ class AccDamagedItem extends Component
 
     public function submitConfirmDamage()
     {
-        $perbaikan = Perbaikan::create([
-            'id_barang' => $this->updatedID,
-            'tanggal_keluar' => $this->updatedKeluar,
-            'tanggal_kembali' => $this->updatedKembali,
-            'lokasi' => $this->updatedLokasi,
-            'catatan'=> $this->updatedCatatan,
-            // 'bukti'=> $this->updatedBukti,
-        ]);
+        
+        DB::beginTransaction();
+        try {
+            $perbaikan = Perbaikan::create([
+                'id_barang' => $this->updatedID,
+                'tanggal_keluar' => $this->updatedKeluar,
+                'tanggal_kembali' => $this->updatedKembali,
+                'lokasi' => $this->updatedLokasi,
+                'catatan'=> $this->updatedCatatan,
+                // 'bukti'=> $this->updatedBukti,
+            ]);
+            $delete = Laporan_Rusak::where('id_barang', $this->updatedID);
+            $delete->delete();
 
-        $delete = Laporan_Rusak::where('id_barang', $this->updatedID);
-        $delete->delete();
+            DB::commit();
 
-        if ($user = Auth::user()) {
-            if ($user->level == 'superadmin') {
-                Alert::success('Great', 'Item has been approved !');
-                return redirect()->route('accdamaged_sa');
-            } elseif ($user->level == 'admin') {
-                Alert::success('Great', 'Item has been approved !');
-                return redirect()->route('accdamaged');
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('Great', 'Item has been approved !');
+                    return redirect()->route('accdamaged_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('Great', 'Item has been approved !');
+                    return redirect()->route('accdamaged');
+                }
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accdamaged_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accdamaged');
+                }
             }
         }
+        
+        
         Alert::error('Opps !', 'You cannot access this page');
 
     }

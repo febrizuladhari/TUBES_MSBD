@@ -2,21 +2,21 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\View_Barang;
-use App\Models\Kategori;
-use App\Models\Outlet;
 use App\Models\Barang;
-use App\Models\Lokasi_Gudang;
-use App\Models\Lokasi_Rak;
+use App\Models\Outlet;
+use Livewire\Component;
+use App\Models\Kategori;
 use App\Models\Supplier;
-use RealRashid\SweetAlert\Facades\Alert;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\Lokasi_Rak;
+use App\Models\View_Barang;
+use Livewire\WithPagination;
+use App\Models\Lokasi_Gudang;
 use Barryvdh\DomPDF\Facade\PDF;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
-use Livewire\Component;
-use Livewire\WithPagination;
+use RealRashid\SweetAlert\Facades\Alert;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ItemAdmin extends Component
 {
@@ -29,9 +29,9 @@ class ItemAdmin extends Component
     public $gudangs = NULL;
     public $raks = NULL;
 
-    public $updaterdOutlet = '';
-    public $updaterdWarehouse = '';
-    public $updaterdRack = '';
+    public $updatedOutlet = '';
+    public $updatedWarehouse = '';
+    public $updatedRack = '';
     public $updatedNama ='';
     public $updatedKategori = '';
     public $updatedSupplier = '';
@@ -79,13 +79,21 @@ class ItemAdmin extends Component
 
     public function submitEdit()
     {
-        $barang = Barang::where('id', $this->idb)->first();
-        $barang->nama = $this->updatedNama;
-        $barang->id_kategori = $this->updatedKategori;
-        $barang->id_rak = $this->updatedRack;
-        $barang->id_supplier = $this->updatedSupplier;
+        DB::beginTransaction();
+        try {
+            $barang = Barang::where('id', $this->idb)->first();
+            $barang->nama = $this->updatedNama;
+            $barang->id_kategori = $this->updatedKategori;
+            $barang->id_rak = $this->updatedRack;
+            $barang->id_supplier = $this->updatedSupplier;
+            $barang->save();
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
 
-        $barang->save();
+
+
         session()->flash('message', 'Items has been updated successfully');
 
         if ($user = Auth::user()) {
@@ -214,20 +222,39 @@ class ItemAdmin extends Component
                 }
             }
         } else {
-            Barang::whereKey($this->checked)->delete();
+            DB::beginTransaction();
+            try{
+                Barang::whereKey($this->checked)->delete();
+                DB::commit();
+                session()->flash('message', 'Items have been deleted');
+                if ($user = Auth::user()) {
+                    if ($user->level == 'superadmin') {
+                        Alert::success('OK', 'Many items deleted successfully !');
+                        return redirect()->route('itemsuperadmin');
+                    } elseif ($user->level == 'admin') {
+                        Alert::success('OK', 'Many items deleted successfully !');
+                        return redirect()->route('itemadmin');
+                    }
+                }
             $this->checked = [];
 
-            session()->flash('message', 'Items have been deleted');
+            }catch(\Throwable $th){
+                DB::rollBack();
+                session()->flash('message', 'ERROR');
 
-            if ($user = Auth::user()) {
-                if ($user->level == 'superadmin') {
-                    Alert::success('OK', 'Many items deleted successfully !');
-                    return redirect()->route('itemsuperadmin');
-                } elseif ($user->level == 'admin') {
-                    Alert::success('OK', 'Many items deleted successfully !');
-                    return redirect()->route('itemadmin');
+                if ($user = Auth::user()) {
+                    if ($user->level == 'superadmin') {
+                        Alert::error('Error, Please try again!');
+                        return redirect()->route('itemsuperadmin');
+                    } elseif ($user->level == 'admin') {
+                        Alert::error('Error, Please try again!');
+                        return redirect()->route('itemadmin');
+                    }
                 }
+
             }
+
+
             Alert::error('Opps !', 'You cannot access this page');
         }
     }

@@ -3,13 +3,14 @@
 namespace App\Http\Livewire\Superadmin;
 
 use App\Models\Outlet;
-use App\Models\Kategori;
 use Livewire\Component;
-use RealRashid\SweetAlert\Facades\Alert;
-
-
-use Illuminate\Support\Facades\Auth;
+use App\Models\Kategori;
 use Livewire\WithPagination;
+
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EditCategory extends Component
 {
@@ -55,14 +56,23 @@ class EditCategory extends Component
 
     public function submitEdit()
     {
-        $kategoris = Kategori::where('id', $this->idb)->first();
-        $kategoris->nama_kategori = $this->updatedNama;
+        DB::beginTransaction();
+        try {
+            $kategoris = Kategori::where('id', $this->idb)->first();
+            $kategoris->nama_kategori = $this->updatedNama;
+            $kategoris->save();
+            
+            DB::commit();
 
-        $kategoris->save();
-
-        Alert::success('OK','Category has been updated successfully');
-        return redirect()->route('editkategori_sa.edit');
-        session()->flash('message', 'Category has been updated successfully');
+            Alert::success('OK','Category has been updated successfully');
+            return redirect()->route('editkategori_sa.edit');
+            session()->flash('message', 'Category has been updated successfully');
+        
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::error('Error, Please try again!');
+            return redirect()->route('editkategori_sa.edit');
+        }
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -78,21 +88,17 @@ class EditCategory extends Component
 
     public function deleteItem($idb)
     {
-        $student = Kategori::findOrFail($idb);
-        $student->delete();
-        $this->checked = array_diff($this->checked, [$idb]);
+        DB::beginTransaction();
+        try {
+            $student = Kategori::findOrFail($idb);
+            $student->delete();
+            $this->checked = array_diff($this->checked, [$idb]);
+            DB::commit();
+            session()->flash('info', 'Category deleted Successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            session()->flash('info', 'Please try again!');
 
-        session()->flash('info', 'Category deleted Successfully');
-    }
-
-    //Bulk Delete
-
-    public function deleteItems()
-    {
-
-        Kategori::whereKey($this->checked)->delete();
-        $this->checked = [];
-
-        session()->flash('message', 'Categories have been deleted');
+        }
     }
 }

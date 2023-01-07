@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Outlet;
-use App\Models\Lokasi_Gudang;
+use Livewire\Component;
 use App\Models\Lokasi_Rak;
+use App\Models\Lokasi_Gudang;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -30,26 +31,42 @@ class AddRack extends Component
 
     public function store()
     {
-        Lokasi_Rak::create([
-            'id_gudang' => $this->selectedWarehouse,
-            'rak' => $this->rack,
-
-    ]);
-
-    if($user = Auth::user()) {
-
-        if($user->level == 'admin') {
-            Alert::success('OK', 'You have successfully added rack !');
-            session()->flash('message', 'You have successfully added rack');
-
-            return redirect()->route('additem.edit');
-        } else {
-            Alert::success('OK', 'You have successfully added rack !');
-            session()->flash('message', 'You have successfully added rack');
-
-            return redirect()->route('additem_sa.edit');
+        DB::beginTransaction();
+        try {
+            Lokasi_Rak::create([
+                'id_gudang' => $this->selectedWarehouse,
+                'rak' => $this->rack,
+    
+        ]);
+    
+        DB::commit();
+        if($user = Auth::user()) {
+    
+            if($user->level == 'admin') {
+                Alert::success('OK', 'You have successfully added rack !');
+                session()->flash('message', 'You have successfully added rack');
+    
+                return redirect()->route('additem.edit');
+            } else {
+                Alert::success('OK', 'You have successfully added rack !');
+                session()->flash('message', 'You have successfully added rack');
+    
+                return redirect()->route('additem_sa.edit');
+            }
         }
-    }
+        } catch (\Throwable $th) {
+        DB::rollBack();
+        if($user = Auth::user()) {
+    
+            if($user->level == 'admin') {
+                Alert::error('Error, Please try again!');
+                return redirect()->route('additem.edit');
+            } else {
+                Alert::error('Error, Please try again!');
+                return redirect()->route('additem_sa.edit');
+            }
+        }
+        }
     Alert::error('Opps!', 'You cannot access this page');
 
     }

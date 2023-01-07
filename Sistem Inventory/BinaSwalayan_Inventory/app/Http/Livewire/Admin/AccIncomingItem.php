@@ -12,6 +12,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AccIncomingItem extends Component
 {
@@ -51,7 +52,7 @@ class AccIncomingItem extends Component
         $this->idb = $incoming->id;
         $this->selectedID = $incoming->id;
         $this->selectedNamaBarang = $incoming->nama_barang;
-        $this->selectedKategori = $incoming->id_kategori;
+        $this->selectedNamaKategori = $incoming->id_kategori;
         $this->selectedOutlet = $incoming->nama_outlet;
         $this->gudangs = Lokasi_Gudang::where('id_outlet', $incoming->id_outlet)->get();
         $this->selectedSupplier = $suppliers->nama;
@@ -65,15 +66,30 @@ class AccIncomingItem extends Component
 
     public function reject()
     {
-        Req_Pembelian::where('id', $this->deleteId)->delete();
+        DB::startTransaction();
+        try {
+            Req_Pembelian::where('id', $this->deleteId)->delete();
+            DB::commit();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('OK', 'Reject completed !');
+                    return redirect()->route('accincoming_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('OK', 'Reject completed !');
+                    return redirect()->route('accincoming');
+                }
+            }
 
-        if ($user = Auth::user()) {
-            if ($user->level == 'superadmin') {
-                Alert::success('OK', 'Reject completed !');
-                return redirect()->route('accincoming_sa');
-            } elseif ($user->level == 'admin') {
-                Alert::success('OK', 'Reject completed !');
-                return redirect()->route('accincoming');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accincoming_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accincoming');
+                }
             }
         }
         Alert::error('Opps !', 'You cannot access this page');
@@ -82,26 +98,43 @@ class AccIncomingItem extends Component
 
     public function submitConfirmIncoming()
     {
-        $barang = Barang::create([
-            'id' => $this->selectedIDBarang,
-            'nama' => $this->selectedNamaBarang,
-            'id_kategori' => $this->selectedKategori,
-            'id_rak' => $this->selectedRack,
-            'id_supplier' => $this->selectedSupplier
-        ]);
-
-        $delete = Req_Pembelian::where('id', $this->selectedID);
-        $delete->delete();
-
-        if ($user = Auth::user()) {
-            if ($user->level == 'superadmin') {
-                Alert::success('Great', 'Item has been approved !');
-                return redirect()->route('accincoming_sa');
-            } elseif ($user->level == 'admin') {
-                Alert::success('Great', 'Item has been approved !');
-                return redirect()->route('accincoming');
+        DB::beginTransaction();
+        try {
+            Barang::create([
+                'id' => $this->selectedIDBarang,
+                'nama' => $this->selectedNamaBarang,
+                'id_kategori' => $this->selectedKategori,
+                'id_rak' => $this->selectedRack,
+                'id_supplier' => $this->selectedSupplier
+            ]);
+    
+            $delete = Req_Pembelian::where('id', $this->selectedID);
+            $delete->delete();
+            DB::commit();
+            
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('Great', 'Item has been approved !');
+                    return redirect()->route('accincoming_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('Great', 'Item has been approved !');
+                    return redirect()->route('accincoming');
+                }
+            }
+            
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accincoming_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accincoming');
+                }
             }
         }
+
         Alert::error('Opps !', 'You cannot access this page');
     }
 }

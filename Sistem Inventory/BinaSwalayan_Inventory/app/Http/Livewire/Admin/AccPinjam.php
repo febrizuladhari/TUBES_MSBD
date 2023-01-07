@@ -11,6 +11,7 @@ use App\Models\Perpindahan;
 use Livewire\WithPagination;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -71,28 +72,43 @@ class AccPinjam extends Component
     public function submitAcc($empDetails,$Items)
     {
         // dd($empDetails,$Items);
-        Perpindahan::create([
-            'tanggal_keluar' => now(),
-            'id_barang' => $empDetails['id'],
-            'id_outlet_peminjam' => $Items['id_outlet'],
-            'id_user' => $Items['id_user'],
-        ]);
-
-        $this->delete($Items['id']);
-        $this->empDetails = NULL;
-        $this->Items = NULL;
-
-        Req_Peminjaman::where('id', $this->deleteId)->delete();
-
-        if ($user = Auth::user()) {
-            if ($user->level == 'superadmin') {
-                Alert::success('OK', 'Item has been approved !');
-                return redirect()->route('accshifting_sa');
-            } elseif ($user->level == 'admin') {
-                Alert::success('OK', 'Item has been approved !');
-                return redirect()->route('accshifting');
+        DB::beginTransaction();
+        try {
+            Perpindahan::create([
+                'tanggal_keluar' => now(),
+                'id_barang' => $empDetails['id'],
+                'id_outlet_peminjam' => $Items['id_outlet'],
+                'id_user' => $Items['id_user'],
+            ]);
+    
+            $this->delete($Items['id']);
+            $this->empDetails = NULL;
+            $this->items = NULL;
+    
+            Req_Peminjaman::where('id', $this->deleteId)->delete();
+            DB::commit();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('OK', 'Item has been approved !');
+                    return redirect()->route('accshifting_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('OK', 'Item has been approved !');
+                    return redirect()->route('accshifting');
+                }
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accshifting_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accshifting');
+                }
             }
         }
+
         Alert::error('Opps !', 'You cannot access this page');
 
     }

@@ -4,10 +4,11 @@ namespace App\Http\Livewire\Superadmin;
 
 use Livewire\Component;
 use App\Models\Supplier;
-use RealRashid\SweetAlert\Facades\Alert;
-
-use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EditSupplier extends Component
 {
@@ -49,14 +50,23 @@ class EditSupplier extends Component
     }
 
     public function submitEdit(){
-        $supplier = Supplier::where('id', $this->idb)->first();
-        $supplier->nama = $this->updatedNama;
-
-
-        $supplier->save();
-        Alert::success('OK','Supplier has been updated successfully');
-        return redirect()->route('editsupplier_sa.edit');
-        session()->flash('message', 'Supplier has been updated successfully');
+        DB::beginTransaction();
+        try {
+            $supplier = Supplier::where('id', $this->idb)->first();
+            $supplier->nama = $this->updatedNama;
+            $supplier->save();
+            
+            DB::commit();
+    
+            Alert::success('OK','Supplier has been updated successfully');
+            return redirect()->route('editsupplier_sa.edit');
+            session()->flash('message', 'Supplier has been updated successfully');
+            
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Alert::error('Error, Please try again!');
+            return redirect()->route('editsupplier_sa.edit');
+        }
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -68,23 +78,21 @@ class EditSupplier extends Component
     }
 
         //Single Delete
-
         public function deleteItem($idb)
         {
-            $student = Supplier::findOrFail($idb);
-            $student->delete();
-            $this->checked = array_diff($this->checked, [$idb]);
+            DB::beginTransaction();
+            try {
+                $student = Supplier::findOrFail($idb);
+                $student->delete();
+                DB::commit();
+                $this->checked = array_diff($this->checked, [$idb]);
+                session()->flash('info', 'Supplier deleted Successfully');
+                
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                Alert::error('Error, Empty child row before delete');
+                return redirect()->route('editsupplier_sa.edit');
 
-            session()->flash('info', 'Supplier deleted Successfully');
-        }
-
-        //Bulk Delete
-
-        public function deleteItems(){
-
-            Supplier::whereKey($this->checked)->delete();
-            $this->checked = [];
-
-            session()->flash('message', 'Suppliers have been deleted');
+            }
         }
 }

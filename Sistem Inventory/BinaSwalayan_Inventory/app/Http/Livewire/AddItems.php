@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Barang;
+use App\Models\Outlet;
 use Livewire\Component;
 use App\Models\Kategori;
-use App\Models\Outlet;
-use App\Models\Lokasi_Gudang;
-use App\Models\Lokasi_Rak;
 use App\Models\Supplier;
-use App\Models\Barang;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Lokasi_Rak;
+use App\Models\Lokasi_Gudang;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 
@@ -50,24 +51,39 @@ class AddItems extends Component
 
     public function store()
     {
-        Barang::create([
-            'id' => $this->idb,
-            'nama' => $this->namab,
-            'id_kategori' => $this->selectedCategory,
-            'id_rak' => $this->selectedRack,
-            'id_supplier' => $this->selectedSupplier,
-
-    ]);
-
-    if ($user = Auth::user()) {
-        if ($user->level == 'superadmin') {
-            Alert::success('OK', 'You have successfully added item !');
-            return redirect()->route('additem_sa.edit');
-        } elseif ($user->level == 'admin') {
-            Alert::success('OK', 'You have successfully added item !');
-            return redirect()->route('additem.edit');
+        DB::beginTransaction();
+        try {
+            Barang::create([
+                'id' => $this->idb,
+                'nama' => $this->namab,
+                'id_kategori' => $this->selectedCategory,
+                'id_rak' => $this->selectedRack,
+                'id_supplier' => $this->selectedSupplier,
+    
+            ]);
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('OK', 'You have successfully added item !');
+                    return redirect()->route('additem_sa.edit');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('OK', 'You have successfully added item !');
+                    return redirect()->route('additem.edit');
+                }
+            }
+        DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollback();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('additem_sa.edit');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('additem.edit');
+                }
+            }
         }
-    }
+
     Alert::error('Opps !', 'You cannot access this page');
 
 

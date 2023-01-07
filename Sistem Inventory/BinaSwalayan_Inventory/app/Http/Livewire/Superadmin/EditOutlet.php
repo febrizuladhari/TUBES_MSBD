@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire\Superadmin;
 
-use Livewire\Component;
 use App\Models\Outlet;
-use RealRashid\SweetAlert\Facades\Alert;
-
-
-use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 use Livewire\WithPagination;
+
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EditOutlet extends Component
 {
@@ -50,14 +51,22 @@ class EditOutlet extends Component
     }
 
     public function submitEdit(){
-        $outlet = Outlet::where('id', $this->idb)->first();
-        $outlet->nama = $this->updatedNama;
+        DB::beginTransaction();
+        try {
+            $outlet = Outlet::where('id', $this->idb)->first();
+            $outlet->nama = $this->updatedNama;
+            $outlet->save();
+            DB::commit();
 
+            Alert::success('OK','Outlet has been updated successfully');
+            return redirect()->route('editoutlet_sa.edit');
+            session()->flash('message', 'Outlet has been updated successfully');
 
-        $outlet->save();
-        Alert::success('OK','Outlet has been updated successfully');
-        return redirect()->route('editoutlet_sa.edit');
-        session()->flash('message', 'Outlet has been updated successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            
+        }
+
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');
@@ -72,22 +81,18 @@ class EditOutlet extends Component
 
         public function deleteItem($idb)
         {
-            $student = Outlet::findOrFail($idb);
-            $student->delete();
-            $this->checked = array_diff($this->checked, [$idb]);
-
+            DB::beginTransaction();
+            try {
+                $student = Outlet::findOrFail($idb);
+                $student->delete();
+                $this->checked = array_diff($this->checked, [$idb]);
+                DB::commit();
+            } catch (\Throwable $th) {
+                DB::rollBack();
+            }
             session()->flash('info', 'Outlet deleted Successfully');
         }
 
-        //Bulk Delete
-
-        public function deleteItems(){
-
-            Outlet::whereKey($this->checked)->delete();
-            $this->checked = [];
-
-            session()->flash('message', 'Outlets have been deleted');
-        }
 
 
 }
