@@ -88,13 +88,4 @@ class EditWarehouse extends Component
         session()->flash('info', 'Warehouse deleted Successfully');
     }
 
-    //Bulk Delete
-
-    public function deleteItems(){
-
-        Lokasi_Gudang::whereKey($this->checked)->delete();
-        $this->checked = [];
-
-        session()->flash('message', 'Warehouses have been deleted');
-    }
 }

@@ -63,15 +63,30 @@ class AccDamagedItem extends Component
 
     public function destroyer()
     {
-        Laporan_Rusak::where('id_barang', $this->deleteId)->delete();
-
-        if ($user = Auth::user()) {
-            if ($user->level == 'superadmin') {
-                Alert::success('OK', 'Reject completed !');
-                return redirect()->route('accdamaged_sa');
-            } elseif ($user->level == 'admin') {
-                Alert::success('OK', 'Reject completed !');
-                return redirect()->route('accdamaged');
+        DB::beginTransaction();
+        try {
+            Laporan_Rusak::where('id_barang', $this->deleteId)->delete();
+    
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::success('OK', 'Reject completed !');
+                    return redirect()->route('accdamaged_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::success('OK', 'Reject completed !');
+                    return redirect()->route('accdamaged');
+                }
+            }
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            if ($user = Auth::user()) {
+                if ($user->level == 'superadmin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accdamaged_sa');
+                } elseif ($user->level == 'admin') {
+                    Alert::error('Error, Please try again!');
+                    return redirect()->route('accdamaged');
+                }
             }
         }
         Alert::error('Opps !', 'You cannot access this page');
