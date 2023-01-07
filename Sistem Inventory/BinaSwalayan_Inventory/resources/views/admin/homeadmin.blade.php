@@ -15,42 +15,43 @@
         <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
             <div class="col-lg-12 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                <div class="col-sm-7">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome {{ auth()->user()->nama }} ! 🎉</h5>
-                        <p class="mb-4">
-                            You can add and approve requested items
-                        </p>
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Welcome {{ auth()->user()->nama }} ! 🎉</h5>
+                            <p class="mb-4">
+                                You can add and approve requested items
+                            </p>
 
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" ria-expanded="false">
-                                <i class='bx bx-check-shield me-1'></i> Check It
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('accshifting') }}"><i class="bx bx-transfer me-2"></i>Shifting</a></li>
-                                <li><a class="dropdown-item" href="{{ route('accdamaged') }}"><i class="bx bx-error-alt me-2"></i>Damaged</a></li>
-                                <li><a class="dropdown-item" href="{{ route('accincoming') }}"><i class="bx bx-down-arrow-alt me-2"></i>Incoming</a></li>
-                                <li><a class="dropdown-item" href="{{ route('itemadmin') }}"><i class="bx bxs-component me-2"></i>Items Detail</a></li>
-                                <li><a class="dropdown-item" href="{{ route('additem.edit') }}"><i class='bx bx-list-plus me-2'></i>Add Item</a></li>
-                            </ul>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" ria-expanded="false">
+                                    <i class='bx bx-check-shield me-1'></i> Check It
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('accshifting') }}"><i class="bx bx-transfer me-2"></i>Shifting</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('accdamaged') }}"><i class="bx bx-error-alt me-2"></i>Damaged</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('accincoming') }}"><i class="bx bx-down-arrow-alt me-2"></i>Incoming</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('itemadmin') }}"><i class="bx bxs-component me-2"></i>Items Detail</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('additem.edit') }}"><i class='bx bx-list-plus me-2'></i>Add Item</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-5 text-center text-sm-left">
-                    <div class="card-body pb-0 px-0 px-md-4">
-                    <img
-                        src="{{ asset('img/illustrations/admin.png') }}"
-                        height="140"
-                        alt="View Badge User"
-                        data-app-dark-img="illustrations/admin.png"
-                        data-app-light-img="illustrations/admin.png"/>
+                    <div class="col-sm-5 text-center text-sm-left">
+                        <div class="card-body pb-0 px-0 px-md-4">
+                        <img
+                            src="{{ asset('img/illustrations/admin.png') }}"
+                            height="140"
+                            alt="View Badge User"
+                            data-app-dark-img="illustrations/admin.png"
+                            data-app-light-img="illustrations/admin.png"/>
+                        </div>
+                    </div>
                     </div>
                 </div>
-                </div>
             </div>
-            </div>
+        </div>
 
         <!-- Four Card Action -->
         <div class="row">

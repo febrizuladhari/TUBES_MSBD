@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CreateTrigger extends Migration
 {
@@ -74,6 +75,46 @@ class CreateTrigger extends Migration
         END
         ');
 
+        DB::unprepared('CREATE TRIGGER log_delete_gudang AFTER DELETE ON lokasi_gudangs
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_delete_gudangs SET id_gudang = old.id, id_outlet = old.id_outlet,
+                        nama_gudang = old.gudang, deleted_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_delete_kategori AFTER DELETE ON kategoris
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_delete_kategoris SET id_kategori = old.id, nama_kategori = old.nama_kategori,
+                        deleted_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_delete_outlet AFTER DELETE ON outlets
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_delete_outlets SET id_outlet = old.id, nama_outlet = old.nama,
+                        deleted_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_delete_rak AFTER DELETE ON lokasi_raks
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_delete_raks SET id_rak = old.id, id_gudang = old.id_gudang,
+                        nomor_rak = old.rak, deleted_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_delete_supplier AFTER DELETE ON uppliers
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_delete_suppliers SET id_supplier = old.id, nama_supplier = old.nama,
+                        deleted_at = now();
+        END
+        ');
+
         DB::unprepared('CREATE TRIGGER log_update_barang BEFORE UPDATE ON barangs
         FOR EACH ROW
         BEGIN
@@ -93,6 +134,46 @@ class CreateTrigger extends Migration
                         alamat_updated = new.alamat, alamat_old = old.alamat,
                         no_telp_updated = new.no_telp, no_telp_old = old.no_telp,
                         id_Outlet_updated = new.id_outlet, id_Outlet_old = old.id_outlet, updated_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_update_gudang BEFORE UPDATE ON lokasi_gudangs
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_update_gudangs SET id_gudang = old.id, id_outlet_new = new.id_outlet, id_outlet_old = old.id_outlet,
+                        nama_gudang_new = new.gudang, nama_gudang_old = old.gudang, updated_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_update_kategori BEFORE UPDATE ON kategoris
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_update_kategoris SET id_kategori = old.id
+                        nama_kategori_new = new.nama_kategori, nama_kategori_old = old.nama_kategori, updated_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_update_outlet BEFORE UPDATE ON outlets
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_update_outlets SET id_outlet = old.id
+                        nama_outlet_new = new.nama, nama_outlet_old = old.nama, updated_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_update_rak BEFORE UPDATE ON lokasi_raks
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_update_raks SET id_rak = old.id, id_gudang_new = new.id_gudang, id_gudang_old = old.id_gudang,
+                        nomor_rak_new = new.rak, nomor_rak_old = old.rak, updated_at = now();
+        END
+        ');
+
+        DB::unprepared('CREATE TRIGGER log_update_supllier BEFORE UPDATE ON suplliers
+        FOR EACH ROW
+        BEGIN
+            INSERT INTO log_update_suplliers SET id_supllier = old.id,
+                        nama_supllier_new = new.nama, nama_supllier_old = old.nama, updated_at = now();
         END
         ');
 

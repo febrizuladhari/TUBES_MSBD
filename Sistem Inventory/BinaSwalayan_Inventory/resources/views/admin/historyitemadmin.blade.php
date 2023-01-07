@@ -44,7 +44,6 @@
                                         <table class="table table-responsive table-hover table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>ID Item</th>
                                                     <th>Borrower Outlet</th>
                                                     <th>Out Date</th>
@@ -62,7 +61,6 @@
 
                                                 @foreach ($pinjams as $pinjam)
                                                 <tr>
-                                                    <td>{{$pinjam->id}}</td>
                                                     <td>{{$pinjam->id_barang}}</td>
                                                     <td>{{$pinjam->id_outlet_peminjam}}</td>
                                                     <td>{{$pinjam->tanggal_keluar}}</td>
@@ -119,8 +117,7 @@
                                     <table class="table table-responsive table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>id Item</th>
+                                                <th>Id Item</th>
                                                 <th>Damaged Date</th>
                                                 <th>Good Date</th>
                                                 <th>Location</th>
@@ -137,7 +134,6 @@
 
                                             @foreach ($rusaks as $rusak)
                                             <tr>
-                                                <td>{{$rusak->id}}</td>
                                                 <td>{{$rusak->id_barang}}</td>
                                                 <td>{{$rusak->tanggal_rusak}}</td>
                                                 <td>{{$rusak->tanggal_bagus}}</td>

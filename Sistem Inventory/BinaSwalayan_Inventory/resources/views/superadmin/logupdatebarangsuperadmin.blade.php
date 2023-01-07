@@ -31,9 +31,13 @@
                                         <div class="col-6">
                                             <div class="demo-inline-spacing d-flex justify-content-end">
 
-                                                <a href="{{ url('exportlogupdatebarang_sa') }}">
-                                                    <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file me-1'></i>Export Excel</button>
-                                                </a>
+                                                @if ($logUpdateBarangs->count() === 0)
+                                                    <div></div>
+                                                @else
+                                                    <a href="{{ url('exportlogupdatebarang_sa') }}">
+                                                        <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file me-1'></i>Export Excel</button>
+                                                    </a>
+                                                @endif
 
                                             </div>
                                         </div>

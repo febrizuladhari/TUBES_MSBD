@@ -51,6 +51,7 @@
                 </div>
             </div>
             </div>
+        </div>
 
             <!-- Four Card Action -->
             <div class="row">

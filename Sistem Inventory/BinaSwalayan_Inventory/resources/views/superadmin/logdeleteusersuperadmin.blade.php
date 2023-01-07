@@ -31,9 +31,13 @@
                                         <div class="col-6">
                                             <div class="demo-inline-spacing d-flex justify-content-end">
 
-                                                <a href="{{ url('exportlogdeleteuser_sa') }}">
-                                                    <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file me-1'></i>Export Excel</button>
-                                                </a>
+                                                @if ($logDeleteUsers->count() === 0)
+                                                    <div></div>
+                                                @else
+                                                    <a href="{{ url('exportlogdeleteuser_sa') }}">
+                                                        <button type="button" class="btn btn-outline-primary data-bs-dismiss="modal"><i class='bx bxs-file me-1'></i>Export Excel</button>
+                                                    </a>
+                                                @endif
 
                                             </div>
                                         </div>
