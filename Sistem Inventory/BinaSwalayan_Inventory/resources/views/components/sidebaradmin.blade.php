@@ -84,6 +84,16 @@
                 <div data-i18n="Analytics">Lost Items</div>
             </a>
         </li>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Print Admin</span>
+        </li>
+        <li class="menu-item {{ Request::is('printitem') ? 'active' : '' }}">
+            <a href="{{ route('printadmin') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-printer bx-tada"></i>
+                <div data-i18n="Analytics">Print</div>
+            </a>
+        </li>
     </ul>
 </aside>
 <!-- / Sidebar -->

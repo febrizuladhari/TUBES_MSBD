@@ -83,6 +83,10 @@ Route::group(['middleware' => ['auth']], function () {
             return view('superadmin.lostitemsuperadmin');
         })->name('lostitemsuperadmin');
 
+        Route::get('/printitem_sa', function () {
+            return view('superadmin.printsuperadmin');
+        })->name('printsuperadmin');
+
         Route::get('cetaklistbarang_sa', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak_sa', [PdfController::class, 'cetakLaporanRusak']);
         Route::get('cetakrequestbeli_sa', [PdfController::class, 'cetakRequestBeli']);
@@ -179,6 +183,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/lostitem', function () {
             return view('admin.lostitemadmin');
         })->name('lostitemadmin');
+
+        Route::get('/printitem', function () {
+            return view('admin.printadmin');
+        })->name('printadmin');
 
         Route::get('cetaklistbarang', [PdfController::class, 'cetakListBarang']);
         Route::get('cetaklaporanrusak', [PdfController::class, 'cetakLaporanRusak']);
