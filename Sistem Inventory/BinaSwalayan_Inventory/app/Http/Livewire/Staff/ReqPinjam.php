@@ -51,11 +51,11 @@ class ReqPinjam extends Component
                 'nama_barang' => $this->selectedName,
                 'tanggal_diperlukan' => $this->selectedDate,
             ]);
-    
+            DB::commit();
             Alert::success('Nice !', 'Request has been added');
             return redirect()->route('reqitemstaff');
             
-            DB::commit();
+            
         } catch (\Throwable $th) {
             DB::rollBack();
             Alert::error('Error, Please try again!');
