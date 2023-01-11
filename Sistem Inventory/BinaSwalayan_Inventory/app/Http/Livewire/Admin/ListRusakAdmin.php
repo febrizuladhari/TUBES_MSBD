@@ -37,6 +37,7 @@ class ListRusakAdmin extends Component
             ]);
     
             Perbaikan::where('id_barang', $rusak['id'])->delete();
+            DB::commit();
     
             if ($user = Auth::user()) {
                 if ($user->level == 'superadmin') {
@@ -47,7 +48,6 @@ class ListRusakAdmin extends Component
                     return redirect()->route('listrusakadmin');
                 }
             }
-            DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
             if ($user = Auth::user()) {
