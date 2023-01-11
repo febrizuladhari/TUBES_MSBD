@@ -20,6 +20,7 @@ class CreateHistoryRusakTable extends Migration
             $table->timestamp('tanggal_bagus')->nullable();
             $table->string('lokasi');
             $table->text('catatan');
+            $table->timestampsTz();
         });
     }
 

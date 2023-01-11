@@ -59,8 +59,9 @@ class AddItems extends Component
                 'id_kategori' => $this->selectedCategory,
                 'id_rak' => $this->selectedRack,
                 'id_supplier' => $this->selectedSupplier,
-    
+
             ]);
+            DB::commit();
             if ($user = Auth::user()) {
                 if ($user->level == 'superadmin') {
                     Alert::success('OK', 'You have successfully added item !');
@@ -70,7 +71,6 @@ class AddItems extends Component
                     return redirect()->route('additem.edit');
                 }
             }
-        DB::commit();
         } catch (\Throwable $th) {
             DB::rollback();
             if ($user = Auth::user()) {

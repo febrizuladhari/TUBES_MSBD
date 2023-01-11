@@ -9,7 +9,7 @@ class History_Pinjam extends Model
 {
     use HasFactory;
     public $table = "history_perpindahans";
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'id_barang',

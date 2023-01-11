@@ -19,6 +19,7 @@ class CreateBarangsTable extends Migration
             $table->unsignedbigInteger('id_kategori')->index('id_kategori');
             $table->unsignedbigInteger('id_rak')->index('id_rak');
             $table->unsignedbigInteger('id_supplier')->index('id_supplier');
+            $table->timestampsTz();
         });
     }
 

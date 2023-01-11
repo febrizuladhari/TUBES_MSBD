@@ -21,6 +21,7 @@ class CreatePerpindahansTable extends Migration
             $table->unsignedBigInteger('id_user')->index('id_user');
 
             $table->unique(['id_barang']);
+            $table->timestampsTz();
         });
     }
 

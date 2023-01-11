@@ -10,7 +10,7 @@ class Laporan_Rusak extends Model
     use HasFactory;
 
     public $table = "laporan_rusaks";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'id_barang',
         'id_user',

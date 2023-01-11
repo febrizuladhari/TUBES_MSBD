@@ -9,7 +9,7 @@ class Laporan_Hilang extends Model
 {
     use HasFactory;
     public $table = "laporan_hilangs";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'id_barang',
         'tanggal_hilang',

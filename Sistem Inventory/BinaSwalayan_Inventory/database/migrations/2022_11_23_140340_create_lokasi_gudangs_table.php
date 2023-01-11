@@ -17,6 +17,7 @@ class CreateLokasiGudangsTable extends Migration
             $table->id();
             $table->unsignedbigInteger('id_outlet')->index('id_outlet');
             $table->text('gudang');
+            $table->timestampsTz();
         });
     }
 

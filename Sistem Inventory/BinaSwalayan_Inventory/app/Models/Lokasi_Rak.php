@@ -10,7 +10,7 @@ class Lokasi_Rak extends Model
     use HasFactory;
 
     public $table = "lokasi_raks";
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'id_gudang',
         'rak'

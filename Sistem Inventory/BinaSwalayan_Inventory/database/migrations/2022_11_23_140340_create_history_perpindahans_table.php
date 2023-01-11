@@ -21,6 +21,7 @@ class CreateHistoryPerpindahansTable extends Migration
             $table->timestamp('tanggal_kembali')->nullable();
             $table->unsignedBigInteger('id_user')->index('id_user');
             $table->index(['id_barang', 'id_outlet_peminjam', 'id_user'], 'id_barang');
+            $table->timestampsTz();
         });
     }
 

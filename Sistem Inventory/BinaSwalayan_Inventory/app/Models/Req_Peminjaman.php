@@ -11,7 +11,7 @@ class Req_Peminjaman extends Model
 
     public $table = "req_peminjamans";
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'id_user',

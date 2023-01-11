@@ -9,7 +9,7 @@ class Supplier extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'nama'
     ];

@@ -20,6 +20,7 @@ class CreatePerbaikansTable extends Migration
             $table->date('tanggal_kembali');
             $table->string('lokasi');
             $table->text('catatan');
+            $table->timestampsTz();
         });
     }
 

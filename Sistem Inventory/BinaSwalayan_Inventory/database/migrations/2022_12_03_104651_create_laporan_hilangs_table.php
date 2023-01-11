@@ -18,6 +18,7 @@ return new class extends Migration
             $table->char('id_barang', 6)->index('laporan_hilangs_ibfk_1');
             $table->timestamp('tanggal_hilang')->useCurrentOnUpdate()->useCurrent();
             $table->unsignedBigInteger('id_user')->index('laporan_hilangs_ibfk_2');
+            $table->timestampsTz();
         });
     }
 

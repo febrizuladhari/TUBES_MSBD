@@ -20,7 +20,8 @@ class CreateReqPeminjamansTable extends Migration
             $table->unsignedBigInteger('id_rak_peminjam')->index('id_gudang_peminjam');
             $table->string('nama_barang');
             $table->timestamp('tanggal_diperlukan')->useCurrentOnUpdate()->useCurrent();
-        
+            $table->timestampsTz();
+
         });
     }
 

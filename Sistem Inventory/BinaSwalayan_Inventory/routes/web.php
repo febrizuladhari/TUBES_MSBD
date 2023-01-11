@@ -14,6 +14,7 @@ use App\Http\Controllers\PdfController;
 // Controller Super Admin
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\PrintController;
 
 // Controller Admin
 use App\Http\Controllers\AdminController;
@@ -139,6 +140,31 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/addwarehouse_sa/insert', [SuperAdminController::class, 'insertWarehouse'])->name('addwarehouse_sa.insert');
         Route::get('/editwarehouse_sa/edit', [SuperAdminController::class, 'formEditWarehouse'])->name('editwarehouse_sa.edit');
 
+
+        Route::get('/printbarang_sa', [PrintController::class, 'printBarang'])->name('printbarang_sa');
+        Route::get('/printbarangpdf_sa/{startDate}/{endDate}', [PrintController::class, 'printBarangPdf'])->name('printbarangpdf_sa');
+
+        Route::get('/printkategori_sa', [PrintController::class, 'printKategori'])->name('printkategori_sa');
+        Route::get('/printkategoripdf_sa/{startDate}/{endDate}', [PrintController::class, 'printKategoriPdf'])->name('printkategoripdf_sa');
+
+        Route::get('/printsupllier_sa', [PrintController::class, 'printSupplier'])->name('printsupllier_sa');
+        Route::get('/printsupplierpdf_sa/{startDate}/{endDate}', [PrintController::class, 'printSupplierPdf'])->name('printsupplierpdf_sa');
+
+        Route::get('/printfinishrepair_sa', [PrintController::class, 'printFinishRepair'])->name('printfinishrepair_sa');
+        Route::get('/printfinishrepairpdf_sa/{startDate}/{endDate}', [PrintController::class, 'printFinishRepairPdf'])->name('printfinishrepairpdf_sa');
+
+        Route::get('/printlostitem_sa', [PrintController::class, 'printLostItem'])->name('printlostitem_sa');
+        Route::get('/printlostitempdf_sa/{startDate}/{endDate}', [PrintController::class, 'printLostItemPdf'])->name('printlostitempdf_sa');
+
+        Route::get('/printaccshifting_sa', [PrintController::class, 'printAccShifting'])->name('printaccshifting_sa');
+        Route::get('/printaccshiftingpdf_sa/{startDate}/{endDate}', [PrintController::class, 'printAccShiftingPdf'])->name('printaccshiftingpdf_sa');
+
+        Route::get('/printaccdamaged_sa', [PrintController::class, 'printAccDamaged'])->name('printaccdamaged_sa');
+        Route::get('/printaccdamagedpdf_sa/{startDate}/{endDate}', [PrintController::class, 'printAccDamagedPdf'])->name('printaccdamagedpdf_sa');
+
+        Route::get('/printaccincoming_sa', [PrintController::class, 'printAccIncoming'])->name('printaccincoming_sa');
+        Route::get('/printaccincomingpdf_sa/{startDate}/{endDate}', [PrintController::class, 'printAccIncomingPdf'])->name('printaccincomingpdf_sa');
+
     });
 
 
@@ -199,6 +225,31 @@ Route::group(['middleware' => ['auth']], function () {
         })->name('qritem');
 
         Route::get('exportlistbarang', [AdminController::class, 'exportListBarang']);
+
+        Route::get('/printbarang', [PrintController::class, 'printBarang'])->name('printbarang');
+        Route::get('/printbarangpdf/{startDate}/{endDate}', [PrintController::class, 'printBarangPdf'])->name('printbarangpdf');
+
+        Route::get('/printkategori', [PrintController::class, 'printKategori'])->name('printkategori');
+        Route::get('/printkategoripdf/{startDate}/{endDate}', [PrintController::class, 'printKategoriPdf'])->name('printkategoripdf');
+
+        Route::get('/printsupllier', [PrintController::class, 'printSupplier'])->name('printsupllier');
+        Route::get('/printsupplierpdf/{startDate}/{endDate}', [PrintController::class, 'printSupplierPdf'])->name('printsupplierpdf');
+
+        Route::get('/printfinishrepair', [PrintController::class, 'printFinishRepair'])->name('printfinishrepair');
+        Route::get('/printfinishrepairpdf/{startDate}/{endDate}', [PrintController::class, 'printFinishRepairPdf'])->name('printfinishrepairpdf');
+
+        Route::get('/printlostitem', [PrintController::class, 'printLostItem'])->name('printlostitem');
+        Route::get('/printlostitempdf/{startDate}/{endDate}', [PrintController::class, 'printLostItemPdf'])->name('printlostitempdf');
+
+        Route::get('/printaccshifting', [PrintController::class, 'printAccShifting'])->name('printaccshifting');
+        Route::get('/printaccshiftingpdf/{startDate}/{endDate}', [PrintController::class, 'printAccShiftingPdf'])->name('printaccshiftingpdf');
+
+        Route::get('/printaccdamaged', [PrintController::class, 'printAccDamaged'])->name('printaccdamaged');
+        Route::get('/printaccdamagedpdf/{startDate}/{endDate}', [PrintController::class, 'printAccDamagedPdf'])->name('printaccdamagedpdf');
+
+        Route::get('/printaccincoming', [PrintController::class, 'printAccIncoming'])->name('printaccincoming');
+        Route::get('/printaccincomingpdf/{startDate}/{endDate}', [PrintController::class, 'printAccIncomingPdf'])->name('printaccincomingpdf');
+
 
     });
 

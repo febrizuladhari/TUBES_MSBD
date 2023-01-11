@@ -75,7 +75,7 @@
         <li class="menu-item {{ Request::is('listperbaikan') ? 'active' : '' }}">
             <a href="{{ route('listrusakadmin') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog bx-tada"></i>
-                <div data-i18n="Analytics">Finish Repaired</div>
+                <div data-i18n="Analytics">Repaired Items</div>
             </a>
         </li>
         <li class="menu-item {{ Request::is('lostitem') ? 'active' : '' }}">

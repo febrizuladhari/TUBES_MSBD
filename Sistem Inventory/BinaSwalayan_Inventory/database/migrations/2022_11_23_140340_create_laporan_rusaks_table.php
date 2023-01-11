@@ -20,6 +20,7 @@ class CreateLaporanRusaksTable extends Migration
             $table->timestamp('tanggal');
             $table->text('catatan');
             $table->string('bukti');
+            $table->timestampsTz();
         });
     }
 

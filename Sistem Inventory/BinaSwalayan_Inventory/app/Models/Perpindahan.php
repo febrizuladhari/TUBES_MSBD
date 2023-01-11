@@ -9,8 +9,8 @@ class Perpindahan extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-    
+    public $timestamps = true;
+
     protected $fillable = [
         'tanggal_keluar',
         'id_barang',

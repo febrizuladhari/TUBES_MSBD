@@ -16,6 +16,7 @@ class CreateOutletsTable extends Migration
         Schema::create('outlets', function (Blueprint $table) {
             $table->id();
             $table->text('nama');
+            $table->timestampsTz();
         });
     }
 

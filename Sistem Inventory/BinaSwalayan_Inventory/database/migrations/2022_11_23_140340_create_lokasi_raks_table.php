@@ -17,6 +17,7 @@ class CreateLokasiRaksTable extends Migration
             $table->id();
             $table->unsignedbigInteger('id_gudang')->index('id_gudang');
             $table->char('rak', 3);
+            $table->timestampsTz();
         });
     }
 

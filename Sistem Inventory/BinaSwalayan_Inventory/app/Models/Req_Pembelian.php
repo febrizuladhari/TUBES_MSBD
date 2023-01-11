@@ -11,7 +11,7 @@ class Req_Pembelian extends Model
 
     protected $table = 'req_pembelians';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'id_kategori',

@@ -269,6 +269,7 @@ class ItemAdmin extends Component
         $pdf = PDF::loadView('admin.barcode', compact('dataproduk','no'));
         $pdf->setPaper('a4', 'potrait')->output();
 
+
         return response()->streamDownload(function () use($pdf) {
             echo  $pdf->stream();
         }, 'Selected QR Code Items.pdf');
@@ -280,7 +281,7 @@ class ItemAdmin extends Component
         return view('livewire.admin.item-admin', [
             'barangs' => View_Barang::searchadmin(trim($this->searchadmin))
             ->when($this->selectedOutlet, function ($query) {
-                $query->where('id_Outlet',$this->selectedOutlet);
+                $query->where('id_Outl        et',$this->selectedOutlet);
             })
             ->when($this->selectedCategory, function ($query) {
                 $query->where('Kategori', $this->selectedCategory);
